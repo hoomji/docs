@@ -1,0 +1,26 @@
+---
+title: 'eth_blockNumber'
+openapi: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+---
+
+<ParamField path="chainId" type="string" default="1" required>
+  Unique identifier for a blockchain network.
+</ParamField>
+
+<ParamField body="provider" type="string">
+  Specify which provider to use. The project's provider priority list is used by default if no providers are selected. (Priority list can be managed on Uniblock's dashboard)
+</ParamField>
+
+<ParamField body="id" type="integer" default="1" required>
+  An identifier established by the Client that MUST contain a String or Number.
+</ParamField>
+
+<ParamField body="jsonrpc" type="string" default="2.0" required>
+  Version of the JSON-RPC protocol.
+</ParamField>
+
+<ParamField body="method" type="string" default="eth_blockNumber" required>
+  The name of the method to be invoked.
+</ParamField>
+
+
