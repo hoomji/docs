@@ -1,0 +1,65 @@
+---
+title: 'eth_syncing'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField body='result' type='oneOf'>
+  Returns syncing status. Either a sync status object if syncing, or `false` if not syncing.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=69000 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_syncing",
+    "params": []
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_syncing",
+  "params": []
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "startingBlock": "0x384",
+    "currentBlock": "0x386",
+    "highestBlock": "0x454"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,103 @@
+---
+title: 'suix_queryTransactionBlocks'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for suix_queryTransactionBlocks: [query, cursor, limit, descending_order]. The query object specifies the criteria, while cursor, limit, and descending_order are optional pagination and ordering parameters.
+
+- `params[0]` (object): Transaction query criteria (TransactionBlockResponseQuery).
+- `params[1]` (string): Optional paging cursor (TransactionDigest). If provided, the query will start from the next item after the cursor.
+- `params[2]` (integer): Maximum number of items returned per page. Defaults to QUERY_MAX_RESULT_LIMIT if not specified.
+- `params[3]` (boolean): Determines the ordering of results. Default is false (ascending order, oldest record first).
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Response object for suix_queryTransactionBlocks. Contains a page of TransactionBlockResponse objects and pagination info.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_queryTransactionBlocks",
+    "params": [
+      {
+        "filter": {
+          "InputObject": "0x93633829fcba6d6e0ccb13d3dbfe7614b81ea76b255e5d435032cd8595f37eb8"
+        },
+        "options": null
+      },
+      "HxidAfFfyr4kXSiWeVq1J6Tk526YUVDoSUY5PSnS4tEJ",
+      100,
+      false
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "suix_queryTransactionBlocks",
+  "params": [
+    {
+      "filter": {
+        "InputObject": "0x93633829fcba6d6e0ccb13d3dbfe7614b81ea76b255e5d435032cd8595f37eb8"
+      },
+      "options": null
+    },
+    "HxidAfFfyr4kXSiWeVq1J6Tk526YUVDoSUY5PSnS4tEJ",
+    100,
+    false
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "data": [
+      {
+        "digest": "GUPcK4cmRmgsTFr52ab9f6fnzNVg3Lz6hF2aXFcsRzaD"
+      },
+      {
+        "digest": "B2iV1SVbBjgTKfbJKPQrvTT6F3kNdekFuBwY9tQcAxV2"
+      },
+      {
+        "digest": "8QrPa4x9iNG5r2zQfmeH8pJoVjjtq9AGzp8rp2fxi8Sk"
+      },
+      {
+        "digest": "3nek86HEjXZ7K3EtrAcBG4wMrCS21gqr8BqwwC6M6P7F"
+      }
+    ],
+    "nextCursor": "3nek86HEjXZ7K3EtrAcBG4wMrCS21gqr8BqwwC6M6P7F",
+    "hasNextPage": false
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

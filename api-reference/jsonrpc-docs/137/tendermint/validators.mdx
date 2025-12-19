@@ -1,0 +1,88 @@
+---
+title: 'validators'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+The parameters for method validators: [height, page, perPage].
+
+- `params[0]` (integer): The height to return.
+- `params[1]` (integer): Page number.
+- `params[2]` (integer): Number of items per page.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The validator information.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=137 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "validators",
+    "params": [
+      0,
+      0,
+      0
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "validators",
+  "params": [
+    0,
+    0,
+    0
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "block_height": "55",
+    "validators": [
+      {
+        "address": "000001E443FD237E4B616E2FA69DF4EE3D49A94F",
+        "pub_key": {
+          "type": "tendermint/PubKeyEd25519",
+          "value": "9tK9IT+FPdf2qm+5c2qaxi10sWP+3erWTKgftn2PaQM="
+        },
+        "voting_power": "239727",
+        "proposer_priority": "-11896414"
+      }
+    ],
+    "count": "1",
+    "total": "25"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

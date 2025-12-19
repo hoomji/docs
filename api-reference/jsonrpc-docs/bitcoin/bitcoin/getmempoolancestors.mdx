@@ -1,0 +1,70 @@
+---
+title: 'getmempoolancestors'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [txid, verbose?].
+
+- `params[0]` (string): 32 Bytes - hash of the transaction.
+- `params[1]` (boolean): If true, return full JSON objects; otherwise just txids.
+
+### Returns
+
+<ResponseField body='result' type='oneOf'>
+  Ancestor transaction ids or verbose objects depending on the flag.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getmempoolancestors",
+    "params": [
+      "",
+      false
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getmempoolancestors",
+  "params": [
+    "",
+    false
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": []
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

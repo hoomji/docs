@@ -1,0 +1,73 @@
+---
+title: 'eth_getStorageAt'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for eth_getStorageAt: [address, position, defaultBlock].
+
+- `params[0]` (string): The address.
+- `params[1]` (string): Integer of the position in the storage.
+- `params[2]` (oneOf): Block identifier. Can be an integer block number or a string tag: "latest", "earliest", or "pending".
+
+### Returns
+
+<ResponseField body='result' type='string'>
+  The value at this storage position. Example: <code>"0x0"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=200901 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getStorageAt",
+    "params": [
+      "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+      "0x0",
+      "0x2"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_getStorageAt",
+  "params": [
+    "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+    "0x0",
+    "0x2"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "0x0"
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

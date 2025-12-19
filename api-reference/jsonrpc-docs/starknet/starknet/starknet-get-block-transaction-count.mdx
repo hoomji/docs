@@ -1,0 +1,74 @@
+---
+title: 'starknet_getBlockTransactionCount'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for starknet_getBlockTransactionCount: [block_id].
+
+- `block_id` (object): BlockID object containing hash and number.
+- `index` (integer): Index of the transaction within the specified block.
+
+### Returns
+
+<ResponseField body='result' type='integer'>
+  Integer - Number of transactions in the requested block. Example: <code>148</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getBlockTransactionCount",
+    "params": {
+      "block_id": {
+        "block_hash": "0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"
+      },
+      "index": 1
+    }
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "starknet_getBlockTransactionCount",
+  "params": {
+    "block_id": {
+      "block_hash": "0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"
+    },
+    "index": 1
+  }
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 148
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

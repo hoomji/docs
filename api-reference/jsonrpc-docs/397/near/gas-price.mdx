@@ -1,0 +1,73 @@
+---
+title: 'gas_price'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+- `params[0]` (integer): Block height for gas price query
+- `params[1]` (string): Block hash for gas price query
+- `params[2]` (string): Fetch gas price for the latest block
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=397 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "gas_price",
+    "params": [
+      0,
+      "",
+      ""
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "gas_price",
+  "params": [
+    0,
+    "",
+    ""
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "gas_price": "100000000"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

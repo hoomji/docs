@@ -1,0 +1,67 @@
+---
+title: 'eth_getBlockReceipts'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [blockNumber]
+
+- `params[]` (string): Block identifier (hex block number or one of the tags: "latest", "earliest", "pending", "finalized", "safe").
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  List of transaction receipt objects for the specified block.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=510 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getBlockReceipts",
+    "params": [
+      "latest"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_getBlockReceipts",
+  "params": [
+    "latest"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": []
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

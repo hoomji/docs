@@ -1,0 +1,77 @@
+---
+title: 'zks_getTransactionDetails'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+The transaction hash in hexadecimal format.
+
+- `params[]` (string)
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Object containing transaction metadata and status details.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=324 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getTransactionDetails",
+    "params": [
+      "0x22de7debaa98758afdaee89f447ff43bab5da3de6acca7528b281cc2f1be2ee9"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "zks_getTransactionDetails",
+  "params": [
+    "0x22de7debaa98758afdaee89f447ff43bab5da3de6acca7528b281cc2f1be2ee9"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "ethCommitTxHash": "0x3da5b6eda357189c9243c41c5a33b1b2ed0169be172705d74681a25217702772",
+    "ethExecuteTxHash": "0xdaff5fd7ff91333b161de54534b4bb6a78e5325329959a0863bf0aae2b0fdcc6",
+    "ethProveTxHash": "0x2f482d3ea163f5be0c2aca7819d0beb80415be1a310e845a2d726fbc4ac54c80",
+    "fee": "0x0",
+    "gasPerPubdata": "0x320",
+    "initiatorAddress": "0x87869cb87c4fa78ca278df358e890ff73b42a39e",
+    "isL1Originated": true,
+    "receivedAt": "2023-03-03T23:52:24.169Z",
+    "status": "verified"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

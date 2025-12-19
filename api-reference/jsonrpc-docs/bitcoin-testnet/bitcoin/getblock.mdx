@@ -1,0 +1,70 @@
+---
+title: 'getblock'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [blockHash, verbosity?].
+
+- `params[0]` (string): 32 Bytes - hash of the transaction.
+- `params[1]` (integer): Verbosity level (0-3) controlling JSON detail.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Block data or raw hex depending on verbosity.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getblock",
+    "params": [
+      "",
+      0
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getblock",
+  "params": [
+    "",
+    0
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

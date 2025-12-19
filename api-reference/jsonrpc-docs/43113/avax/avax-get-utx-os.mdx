@@ -1,0 +1,65 @@
+---
+title: 'avax.getUTXOs'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+- `addresses` (array): Array of addresses to search UTXOs for.
+- `limit` (integer): Maximum number of UTXOs to fetch (default: 1024)
+- `startIndex` (object): Start index for pagination.
+- `sourceChain` (string): Source chain name (e.g., X, P)
+- `encoding` (string): Optional encoding for returned UTXOs
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43113 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "avax.getUTXOs",
+    "params": {}
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "avax.getUTXOs",
+  "params": {}
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

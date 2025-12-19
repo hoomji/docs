@@ -1,0 +1,68 @@
+---
+title: 'getVersionInfo'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Software/version metadata for the Soroban RPC service.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=stellar-soroban \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getVersionInfo",
+    "params": []
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getVersionInfo",
+  "params": []
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "name": "soroban-rpc",
+    "version": "x.y.z",
+    "git": {
+      "commit": "abcdef",
+      "branch": "main"
+    }
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

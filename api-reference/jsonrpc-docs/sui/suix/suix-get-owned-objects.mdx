@@ -1,0 +1,166 @@
+---
+title: 'suix_getOwnedObjects'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for suix_getOwnedObjects: [address, query, cursor, limit]. Only the address is required; query, cursor, and limit are optional.
+
+- `params[0]` (string): The owner's Sui address.
+- `params[1]` (object): Optional objects query criteria.
+- `params[2]` (string): Optional paging cursor. If provided, the query will start from the next item after the specified cursor. If not provided, paging starts from the first item.
+- `params[3]` (integer): Maximum number of items returned per page. Defaults to QUERY_MAX_RESULT_LIMIT if not specified.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Response object for suix_getOwnedObjects. Contains a page of SuiObjectResponse objects and pagination info.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getOwnedObjects",
+    "params": [
+      "0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827",
+      {
+        "filter": {
+          "MatchAll": [
+            {
+              "StructType": "0x2::coin::Coin<0x2::sui::SUI>"
+            },
+            {
+              "AddressOwner": "0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827"
+            },
+            {
+              "Version": "13488"
+            }
+          ]
+        },
+        "options": {
+          "showType": true,
+          "showOwner": true,
+          "showPreviousTransaction": true,
+          "showDisplay": false,
+          "showContent": false,
+          "showBcs": false,
+          "showStorageRebate": false
+        }
+      },
+      "0x0cd4bb4d4f520fe9bbf0cf1cebe3f2549412826c3c9261bff9786c240123749f",
+      3
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "suix_getOwnedObjects",
+  "params": [
+    "0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827",
+    {
+      "filter": {
+        "MatchAll": [
+          {
+            "StructType": "0x2::coin::Coin<0x2::sui::SUI>"
+          },
+          {
+            "AddressOwner": "0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827"
+          },
+          {
+            "Version": "13488"
+          }
+        ]
+      },
+      "options": {
+        "showType": true,
+        "showOwner": true,
+        "showPreviousTransaction": true,
+        "showDisplay": false,
+        "showContent": false,
+        "showBcs": false,
+        "showStorageRebate": false
+      }
+    },
+    "0x0cd4bb4d4f520fe9bbf0cf1cebe3f2549412826c3c9261bff9786c240123749f",
+    3
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "data": [
+      {
+        "data": {
+          "objectId": "0x0b37a91692359a98496738a58c17a9334aeacc435c70ab9635e47a277d8f8dd9",
+          "version": "13488",
+          "digest": "FZzfCnKCSRW2jN9AwkiarjYQapViUQAh799aiRMZ4YC2",
+          "type": "0x2::coin::Coin<0x2::sui::SUI>",
+          "owner": {
+            "AddressOwner": "0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827"
+          },
+          "previousTransaction": "AJhAseKLEndWYT45FbvYGgCJQTqZP537xqNnthY9FqSa",
+          "storageRebate": "100"
+        }
+      },
+      {
+        "data": {
+          "objectId": "0xd4feace07fc863a2eef286c3e95ed48e2c181bb65db5beaf7ea664b4ca6b744c",
+          "version": "13488",
+          "digest": "3cxBDcfnkVgtXWhnMnKKkMGtZdiEorUhb1vdp2DkVyfi",
+          "type": "0x2::coin::Coin<0x2::sui::SUI>",
+          "owner": {
+            "AddressOwner": "0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827"
+          },
+          "previousTransaction": "8qCvxDHh5LtDfF95Ci9G7vvQN2P6y4v55S9xoKBYp7FM",
+          "storageRebate": "100"
+        }
+      },
+      {
+        "data": {
+          "objectId": "0xe26860fac6839ce2d7ed7e6f29d276a1b4c23f2d9a9b6f0d8b2c17beace292b7",
+          "version": "13488",
+          "digest": "3tX9sgYC4A6nVKGjKEE5xxW6t4zkvDL9BwjuaxMg8arP",
+          "type": "0x2::coin::Coin<0x2::sui::SUI>",
+          "owner": {
+            "AddressOwner": "0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827"
+          },
+          "previousTransaction": "5Ka3vDaDy9h5UYk3Maz3vssWHrhbcGXQgwg8fL2ygyTi",
+          "storageRebate": "100"
+        }
+      }
+    ],
+    "nextCursor": "0xe26860fac6839ce2d7ed7e6f29d276a1b4c23f2d9a9b6f0d8b2c17beace292b7",
+    "hasNextPage": true
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

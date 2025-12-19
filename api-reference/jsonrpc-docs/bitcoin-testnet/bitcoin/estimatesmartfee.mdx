@@ -1,0 +1,70 @@
+---
+title: 'estimatesmartfee'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [confTarget, estimateMode?].
+
+- `params[0]` (integer): Target confirmation window in blocks.
+- `params[1]` (string): Optional estimate mode (UNSET, ECONOMICAL, CONSERVATIVE).
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Fee rate estimates in BTC/kvB along with error details.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "estimatesmartfee",
+    "params": [
+      0,
+      ""
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "estimatesmartfee",
+  "params": [
+    0,
+    ""
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

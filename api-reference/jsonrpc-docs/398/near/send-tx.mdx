@@ -1,0 +1,64 @@
+---
+title: 'send_tx'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Submits a signed transaction and optionally waits for a specific level of execution confirmation.
+
+- `signed_tx_base64` (string): Base64-encoded signed transaction.
+- `wait_until` (string): Minimal execution level required. Determines when the response is returned.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Complete status and outcome details of the submitted transaction.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=398 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "send_tx",
+    "params": {}
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "send_tx",
+  "params": {}
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

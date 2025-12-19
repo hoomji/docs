@@ -1,0 +1,111 @@
+---
+title: 'getAssetsByOwner'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+- `params[]` (object)
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getAssetsByOwner",
+    "params": [
+      {
+        "ownerAddress": "E645TckHQnDcavVv92Etc6xSWQaq8zzPtPRGBheviRAk",
+        "options": {
+          "limit": 10,
+          "sortBy": {
+            "sortBy": "created",
+            "sortDirection": "desc"
+          },
+          "showCollectionMetadata": true
+        }
+      }
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getAssetsByOwner",
+  "params": [
+    {
+      "ownerAddress": "E645TckHQnDcavVv92Etc6xSWQaq8zzPtPRGBheviRAk",
+      "options": {
+        "limit": 10,
+        "sortBy": {
+          "sortBy": "created",
+          "sortDirection": "desc"
+        },
+        "showCollectionMetadata": true
+      }
+    }
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "assetList": {
+      "total": 10,
+      "limit": 10,
+      "page": 1,
+      "cursor": null,
+      "items": [
+        {
+          "asset": {
+            "interface": "V1_NFT",
+            "id": "9ARngHhVaCtH5JFieRdSS5Y8cdZk2TMF4tfGSWFB9iSK",
+            "content": {
+              "$schema": "https://schema.metaplex.com",
+              "json_uri": "https://example.com/metadata.json",
+              "files": [
+                {
+                  "uri": "https://example.com/image.png",
+                  "mime": "image/png"
+                }
+              ],
+              "metadata": {}
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

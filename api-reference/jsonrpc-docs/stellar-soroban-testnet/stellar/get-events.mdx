@@ -1,0 +1,77 @@
+---
+title: 'getEvents'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Event filter and pagination options.
+
+- `startLedger` (integer): Inclusive starting ledger sequence to search from.
+- `endLedger` (integer): Exclusive ending ledger sequence to stop at.
+- `contractIds` (array): Optional list of contract IDs to filter on.
+- `topics` (array): Optional list of topic filters. Provider-specific matching may apply.
+- `pagination` (object): Pagination controls.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Event page containing matched events and a paging cursor.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=stellar-soroban-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getEvents",
+    "params": {
+      "startLedger": "LEDGER_SEQUENCE",
+      "pagination": {
+        "limit": 100
+      }
+    }
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getEvents",
+  "params": {
+    "startLedger": "LEDGER_SEQUENCE",
+    "pagination": {
+      "limit": 100
+    }
+  }
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

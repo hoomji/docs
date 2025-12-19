@@ -1,0 +1,90 @@
+---
+title: 'sui_getEvents'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Get all events emitted by the transaction.
+
+- `params[]` (string): The transaction digest.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getEvents",
+    "params": [
+      "11a72GCQ5hGNpWGh2QhQkkusTEGS6EDqifJqxr7nSYX"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "sui_getEvents",
+  "params": [
+    "11a72GCQ5hGNpWGh2QhQkkusTEGS6EDqifJqxr7nSYX"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "data": [
+      {
+        "id": {
+          "txDigest": "11a72GCQ5hGNpWGh2QhQkkusTEGS6EDqifJqxr7nSYX",
+          "eventSeq": "0"
+        },
+        "packageId": "0xc54ab30a3d9adc07c1429c4d6bbecaf9457c9af77a91f631760853934d383634",
+        "transactionModule": "test_module",
+        "sender": "0xbcf7c32655009a61f1de0eae420a2e4ae1bb772ab2dd5d5a7dfa949c0ef06908",
+        "type": "0x...::test::TestEvent",
+        "parsedJson": {
+          "test": "example value"
+        },
+        "bcsEncoding": "base64",
+        "bcs": ""
+      }
+    ],
+    "nextCursor": {
+      "txDigest": "11a72GCQ5hGNpWGh2QhQkkusTEGS6EDqifJqxr7nSYX",
+      "eventSeq": "5"
+    },
+    "hasNextPage": false
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

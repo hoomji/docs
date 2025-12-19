@@ -1,0 +1,67 @@
+---
+title: 'zkevm_getBatchByNumber'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Array containing a single batch number to query. Can be a hexadecimal string or an integer.
+
+- `params[]` (string): The batch number to fetch, provided as a hexadecimal or decimal string.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2442 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zkevm_getBatchByNumber",
+    "params": [
+      "0x12a"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "zkevm_getBatchByNumber",
+  "params": [
+    "0x12a"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

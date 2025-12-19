@@ -1,0 +1,73 @@
+---
+title: 'klay_getProof'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [address, storageKeys, block parameter].
+
+- `params[0]` (string): The address.
+- `params[1]` (array): Storage slot keys to prove.
+- `params[2]` (oneOf): Block identifier. Can be an integer block number or a string tag: "latest", "earliest", or "pending".
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  A trace call consisting of a transaction object and an array of trace types.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1001 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "klay_getProof",
+    "params": [
+      "",
+      [],
+      0
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "klay_getProof",
+  "params": [
+    "",
+    [],
+    0
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": []
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

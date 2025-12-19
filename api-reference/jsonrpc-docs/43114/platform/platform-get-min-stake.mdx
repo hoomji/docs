@@ -1,0 +1,63 @@
+---
+title: 'platform.getMinStake'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Returns the minimum amount of tokens required to validate or delegate on the given Subnet.
+
+- `subnetID` (string): Optional ID of the subnet to query. Defaults to the Primary Network if omitted.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43114 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "platform.getMinStake",
+    "params": {}
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "platform.getMinStake",
+  "params": {}
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

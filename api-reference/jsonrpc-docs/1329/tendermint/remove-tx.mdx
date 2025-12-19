@@ -1,0 +1,65 @@
+---
+title: 'remove_tx'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+- `params[0]` (string): The hash or unique identifier of the transaction to be removed
+
+### Returns
+
+<ResponseField body='result' type='boolean'>
+  Returns true if the transaction was successfully removed; false otherwise
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1329 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "remove_tx",
+    "params": [
+      "0x7d7e3b8b2a0b7266b25559c9ff6224b6c5b8f6e9d7b3f7efb690e28e46ff13c3"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "remove_tx",
+  "params": [
+    "0x7d7e3b8b2a0b7266b25559c9ff6224b6c5b8f6e9d7b3f7efb690e28e46ff13c3"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

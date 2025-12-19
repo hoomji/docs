@@ -1,0 +1,65 @@
+---
+title: 'EXPERIMENTAL_tx_status'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Checks status of a transaction by hash and includes all receipt outcomes and metadata.
+
+- `tx_hash` (string): Base58-encoded transaction hash.
+- `sender_account_id` (string): Account ID of the sender. Used to determine which shard to search in.
+- `wait_until` (string): Optional execution level to wait for before responding. Use NONE for immediate response.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Complete transaction status, including all related receipts and outcomes.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=397 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "EXPERIMENTAL_tx_status",
+    "params": {}
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "EXPERIMENTAL_tx_status",
+  "params": {}
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

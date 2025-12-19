@@ -1,0 +1,67 @@
+---
+title: 'txpool_contentFrom'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Array containing the address to filter transactions by.
+
+- `params[]` (string): The sender address (20-byte hex string).
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Pending and queued transactions for the specified address.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2818 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "txpool_contentFrom",
+    "params": [
+      "0x9431D1615FA755Faa25A74da7f34C8Bd6963bd0A"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "txpool_contentFrom",
+  "params": [
+    "0x9431D1615FA755Faa25A74da7f34C8Bd6963bd0A"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

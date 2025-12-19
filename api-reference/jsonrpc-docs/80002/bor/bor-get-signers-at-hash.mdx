@@ -1,0 +1,75 @@
+---
+title: 'bor_getSignersAtHash'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for bor_getSignersAtHash: [blockHash]
+
+- `params[]` (string): 32-byte block hash (hex-encoded, 0x-prefixed).
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  List of validator addresses (signers) for the specified block hash.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=80002 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "bor_getSignersAtHash",
+    "params": [
+      "0x29fa73e3da83ddac98f527254fe37002e052725a88904bac14f03e919e1e2876"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "bor_getSignersAtHash",
+  "params": [
+    "0x29fa73e3da83ddac98f527254fe37002e052725a88904bac14f03e919e1e2876"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    "0x0375b2fc7140977c9c76d45421564e354ed42277",
+    "0x42eefcda06ead475cde3731b8eb138e88cd0bac3",
+    "0x5973918275c01f50555d44e92c9d9b353cadad54",
+    "0x7fcd58c2d53d980b247f1612fdba93e9a76193e6",
+    "0xb702f1c9154ac9c08da247a8e30ee6f2f3373f41",
+    "0xb8bb158b93c94ed35c1970d610d1e2b34e26652c",
+    "0xf84c74dea96df0ec22e11e7c33996c73fcc2d822"
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

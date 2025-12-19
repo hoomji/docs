@@ -1,0 +1,79 @@
+---
+title: 'unsafe_splitCoinEqual'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Creates an unsigned transaction to split a coin object into multiple equal-size coins.
+
+- `params[0]` (string): The transaction signer's Sui address.
+- `params[1]` (string): The coin object ID to split.
+- `params[2]` (string): The number of equal-sized coins to split into.
+- `params[3]` (string): Optional gas object ID. If not specified, the node selects one.
+- `params[4]` (string): The gas budget for the transaction.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The unsigned transaction block that performs the coin split into equal-size parts.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_splitCoinEqual",
+    "params": [
+      "0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788",
+      "0xcoinobjectabc123456789abcdef",
+      "3",
+      "0xgasobject001122334455",
+      "100000"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "unsafe_splitCoinEqual",
+  "params": [
+    "0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788",
+    "0xcoinobjectabc123456789abcdef",
+    "3",
+    "0xgasobject001122334455",
+    "100000"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

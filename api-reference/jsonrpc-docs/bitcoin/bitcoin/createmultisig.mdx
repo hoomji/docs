@@ -1,0 +1,73 @@
+---
+title: 'createmultisig'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [nrequired, keys, addressType?].
+
+- `params[0]` (integer): Number of required signatures.
+- `params[1]` (array): Public keys or descriptors.
+- `params[2]` (string): Optional address type (legacy, p2sh-segwit, bech32).
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Multisig address information including address and redeem script.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "createmultisig",
+    "params": [
+      0,
+      [],
+      ""
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "createmultisig",
+  "params": [
+    0,
+    [],
+    ""
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

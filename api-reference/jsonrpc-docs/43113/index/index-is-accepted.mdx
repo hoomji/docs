@@ -1,0 +1,70 @@
+---
+title: 'index.isAccepted'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters used to check the acceptance status of a container.
+
+- `containerID` (string): The ID of the container to check.
+- `encoding` (string): The encoding format of the request. Only "hex" is supported.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Boolean result indicating whether the container is accepted.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43113 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "index.isAccepted",
+    "params": {
+      "containerID": "2dGz8JSfX17QqW12pARrt2iWNhXdcpXMYPVSYRn9HrReGpMXqQ",
+      "encoding": "hex"
+    }
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "index.isAccepted",
+  "params": {
+    "containerID": "2dGz8JSfX17QqW12pARrt2iWNhXdcpXMYPVSYRn9HrReGpMXqQ",
+    "encoding": "hex"
+  }
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

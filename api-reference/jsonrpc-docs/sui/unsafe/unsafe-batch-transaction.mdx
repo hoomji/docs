@@ -1,0 +1,79 @@
+---
+title: 'unsafe_batchTransaction'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Create an unsigned batched transaction.
+
+- `params[0]` (string): The transaction signer's Sui address.
+- `params[1]` (array): List of transaction request parameters.
+- `params[2]` (string): Optional gas object ID to be used. If not provided, one will be chosen by the node.
+- `params[3]` (string): Gas budget (maximum gas units that can be used).
+- `params[4]` (string): Transaction builder mode. Optional.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Unsigned batched transaction block.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_batchTransaction",
+    "params": [
+      "0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6",
+      [],
+      "0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051",
+      "100000",
+      "Commit"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "unsafe_batchTransaction",
+  "params": [
+    "0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6",
+    [],
+    "0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051",
+    "100000",
+    "Commit"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

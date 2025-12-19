@@ -1,0 +1,88 @@
+---
+title: 'zks_getProof'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+- `params[0]` (string): The account address to fetch storage proofs for.
+- `params[1]` (array): Vector of storage keys in the account.
+- `params[2]` (integer): The L1 batch number specifying the point in time for the storage proof.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=11124 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getProof",
+    "params": [
+      "0x0000000000000000000000000000000000008003",
+      [
+        "0x8b65c0cf1012ea9f393197eb24619fd814379b298b238285649e14f936a5eb12"
+      ],
+      354895
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "zks_getProof",
+  "params": [
+    "0x0000000000000000000000000000000000008003",
+    [
+      "0x8b65c0cf1012ea9f393197eb24619fd814379b298b238285649e14f936a5eb12"
+    ],
+    354895
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "address": "0x0000000000000000000000000000000000008003",
+    "storageProof": [
+      {
+        "key": "0x8b65c0cf1012ea9f393197eb24619fd814379b298b238285649e14f936a5eb12",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000060",
+        "index": 27900957,
+        "proof": [
+          "0xe3e8e49a998b3abf8926f62a5a832d829aadc1b7e059f1ea59ffbab8e11edfb7",
+          "0x4550ab30af8c76557a74d051eb43a964889d383d6da343c6a4f4799595d86f9c"
+        ]
+      }
+    ]
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

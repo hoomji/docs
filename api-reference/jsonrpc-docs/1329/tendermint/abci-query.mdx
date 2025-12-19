@@ -1,0 +1,86 @@
+---
+title: 'abci_query'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Query parameters for method abci_query in the order: [path, data, height, prove]
+
+- `params[0]` (string): Path to the data (e.g., "/a/b/c")
+- `params[1]` (string): Data content to query
+- `params[2]` (integer): Block height. 0 means latest.
+- `params[3]` (boolean): Whether to include proofs of transaction inclusion.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Application query response.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1329 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "abci_query",
+    "params": [
+      "/a/b/c",
+      "IHAVENOIDEA",
+      1,
+      false
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "abci_query",
+  "params": [
+    "/a/b/c",
+    "IHAVENOIDEA",
+    1,
+    false
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "response": {
+      "log": "exists",
+      "height": "0",
+      "proof": "010114FED0DAD959F36091AD761C922ABA3CBF1D8349990101020103011406AA2262E2F448242DF2C2607C3CDC705313EE3B0001149D16177BC71E445476174622EA559715C293740C",
+      "value": "61626364",
+      "key": "61626364",
+      "index": "-1",
+      "code": "0"
+    }
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

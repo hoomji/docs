@@ -1,0 +1,70 @@
+---
+title: 'zks_getL1BatchBlockRange'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Returns the L2 block range included in the given L1 batch.
+
+- `params[]` (integer): The L1 batch number.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Hexadecimal range of block numbers included in the batch.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=232 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getL1BatchBlockRange",
+    "params": [
+      12345
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "zks_getL1BatchBlockRange",
+  "params": [
+    12345
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    "0x116fec",
+    "0x117015"
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

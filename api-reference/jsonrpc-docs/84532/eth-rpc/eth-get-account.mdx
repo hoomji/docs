@@ -1,0 +1,75 @@
+---
+title: 'eth_getAccount'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [address, blockReference]
+
+- `params[0]` (string): The address of the account (20-byte hex string).
+- `params[1]` (string): Block reference: block number in hex, integer, or tag ("latest", "pending", "safe", "finalized").
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Account information at the specified block.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=84532 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getAccount",
+    "params": [
+      "0x8D97689C9818892B700e27F316cc3E41e17fBeb9",
+      "latest"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_getAccount",
+  "params": [
+    "0x8D97689C9818892B700e27F316cc3E41e17fBeb9",
+    "latest"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "codeHash": "0x3f30cbb24e7a53efc981dcf566da48e6e9b5418d26c4763fdb4e83e7bcd0c9c5",
+    "storageRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "balance": "0x38d7ea4c68000",
+    "nonce": "0x10"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

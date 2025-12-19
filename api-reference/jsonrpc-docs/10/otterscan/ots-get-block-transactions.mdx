@@ -1,0 +1,67 @@
+---
+title: 'ots_getBlockTransactions'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for ots_getBlockTransactions: [defaultBlock].
+
+- `params[0]` (oneOf): Block identifier. Can be an integer block number or a string tag: "latest", "earliest", or "pending".
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Block object with full transactions and their receipts, optimized for pagination. Includes truncated input data and simplified receipts.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=10 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "ots_getBlockTransactions",
+    "params": [
+      "0x1"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "ots_getBlockTransactions",
+  "params": [
+    "0x1"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

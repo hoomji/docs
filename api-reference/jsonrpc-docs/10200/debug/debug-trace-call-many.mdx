@@ -1,0 +1,79 @@
+---
+title: 'debug_traceCallMany'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for debug_traceCallMany. 1. Bundles (required): an array of bundles. Each bundle is an object with:    - transactions: an array of transaction objects (each with fields such as from, to, value, data),    - blockOverride (optional): an object with overrides (blockNumber, blockHash mapping, coinbase, timestamp, difficulty, gasLimit, baseFee). 2. Simulation context (required): an object with blockIdentifier (a hex block number or one of "latest", "earliest", "pending", "safe", "finalized") and transactionIndex (integer, default -1). 3. State overrides (optional): an object mapping addresses to state override objects (here, at least a balance override as a hex string). 4. Timeout (optional): integer timeout in milliseconds (default 5000). 5. Trace type (optional): an object with tracer (string, enum: callTracer, prestateTracer), tracerConfig (object), and onlyTopCall (boolean).
+
+- `params[0]` (array): List of bundles. Each bundle is an object with transactions and an optional blockOverride.
+- `params[1]` (object): Simulation context. Contains blockIdentifier (a hex block number or tag) and transactionIndex (default -1).
+- `params[2]` (object): Optional state overrides: a mapping from address to an override object (e.g. balance).
+- `params[3]` (integer): Simulation timeout in milliseconds.
+- `params[4]` (object): Tracer configuration (optional). Contains tracer type, optional tracerConfig, and onlyTopCall flag.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Array of trace responses corresponding to each simulated bundle. Each trace response is one of: callTracer response, prestateTracer response, or opcode (struct) response.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=10200 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "debug_traceCallMany",
+    "params": [
+      [],
+      {},
+      {},
+      5000,
+      {}
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "debug_traceCallMany",
+  "params": [
+    [],
+    {},
+    {},
+    5000,
+    {}
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": []
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

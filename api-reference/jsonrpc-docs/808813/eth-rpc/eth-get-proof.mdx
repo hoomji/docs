@@ -1,0 +1,94 @@
+---
+title: 'eth_getProof'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [address, storageKeys, blockParameter]
+
+- `params[0]` (string): The 20-byte address to check for balance, nonce, and storage.
+- `params[1]` (array): Array of 32-byte storage keys (hex) to be included in the proof.
+- `params[2]` (string): Block number or tag ("latest", "earliest", "pending", "safe", "finalized").
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Account details and Merkle proofs for storage verification.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=808813 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getProof",
+    "params": [
+      "0x7F0d15C7FAae65896648C8273B6d7E43f58Fa842",
+      [
+        "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+      ],
+      "latest"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_getProof",
+  "params": [
+    "0x7F0d15C7FAae65896648C8273B6d7E43f58Fa842",
+    [
+      "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+    ],
+    "latest"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "address": "0x7f0d15c7faae65896648c8273b6d7e43f58fa842",
+    "balance": "0x0",
+    "nonce": "0x0",
+    "codeHash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+    "storageHash": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "accountProof": [
+      "0xf90211a0...",
+      "0xf90151a0..."
+    ],
+    "storageProof": [
+      {
+        "key": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+        "value": "0x0",
+        "proof": []
+      }
+    ]
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

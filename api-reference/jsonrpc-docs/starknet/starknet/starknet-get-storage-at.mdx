@@ -1,0 +1,77 @@
+---
+title: 'starknet_getStorageAt'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for starknet_getStorageAt: [contract_address, key, block_id]
+
+- `contract_address` (string): Address of the contract to read from.
+- `key` (string): Key to the storage value for the specified contract.
+- `block_id` (object): BlockID object containing hash and number.
+
+### Returns
+
+<ResponseField body='result' type='string'>
+  Value of the storage at the specified contract address and key. Returns 0 if no value found. Example: <code>"0x0"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getStorageAt",
+    "params": {
+      "contract_address": "0x04D88BeCbd1DC984ae04A96E77828E603c5244e68224903D92CA0a1Ff1C8e807",
+      "key": "0x21",
+      "block_id": {
+        "block_hash": "0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"
+      }
+    }
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "starknet_getStorageAt",
+  "params": {
+    "contract_address": "0x04D88BeCbd1DC984ae04A96E77828E603c5244e68224903D92CA0a1Ff1C8e807",
+    "key": "0x21",
+    "block_id": {
+      "block_hash": "0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"
+    }
+  }
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "0x0"
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

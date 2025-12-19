@@ -1,0 +1,65 @@
+---
+title: 'dag_getEvent'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+- `params[0]` (string): The full event ID (hex-encoded 32 bytes) or short event ID.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Returns an event object, or null if not found.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=57054 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "dag_getEvent",
+    "params": [
+      "0x000170430000080cd8f7b782afe5d1f63be6cd73631598313200777062ba7383"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "dag_getEvent",
+  "params": [
+    "0x000170430000080cd8f7b782afe5d1f63be6cd73631598313200777062ba7383"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

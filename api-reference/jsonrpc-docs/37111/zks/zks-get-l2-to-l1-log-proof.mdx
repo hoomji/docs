@@ -1,0 +1,75 @@
+---
+title: 'zks_getL2ToL1LogProof'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+- `params[0]` (string): The hash of the L2 transaction.
+- `params[1]` (integer): The index of the L2 to L1 log in the transaction.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=37111 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getL2ToL1LogProof",
+    "params": [
+      "0x2a1c6c74b184965c0cb015aae9ea134fd96215d2e4f4979cfec12563295f610e",
+      0
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "zks_getL2ToL1LogProof",
+  "params": [
+    "0x2a1c6c74b184965c0cb015aae9ea134fd96215d2e4f4979cfec12563295f610e",
+    0
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "id": 42,
+    "proof": [
+      "0xabc123abc123abc123abc123abc123abc123abc123abc123abc123abc123abc1",
+      "0xdef456def456def456def456def456def456def456def456def456def456def4"
+    ],
+    "root": "0xabc123def4567890abc123def4567890abc123def4567890abc123def4567890"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

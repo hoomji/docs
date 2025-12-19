@@ -1,0 +1,95 @@
+---
+title: 'genesis'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The genesis information.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=137 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "genesis",
+    "params": []
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "genesis",
+  "params": []
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "genesis": {
+      "genesis_time": "2019-04-22T17:00:00Z",
+      "chain_id": "cosmoshub-2",
+      "initial_height": "2",
+      "consensus_params": {
+        "block": {
+          "max_bytes": "22020096",
+          "max_gas": "1000",
+          "time_iota_ms": "1000"
+        },
+        "evidence": {
+          "max_age": "100000"
+        },
+        "validator": {
+          "pub_key_types": [
+            "ed25519"
+          ]
+        }
+      },
+      "validators": [
+        {
+          "address": "B00A6323737F321EB0B8D59C6FD497A14B60938A",
+          "pub_key": {
+            "type": "tendermint/PubKeyEd25519",
+            "value": "cOQZvh/h9ZioSeUMZB/1Vy1Xo5x2sjrVjlE/qHnYifM="
+          },
+          "power": "9328525",
+          "name": "Certus One"
+        }
+      ],
+      "app_hash": "",
+      "app_state": {}
+    }
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

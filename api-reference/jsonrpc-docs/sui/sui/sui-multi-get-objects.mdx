@@ -1,0 +1,70 @@
+---
+title: 'sui_multiGetObjects'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Fetch metadata for multiple Sui objects by ID.
+
+- `params[0]` (array): Array of Object IDs to retrieve.
+- `params[1]` (object): Optional flags to customize object data returned.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Array of SuiObjectResponse items, each representing one object.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_multiGetObjects",
+    "params": [
+      [],
+      {}
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "sui_multiGetObjects",
+  "params": [
+    [],
+    {}
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": []
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

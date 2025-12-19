@@ -1,0 +1,74 @@
+---
+title: 'eth_getBalanceValues'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for eth_getBalanceValues: [address, blockTag]
+
+- `params[0]` (string): Address to query (20 bytes, hex-encoded).
+- `params[1]` (string): Block tag (e.g., "latest", "earliest", or a hex block number).
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Detailed balance values for an Ethereum address.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=81457 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getBalanceValues",
+    "params": [
+      "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+      "latest"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_getBalanceValues",
+  "params": [
+    "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+    "latest"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "liquidBalance": "0xde0b6b3a7640000",
+    "stakedBalance": "0x0",
+    "pendingRewards": "0x0"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

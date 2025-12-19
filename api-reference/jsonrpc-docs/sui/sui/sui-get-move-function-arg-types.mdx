@@ -1,0 +1,91 @@
+---
+title: 'sui_getMoveFunctionArgTypes'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters to get the argument types of a Move function.
+
+- `params[0]` (string): Object ID of the Move package.
+- `params[1]` (string): Module name within the package.
+- `params[2]` (string): Function name in the module.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  List of normalized argument types for the specified Move function.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getMoveFunctionArgTypes",
+    "params": [
+      "0xa0a7b108f5023b7356f2c6a4be6f058e267aae38e08260c7d519d8641897490c",
+      "suifrens",
+      "mint"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "sui_getMoveFunctionArgTypes",
+  "params": [
+    "0xa0a7b108f5023b7356f2c6a4be6f058e267aae38e08260c7d519d8641897490c",
+    "suifrens",
+    "mint"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "Object": "ByMutableReference"
+    },
+    "Pure",
+    "Pure",
+    {
+      "Object": "ByValue"
+    },
+    {
+      "Object": "ByImmutableReference"
+    },
+    {
+      "Object": "ByValue"
+    },
+    {
+      "Object": "ByMutableReference"
+    }
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

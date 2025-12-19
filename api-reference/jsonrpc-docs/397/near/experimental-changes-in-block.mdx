@@ -1,0 +1,106 @@
+---
+title: 'EXPERIMENTAL_changes_in_block'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+- `finality` (string): Optional finality condition. Use instead of block_id.
+- `block_id` (oneOf): Optional block ID. Use instead of finality.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=397 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "EXPERIMENTAL_changes_in_block",
+    "params": {
+      "block_id": 187310138
+    }
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "EXPERIMENTAL_changes_in_block",
+  "params": {
+    "block_id": 187310138
+  }
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "block_hash": "6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w",
+    "changes": [
+      {
+        "account_id": "account.rpc-examples.testnet",
+        "type": "account_touched"
+      },
+      {
+        "account_id": "dev2-nsp.testnet",
+        "type": "account_touched"
+      },
+      {
+        "account_id": "ping-account.testnet",
+        "type": "account_touched"
+      },
+      {
+        "account_id": "v1.signer-dev.testnet",
+        "type": "account_touched"
+      },
+      {
+        "account_id": "account.rpc-examples.testnet",
+        "type": "access_key_touched"
+      },
+      {
+        "account_id": "ping-account.testnet",
+        "type": "access_key_touched"
+      },
+      {
+        "account_id": "dev2-nsp.testnet",
+        "type": "data_touched"
+      },
+      {
+        "account_id": "dev2-nsp.testnet",
+        "type": "data_touched"
+      },
+      {
+        "account_id": "v1.signer-dev.testnet",
+        "type": "data_touched"
+      }
+    ]
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

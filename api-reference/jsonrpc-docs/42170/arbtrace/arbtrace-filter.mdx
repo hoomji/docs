@@ -1,0 +1,79 @@
+---
+title: 'arbtrace_filter'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+An array with a single object specifying filter criteria.
+
+- `params[]` (object)
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  List of trace objects that match the filter.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=42170 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "arbtrace_filter",
+    "params": [
+      {
+        "fromBlock": "0xa7816b",
+        "toBlock": "0xa7816c",
+        "fromAddress": [
+          "0x1c7d91ccbdbf378bac0f074678b09cb589184e4e"
+        ]
+      }
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "arbtrace_filter",
+  "params": [
+    {
+      "fromBlock": "0xa7816b",
+      "toBlock": "0xa7816c",
+      "fromAddress": [
+        "0x1c7d91ccbdbf378bac0f074678b09cb589184e4e"
+      ]
+    }
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": []
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,92 @@
+---
+title: 'getBlock'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for method getBlock: [slot, config]
+
+- `params[0]` (integer): Slot number of the block to retrieve.
+- `params[1]` (object): Optional configuration object for getBlock: [commitment, encoding, transactionDetails, maxSupportedTransactionVersion, rewards].
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Block information including identity and transaction details but if block is not confirmed returns null.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getBlock",
+    "params": [
+      430,
+      {
+        "encoding": "json",
+        "maxSupportedTransactionVersion": 0,
+        "transactionDetails": "full",
+        "rewards": false
+      }
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getBlock",
+  "params": [
+    430,
+    {
+      "encoding": "json",
+      "maxSupportedTransactionVersion": 0,
+      "transactionDetails": "full",
+      "rewards": false
+    }
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "blockHeight": 428,
+    "blockTime": null,
+    "blockhash": "3Eq21vXNB5s86c62bVuUfTeaMif1N2kUqRPBmGRJhyTA",
+    "parentSlot": 429,
+    "previousBlockhash": "mfcyqEXB3DnHXki6KjjmZck6YjmZLvpAByy2fj4nh6B",
+    "transactions": [
+      {
+        "meta": {},
+        "transaction": {}
+      }
+    ]
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,63 @@
+---
+title: 'eth_accounts'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  20 Bytes - addresses owned by the client.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_accounts",
+    "params": []
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_accounts",
+  "params": []
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    "0x407d73d8a49eeb85d32cf465507dd71d507100c1"
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

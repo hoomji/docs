@@ -1,0 +1,73 @@
+---
+title: 'sui_getProtocolConfig'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Optional array with a single protocol version to fetch configuration for.
+
+- `params[]` (string)
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Protocol configuration response for the given or latest protocol version.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getProtocolConfig",
+    "params": [
+      "6"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "sui_getProtocolConfig",
+  "params": [
+    "6"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "attributes": true,
+    "featureFlags": true,
+    "maxSupportedProtocolVersion": "24",
+    "minSupportedProtocolVersion": "1",
+    "protocolVersion": "6"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

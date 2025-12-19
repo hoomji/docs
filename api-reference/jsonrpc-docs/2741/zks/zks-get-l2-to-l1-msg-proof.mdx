@@ -1,0 +1,79 @@
+---
+title: 'zks_getL2ToL1MsgProof'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+- `params[0]` (integer): The block number in which the message was emitted.
+- `params[1]` (string): The address that sent the message.
+- `params[2]` (string): The keccak256 hash of the message being proved.
+- `params[3]` (integer): Optional index in the block of the L1Messenger event log. Defaults to the first message if omitted.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2741 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getL2ToL1MsgProof",
+    "params": [
+      5187,
+      "0x87869cb87c4Fa78ca278dF358E890FF73B42a39E",
+      "0x22de7debaa98758afdaee89f447ff43bab5da3de6acca7528b281cc2f1be2ee9"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "zks_getL2ToL1MsgProof",
+  "params": [
+    5187,
+    "0x87869cb87c4Fa78ca278dF358E890FF73B42a39E",
+    "0x22de7debaa98758afdaee89f447ff43bab5da3de6acca7528b281cc2f1be2ee9"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "id": 0,
+    "proof": [
+      "0xabc123...",
+      "0xdef456..."
+    ],
+    "root": "0xf1adac176fc939313eea4b72055db0622a10bbd9b7a83097286e84e471d2e7df"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

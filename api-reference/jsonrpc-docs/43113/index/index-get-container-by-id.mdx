@@ -1,0 +1,70 @@
+---
+title: 'index.getContainerByID'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters to identify and retrieve the container.
+
+- `id` (string): The container ID to look up.
+- `encoding` (string): The encoding format for the byte output. Must be "hex".
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The container data and metadata.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43113 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "index.getContainerByID",
+    "params": {
+      "id": "CRKUaHg85WmLtMc2AbiWVh87Vi5PKBVZFFLhWPtZyRDv6SHSS",
+      "encoding": "hex"
+    }
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "index.getContainerByID",
+  "params": {
+    "id": "CRKUaHg85WmLtMc2AbiWVh87Vi5PKBVZFFLhWPtZyRDv6SHSS",
+    "encoding": "hex"
+  }
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

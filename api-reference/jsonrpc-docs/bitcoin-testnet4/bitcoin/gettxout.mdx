@@ -1,0 +1,73 @@
+---
+title: 'gettxout'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [txid, vout, includeMempool?].
+
+- `params[0]` (string): 32 Bytes - hash of the transaction.
+- `params[1]` (integer): Output index.
+- `params[2]` (boolean): Include mempool transactions (default true).
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  UTXO information or null if the output is spent.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet4 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "gettxout",
+    "params": [
+      "",
+      0,
+      false
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "gettxout",
+  "params": [
+    "",
+    0,
+    false
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

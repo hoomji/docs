@@ -1,0 +1,76 @@
+---
+title: 'signrawtransactionwithkey'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [rawTx, privKeys, prevTxs?, sighashType?].
+
+- `params[0]` (string): Raw transaction hex.
+- `params[1]` (array): Private keys in WIF format.
+- `params[2]` (array): Optional previous transaction outputs used for signing.
+- `params[3]` (string): Optional signature hash type (e.g., ALL).
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Signed transaction result containing hex and completion flag.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "signrawtransactionwithkey",
+    "params": [
+      "",
+      [],
+      [],
+      ""
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "signrawtransactionwithkey",
+  "params": [
+    "",
+    [],
+    [],
+    ""
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,88 @@
+---
+title: 'eth_getLogs'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for eth_getLogs: [filterObject].
+
+- `params[0]` (object): Filter options used to create a new filter for logs. Topics are order-dependent. Nulls or nested arrays are used to match multiple possibilities.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Array of log objects, or an empty array if nothing has changed since last poll.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=3637 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getLogs",
+    "params": [
+      {
+        "topics": [
+          "0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b"
+        ]
+      }
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_getLogs",
+  "params": [
+    {
+      "topics": [
+        "0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b"
+      ]
+    }
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "logIndex": "0x1",
+      "blockNumber": "0x1b4",
+      "blockHash": "0x8216c5785ac562ff41e2dcfdf5785ac562ff41e2dcfdf829c5a142f1fccd7d",
+      "transactionHash": "0xdf829c5a142f1fccd7d8216c5785ac562ff41e2dcfdf5785ac562ff41e2dcf",
+      "transactionIndex": "0x0",
+      "address": "0x16c5785ac562ff41e2dcfdf829c5a142f1fccd7d",
+      "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "topics": [
+        "0x59ebeb90bc63057b6515673c3ecf9438e5058bca0f92585014eced636878c9a5"
+      ]
+    }
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

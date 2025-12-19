@@ -1,0 +1,68 @@
+---
+title: 'starknet_syncing'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField body='result' type='oneOf'>
+  A syncing status object containing:
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_syncing",
+    "params": []
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "starknet_syncing",
+  "params": []
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "starting_block_hash": "0x3fab5dff46b07a0910cd3e255f53bee8183e1d22fdb48aed4514538ecf733d5",
+    "starting_block_num": "0x1124",
+    "current_block_hash": "0x59c29817b8d4f71fd355180aad76785a801d54eb08fdd2945d1eec8c1dfcd0b",
+    "current_block_num": "0x1199",
+    "highest_block_hash": "0x59c29817b8d4f71fd355180aad76785a801d54eb08fdd2945d1eec8c1dfcd0b",
+    "highest_block_num": "0x1199"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

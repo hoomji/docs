@@ -1,0 +1,82 @@
+---
+title: 'unsafe_requestAddStake'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Create an unsigned transaction to stake SUI to a validator.
+
+- `params[0]` (string): The Sui address of the transaction signer.
+- `params[1]` (array): List of Coin<SUI> object IDs to be staked.
+- `params[2]` (string): Amount to stake. If omitted, the full balance of all coins will be used.
+- `params[3]` (string): The validator's Sui address.
+- `params[4]` (string): Optional gas object ID. If not provided, a gas object will be auto-selected.
+- `params[5]` (string): Gas budget for the transaction.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The unsigned transaction block for the stake operation.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_requestAddStake",
+    "params": [
+      "0xabc123456789defabc123456789defabc123456789defabc123456789defabcd",
+      [],
+      "100000000",
+      "0xval123456789abcdef123456789abcdef123456789abcdef123456789abcdef",
+      "0xgasobject1234567890abcdef",
+      "50000"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "unsafe_requestAddStake",
+  "params": [
+    "0xabc123456789defabc123456789defabc123456789defabc123456789defabcd",
+    [],
+    "100000000",
+    "0xval123456789abcdef123456789abcdef123456789abcdef123456789abcdef",
+    "0xgasobject1234567890abcdef",
+    "50000"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,79 @@
+---
+title: 'unsafe_transferSui'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Create an unsigned transaction to send SUI coin to a recipient. The SUI object is used as both transfer and gas coin.
+
+- `params[0]` (string): The signer's Sui address.
+- `params[1]` (string): The SUI coin object to use in this transaction.
+- `params[2]` (string): Gas budget for the transaction.
+- `params[3]` (string): The recipient's Sui address.
+- `params[4]` (string): Optional transfer amount. If not provided, all balance is transferred minus gas cost.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Unsigned transaction block containing base64 encoded BCS bytes and transaction metadata.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_transferSui",
+    "params": [
+      "0x9f8e7d6c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0e9f",
+      "0x123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "100000",
+      "0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788",
+      "50000"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "unsafe_transferSui",
+  "params": [
+    "0x9f8e7d6c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0e9f",
+    "0x123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    "100000",
+    "0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788",
+    "50000"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

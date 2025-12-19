@@ -1,0 +1,90 @@
+---
+title: 'getAssetProof'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Request parameters for retrieving asset proof.
+
+- `id` (string): The ID of the compressed asset.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Merkle proof data for the given asset.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getAssetProof",
+    "params": {
+      "id": "Bu1DEKeawy7txbnCEJE4BU3BKLXaNAKCYcHR4XhndGss"
+    }
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getAssetProof",
+  "params": {
+    "id": "Bu1DEKeawy7txbnCEJE4BU3BKLXaNAKCYcHR4XhndGss"
+  }
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "root": "2o6Y6EiY3WXhoaEpei2pHmHLYnHDcEQVhgD89GrGHDBH",
+    "proof": [
+      [
+        "EmJXiXEAhEN3FfNQtBa5hwR8LC5kHvdLsaGCoERosZjK",
+        "7NEfhcNPAwbw3L87fjsPqTz2fQdd1CjoLE138SD58FDQ",
+        "6dM3VyeQoYkRFZ74G53EwvUPbQC6LsMZge6c7S1Ds4ks",
+        "A9AACJ5m7UtaVz4HxzhDxGjYaY88rc2XPoFvnoTvgYBj",
+        "2VG5cKeBZdqozwhHGGzs13b9tzy9TXt9kPfN8MzSJ1Sm",
+        "3E1uFze4pi6BnTZXMsQbeh3jQCeDi966Zax9aMbYgg2D",
+        "Bx9PdctdWCeC1WfU6dwP49idsXCYhqyxbRLyLwwGhr61",
+        "HSbJ8quT4vuXFgf5FnjzeUuFfAtLKsq6W1Frj8y1qrif",
+        "GJMLzL4F4hY9yFHY1EY6XRmW4wpuNGeBZTiv7vM2mYra",
+        "FYPtEiqmRx6JprHQvWeEWEuVp3WA7DPRCE4VbhFRVuAj",
+        "6MJKrpnK1GbYsnEzwMRWStNGkTjAZF23NhzTQSQVXsD3",
+        "HjnrJn5vBUUzpCxzjjM9ZnCPuXei2cXKJjX468B9yWD7",
+        "4YCF1CSyTXm1Yi9W9JeYevawupkomdgy2dLxEBHL9euq",
+        "E3oMtCuPEauftdZLX8EZ8YX7BbFzpBCVRYEiLxwPJLY2"
+      ]
+    ],
+    "node_index": 16384,
+    "leaf": "6YdZXw49M97mfFTwgQb6kxM2c6eqZkHSaW9XhhoZXtzv",
+    "tree_id": "2kuTFCcjbV22wvUmtmgsFR7cas7eZUzAu96jzJUvUcb7"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

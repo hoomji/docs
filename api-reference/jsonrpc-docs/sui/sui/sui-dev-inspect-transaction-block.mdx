@@ -1,0 +1,79 @@
+---
+title: 'sui_devInspectTransactionBlock'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Run a transaction in dev-inspect mode for debugging and analysis purposes.
+
+- `params[0]` (string): Sender address (SuiAddress).
+- `params[1]` (string): BCS encoded TransactionKind (base64).
+- `params[2]` (string): Gas price used for gas cost estimation.
+- `params[3]` (string): Epoch number to use for dev inspection.
+- `params[4]` (object): Optional DevInspectArgs including gas budget, gas objects, skip checks, etc.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Result of dev inspection, including simulated effects and optionally returned values.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_devInspectTransactionBlock",
+    "params": [
+      "0xd70420418b84502e506794227f897237764dde8d79a01ab2104bf742a277a2ab",
+      "AAACACBnxtMcbJcOVn8D72fYEaT4Q2ZbjePygvpIs+AQO6m77QEAagY...",
+      "1000",
+      "8888",
+      {}
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "sui_devInspectTransactionBlock",
+  "params": [
+    "0xd70420418b84502e506794227f897237764dde8d79a01ab2104bf742a277a2ab",
+    "AAACACBnxtMcbJcOVn8D72fYEaT4Q2ZbjePygvpIs+AQO6m77QEAagY...",
+    "1000",
+    "8888",
+    {}
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

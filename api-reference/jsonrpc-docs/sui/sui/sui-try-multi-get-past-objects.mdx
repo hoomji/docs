@@ -1,0 +1,86 @@
+---
+title: 'sui_tryMultiGetPastObjects'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Get data for multiple past objects with optional display options.
+
+- `params[0]` (array): Array of GetPastObjectRequest objects.
+- `params[1]` (object): Options for customizing the object response fields.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Array of past object responses with version-specific information.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_tryMultiGetPastObjects",
+    "params": [
+      [],
+      {
+        "showType": true,
+        "showOwner": true,
+        "showPreviousTransaction": true,
+        "showDisplay": false,
+        "showContent": true,
+        "showBcs": false,
+        "showStorageRebate": true
+      }
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "sui_tryMultiGetPastObjects",
+  "params": [
+    [],
+    {
+      "showType": true,
+      "showOwner": true,
+      "showPreviousTransaction": true,
+      "showDisplay": false,
+      "showContent": true,
+      "showBcs": false,
+      "showStorageRebate": true
+    }
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": []
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

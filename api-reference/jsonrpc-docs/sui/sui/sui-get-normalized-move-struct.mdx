@@ -1,0 +1,82 @@
+---
+title: 'sui_getNormalizedMoveStruct'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for retrieving a structured representation of a Move struct.
+
+- `params[0]` (string): Object ID of the package containing the Move module.
+- `params[1]` (string): Name of the Move module.
+- `params[2]` (string): Name of the Move struct.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getNormalizedMoveStruct",
+    "params": [
+      "0xc95b9e341bc3aba1654bdbad707dcd773bd6309363447ef3fe58a960de92aa93",
+      "module",
+      "StructName"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "sui_getNormalizedMoveStruct",
+  "params": [
+    "0xc95b9e341bc3aba1654bdbad707dcd773bd6309363447ef3fe58a960de92aa93",
+    "module",
+    "StructName"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "abilities": {
+      "abilities": [
+        "Store",
+        "Key"
+      ]
+    },
+    "typeParameters": [],
+    "fields": []
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

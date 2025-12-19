@@ -1,0 +1,70 @@
+---
+title: 'index.getContainerByIndex'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters to specify the container index and encoding format.
+
+- `index` (integer): The sequential index of the container (starting from 0).
+- `encoding` (string): The encoding format for the container data. Only "hex" is supported.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Details and content of the container at the specified index.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43114 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "index.getContainerByIndex",
+    "params": {
+      "index": 0,
+      "encoding": "hex"
+    }
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "index.getContainerByIndex",
+  "params": {
+    "index": 0,
+    "encoding": "hex"
+  }
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

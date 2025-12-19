@@ -1,0 +1,76 @@
+---
+title: 'sui_executeTransactionBlock'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Execute a signed transaction and optionally wait for effects or local execution.
+
+- `params[0]` (string): Base64-encoded BCS serialized transaction data (without type tag).
+- `params[1]` (array): Array of base64-encoded signatures.
+- `params[2]` (object): Optional transaction response options.
+- `params[3]` (string): Execution mode indicating how long to wait for confirmation.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Result of executing a transaction block.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_executeTransactionBlock",
+    "params": [
+      "AAACACBqEB6aOvXIBwES+Ahkizbvv43uihqC3kbZUE6WoRCKFwEAjvdvVs...",
+      [],
+      {},
+      "WaitForEffectsCert"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "sui_executeTransactionBlock",
+  "params": [
+    "AAACACBqEB6aOvXIBwES+Ahkizbvv43uihqC3kbZUE6WoRCKFwEAjvdvVs...",
+    [],
+    {},
+    "WaitForEffectsCert"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

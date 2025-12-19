@@ -1,0 +1,152 @@
+---
+title: 'suix_queryEvents'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for suix_queryEvents: [query, cursor, limit, descending_order]. The query object specifies event filter criteria. Cursor, limit, and descending_order are optional.
+
+- `params[0]` (object): Event query criteria object. See Event filter documentation for examples.
+- `params[1]` (string): Optional paging cursor. If provided, the query will start from the next item after this cursor.
+- `params[2]` (integer): Maximum number of items per page. Defaults to QUERY_MAX_RESULT_LIMIT if not specified.
+- `params[3]` (boolean): Query result ordering. Default is false (ascending order, oldest record first).
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The response object for suix_queryEvents. Contains an array of event objects and pagination information.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_queryEvents",
+    "params": [
+      {
+        "MoveModule": {
+          "package": "0xa395759ca37c6e1ffc179184e98a6f9a2da5d78f6e34b0e5044ed52a6bc0a1bc",
+          "module": "test"
+        }
+      },
+      {
+        "txDigest": "Eg3ynETJfTfPKyvJzq3VLG6MngURYHPMjjUJ3Xt1t7tf",
+        "eventSeq": "1"
+      },
+      100,
+      false
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "suix_queryEvents",
+  "params": [
+    {
+      "MoveModule": {
+        "package": "0xa395759ca37c6e1ffc179184e98a6f9a2da5d78f6e34b0e5044ed52a6bc0a1bc",
+        "module": "test"
+      }
+    },
+    {
+      "txDigest": "Eg3ynETJfTfPKyvJzq3VLG6MngURYHPMjjUJ3Xt1t7tf",
+      "eventSeq": "1"
+    },
+    100,
+    false
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "data": [
+      {
+        "id": {
+          "txDigest": "FFwCMgC7FHBLEwfL9JeSeR2EhMAZMykUPVW1kE3HgTMe",
+          "eventSeq": "1"
+        },
+        "packageId": "0xb2fd632992b01aa25900867288b63d6255ff8223c12b0fd985c49d5777a0d65a",
+        "transactionModule": "test",
+        "sender": "0xcceee09f44d558691334ec0aff47af033f57162a2f33056e2585e2c46863ac02",
+        "type": "0x3::test::Test<0x3::test::Test>",
+        "parsedJson": "some_value",
+        "bcsEncoding": "base64",
+        "bcs": ""
+      },
+      {
+        "id": {
+          "txDigest": "FUMhRSj76es8MYeaRYeaBnppk56cuEehKwL2CiU82U7B",
+          "eventSeq": "1"
+        },
+        "packageId": "0xb2fd632992b01aa25900867288b63d6255ff8223c12b0fd985c49d5777a0d65a",
+        "transactionModule": "test",
+        "sender": "0x84bd999f9ff7a1804872957fafa528628a24386298faa98850887f64da841b87",
+        "type": "0x3::test::Test<0x3::test::Test>",
+        "parsedJson": "some_value",
+        "bcsEncoding": "base64",
+        "bcs": ""
+      },
+      {
+        "id": {
+          "txDigest": "CkEYWW2zxTCGBLvUcTARhyX92fu2uc7cnCUXfCiqAypp",
+          "eventSeq": "1"
+        },
+        "packageId": "0xb2fd632992b01aa25900867288b63d6255ff8223c12b0fd985c49d5777a0d65a",
+        "transactionModule": "test",
+        "sender": "0x279efd098d59a66a3d9adc87cce81fe9ec69dc8105b2b60140589ec8be44c29f",
+        "type": "0x3::test::Test<0x3::test::Test>",
+        "parsedJson": "some_value",
+        "bcsEncoding": "base64",
+        "bcs": ""
+      },
+      {
+        "id": {
+          "txDigest": "Eg3ynETJfTfPKyvJzq3VLG6MngURYHPMjjUJ3Xt1t7tf",
+          "eventSeq": "1"
+        },
+        "packageId": "0xb2fd632992b01aa25900867288b63d6255ff8223c12b0fd985c49d5777a0d65a",
+        "transactionModule": "test",
+        "sender": "0x289be027d2a94f744b4c59fda7b528f9c59f430eaba84b8bee9b43a30f9cc83f",
+        "type": "0x3::test::Test<0x3::test::Test>",
+        "parsedJson": "some_value",
+        "bcsEncoding": "base64",
+        "bcs": ""
+      }
+    ],
+    "nextCursor": {
+      "txDigest": "Eg3ynETJfTfPKyvJzq3VLG6MngURYHPMjjUJ3Xt1t7tf",
+      "eventSeq": "1"
+    },
+    "hasNextPage": false
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

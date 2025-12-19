@@ -1,0 +1,133 @@
+---
+title: 'eth_feeHistory'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [blockCount, newestBlock, rewardPercentiles]
+
+- `params[0]` (string): Hex-encoded number of blocks in the requested range (max: 0x400 / 1024 blocks).
+- `params[1]` (string): Newest block identifier: a hex block number or one of: "latest", "earliest", "pending".
+- `params[2]` (array): Optional array of integers representing percentiles (ascending).
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Historical gas fee statistics over the requested range of blocks.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=4158 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_feeHistory",
+    "params": [
+      "0x5",
+      "latest",
+      [
+        20,
+        30
+      ]
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_feeHistory",
+  "params": [
+    "0x5",
+    "latest",
+    [
+      20,
+      30
+    ]
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "oldestBlock": "0x14535f8",
+    "baseFeePerGas": [
+      "0x279c70a9b",
+      "0x2a63ee068",
+      "0x2a01a5449",
+      "0x299fc09af",
+      "0x29aa0b0c5",
+      "0x28b21aaec"
+    ],
+    "baseFeePerBlobGas": [
+      "0xe3f5193b",
+      "0xf6942037",
+      "0xdb2e5553",
+      "0xc2d3d9e8",
+      "0xdb2e5553",
+      "0xed15d41e"
+    ],
+    "gasUsedRatio": [
+      0.7806543666666667,
+      0.46377263333333335,
+      0.46358696666666666,
+      0.503863,
+      0.40701746666666666
+    ],
+    "blobGasUsedRatio": [
+      0.8333333333333334,
+      0,
+      0,
+      1,
+      0.8333333333333334
+    ],
+    "reward": [
+      [
+        "0x5f5e100",
+        "0x34142698"
+      ],
+      [
+        "0x5f5e100",
+        "0x1f619e76"
+      ],
+      [
+        "0x5f5e100",
+        "0x39d10680"
+      ],
+      [
+        "0x6824280",
+        "0x214c9a15"
+      ],
+      [
+        "0x4b571c0",
+        "0x1ac123d6"
+      ]
+    ]
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

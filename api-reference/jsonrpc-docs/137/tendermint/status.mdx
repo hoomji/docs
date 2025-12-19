@@ -1,0 +1,98 @@
+---
+title: 'status'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The status information.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=137 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "status",
+    "params": []
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "status",
+  "params": []
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "node_info": {
+      "protocol_version": {
+        "p2p": "7",
+        "block": "10",
+        "app": "0"
+      },
+      "id": "5576458aef205977e18fd50b274e9b5d9014525a",
+      "listen_addr": "tcp:0.0.0.0:26656",
+      "network": "cosmoshub-2",
+      "version": "0.32.1",
+      "channels": "4020212223303800",
+      "moniker": "moniker-node",
+      "other": {
+        "tx_index": "on",
+        "rpc_address": "tcp:0.0.0.0:26657"
+      }
+    },
+    "sync_info": {
+      "latest_block_hash": "790BA84C3545FCCC49A5C629CEE6EA58A6E875C3862175BDC11EE7AF54703501",
+      "latest_app_hash": "C9AEBB441B787D9F1D846DE51F3826F4FD386108B59B08239653ABF59455C3F8",
+      "latest_block_height": "1262196",
+      "latest_block_time": "2019-08-01T11:52:22.818762194Z",
+      "earliest_block_hash": "790BA84C3545FCCC49A5C629CEE6EA58A6E875C3862175BDC11EE7AF54703501",
+      "earliest_app_hash": "C9AEBB441B787D9F1D846DE51F3826F4FD386108B59B08239653ABF59455C3F8",
+      "earliest_block_height": "1262196",
+      "earliest_block_time": "2019-08-01T11:52:22.818762194Z",
+      "catching_up": false
+    },
+    "validator_info": {
+      "address": "5D6A51A8E9899C44079C6AF90618BA0369070E6E",
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "A6DoBUypNtUAyEHWtQ9bFjfNg8Bo9CrnkUGl6k6OHN4="
+      },
+      "voting_power": "0"
+    }
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

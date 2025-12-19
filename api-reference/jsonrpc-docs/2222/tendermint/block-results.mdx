@@ -1,0 +1,140 @@
+---
+title: 'block_results'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+The parameters for method block_results: [height].
+
+- `params[]` (integer): Integer - height to return. If no height is provided, it will fetch the latest block.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Block results information.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2222 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "block_results",
+    "params": [
+      1
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "block_results",
+  "params": [
+    1
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "height": "12",
+    "txs_results": [
+      {
+        "code": "0",
+        "data": "",
+        "log": "not enough gas",
+        "info": "",
+        "gas_wanted": "100",
+        "gas_used": "100",
+        "events": [
+          {
+            "type": "app",
+            "attributes": [
+              {
+                "key": "YWN0aW9u",
+                "value": "c2VuZA==",
+                "index": false
+              }
+            ]
+          }
+        ],
+        "codespace": "ibc"
+      }
+    ],
+    "begin_block_events": [
+      {
+        "type": "app",
+        "attributes": [
+          {
+            "key": "YWN0aW9u",
+            "value": "c2VuZA==",
+            "index": false
+          }
+        ]
+      }
+    ],
+    "end_block": [
+      {
+        "type": "app",
+        "attributes": [
+          {
+            "key": "YWN0aW9u",
+            "value": "c2VuZA==",
+            "index": false
+          }
+        ]
+      }
+    ],
+    "validator_updates": [
+      {
+        "pub_key": {
+          "type": "tendermint/PubKeyEd25519",
+          "value": "9tK9IT+FPdf2qm+5c2qaxi10sWP+3erWTKgftn2PaQM="
+        },
+        "power": "300"
+      }
+    ],
+    "consensus_params_updates": {
+      "block": {
+        "max_bytes": "22020096",
+        "max_gas": "1000",
+        "time_iota_ms": "1000"
+      },
+      "evidence": {
+        "max_age": "100000"
+      },
+      "validator": {
+        "pub_key_types": [
+          "ed25519"
+        ]
+      }
+    }
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

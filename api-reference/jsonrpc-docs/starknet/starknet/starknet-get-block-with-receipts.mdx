@@ -1,0 +1,67 @@
+---
+title: 'starknet_getBlockWithReceipts'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for starknet_getBlockWithReceipts: [block_id]
+
+- `params[0]` (string): Block identifier, block hash or block number of block tag.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Detailed block information with full transactions and receipts
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getBlockWithReceipts",
+    "params": [
+      ""
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "starknet_getBlockWithReceipts",
+  "params": [
+    ""
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,76 @@
+---
+title: 'createrawtransaction'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [inputs, outputs, locktime?, replaceable?].
+
+- `params[0]` (array): Array of inputs with txid and vout.
+- `params[1]` (object): Outputs with address/script => amount mapping.
+- `params[2]` (integer): Optional locktime.
+- `params[3]` (boolean): Optional replaceable flag.
+
+### Returns
+
+<ResponseField body='result' type='string'>
+  Raw transaction hex string.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "createrawtransaction",
+    "params": [
+      [],
+      {},
+      0,
+      false
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "createrawtransaction",
+  "params": [
+    [],
+    {},
+    0,
+    false
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ""
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

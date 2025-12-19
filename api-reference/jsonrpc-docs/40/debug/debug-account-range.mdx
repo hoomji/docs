@@ -1,0 +1,76 @@
+---
+title: 'debug_accountRange'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [blockIdentifier, startKey, maxResults, context?].
+
+- `params[0]` (string): Block number or hash at which to inspect state (hex quantity or 32-byte hash).
+- `params[1]` (string): Hex-encoded start account key (inclusive).
+- `params[2]` (integer): Maximum number of accounts to return.
+- `params[3]` (object): Optional context returned from a previous call to continue iteration.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Account range response including account details and continuation token.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=40 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "debug_accountRange",
+    "params": [
+      "",
+      "",
+      0,
+      {}
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "debug_accountRange",
+  "params": [
+    "",
+    "",
+    0,
+    {}
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,92 @@
+---
+title: 'getRecentPrioritizationFees'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+The parameters for method getRecentPrioritizationFees: [accountAddresses]
+
+- `params[]` (array): Optional array of account addresses (up to 128), base-58 encoded strings. Determines fee based on locking all provided accounts as writable.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Array of prioritization fee objects from recent blocks.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getRecentPrioritizationFees",
+    "params": [
+      [
+        "CxELquR1gPP8wHe33gZ4QxqGB3sZ9RSwsJ2KshVewkFY"
+      ]
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getRecentPrioritizationFees",
+  "params": [
+    [
+      "CxELquR1gPP8wHe33gZ4QxqGB3sZ9RSwsJ2KshVewkFY"
+    ]
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "slot": 348125,
+      "prioritizationFee": 0
+    },
+    {
+      "slot": 348126,
+      "prioritizationFee": 1000
+    },
+    {
+      "slot": 348127,
+      "prioritizationFee": 500
+    },
+    {
+      "slot": 348128,
+      "prioritizationFee": 0
+    },
+    {
+      "slot": 348129,
+      "prioritizationFee": 1234
+    }
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

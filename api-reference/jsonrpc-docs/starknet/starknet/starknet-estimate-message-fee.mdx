@@ -1,0 +1,78 @@
+---
+title: 'starknet_estimateMessageFee'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for starknet_estimateMessageFee
+
+- `params[0]` (object): Message from L1 object
+- `params[1]` (object): Block identifier object
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Estimated fee for processing the l1_handler transaction
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_estimateMessageFee",
+    "params": [
+      {},
+      {}
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "starknet_estimateMessageFee",
+  "params": [
+    {},
+    {}
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "from_address": "FROM_ADDRESS",
+      "to_address": "TO_ADDRESS",
+      "entry_point_selector": "ENTRY_POINT_SELECTOR",
+      "payload": []
+    },
+    "latest"
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

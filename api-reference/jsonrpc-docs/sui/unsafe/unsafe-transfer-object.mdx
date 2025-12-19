@@ -1,0 +1,79 @@
+---
+title: 'unsafe_transferObject'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Create an unsigned transaction to transfer an object to a recipient. The object must allow public transfers.
+
+- `params[0]` (string): The signer's Sui address.
+- `params[1]` (string): The ID of the object to be transferred.
+- `params[2]` (string): Optional gas object ID. If not specified, the node picks one automatically.
+- `params[3]` (string): The gas budget for the transaction.
+- `params[4]` (string): The recipient's Sui address.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Unsigned transaction bytes and metadata for the object transfer.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_transferObject",
+    "params": [
+      "0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788",
+      "0xobjectid123456789abcdef",
+      "0xgasobject998877",
+      "50000",
+      "0xrecipient00112233445566778899aabbccddeeff0011223344556677889900"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "unsafe_transferObject",
+  "params": [
+    "0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788",
+    "0xobjectid123456789abcdef",
+    "0xgasobject998877",
+    "50000",
+    "0xrecipient00112233445566778899aabbccddeeff0011223344556677889900"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

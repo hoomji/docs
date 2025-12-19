@@ -1,0 +1,90 @@
+---
+title: 'getAccountInfo'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [pubkey, config]
+
+- `params[0]` (string): Base-58 encoded public key of the account to query.
+- `params[1]` (object): Optional configuration object.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Requested account information or if the account doesn`t exist null
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getAccountInfo",
+    "params": [
+      "vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg",
+      {
+        "encoding": "base58"
+      }
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getAccountInfo",
+  "params": [
+    "vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg",
+    {
+      "encoding": "base58"
+    }
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "context": {
+      "apiVersion": "2.0.15",
+      "slot": 341197053
+    },
+    "value": {
+      "data": [
+        "",
+        "base58"
+      ],
+      "executable": false,
+      "lamports": 88849814690250,
+      "owner": "11111111111111111111111111111111",
+      "rentEpoch": "18446744073709551615",
+      "space": 0
+    }
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

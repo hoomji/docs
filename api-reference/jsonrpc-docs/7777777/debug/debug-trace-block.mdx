@@ -1,0 +1,120 @@
+---
+title: 'debug_traceBlock'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+The parameters for method debug_traceBlock: [blockRlp, traceConfig].
+
+- `params[0]` (string): The RLP encoded block.
+- `params[1]` (object): Optional configuration object passed to tracing RPC methods.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Full stack trace.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=7777777 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "debug_traceBlock",
+    "params": [
+      "RLP_ENCODED_BLOCK",
+      {
+        "tracer": "callTracer"
+      }
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "debug_traceBlock",
+  "params": [
+    "RLP_ENCODED_BLOCK",
+    {
+      "tracer": "callTracer"
+    }
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "txHash": "0xabba...",
+      "result": {
+        "gas": 85301,
+        "returnValue": "",
+        "structLogs": [
+          {
+            "depth": 1,
+            "error": "",
+            "gas": 162106,
+            "gasCost": 3,
+            "memory": null,
+            "op": "PUSH1",
+            "pc": 0,
+            "stack": [],
+            "storage": {}
+          },
+          {
+            "depth": 1,
+            "error": "",
+            "gas": 100000,
+            "gasCost": 0,
+            "memory": [
+              "0000000000000000000000000000000000000000000000000000000000000006",
+              "0000000000000000000000000000000000000000000000000000000000000000",
+              "0000000000000000000000000000000000000000000000000000000000000060"
+            ],
+            "op": "STOP",
+            "pc": 120,
+            "stack": [
+              "00000000000000000000000000000000000000000000000000000000d67cbec9"
+            ],
+            "storage": {
+              "0000000000000000000000000000000000000000000000000000000000000004": "8241fa522772837f0d05511f20caa6da1d5a3209000000000000000400000001",
+              "0000000000000000000000000000000000000000000000000000000000000006": "0000000000000000000000000000000000000000000000000000000000000001",
+              "f652222313e28459528d920b65115c16c04f3efc82aaedc97be59f3f377c0d3f": "00000000000000000000000002e816afc1b5c0f39852131959d946eb3b07b5ad"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "txHash": "0xacca...",
+      "result": {}
+    }
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

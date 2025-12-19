@@ -1,0 +1,70 @@
+---
+title: 'getLedgerEntries'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+- `keys` (array): Array of base64-encoded XDR LedgerKey values.
+- `includeProof` (boolean): If true, include cryptographic proofs when supported.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Resolved ledger entries and optional proof data.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=stellar-soroban-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getLedgerEntries",
+    "params": {
+      "keys": [
+        "YOUR_KEYS_OF_LEDGER_ENTRIES"
+      ]
+    }
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getLedgerEntries",
+  "params": {
+    "keys": [
+      "YOUR_KEYS_OF_LEDGER_ENTRIES"
+    ]
+  }
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

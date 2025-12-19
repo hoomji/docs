@@ -1,0 +1,100 @@
+---
+title: 'unsafe_pay'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Create an unsigned transaction to send Coin<T> to multiple recipients.
+
+- `params[0]` (string): The signer's Sui address.
+- `params[1]` (array): The Sui coin object IDs to use for payment.
+- `params[2]` (array): List of recipient Sui addresses.
+- `params[3]` (array): Amounts to send to each recipient, in the same order.
+- `params[4]` (string): Optional gas object ID. If not provided, the node will select one.
+- `params[5]` (string): Gas budget for the transaction.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Unsigned transaction block for sending multiple payments.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_pay",
+    "params": [
+      "0xabcde1234567890abcde1234567890abcde1234567890abcde1234567890abcd",
+      [
+        "0xcoin1",
+        "0xcoin2"
+      ],
+      [
+        "0xrecipient1",
+        "0xrecipient2"
+      ],
+      [
+        "10000",
+        "5000"
+      ],
+      "0xgasobject",
+      "100000"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "unsafe_pay",
+  "params": [
+    "0xabcde1234567890abcde1234567890abcde1234567890abcde1234567890abcd",
+    [
+      "0xcoin1",
+      "0xcoin2"
+    ],
+    [
+      "0xrecipient1",
+      "0xrecipient2"
+    ],
+    [
+      "10000",
+      "5000"
+    ],
+    "0xgasobject",
+    "100000"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

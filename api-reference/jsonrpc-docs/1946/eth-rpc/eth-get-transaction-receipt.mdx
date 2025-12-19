@@ -1,0 +1,80 @@
+---
+title: 'eth_getTransactionReceipt'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for eth_getTransactionByHash: [transactionHash].
+
+- `params[0]` (string): 32 Bytes - Hash of the transaction.
+
+### Returns
+
+<ResponseField body='result' type='oneOf'>
+  Receipt object returned after transaction execution. Can be a legacy receipt (pre-EIP-2718) or AccessList receipt (EIP-2930).
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1946 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getTransactionReceipt",
+    "params": [
+      "0x444172bef57ad978655171a8af2cfd89baa02a97fcb773067aef7794d6913374"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_getTransactionReceipt",
+  "params": [
+    "0x444172bef57ad978655171a8af2cfd89baa02a97fcb773067aef7794d6913374"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "blockHash": "0x67c0303244ae4beeec329e0c66198e8db8938a94d15a366c7514626528abfc8c",
+    "blockNumber": "0x6914b0",
+    "contractAddress": "0x471a8bf3fd0dfbe20658a97155388cec674190bf",
+    "from": "0xc931d93e97ab07fe42d923478ba2465f2",
+    "to": null,
+    "cumulativeGasUsed": "0x158e33",
+    "gasUsed": "0xba2e6",
+    "logs": [],
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "status": "0x1",
+    "transactionHash": "0x444172bef57ad978655171a8af2cfd89baa02a97fcb773067aef7794d6913374",
+    "transactionIndex": "0x4"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

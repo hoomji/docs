@@ -1,0 +1,76 @@
+---
+title: 'unsafe_requestWithdrawStake'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Creates an unsigned transaction to withdraw staked SUI.
+
+- `params[0]` (string): The Sui address of the transaction signer.
+- `params[1]` (string): The object ID of the staked SUI to withdraw.
+- `params[2]` (string): Optional gas object ID. If omitted, a gas object will be selected automatically.
+- `params[3]` (string): The gas budget for the transaction.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The unsigned transaction block that performs the stake withdrawal.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_requestWithdrawStake",
+    "params": [
+      "0xabc123456789abcdef123456789abcdef123456789abcdef123456789abcdef",
+      "0xstakeobject1234567890abcdef1234567890abcdef",
+      "0xgasobject1234567890abcdef",
+      "100000"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "unsafe_requestWithdrawStake",
+  "params": [
+    "0xabc123456789abcdef123456789abcdef123456789abcdef123456789abcdef",
+    "0xstakeobject1234567890abcdef1234567890abcdef",
+    "0xgasobject1234567890abcdef",
+    "100000"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

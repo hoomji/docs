@@ -1,0 +1,70 @@
+---
+title: 'klay_getTransactionByBlockHashAndIndex'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [blockHash, transactionIndex].
+
+- `params[0]` (string): 32 Bytes - hash of the block where this transaction was included. Null when pending.
+- `params[1]` (integer): The transaction's index position in the block. Null when pending.
+
+### Returns
+
+<ResponseField body='result' type='string'>
+  The transaction.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=8217 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "klay_getTransactionByBlockHashAndIndex",
+    "params": [
+      "",
+      0
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "klay_getTransactionByBlockHashAndIndex",
+  "params": [
+    "",
+    0
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ""
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

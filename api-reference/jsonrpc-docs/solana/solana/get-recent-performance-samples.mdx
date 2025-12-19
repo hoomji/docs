@@ -1,0 +1,82 @@
+---
+title: 'getRecentPerformanceSamples'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+The parameters for method getRecentPerformanceSamples: [samples].
+
+- `params[]` (integer): Number of samples to return.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Array of performance sample objects representing validator activity during sample periods.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getRecentPerformanceSamples",
+    "params": [
+      5
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getRecentPerformanceSamples",
+  "params": [
+    5
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "slot": 348125,
+      "numTransactions": 126,
+      "numSlots": 126,
+      "samplePeriodSecs": 60,
+      "numNonVoteTransactions": 1
+    },
+    {
+      "slot": 347999,
+      "numTransactions": 126,
+      "numSlots": 126,
+      "samplePeriodSecs": 60,
+      "numNonVoteTransactions": 1
+    }
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

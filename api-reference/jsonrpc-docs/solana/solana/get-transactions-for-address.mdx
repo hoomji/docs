@@ -1,0 +1,99 @@
+---
+title: 'getTransactionsForAddress'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for method getTransactionsForAddress: [address, txFilteringOptions]
+
+- `params[]` (allOf): Base-58 encoded public key of the account to query transaction history for.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Transaction History for a given address
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getTransactionsForAddress",
+    "params": [
+      [
+        "ADDRESS_PUBLIC_KEY",
+        {
+          "transactionDetails": "signatures",
+          "sortOrder": "desc",
+          "limit": 1000,
+          "commitment": "finalized"
+        }
+      ]
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getTransactionsForAddress",
+  "params": [
+    [
+      "ADDRESS_PUBLIC_KEY",
+      {
+        "transactionDetails": "signatures",
+        "sortOrder": "desc",
+        "limit": 1000,
+        "commitment": "finalized"
+      }
+    ]
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": [
+        {
+          "signature": "5h6xBEauJ3PK6SWCZ1PGjBvj8vDdWG3KpwATGy1ARAXFSDwt8GFXM7W5Ncn16wmqokgpiKRLuS83KUxyZyv2sUYv",
+          "slot": 1054,
+          "err": null,
+          "memo": null,
+          "blockTime": 1641038400,
+          "confirmationStatus": "finalized"
+        }
+      ],
+      "paginationToken": "1055:5"
+    }
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

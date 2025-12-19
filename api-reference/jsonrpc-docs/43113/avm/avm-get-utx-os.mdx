@@ -1,0 +1,65 @@
+---
+title: 'avm.getUTXOs'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+- `addresses` (array): A list of X-Chain addresses to fetch UTXOs for.
+- `limit` (integer): Optional maximum number of UTXOs to return. Defaults to 1024 if omitted or exceeded.
+- `startIndex` (object): Pagination index from the previous response's endIndex.
+- `sourceChain` (string): Optional source chain ID (e.g., "P" or "C"). Used when fetching atomic UTXOs.
+- `encoding` (string): Encoding format for the returned UTXOs. Must be "hex" if specified.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43113 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "avm.getUTXOs",
+    "params": {}
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "avm.getUTXOs",
+  "params": {}
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

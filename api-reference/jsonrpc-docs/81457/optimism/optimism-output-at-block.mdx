@@ -1,0 +1,70 @@
+---
+title: 'optimism_outputAtBlock'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for method optimism_outputAtBlock: [blockNumber]
+
+- `params[]` (string): L2 integer block number (QUANTITY, 64 bits).
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Response object from optimism_outputAtBlock method.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=81457 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "optimism_outputAtBlock",
+    "params": [
+      "0x1a2b3c"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "optimism_outputAtBlock",
+  "params": [
+    "0x1a2b3c"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "0xabe711e34c1387c8c56d0def8ce77e454d6a0bfd26cef2396626202238442421"
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

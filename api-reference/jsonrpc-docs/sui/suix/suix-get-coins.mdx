@@ -1,0 +1,76 @@
+---
+title: 'suix_getCoins'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for suix_getCoins: [ownerAddress, coinType, cursor, limit].
+
+- `params[0]` (string): The owner's Sui address
+- `params[1]` (string): Optional type name for the coin
+- `params[2]` (string): Optional paging cursor
+- `params[3]` (integer): Maximum number of items per page
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The array of coin objects.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getCoins",
+    "params": [
+      "0x6d907beaa3a49db57bdfdb3557e6d405cbf01c293a53e01457d65e92b5d8dd68",
+      "0x2::sui::SUI",
+      "0xee6b5173afedb35330f60397c2cbb48196ba41921246c304be7b490cee0904eb",
+      3
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "suix_getCoins",
+  "params": [
+    "0x6d907beaa3a49db57bdfdb3557e6d405cbf01c293a53e01457d65e92b5d8dd68",
+    "0x2::sui::SUI",
+    "0xee6b5173afedb35330f60397c2cbb48196ba41921246c304be7b490cee0904eb",
+    3
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

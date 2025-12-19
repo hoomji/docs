@@ -1,0 +1,79 @@
+---
+title: 'unsafe_publish'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Create an unsigned transaction to publish a Move package.
+
+- `params[0]` (string): The Sui address of the transaction signer.
+- `params[1]` (array): List of base64-encoded compiled module bytes for the Move package.
+- `params[2]` (array): List of ObjectIDs representing transitive dependencies.
+- `params[3]` (string): Optional gas object ID to be used. If not provided, one will be selected from signer's coins.
+- `params[4]` (string): Gas budget to be used by this transaction.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The unsigned transaction block representing the publish operation.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_publish",
+    "params": [
+      "0xaabbccddeeff00112233445566778899aabbccdd",
+      [],
+      [],
+      "0x1234567890abcdef",
+      "100000"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "unsafe_publish",
+  "params": [
+    "0xaabbccddeeff00112233445566778899aabbccdd",
+    [],
+    [],
+    "0x1234567890abcdef",
+    "100000"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

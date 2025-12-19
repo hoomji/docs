@@ -1,0 +1,99 @@
+---
+title: 'getMultipleAccounts'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for method getMultipleAccounts: [pubkeys, config]
+
+- `params[0]` (array): List of base-58 encoded public keys for which to retrieve account information.
+- `params[1]` (object): Optional configuration object.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Array of account info objects or null (if the account does not exist).
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getMultipleAccounts",
+    "params": [
+      [],
+      {}
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getMultipleAccounts",
+  "params": [
+    [],
+    {}
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "context": {
+      "apiVersion": "2.0.15",
+      "slot": 341197247
+    },
+    "value": [
+      {
+        "data": [
+          "",
+          "base58"
+        ],
+        "executable": false,
+        "lamports": 88849814690250,
+        "owner": "11111111111111111111111111111111",
+        "rentEpoch": "18446744073709551615",
+        "space": 0
+      },
+      {
+        "data": [
+          "",
+          "base58"
+        ],
+        "executable": false,
+        "lamports": 998763433,
+        "owner": "2WRuhE4GJFoE23DYzp2ij6ZnuQ8p9mJeU6gDgfsjR4or",
+        "rentEpoch": "18446744073709551615",
+        "space": 0
+      }
+    ]
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

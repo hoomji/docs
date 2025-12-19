@@ -1,0 +1,84 @@
+---
+title: 'bor_getCurrentValidators'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+This method does not accept any parameters.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Array of current validator objects.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=137 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "bor_getCurrentValidators",
+    "params": [
+      null
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "bor_getCurrentValidators",
+  "params": [
+    null
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "ID": 0,
+      "accum": 14,
+      "power": 1,
+      "signer": "0x055bd801ca712b4ddf67db8bc23fb6c8510d52b9"
+    },
+    {
+      "ID": 0,
+      "accum": 0,
+      "power": 4,
+      "signer": "0x1ca971963bdb4ba2bf337c90660674acff5beb3f"
+    },
+    {
+      "ID": 0,
+      "accum": -15,
+      "power": 1,
+      "signer": "0x26c80cc193b27d73d2c40943acec77f4da2c5bd8"
+    }
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

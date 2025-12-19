@@ -1,0 +1,101 @@
+---
+title: 'unsafe_moveCall'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Create an unsigned transaction to execute a Move call on the network.
+
+- `params[0]` (string): The signer's Sui address.
+- `params[1]` (string): The Move package ID.
+- `params[2]` (string): The Move module name.
+- `params[3]` (string): The Move function name.
+- `params[4]` (array): The type arguments of the Move function.
+- `params[5]` (array): Arguments for the Move function, in SuiJson format.
+- `params[6]` (string): Optional gas object to use. If not provided, one will be auto-selected.
+- `params[7]` (string): The gas budget for the transaction.
+- `params[8]` (string): Execution mode: normal or dev inspect.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Unsigned transaction block for executing a Move function.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_moveCall",
+    "params": [
+      "0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6",
+      "0x2",
+      "pay",
+      "split",
+      [
+        "0x2::sui::SUI"
+      ],
+      [
+        "\"10000\"",
+        "\"0x5eeb1d...\""
+      ],
+      "0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051",
+      "100000",
+      "Commit"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "unsafe_moveCall",
+  "params": [
+    "0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6",
+    "0x2",
+    "pay",
+    "split",
+    [
+      "0x2::sui::SUI"
+    ],
+    [
+      "\"10000\"",
+      "\"0x5eeb1d...\""
+    ],
+    "0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051",
+    "100000",
+    "Commit"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

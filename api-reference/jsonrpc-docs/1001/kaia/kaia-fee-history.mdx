@@ -1,0 +1,81 @@
+---
+title: 'kaia_feeHistory'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [blockCount, newestBlock, rewardPercentiles].
+
+- `params[0]` (string): Hex-encoded number of blocks in the requested range (max 1024).
+- `params[1]` (oneOf): Block number where this transaction was included. Null when pending.
+- `params[2]` (array): Percentiles of priority fees to include in the response (0-100).
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Base fee history for the requested block range.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1001 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "kaia_feeHistory",
+    "params": [
+      "0x5",
+      0,
+      [
+        10,
+        50,
+        90
+      ]
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "kaia_feeHistory",
+  "params": [
+    "0x5",
+    0,
+    [
+      10,
+      50,
+      90
+    ]
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

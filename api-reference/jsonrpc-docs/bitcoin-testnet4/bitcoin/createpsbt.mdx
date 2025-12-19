@@ -1,0 +1,76 @@
+---
+title: 'createpsbt'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [inputs, outputs, locktime?, replaceable?].
+
+- `params[0]` (array): Transaction inputs (each with txid, vout, sequence).
+- `params[1]` (object): Transaction outputs mapping addresses to amounts or scripts.
+- `params[2]` (integer): Optional locktime.
+- `params[3]` (boolean): Optional replaceable flag.
+
+### Returns
+
+<ResponseField body='result' type='string'>
+  Newly crafted PSBT encoded as base64.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet4 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "createpsbt",
+    "params": [
+      [],
+      {},
+      0,
+      false
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "createpsbt",
+  "params": [
+    [],
+    {},
+    0,
+    false
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ""
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

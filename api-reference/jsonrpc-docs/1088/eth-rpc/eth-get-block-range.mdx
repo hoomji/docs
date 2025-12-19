@@ -1,0 +1,97 @@
+---
+title: 'eth_getBlockRange'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for eth_getBlockRange: [startBlockTag, endBlockTag, fullTxObjects]
+
+- `params[0]` (string): Start block number (hex) or tag (latest, earliest, pending, safe, finalized).
+- `params[1]` (string): End block number (hex) or tag (latest, earliest, pending, safe, finalized).
+- `params[2]` (boolean): Set to true to return full transaction objects, false for only transaction hashes.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  List of block objects in the specified range.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1088 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getBlockRange",
+    "params": [
+      "0x1",
+      "0x2",
+      false
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_getBlockRange",
+  "params": [
+    "0x1",
+    "0x2",
+    false
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "difficulty": "0x2",
+      "extraData": "0xd9773508...",
+      "gasLimit": "0xe4e1c0",
+      "gasUsed": "0x3183d",
+      "hash": "0xbee7192e...",
+      "logsBloom": "0x00000000...",
+      "miner": "0x0000000000000000000000000000000000000000",
+      "nonce": "0x0000000000000000",
+      "number": "0x1",
+      "parentHash": "0x7ca38a19...",
+      "receiptsRoot": "0xf4c97b11...",
+      "sha3Uncles": "0x1dcc4de8...",
+      "size": "0x30c",
+      "stateRoot": "0xd3ac4085...",
+      "timestamp": "0x618d4769",
+      "totalDifficulty": "0x3",
+      "transactions": [
+        "0x5e77a04531c7c107af1882d76cbff9486d0a9aa53701c30888509d4f5f2b003a"
+      ],
+      "transactionsRoot": "0x19f5efd0...",
+      "uncles": []
+    }
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

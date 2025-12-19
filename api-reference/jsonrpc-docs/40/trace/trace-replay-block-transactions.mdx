@@ -1,0 +1,93 @@
+---
+title: 'trace_replayBlockTransactions'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for the trace_replayBlockTransactions method: [defaultBlock, traceTypes].
+
+- `params[0]` (oneOf): Block identifier. Can be an integer block number or a string tag: "latest", "earliest", or "pending".
+- `params[1]` (array): Types of traces to collect: "vmTrace", "trace", and/or "stateDiff".
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Array - Block transactions traces.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=40 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "trace_replayBlockTransactions",
+    "params": [
+      "0x2ed119",
+      [
+        "trace"
+      ]
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "trace_replayBlockTransactions",
+  "params": [
+    "0x2ed119",
+    [
+      "trace"
+    ]
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "output": "0x",
+      "stateDiff": null,
+      "trace": [
+        {
+          "action": {},
+          "result": {
+            "gasUsed": "0x0",
+            "output": "0x"
+          },
+          "subtraces": 0,
+          "traceAddress": [],
+          "type": "call"
+        }
+      ],
+      "transactionHash": "0x...",
+      "vmTrace": null
+    }
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

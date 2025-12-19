@@ -1,0 +1,74 @@
+---
+title: 'suix_getCoinMetadata'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Paramters for method suix_getCoinMetadata: [coinType].
+
+- `params[]` (string): Coin type
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The metadata for the coin type in the request
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getCoinMetadata",
+    "params": [
+      "0x168da5bf1f48dafc111b0a488fa454aca95e0b5e::usdc::USDC"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "suix_getCoinMetadata",
+  "params": [
+    "0x168da5bf1f48dafc111b0a488fa454aca95e0b5e::usdc::USDC"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "decimals": 9,
+    "name": "Usdc",
+    "symbol": "USDC",
+    "description": "Stable coin.",
+    "iconUrl": null,
+    "id": "0x51ceab2edc89f74730e683ebee65578cb3bc9237ba6fca019438a9737cf156ae"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

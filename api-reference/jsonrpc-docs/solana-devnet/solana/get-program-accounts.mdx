@@ -1,0 +1,106 @@
+---
+title: 'getProgramAccounts'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for method getProgramAccounts: [programId, config]
+
+- `params[0]` (string): Pubkey of the program (base-58 encoded).
+- `params[1]` (object): Optional configuration object.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Array of account info objects. If withContext=true, response will be wrapped in RpcResponse object.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getProgramAccounts",
+    "params": [
+      "4Nd1mBQtrMJVYVfKf2PJy9NZUZdTAsp7D4xWLs4gDB4T",
+      {
+        "filters": [
+          {
+            "dataSize": 17
+          },
+          {
+            "memcmp": {
+              "offset": 4,
+              "bytes": "3Mc6vR"
+            }
+          }
+        ]
+      }
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getProgramAccounts",
+  "params": [
+    "4Nd1mBQtrMJVYVfKf2PJy9NZUZdTAsp7D4xWLs4gDB4T",
+    {
+      "filters": [
+        {
+          "dataSize": 17
+        },
+        {
+          "memcmp": {
+            "offset": 4,
+            "bytes": "3Mc6vR"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "pubkey": "CxELquR1gPP8wHe33gZ4QxqGB3sZ9RSwsJ2KshVewkFY",
+      "account": {
+        "data": "2R9jLfiAQ9bgdcw6h8s44439",
+        "executable": false,
+        "lamports": 15298080,
+        "owner": "4Nd1mBQtrMJVYVfKf2PJy9NZUZdTAsp7D4xWLs4gDB4T",
+        "rentEpoch": 28,
+        "space": 42
+      }
+    }
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,74 @@
+---
+title: 'debug_traceTransaction'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for method debug_traceTransaction: [txHash, traceConfig].
+
+- `params[0]` (string): 32 Bytes - Hash of the transaction.
+- `params[1]` (object): Optional configuration object passed to tracing RPC methods.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  The ExecutionResult of the transaction.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2741 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "debug_traceTransaction",
+    "params": [
+      "0x9e63085271890a141297039b3b711913699f1ee4db1acb667ad7ce304772036b",
+      {
+        "tracer": "callTracer"
+      }
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "debug_traceTransaction",
+  "params": [
+    "0x9e63085271890a141297039b3b711913699f1ee4db1acb667ad7ce304772036b",
+    {
+      "tracer": "callTracer"
+    }
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

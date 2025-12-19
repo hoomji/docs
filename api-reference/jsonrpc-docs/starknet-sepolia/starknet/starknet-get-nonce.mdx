@@ -1,0 +1,74 @@
+---
+title: 'starknet_getNonce'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for starknet_getNonce: [block_id, contract_address].
+
+- `block_id` (object): BlockID object containing hash and number.
+- `contract_address` (string): The address of the request contract.
+
+### Returns
+
+<ResponseField body='result' type='string'>
+  The last nonce used for the requested contract. Example: <code>"0x1c"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet-sepolia \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getNonce",
+    "params": {
+      "block_id": {
+        "block_number": 470207
+      },
+      "contract_address": "0x0555ec3ba8aea37915c4cf850b4f9d33e4a0a1caa0ad3953d725860e38fa6e17"
+    }
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "starknet_getNonce",
+  "params": {
+    "block_id": {
+      "block_number": 470207
+    },
+    "contract_address": "0x0555ec3ba8aea37915c4cf850b4f9d33e4a0a1caa0ad3953d725860e38fa6e17"
+  }
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "0x1c"
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

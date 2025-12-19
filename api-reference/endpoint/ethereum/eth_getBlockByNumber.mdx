@@ -1,337 +1,80 @@
 ---
 title: 'eth_getBlockByNumber'
 openapi: 'POST /json-rpc'
-playground: 'none'
+playground: 'interactive'
 ---
 
-<ParamField path='chainId' type='string' default='1' required>
-  Unique identifier for a blockchain network.
-</ParamField>
+### Parameters
 
-<ParamField body='provider' type='string'>
-  Specify which provider to use. The project's provider priority list is used by
-  default if no providers are selected. (Priority list can be managed on
-  Uniblock's dashboard)
-</ParamField>
+This method requires **two** positional parameters:
 
-<ParamField body='id' type='integer' default='1' required>
-  An identifier established by the Client that MUST contain a String or Number.
-</ParamField>
+- `blockNumber` (string | integer): Block identifier. Can be a block number or a tag: `"earliest"`, `"latest"`, or `"pending"`.
+- `fullTransactions` (boolean): If `true`, returns full transaction objects. If `false`, returns only transaction hashes.
 
-<ParamField body='jsonrpc' type='string' default='2.0' required>
-  Version of the JSON-RPC protocol.
-</ParamField>
+### Returns
 
-<ParamField body='method' type='string' default='eth_getBlockByNumber' required>
-  The name of the method to be invoked.
-</ParamField>
-
-<ParamField body='params' type='array' required>
-  Parameters for eth_getBlockByNumber: [blockNumber, fullTransactions].
-  <Expandable title='Array items'>
-    <ParamField
-      body='blockNumber'
-      type='integer | string'
-      default='latest'
-      required
-    >
-      Block identifier. Can be an integer block number (minimum 0) or a string
-      tag: "earliest", "latest", or "pending".
-    </ParamField>
-    <ParamField body='fullTransactions' type='boolean' default='true' required>
-      If true, returns the full transaction objects. If false, returns only the
-      transaction hashes.
-    </ParamField>
-  </Expandable>
-</ParamField>
-
-## Request Example
+<ResponseField body='result' type='object'>
+  The requested block object. The shape follows the standard Ethereum JSON-RPC
+  <code>eth_getBlockByNumber</code> response.
+</ResponseField>
 
 <RequestExample>
-  {JSON.stringify(
-    {
-      chainId: '1',
-      provider: 'alchemy',
-      id: 1,
-      jsonrpc: '2.0',
-      method: 'eth_getBlockByNumber',
-      params: ['latest', true],
-    },
-    null,
-    2,
-  )}
+
+```bash Curl
+curl --request POST \
+  --url https://YOUR_UNIBLOCK_BASE_URL/json-rpc?chainId=1 \
+  --header 'content-type: application/json' \
+  --data '{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_getBlockByNumber",
+  "params": ["latest", true]
+}'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_getBlockByNumber",
+  "params": ["latest", true]
+}
+```
+
 </RequestExample>
 
-<RequestExample>
-  {JSON.stringify(
-    {
-      chainId: '1',
-      id: 1,
-      jsonrpc: '2.0',
-      method: 'eth_getBlockByNumber',
-      params: ['0x10d4f', false],
-    },
-    null,
-    2,
-  )}
-</RequestExample>
+<ResponseExample>
 
-## Response Fields
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "number": "0x15536ee",
+    "hash": "0x...",
+    "parentHash": "0x...",
+    "timestamp": "0x...",
+    "transactions": [
+      {
+        "hash": "0x...",
+        "from": "0x...",
+        "to": "0x...",
+        "value": "0x0"
+      }
+    ]
+  }
+}
+```
 
-<ResponseField body='jsonrpc' type='string'>
-  JSON-RPC protocol version. Typically <code>"2.0"</code>.
-</ResponseField>
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
 
-<ResponseField body='id' type='integer | string'>
-  The same identifier that was sent in the request.
-</ResponseField>
-
-<ResponseField body='result' type='object | null'>
-  The block object, or <code>null</code> if the block is not found.
-  <Expandable title='Block object fields'>
-    <ResponseField body='number' type='string'>
-      Block number as a hex string (e.g., <code>"0x10d4f"</code>), or <code>null</code> for pending blocks.
-    </ResponseField>
-    <ResponseField body='hash' type='string | null'>
-      Block hash as a hex string, or <code>null</code> for pending blocks.
-    </ResponseField>
-    <ResponseField body='parentHash' type='string'>
-      Hash of the parent block.
-    </ResponseField>
-    <ResponseField body='nonce' type='string | null'>
-      Proof-of-work nonce (legacy PoW networks), or <code>null</code> on some post-merge / PoS contexts.
-    </ResponseField>
-    <ResponseField body='sha3Uncles' type='string'>
-      Keccak-256 hash of the uncles list.
-    </ResponseField>
-    <ResponseField body='logsBloom' type='string | null'>
-      Bloom filter for logs, or <code>null</code> for pending blocks.
-    </ResponseField>
-    <ResponseField body='transactionsRoot' type='string'>
-      Root hash of the transaction trie.
-    </ResponseField>
-    <ResponseField body='stateRoot' type='string'>
-      Root hash of the final state trie.
-    </ResponseField>
-    <ResponseField body='receiptsRoot' type='string'>
-      Root hash of the receipts trie.
-    </ResponseField>
-    <ResponseField body='miner' type='string'>
-      Beneficiary address (a.k.a. coinbase / fee recipient).
-    </ResponseField>
-    <ResponseField body='difficulty' type='string'>
-      Block difficulty as a hex string.
-    </ResponseField>
-    <ResponseField body='totalDifficulty' type='string | null'>
-      Total difficulty as a hex string (often <code>null</code> on some post-merge clients/networks).
-    </ResponseField>
-    <ResponseField body='extraData' type='string'>
-      Extra data field.
-    </ResponseField>
-    <ResponseField body='size' type='string'>
-      Block size in bytes as a hex string.
-    </ResponseField>
-    <ResponseField body='gasLimit' type='string'>
-      Gas limit as a hex string.
-    </ResponseField>
-    <ResponseField body='gasUsed' type='string'>
-      Gas used as a hex string.
-    </ResponseField>
-    <ResponseField body='timestamp' type='string'>
-      Block timestamp as a hex string (seconds since Unix epoch).
-    </ResponseField>
-
-    <ResponseField body='transactions' type='array'>
-      Transactions in the block. Contents depend on <code>fullTransactions</code>:
-      <ul>
-        <li><code>true</code> → array of full transaction objects</li>
-        <li><code>false</code> → array of transaction hash strings</li>
-      </ul>
-
-      <Expandable title='Transaction object fields (when fullTransactions=true)'>
-        <ResponseField body='hash' type='string'>
-          Transaction hash.
-        </ResponseField>
-        <ResponseField body='from' type='string'>
-          Sender address.
-        </ResponseField>
-        <ResponseField body='to' type='string | null'>
-          Recipient address, or <code>null</code> for contract creation.
-        </ResponseField>
-        <ResponseField body='nonce' type='string'>
-          Sender nonce as a hex string.
-        </ResponseField>
-        <ResponseField body='gas' type='string'>
-          Gas limit provided by the sender (hex string).
-        </ResponseField>
-        <ResponseField body='gasPrice' type='string | null'>
-          Gas price (legacy), or <code>null</code> for type-2 transactions depending on client.
-        </ResponseField>
-        <ResponseField body='maxFeePerGas' type='string | null'>
-          EIP-1559 max fee per gas (type-2), or <code>null</code> if not applicable.
-        </ResponseField>
-        <ResponseField body='maxPriorityFeePerGas' type='string | null'>
-          EIP-1559 priority fee (type-2), or <code>null</code> if not applicable.
-        </ResponseField>
-        <ResponseField body='value' type='string'>
-          Value transferred in wei (hex string).
-        </ResponseField>
-        <ResponseField body='input' type='string'>
-          Calldata / input data (hex string).
-        </ResponseField>
-        <ResponseField body='type' type='string | null'>
-          Transaction type (e.g., <code>"0x2"</code> for EIP-1559), or <code>null</code> if omitted by client.
-        </ResponseField>
-      </Expandable>
-    </ResponseField>
-
-    <ResponseField body='uncles' type='array'>
-      Array of uncle block hashes.
-    </ResponseField>
-
-    <ResponseField body='baseFeePerGas' type='string | null'>
-      EIP-1559 base fee per gas (hex string), or <code>null</code> if not supported.
-    </ResponseField>
-
-    <ResponseField body='mixHash' type='string | null'>
-      PoW mixHash (legacy) or randomness field depending on client, or <code>null</code> if omitted.
-    </ResponseField>
-
-    <ResponseField body='withdrawals' type='array | null'>
-      Array of withdrawals (post-Shanghai), or <code>null</code> if not present/unsupported.
-    </ResponseField>
-
-  </Expandable>
-</ResponseField>
-
-<ResponseField body='error' type='object'>
-  Present only when the JSON-RPC request fails.
-  <Expandable title='Error object fields'>
-    <ResponseField body='code' type='integer'>
-      A JSON-RPC error code.
-    </ResponseField>
-    <ResponseField body='message' type='string'>
-      Human-readable error message.
-    </ResponseField>
-    <ResponseField body='data' type='unknown'>
-      Optional error details (provider/client specific).
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-## Response Examples
-
-<ResponseExample title='fullTransactions=true (transaction objects)'>
-  {JSON.stringify(
-    {
-      jsonrpc: '2.0',
-      id: 1,
-      result: {
-        number: '0x10d4f',
-        hash: '0x9b1fc4b5d2c3a1f0e3f4b0d6d8e8b3c0a1e2f3d4c5b6a7d8e9f0a1b2c3d4e5f6',
-        parentHash:
-          '0x8a0f1e2d3c4b5a69788796a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5',
-        nonce: '0x0000000000000000',
-        sha3Uncles:
-          '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347',
-        logsBloom: '0x' + '0'.repeat(512),
-        transactionsRoot:
-          '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421',
-        stateRoot:
-          '0xd7f8974fb5ac78d9d6b3c6e0b3b4d49a6c2a4d8b6aa4c9f9d0b9c7d6e5f4a3b2',
-        receiptsRoot:
-          '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421',
-        miner: '0x0000000000000000000000000000000000000000',
-        difficulty: '0x0',
-        totalDifficulty: null,
-        extraData: '0x',
-        size: '0x220',
-        gasLimit: '0x1c9c380',
-        gasUsed: '0x5208',
-        timestamp: '0x656b2a10',
-        baseFeePerGas: '0x3b9aca00',
-        transactions: [
-          {
-            hash: '0x3f1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8',
-            from: '0x1111111111111111111111111111111111111111',
-            to: '0x2222222222222222222222222222222222222222',
-            nonce: '0x0',
-            gas: '0x5208',
-            gasPrice: null,
-            maxFeePerGas: '0x59682f00',
-            maxPriorityFeePerGas: '0x3b9aca00',
-            value: '0x0',
-            input: '0x',
-            type: '0x2',
-          },
-        ],
-        uncles: [],
-        withdrawals: null,
-        mixHash: null,
-      },
-    },
-    null,
-    2,
-  )}
-</ResponseExample>
-
-<ResponseExample title='fullTransactions=false (transaction hashes)'>
-  {JSON.stringify(
-    {
-      jsonrpc: '2.0',
-      id: 1,
-      result: {
-        number: '0x10d4f',
-        hash: '0x9b1fc4b5d2c3a1f0e3f4b0d6d8e8b3c0a1e2f3d4c5b6a7d8e9f0a1b2c3d4e5f6',
-        parentHash:
-          '0x8a0f1e2d3c4b5a69788796a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5',
-        nonce: '0x0000000000000000',
-        sha3Uncles:
-          '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347',
-        logsBloom: '0x' + '0'.repeat(512),
-        transactionsRoot:
-          '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421',
-        stateRoot:
-          '0xd7f8974fb5ac78d9d6b3c6e0b3b4d49a6c2a4d8b6aa4c9f9d0b9c7d6e5f4a3b2',
-        receiptsRoot:
-          '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421',
-        miner: '0x0000000000000000000000000000000000000000',
-        difficulty: '0x0',
-        totalDifficulty: null,
-        extraData: '0x',
-        size: '0x220',
-        gasLimit: '0x1c9c380',
-        gasUsed: '0x5208',
-        timestamp: '0x656b2a10',
-        baseFeePerGas: '0x3b9aca00',
-        transactions: [
-          '0x3f1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8',
-        ],
-        uncles: [],
-        withdrawals: null,
-        mixHash: null,
-      },
-    },
-    null,
-    2,
-  )}
-</ResponseExample>
-
-<ResponseExample title='Error response (example)'>
-  {JSON.stringify(
-    {
-      jsonrpc: '2.0',
-      id: 1,
-      error: {
-        code: -32602,
-        message:
-          'Invalid params: blockNumber must be a valid tag or hex string.',
-        data: {
-          receivedParams: ['not-a-block', true],
-        },
-      },
-    },
-    null,
-    2,
-  )}
 </ResponseExample>

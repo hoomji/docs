@@ -1,0 +1,88 @@
+---
+title: 'eth_createAccessList'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters: [transaction call object, block identifier]
+
+- `params[0]` (object): Transaction call object used to simulate the access list.
+- `params[1]` (string): Block identifier: number, block hash, or tag ("latest", "earliest", "pending", "safe", or "finalized").
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Access list and estimated gas usage.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=81457 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_createAccessList",
+    "params": [
+      {
+        "from": "0xaeA8F8f781326bfE6A7683C2BD48Dd6AA4d3Ba63",
+        "to": "0xa02457e5dfd32bda5fc7e1f1b008aa5979568150",
+        "data": "0x608060806080608155"
+      },
+      "pending"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_createAccessList",
+  "params": [
+    {
+      "from": "0xaeA8F8f781326bfE6A7683C2BD48Dd6AA4d3Ba63",
+      "to": "0xa02457e5dfd32bda5fc7e1f1b008aa5979568150",
+      "data": "0x608060806080608155"
+    },
+    "pending"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "accessList": [
+      {
+        "address": "0xa02457e5dfd32bda5fc7e1f1b008aa5979568150",
+        "storageKeys": [
+          "0x0000000000000000000000000000000000000000000000000000000000000081"
+        ]
+      }
+    ],
+    "gasUsed": "0x125f8"
+  }
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

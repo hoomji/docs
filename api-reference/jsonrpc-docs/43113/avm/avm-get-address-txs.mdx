@@ -1,0 +1,74 @@
+---
+title: 'avm.getAddressTxs'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Filter options to query transactions for an address and asset.
+
+- `address` (string): The address for which to fetch balance-changing transactions.
+- `assetID` (string): The asset ID or alias to filter transactions by.
+- `cursor` (integer): Pagination offset (page number or record index). Optional.
+- `pageSize` (integer): Number of transactions to return per page. Defaults to 1024.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  List of transaction IDs affecting the address balance and the current pagination cursor.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43113 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "avm.getAddressTxs",
+    "params": {
+      "address": "X-avax19pm62y5n0yt76wgp8pd7jdhepmppc67y7yg0cq",
+      "assetID": "AVAX",
+      "pageSize": 20
+    }
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "avm.getAddressTxs",
+  "params": {
+    "address": "X-avax19pm62y5n0yt76wgp8pd7jdhepmppc67y7yg0cq",
+    "assetID": "AVAX",
+    "pageSize": 20
+  }
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

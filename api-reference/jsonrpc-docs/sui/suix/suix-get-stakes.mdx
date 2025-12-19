@@ -1,0 +1,76 @@
+---
+title: 'suix_getStakes'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for suix_getStakes: [owner]. The owner is a SuiAddress (base-58 encoded string).
+
+- `params[]` (string): The owner's Sui address.
+
+### Returns
+
+<ResponseField body='result' type='array'>
+  Array of DelegatedStake objects.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getStakes",
+    "params": [
+      "0xa6f5a7953a75dc632e696cabe60560522a017bf2fb0bd930d1ec22c06f1ee4e4"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "suix_getStakes",
+  "params": [
+    "0xa6f5a7953a75dc632e696cabe60560522a017bf2fb0bd930d1ec22c06f1ee4e4"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "validator": "0xabc123def456abc123def456abc123def456abc1",
+      "stake_amount": "1000000"
+    },
+    {
+      "validator": "0xdef456abc123def456abc123def456abc123def4",
+      "stake_amount": "2500000"
+    }
+  ]
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>

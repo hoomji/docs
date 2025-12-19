@@ -1,0 +1,73 @@
+---
+title: 'sui_getNormalizedMoveFunction'
+openapi: 'POST /json-rpc'
+playground: 'interactive'
+---
+### Parameters
+
+Parameters for retrieving a normalized Move function.
+
+- `params[0]` (string): Object ID of the Move package.
+- `params[1]` (string): The name of the Move module.
+- `params[2]` (string): The name of the function to normalize.
+
+### Returns
+
+<ResponseField body='result' type='object'>
+  Structured representation of a Move function definition.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getNormalizedMoveFunction",
+    "params": [
+      "0x9c4eb6769ca8b6a23efeb7298cf0a8d0b837b78749c2cfc711c42036cc6b7621",
+      "moduleName",
+      "functionName"
+    ]
+  }'
+```
+
+```json JSON-RPC
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "sui_getNormalizedMoveFunction",
+  "params": [
+    "0x9c4eb6769ca8b6a23efeb7298cf0a8d0b837b78749c2cfc711c42036cc6b7621",
+    "moduleName",
+    "functionName"
+  ]
+}
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+```json Error
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+</ResponseExample>
