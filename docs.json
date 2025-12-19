@@ -59,8 +59,19 @@
           {
             "group": "Unified APIs",
             "openapi": {
-              "source": "api-reference/api-json.json"
+              "source": "api-reference/api-json/api-json.json"
             }
+          },
+          {
+            "group": "Unified JSON-RPC",
+            "pages": [
+              {
+                "group": "Ethereum JSON-RPC",
+                "openapi": {
+                  "source": "api-reference/api-json/jsonrpc-api-json/1-json-rpc-api-json.json"
+                }
+              }
+            ]
           },
           {
             "group": "Ethereum endpoints",
