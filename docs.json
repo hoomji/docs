@@ -15469,6 +15469,9 @@
         "method": "key",
         "name": "x-api-key"
       }
+    },
+    "examples": {
+      "prefill": true
     }
   }
 }
