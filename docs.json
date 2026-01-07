@@ -15464,7 +15464,7 @@
   },
   "api": {
     "mdx": {
-      "server": "https://api.uniblock.dev/uni/v1",
+      "server": "https://api.uniblock.dev/uni/v1/json-rpc",
       "auth": {
         "method": "key",
         "name": "x-api-key"
