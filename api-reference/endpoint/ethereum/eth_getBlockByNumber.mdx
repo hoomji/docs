@@ -1,6 +1,6 @@
 ---
 title: 'eth_getBlockByNumber'
-openapi: 'POST /json-rpc'
+openapi: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
 playground: 'interactive'
 ---
 
@@ -11,24 +11,24 @@ This method requires **two** positional parameters:
 - `blockNumber` (string | integer): Block identifier. Can be a block number or a tag: `"earliest"`, `"latest"`, or `"pending"`.
 - `fullTransactions` (boolean): If `true`, returns full transaction objects. If `false`, returns only transaction hashes.
 
-<ParamField path='chainId' type='string' required prefill='1'>
-  Unique identifier of the blockchain network.
+<ParamField query='chainId' type='string' default='1' required>
+  Block identifier (number or tag)
 </ParamField>
 
-<ParamField body='id' type='number' required prefill={1}>
-  Request identifier.
+<ParamField body='id' type='string' default='1' required>
+  A unique identifier for the request
 </ParamField>
 
-<ParamField body='jsonrpc' type='string' required prefill='2.0'>
-  JSON-RPC protocol version.
+<ParamField body='jsonrpc' type='string' default='2.0' required>
+  JSON-RPC version
 </ParamField>
 
-<ParamField body='method' type='string' required prefill='eth_blockNumber'>
-  JSON-RPC method name.
+<ParamField body='method' type='string' default='eth_getBlockByNumber' required>
+  The method name
 </ParamField>
 
-<ParamField body='params' type='array' prefill={[]}>
-  Parameters for the method. This method does not accept parameters.
+<ParamField body='params' type='[]' default='["latest", true]' required>
+  An array of parameters as described above
 </ParamField>
 
 ### Returns
