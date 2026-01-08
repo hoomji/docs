@@ -11,7 +11,7 @@ The parameters for the method ots_getTransactionError: [txHash].
 
 ### Returns
 
-<ResponseField body='result' type='string'>
+<ResponseField name='result' type='string'>
   string containing the hexadecimal-formatted error blob or simply a "0x" if the transaction was successfully executed. It returns "0x" if it failed with no revert reason or out of gas, so make sure to analyze this return value together with the transaction success/fail result. Example: <code>"0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000135472616e73616374696f6e20746f6f206f6c6400000000000000000000000000"</code>.
 </ResponseField>
 

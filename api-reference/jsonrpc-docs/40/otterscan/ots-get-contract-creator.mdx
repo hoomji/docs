@@ -11,7 +11,7 @@ The parameters for ots_getContractCreator: [address].
 
 ### Returns
 
-<ResponseField body='result' type='object'>
+<ResponseField name='result' type='object'>
   object containing the following attributes, or null if the address does not contain a contract. hash - The tx hash of the transaction who created the contract. creator - The address which created the contract. Note that for simple transactions that directly deploy a contract this corresponds to the EOA in the from field of the transaction. For deployer contracts, i.e., the contract is created as a result of a method call, this corresponds to the address of the contract which created it.
 </ResponseField>
 
