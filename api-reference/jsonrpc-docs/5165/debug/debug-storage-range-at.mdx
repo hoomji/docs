@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='5165'>
+  <ParamField query='chainId' type='string' default='5165' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='debug_storageRangeAt'>
+  <ParamField body='method' type='string' default='debug_storageRangeAt' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["0x76f64c40d6493cf00426be2eecdaf3f968768619bfb21ce6c57921be497ab3f7",0,"0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5","0x0000000000000000000000000000000000000000000000000000000000000000",1]} placeholder='["0x76f64c40d6493cf00426be2eecdaf3f968768619bfb21ce6c57921be497ab3f7",0,"0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5","0x0000000000000000000000000000000000000000000000000000000000000000",1]'>
+<ParamField body='params' type='object' default={["0x76f64c40d6493cf00426be2eecdaf3f968768619bfb21ce6c57921be497ab3f7",0,"0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5","0x0000000000000000000000000000000000000000000000000000000000000000",1]} placeholder='["0x76f64c40d6493cf00426be2eecdaf3f968768619bfb21ce6c57921be497ab3f7",0,"0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5","0x0000000000000000000000000000000000000000000000000000000000000000",1]' required>
   Parameters: [blockHash, txIdx, contractAddress, keyStart, maxResult]
   
   Positional parameters for <code>debug_storageRangeAt</code>:

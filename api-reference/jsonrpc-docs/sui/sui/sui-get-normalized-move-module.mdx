@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='sui'>
+  <ParamField query='chainId' type='string' default='sui' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='sui_getNormalizedMoveModule'>
+  <ParamField body='method' type='string' default='sui_getNormalizedMoveModule' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["0x0047d5fa0a823e7d0ff4d55c32b09995a0ae1eedfee9c7b1354e805ed10ee3d0","module"]} placeholder='["0x0047d5fa0a823e7d0ff4d55c32b09995a0ae1eedfee9c7b1354e805ed10ee3d0","module"]'>
+<ParamField body='params' type='object' default={["0x0047d5fa0a823e7d0ff4d55c32b09995a0ae1eedfee9c7b1354e805ed10ee3d0","module"]} placeholder='["0x0047d5fa0a823e7d0ff4d55c32b09995a0ae1eedfee9c7b1354e805ed10ee3d0","module"]' required>
   Parameters for retrieving a normalized Move module.
   
   Positional parameters for <code>sui_getNormalizedMoveModule</code>:

@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='1284'>
+  <ParamField query='chainId' type='string' default='1284' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='eth_getBlockTransactionCountByHash'>
+  <ParamField body='method' type='string' default='eth_getBlockTransactionCountByHash' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["0xbfb3bb785c60ee4f93aa6e506f6f5d5fc5173301f537d856cac59d91e7a0ce09"]} placeholder='["0xbfb3bb785c60ee4f93aa6e506f6f5d5fc5173301f537d856cac59d91e7a0ce09"]'>
+<ParamField body='params' type='object' default={["0xbfb3bb785c60ee4f93aa6e506f6f5d5fc5173301f537d856cac59d91e7a0ce09"]} placeholder='["0xbfb3bb785c60ee4f93aa6e506f6f5d5fc5173301f537d856cac59d91e7a0ce09"]' required>
   Parameters for eth_getBlockTransactionCountByHash: [blockHash].
   
   Positional parameters for <code>eth_getBlockTransactionCountByHash</code>:

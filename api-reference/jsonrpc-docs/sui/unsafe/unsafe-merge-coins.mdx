@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='sui'>
+  <ParamField query='chainId' type='string' default='sui' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='unsafe_mergeCoins'>
+  <ParamField body='method' type='string' default='unsafe_mergeCoins' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6","0x5eeb1d449e2516166d57d71fdeb154d0dc9ecdb7b30057d0a932684cac352cdc","0x77b3482580ee8d5bdc5b824808df54bfec4fc817622e5add0e48f749f01def98","0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051","100000"]} placeholder='["0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6","0x5eeb1d449e2516166d57d71fdeb154d0dc9ecdb7b30057d0a932684cac352cdc","0x77b3482580ee8d5bdc5b824808df54bfec4fc817622e5add0e48f749f01def98","0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051","100000"]'>
+<ParamField body='params' type='object' default={["0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6","0x5eeb1d449e2516166d57d71fdeb154d0dc9ecdb7b30057d0a932684cac352cdc","0x77b3482580ee8d5bdc5b824808df54bfec4fc817622e5add0e48f749f01def98","0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051","100000"]} placeholder='["0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6","0x5eeb1d449e2516166d57d71fdeb154d0dc9ecdb7b30057d0a932684cac352cdc","0x77b3482580ee8d5bdc5b824808df54bfec4fc817622e5add0e48f749f01def98","0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051","100000"]' required>
   Create an unsigned transaction to merge multiple coins into one coin.
   
   Positional parameters for <code>unsafe_mergeCoins</code>:

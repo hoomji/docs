@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='sui'>
+  <ParamField query='chainId' type='string' default='sui' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='suix_getOwnedObjects'>
+  <ParamField body='method' type='string' default='suix_getOwnedObjects' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827",{"filter":{"MatchAll":[{"StructType":"0x2::coin::Coin<0x2::sui::SUI>"},{"AddressOwner":"0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827"},{"Version":"13488"}]},"options":{"showType":true,"showOwner":true,"showPreviousTransaction":true,"showDisplay":false,"showContent":false,"showBcs":false,"showStorageRebate":false}},"0x0cd4bb4d4f520fe9bbf0cf1cebe3f2549412826c3c9261bff9786c240123749f",3]} placeholder='["0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827",{"filter":{"MatchAll":[{"StructType":"0x2::coin::Coin<0x2::sui::SUI>"},{"AddressOwner":"0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827"},{"Version":"13488"}]},"options":{"showType":true,"showOwner":true,"showPreviousTransaction":true,"showDisplay":false,"showContent":false,"showBcs":false,"showStorageRebate":false}},"0x0cd4bb4d4f520fe9bbf0cf1cebe3f2549412826c3c9261bff9786c240123749f",3]'>
+<ParamField body='params' type='object' default={["0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827",{"filter":{"MatchAll":[{"StructType":"0x2::coin::Coin<0x2::sui::SUI>"},{"AddressOwner":"0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827"},{"Version":"13488"}]},"options":{"showType":true,"showOwner":true,"showPreviousTransaction":true,"showDisplay":false,"showContent":false,"showBcs":false,"showStorageRebate":false}},"0x0cd4bb4d4f520fe9bbf0cf1cebe3f2549412826c3c9261bff9786c240123749f",3]} placeholder='["0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827",{"filter":{"MatchAll":[{"StructType":"0x2::coin::Coin<0x2::sui::SUI>"},{"AddressOwner":"0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827"},{"Version":"13488"}]},"options":{"showType":true,"showOwner":true,"showPreviousTransaction":true,"showDisplay":false,"showContent":false,"showBcs":false,"showStorageRebate":false}},"0x0cd4bb4d4f520fe9bbf0cf1cebe3f2549412826c3c9261bff9786c240123749f",3]' required>
   Parameters for suix_getOwnedObjects: [address, query, cursor, limit]. Only the address is required; query, cursor, and limit are optional.
   
   Positional parameters for <code>suix_getOwnedObjects</code>:

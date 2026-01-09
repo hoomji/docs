@@ -5,20 +5,20 @@ playground: 'interactive'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='solana'>
+  <ParamField query='chainId' type='string' default='solana' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='getTokenSupply'>
+  <ParamField body='method' type='string' default='getTokenSupply' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["3wyAj7Rt1TWVPZVteFJPLa26JmLvdb1CAKEFZm3NY75E"]} placeholder='["3wyAj7Rt1TWVPZVteFJPLa26JmLvdb1CAKEFZm3NY75E"]'>
+<ParamField body='params' type='object' default={["3wyAj7Rt1TWVPZVteFJPLa26JmLvdb1CAKEFZm3NY75E"]} placeholder='["3wyAj7Rt1TWVPZVteFJPLa26JmLvdb1CAKEFZm3NY75E"]' required>
   Parameters for method getTokenSupply: [mintAddress, config]
   
   Positional parameters for <code>getTokenSupply</code>:

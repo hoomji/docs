@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='80002'>
+  <ParamField query='chainId' type='string' default='80002' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='debug_traceCallMany'>
+  <ParamField body='method' type='string' default='debug_traceCallMany' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={[[],{},{},5000,{}]} placeholder='[[],{},{},5000,{}]'>
+<ParamField body='params' type='object' default={[[],{},{},5000,{}]} placeholder='[[],{},{},5000,{}]' required>
   Parameters for debug_traceCallMany. 1. Bundles (required): an array of bundles. Each bundle is an object with:    - transactions: an array of transaction objects (each with fields such as from, to, value, data),    - blockOverride (optional): an object with overrides (blockNumber, blockHash mapping, coinbase, timestamp, difficulty, gasLimit, baseFee). 2. Simulation context (required): an object with blockIdentifier (a hex block number or one of "latest", "earliest", "pending", "safe", "finalized") and transactionIndex (integer, default -1). 3. State overrides (optional): an object mapping addresses to state override objects (here, at least a balance override as a hex string). 4. Timeout (optional): integer timeout in milliseconds (default 5000). 5. Trace type (optional): an object with tracer (string, enum: callTracer, prestateTracer), tracerConfig (object), and onlyTopCall (boolean).
   
   Positional parameters for <code>debug_traceCallMany</code>:

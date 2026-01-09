@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='sui'>
+  <ParamField query='chainId' type='string' default='sui' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='unsafe_requestAddStake'>
+  <ParamField body='method' type='string' default='unsafe_requestAddStake' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["0xabc123456789defabc123456789defabc123456789defabc123456789defabcd",[],"100000000","0xval123456789abcdef123456789abcdef123456789abcdef123456789abcdef","0xgasobject1234567890abcdef","50000"]} placeholder='["0xabc123456789defabc123456789defabc123456789defabc123456789defabcd",[],"100000000","0xval123456789abcdef123456789abcdef123456789abcdef123456789abcdef","0xgasobject1234567890abcdef","50000"]'>
+<ParamField body='params' type='object' default={["0xabc123456789defabc123456789defabc123456789defabc123456789defabcd",[],"100000000","0xval123456789abcdef123456789abcdef123456789abcdef123456789abcdef","0xgasobject1234567890abcdef","50000"]} placeholder='["0xabc123456789defabc123456789defabc123456789defabc123456789defabcd",[],"100000000","0xval123456789abcdef123456789abcdef123456789abcdef123456789abcdef","0xgasobject1234567890abcdef","50000"]' required>
   Create an unsigned transaction to stake SUI to a validator.
   
   Positional parameters for <code>unsafe_requestAddStake</code>:

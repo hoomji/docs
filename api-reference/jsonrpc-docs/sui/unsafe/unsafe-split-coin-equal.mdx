@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='sui'>
+  <ParamField query='chainId' type='string' default='sui' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='unsafe_splitCoinEqual'>
+  <ParamField body='method' type='string' default='unsafe_splitCoinEqual' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788","0xcoinobjectabc123456789abcdef","3","0xgasobject001122334455","100000"]} placeholder='["0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788","0xcoinobjectabc123456789abcdef","3","0xgasobject001122334455","100000"]'>
+<ParamField body='params' type='object' default={["0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788","0xcoinobjectabc123456789abcdef","3","0xgasobject001122334455","100000"]} placeholder='["0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788","0xcoinobjectabc123456789abcdef","3","0xgasobject001122334455","100000"]' required>
   Creates an unsigned transaction to split a coin object into multiple equal-size coins.
   
   Positional parameters for <code>unsafe_splitCoinEqual</code>:

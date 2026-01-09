@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='sui'>
+  <ParamField query='chainId' type='string' default='sui' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='sui_getTransactionBlock'>
+  <ParamField body='method' type='string' default='sui_getTransactionBlock' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["Hay2tj3GcDYcE3AMHrej5WDsHGPVAYsegcubixLUvXUF",{}]} placeholder='["Hay2tj3GcDYcE3AMHrej5WDsHGPVAYsegcubixLUvXUF",{}]'>
+<ParamField body='params' type='object' default={["Hay2tj3GcDYcE3AMHrej5WDsHGPVAYsegcubixLUvXUF",{}]} placeholder='["Hay2tj3GcDYcE3AMHrej5WDsHGPVAYsegcubixLUvXUF",{}]' required>
   Parameters to fetch transaction block information.
   
   Positional parameters for <code>sui_getTransactionBlock</code>:

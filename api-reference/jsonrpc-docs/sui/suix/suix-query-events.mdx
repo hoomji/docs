@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='sui'>
+  <ParamField query='chainId' type='string' default='sui' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='suix_queryEvents'>
+  <ParamField body='method' type='string' default='suix_queryEvents' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={[{"MoveModule":{"package":"0xa395759ca37c6e1ffc179184e98a6f9a2da5d78f6e34b0e5044ed52a6bc0a1bc","module":"test"}},{"txDigest":"Eg3ynETJfTfPKyvJzq3VLG6MngURYHPMjjUJ3Xt1t7tf","eventSeq":"1"},100,false]} placeholder='[{"MoveModule":{"package":"0xa395759ca37c6e1ffc179184e98a6f9a2da5d78f6e34b0e5044ed52a6bc0a1bc","module":"test"}},{"txDigest":"Eg3ynETJfTfPKyvJzq3VLG6MngURYHPMjjUJ3Xt1t7tf","eventSeq":"1"},100,false]'>
+<ParamField body='params' type='object' default={[{"MoveModule":{"package":"0xa395759ca37c6e1ffc179184e98a6f9a2da5d78f6e34b0e5044ed52a6bc0a1bc","module":"test"}},{"txDigest":"Eg3ynETJfTfPKyvJzq3VLG6MngURYHPMjjUJ3Xt1t7tf","eventSeq":"1"},100,false]} placeholder='[{"MoveModule":{"package":"0xa395759ca37c6e1ffc179184e98a6f9a2da5d78f6e34b0e5044ed52a6bc0a1bc","module":"test"}},{"txDigest":"Eg3ynETJfTfPKyvJzq3VLG6MngURYHPMjjUJ3Xt1t7tf","eventSeq":"1"},100,false]' required>
   Parameters for suix_queryEvents: [query, cursor, limit, descending_order]. The query object specifies event filter criteria. Cursor, limit, and descending_order are optional.
   
   Positional parameters for <code>suix_queryEvents</code>:

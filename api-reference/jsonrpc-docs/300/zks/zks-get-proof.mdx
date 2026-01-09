@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='300'>
+  <ParamField query='chainId' type='string' default='300' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='zks_getProof'>
+  <ParamField body='method' type='string' default='zks_getProof' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["0x0000000000000000000000000000000000008003",["0x8b65c0cf1012ea9f393197eb24619fd814379b298b238285649e14f936a5eb12"],354895]} placeholder='["0x0000000000000000000000000000000000008003",["0x8b65c0cf1012ea9f393197eb24619fd814379b298b238285649e14f936a5eb12"],354895]'>
+<ParamField body='params' type='object' default={["0x0000000000000000000000000000000000008003",["0x8b65c0cf1012ea9f393197eb24619fd814379b298b238285649e14f936a5eb12"],354895]} placeholder='["0x0000000000000000000000000000000000008003",["0x8b65c0cf1012ea9f393197eb24619fd814379b298b238285649e14f936a5eb12"],354895]' required>
   Positional parameters for <code>zks_getProof</code>:
   <ul>
   <li><code>params[0]</code>: The account address to fetch storage proofs for.</li>

@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='sui'>
+  <ParamField query='chainId' type='string' default='sui' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='unsafe_transferSui'>
+  <ParamField body='method' type='string' default='unsafe_transferSui' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["0x9f8e7d6c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0e9f","0x123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","100000","0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788","50000"]} placeholder='["0x9f8e7d6c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0e9f","0x123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","100000","0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788","50000"]'>
+<ParamField body='params' type='object' default={["0x9f8e7d6c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0e9f","0x123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","100000","0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788","50000"]} placeholder='["0x9f8e7d6c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0e9f","0x123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","100000","0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788","50000"]' required>
   Create an unsigned transaction to send SUI coin to a recipient. The SUI object is used as both transfer and gas coin.
   
   Positional parameters for <code>unsafe_transferSui</code>:

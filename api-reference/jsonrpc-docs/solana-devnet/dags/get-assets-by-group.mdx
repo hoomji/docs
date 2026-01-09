@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='solana-devnet'>
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='getAssetsByGroup'>
+  <ParamField body='method' type='string' default='getAssetsByGroup' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={[{"groupKey":"collection","groupValue":"J2ZfLdQsaZ3GCmbucJef3cPnPwGcgjDW1SSYtMdq3L9p","options":{"limit":10,"sortBy":{"sortBy":"created","sortDirection":"desc"},"showCollectionMetadata":true}}]} placeholder='[{"groupKey":"collection","groupValue":"J2ZfLdQsaZ3GCmbucJef3cPnPwGcgjDW1SSYtMdq3L9p","options":{"limit":10,"sortBy":{"sortBy":"created","sortDirection":"desc"},"showCollectionMetadata":true}}]'>
+<ParamField body='params' type='object' default={[{"groupKey":"collection","groupValue":"J2ZfLdQsaZ3GCmbucJef3cPnPwGcgjDW1SSYtMdq3L9p","options":{"limit":10,"sortBy":{"sortBy":"created","sortDirection":"desc"},"showCollectionMetadata":true}}]} placeholder='[{"groupKey":"collection","groupValue":"J2ZfLdQsaZ3GCmbucJef3cPnPwGcgjDW1SSYtMdq3L9p","options":{"limit":10,"sortBy":{"sortBy":"created","sortDirection":"desc"},"showCollectionMetadata":true}}]' required>
   Positional parameters for <code>getAssetsByGroup</code>:
   <ul>
   <li><code>params[]</code>: Type: object.</li>

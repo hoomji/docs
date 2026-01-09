@@ -5,20 +5,20 @@ playground: 'interactive'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='137'>
+  <ParamField query='chainId' type='string' default='137' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='block_by_hash'>
+  <ParamField body='method' type='string' default='block_by_hash' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED"]} placeholder='["0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED"]'>
+<ParamField body='params' type='object' default={["0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED"]} placeholder='["0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED"]' required>
   The parameters for method block:_by_hash [hash].
   
   Positional parameters for <code>block_by_hash</code>:

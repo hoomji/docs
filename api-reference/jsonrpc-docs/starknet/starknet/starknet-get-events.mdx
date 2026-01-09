@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='starknet'>
+  <ParamField query='chainId' type='string' default='starknet' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='starknet_getEvents'>
+  <ParamField body='method' type='string' default='starknet_getEvents' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={{"filter":{"from_block":"latest","to_block":"latest","address":"0x04c0a5193d58f74fbace4b74dcf65481e734ed1714121bdc571da345540efa05","chunk_size":10}}} placeholder='{"filter":{"from_block":"latest","to_block":"latest","address":"0x04c0a5193d58f74fbace4b74dcf65481e734ed1714121bdc571da345540efa05","chunk_size":10}}'>
+<ParamField body='params' type='object' default={{"filter":{"from_block":"latest","to_block":"latest","address":"0x04c0a5193d58f74fbace4b74dcf65481e734ed1714121bdc571da345540efa05","chunk_size":10}}} placeholder='{"filter":{"from_block":"latest","to_block":"latest","address":"0x04c0a5193d58f74fbace4b74dcf65481e734ed1714121bdc571da345540efa05","chunk_size":10}}' required>
   Paramters for method starknet_getEvents: [filter].
   
   Parameters for <code>starknet_getEvents</code>:

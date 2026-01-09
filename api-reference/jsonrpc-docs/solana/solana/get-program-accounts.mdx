@@ -5,20 +5,20 @@ playground: 'interactive'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='solana'>
+  <ParamField query='chainId' type='string' default='solana' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='getProgramAccounts'>
+  <ParamField body='method' type='string' default='getProgramAccounts' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["4Nd1mBQtrMJVYVfKf2PJy9NZUZdTAsp7D4xWLs4gDB4T",{"filters":[{"dataSize":17},{"memcmp":{"offset":4,"bytes":"3Mc6vR"}}]}]} placeholder='["4Nd1mBQtrMJVYVfKf2PJy9NZUZdTAsp7D4xWLs4gDB4T",{"filters":[{"dataSize":17},{"memcmp":{"offset":4,"bytes":"3Mc6vR"}}]}]'>
+<ParamField body='params' type='object' default={["4Nd1mBQtrMJVYVfKf2PJy9NZUZdTAsp7D4xWLs4gDB4T",{"filters":[{"dataSize":17},{"memcmp":{"offset":4,"bytes":"3Mc6vR"}}]}]} placeholder='["4Nd1mBQtrMJVYVfKf2PJy9NZUZdTAsp7D4xWLs4gDB4T",{"filters":[{"dataSize":17},{"memcmp":{"offset":4,"bytes":"3Mc6vR"}}]}]' required>
   Parameters for method getProgramAccounts: [programId, config]
   
   Positional parameters for <code>getProgramAccounts</code>:

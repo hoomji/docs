@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='42170'>
+  <ParamField query='chainId' type='string' default='42170' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='arbtrace_filter'>
+  <ParamField body='method' type='string' default='arbtrace_filter' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={[{"fromBlock":"0xa7816b","toBlock":"0xa7816c","fromAddress":["0x1c7d91ccbdbf378bac0f074678b09cb589184e4e"]}]} placeholder='[{"fromBlock":"0xa7816b","toBlock":"0xa7816c","fromAddress":["0x1c7d91ccbdbf378bac0f074678b09cb589184e4e"]}]'>
+<ParamField body='params' type='object' default={[{"fromBlock":"0xa7816b","toBlock":"0xa7816c","fromAddress":["0x1c7d91ccbdbf378bac0f074678b09cb589184e4e"]}]} placeholder='[{"fromBlock":"0xa7816b","toBlock":"0xa7816c","fromAddress":["0x1c7d91ccbdbf378bac0f074678b09cb589184e4e"]}]' required>
   An array with a single object specifying filter criteria.
   
   Positional parameters for <code>arbtrace_filter</code>:

@@ -5,20 +5,20 @@ playground: 'interactive'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='solana'>
+  <ParamField query='chainId' type='string' default='solana' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='getAssetsByCreator'>
+  <ParamField body='method' type='string' default='getAssetsByCreator' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={{"creatorAddress":"7zL7HVn85F5yFT6XM3BsJcQF7PBcNE7R2BT5GyfunpKe","limit":10}} placeholder='{"creatorAddress":"7zL7HVn85F5yFT6XM3BsJcQF7PBcNE7R2BT5GyfunpKe","limit":10}'>
+<ParamField body='params' type='object' default={{"creatorAddress":"7zL7HVn85F5yFT6XM3BsJcQF7PBcNE7R2BT5GyfunpKe","limit":10}} placeholder='{"creatorAddress":"7zL7HVn85F5yFT6XM3BsJcQF7PBcNE7R2BT5GyfunpKe","limit":10}' required>
   Positional parameters for <code>getAssetsByCreator</code>:
   <ul>
   <li><code>params[]</code>: Type: object.</li>

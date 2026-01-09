@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='42161'>
+  <ParamField query='chainId' type='string' default='42161' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='debug_getModifiedAccountsByNumber'>
+  <ParamField body='method' type='string' default='debug_getModifiedAccountsByNumber' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={[0,""]} placeholder='[0,""]'>
+<ParamField body='params' type='object' default={[0,""]} placeholder='[0,""]' required>
   Parameters: [blockNumber].
   
   Positional parameters for <code>debug_getModifiedAccountsByNumber</code>:

@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='sui'>
+  <ParamField query='chainId' type='string' default='sui' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='unsafe_pay'>
+  <ParamField body='method' type='string' default='unsafe_pay' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["0xabcde1234567890abcde1234567890abcde1234567890abcde1234567890abcd",["0xcoin1","0xcoin2"],["0xrecipient1","0xrecipient2"],["10000","5000"],"0xgasobject","100000"]} placeholder='["0xabcde1234567890abcde1234567890abcde1234567890abcde1234567890abcd",["0xcoin1","0xcoin2"],["0xrecipient1","0xrecipient2"],["10000","5000"],"0xgasobject","100000"]'>
+<ParamField body='params' type='object' default={["0xabcde1234567890abcde1234567890abcde1234567890abcde1234567890abcd",["0xcoin1","0xcoin2"],["0xrecipient1","0xrecipient2"],["10000","5000"],"0xgasobject","100000"]} placeholder='["0xabcde1234567890abcde1234567890abcde1234567890abcde1234567890abcd",["0xcoin1","0xcoin2"],["0xrecipient1","0xrecipient2"],["10000","5000"],"0xgasobject","100000"]' required>
   Create an unsigned transaction to send Coin<T> to multiple recipients.
   
   Positional parameters for <code>unsafe_pay</code>:

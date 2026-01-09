@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='146'>
+  <ParamField query='chainId' type='string' default='146' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='dag_getEvent'>
+  <ParamField body='method' type='string' default='dag_getEvent' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["0x000170430000080cd8f7b782afe5d1f63be6cd73631598313200777062ba7383"]} placeholder='["0x000170430000080cd8f7b782afe5d1f63be6cd73631598313200777062ba7383"]'>
+<ParamField body='params' type='object' default={["0x000170430000080cd8f7b782afe5d1f63be6cd73631598313200777062ba7383"]} placeholder='["0x000170430000080cd8f7b782afe5d1f63be6cd73631598313200777062ba7383"]' required>
   Positional parameters for <code>dag_getEvent</code>:
   <ul>
   <li><code>params[0]</code>: The full event ID (hex-encoded 32 bytes) or short event ID.</li>

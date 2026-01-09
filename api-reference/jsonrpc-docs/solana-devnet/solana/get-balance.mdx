@@ -5,20 +5,20 @@ playground: 'none'
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' required default='solana-devnet'>
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
     Unique identifier for a blockchain network.
   </ParamField>
-  <ParamField body='id' type='number' required default={1}>
+  <ParamField body='id' type='number' default={1} required>
     Request identifier used to match responses.
   </ParamField>
-  <ParamField body='jsonrpc' type='string' required default='2.0'>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' required default='getBalance'>
+  <ParamField body='method' type='string' default='getBalance' required>
     JSON-RPC method name.
   </ParamField>
 
-<ParamField body='params' type='object' required default={["83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri"]} placeholder='["83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri"]'>
+<ParamField body='params' type='object' default={["83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri"]} placeholder='["83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri"]' required>
   Parameters for method getBalance: [pubkey, config]
   
   Positional parameters for <code>getBalance</code>:
