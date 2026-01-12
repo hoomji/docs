@@ -3,9 +3,9 @@ title: 'starknet_getBlockTransactionCount'
 ---
 import JsonRpcTester from '/snippets/jsonrpc-tester.mdx';
 
-const endpoint = "https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet";
+export const endpoint = "https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet";
 
-const request = {
+export const request = {
   "id": 1,
   "jsonrpc": "2.0",
   "method": "starknet_getBlockTransactionCount",
