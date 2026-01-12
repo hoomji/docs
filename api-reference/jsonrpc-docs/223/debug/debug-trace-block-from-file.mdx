@@ -1,6 +1,120 @@
 ---
 title: 'debug_traceBlockFromFile'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='223' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='debug_traceBlockFromFile' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["",{}]} placeholder='["",{}]' required>
+  Parameters: [filePath, options?].
+  
+  Positional parameters for <code>debug_traceBlockFromFile</code>:
+  <ul>
+  <li><code>params[0]</code>: Path to the block file.</li>
+  <li><code>params[1]</code>: Optional tracer configuration.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Traces matching given filter.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='action' type='object'>
+          Details of the trace action.
+          <Expandable title='properties'>
+            <ResponseField name='callType' type='string'>
+              Type of call (e.g., "call", "delegatecall", etc.).
+            </ResponseField>
+            <ResponseField name='from' type='string'>
+              Address that initiated the action.
+            </ResponseField>
+            <ResponseField name='gas' type='string'>
+              Gas provided for the action (hex string).
+            </ResponseField>
+            <ResponseField name='input' type='string'>
+              Input data for the action (hex string).
+            </ResponseField>
+            <ResponseField name='to' type='string'>
+              Recipient address (if applicable).
+            </ResponseField>
+            <ResponseField name='value' type='string'>
+              Value transferred in Wei (hex string).
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='blockHash' type='string'>
+          Hash of the block in which this trace occurred.
+        </ResponseField>
+        <ResponseField name='blockNumber' type='integer'>
+          Block number in which this trace occurred.
+        </ResponseField>
+        <ResponseField name='result' type='object'>
+          Result of the trace action.
+          <Expandable title='properties'>
+            <ResponseField name='gasUsed' type='string'>
+              Gas used during this action (hex string).
+            </ResponseField>
+            <ResponseField name='output' type='string'>
+              Returned output data (hex string).
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='subtraces' type='integer'>
+          Number of nested trace steps inside this trace.
+        </ResponseField>
+        <ResponseField name='traceAddress' type='array'>
+          Path to this trace in the nested trace structure.
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='integer'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='transactionHash' type='string'>
+          Hash of the transaction this trace belongs to.
+        </ResponseField>
+        <ResponseField name='transactionPosition' type='integer'>
+          Index position of the transaction within the block.
+        </ResponseField>
+        <ResponseField name='type' type='string'>
+          Type of trace (e.g., "call", "create", "suicide").
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=223 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "debug_traceBlockFromFile",
+    "params": [
+      "",
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

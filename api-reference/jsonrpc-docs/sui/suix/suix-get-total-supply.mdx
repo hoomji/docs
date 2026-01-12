@@ -1,6 +1,53 @@
 ---
 title: 'suix_getTotalSupply'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='suix_getTotalSupply' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xe5c651321915b06c81838c2e370109b554a448a78d3a56220f798398dde66eab::acoin::ACOIN"]} placeholder='["0xe5c651321915b06c81838c2e370109b554a448a78d3a56220f798398dde66eab::acoin::ACOIN"]'>
+  The paramters for method suix_getTotalSupply: [coinType].
+  
+  Positional parameters for <code>suix_getTotalSupply</code>:
+  <ul>
+  <li><code>params[]</code>: Coin type</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  value - The total supply.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getTotalSupply",
+    "params": [
+      "0xe5c651321915b06c81838c2e370109b554a448a78d3a56220f798398dde66eab::acoin::ACOIN"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

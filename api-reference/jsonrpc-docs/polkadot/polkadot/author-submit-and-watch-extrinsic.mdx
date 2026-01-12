@@ -1,6 +1,53 @@
 ---
 title: 'author_submitAndWatchExtrinsic'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='polkadot' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='author_submitAndWatchExtrinsic' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[""]} placeholder='[""]' required>
+  Parameters: [extrinsic].
+  
+  Positional parameters for <code>author_submitAndWatchExtrinsic</code>:
+  <ul>
+  <li><code>params[]</code>: Scale-encoded extrinsic hex string.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  Subscription identifier used to receive status notifications. Example: <code>"0x1"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=polkadot \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "author_submitAndWatchExtrinsic",
+    "params": [
+      ""
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

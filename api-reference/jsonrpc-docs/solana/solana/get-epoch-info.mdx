@@ -1,6 +1,75 @@
 ---
 title: 'getEpochInfo'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getEpochInfo' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{}]} placeholder='[{}]'>
+  Parameters for method getEpochInfo: [config]
+  
+  Positional parameters for <code>getEpochInfo</code>:
+  <ul>
+  <li><code>params[]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Information about the current slot, epoch, and transaction count.
+  <Expandable title='properties'>
+    <ResponseField name='absoluteSlot' type='integer'>
+      The current absolute slot number.
+    </ResponseField>
+    <ResponseField name='blockHeight' type='integer'>
+      The current block height.
+    </ResponseField>
+    <ResponseField name='epoch' type='integer'>
+      The current epoch number.
+    </ResponseField>
+    <ResponseField name='slotIndex' type='integer'>
+      The current slot index within the current epoch.
+    </ResponseField>
+    <ResponseField name='slotsInEpoch' type='integer'>
+      The total number of slots in the current epoch.
+    </ResponseField>
+    <ResponseField name='transactionCount' type='integer'>
+      The total number of successful transactions processed since genesis, or null if unavailable.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getEpochInfo",
+    "params": [
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

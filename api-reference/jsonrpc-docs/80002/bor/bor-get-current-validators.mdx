@@ -1,6 +1,66 @@
 ---
 title: 'bor_getCurrentValidators'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='80002' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='bor_getCurrentValidators' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[null]} placeholder='[null]'>
+  This method does not accept any parameters.
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of current validator objects.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='ID' type='integer'>
+          Validator ID.
+        </ResponseField>
+        <ResponseField name='accum' type='integer'>
+          Validator’s proposer priority (accumulated value).
+        </ResponseField>
+        <ResponseField name='power' type='integer'>
+          Validator’s voting power.
+        </ResponseField>
+        <ResponseField name='signer' type='string'>
+          Validator signer address (20-byte hex string).
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=80002 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "bor_getCurrentValidators",
+    "params": [
+      null
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

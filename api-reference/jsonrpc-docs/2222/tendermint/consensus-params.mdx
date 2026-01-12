@@ -1,6 +1,53 @@
 ---
 title: 'consensus_params'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='2222' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='consensus_params' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[1]} placeholder='[1]'>
+  The parameters for method consensus_params: [height].
+  
+  Positional parameters for <code>consensus_params</code>:
+  <ul>
+  <li><code>params[]</code>: The height to return.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Consensus params information.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2222 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "consensus_params",
+    "params": [
+      1
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

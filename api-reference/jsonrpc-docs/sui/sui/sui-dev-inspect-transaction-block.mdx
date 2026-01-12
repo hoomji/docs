@@ -1,6 +1,189 @@
 ---
 title: 'sui_devInspectTransactionBlock'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_devInspectTransactionBlock' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xd70420418b84502e506794227f897237764dde8d79a01ab2104bf742a277a2ab","AAACACBnxtMcbJcOVn8D72fYEaT4Q2ZbjePygvpIs+AQO6m77QEAagY...","1000","8888",{}]} placeholder='["0xd70420418b84502e506794227f897237764dde8d79a01ab2104bf742a277a2ab","AAACACBnxtMcbJcOVn8D72fYEaT4Q2ZbjePygvpIs+AQO6m77QEAagY...","1000","8888",{}]' required>
+  Run a transaction in dev-inspect mode for debugging and analysis purposes.
+  
+  Positional parameters for <code>sui_devInspectTransactionBlock</code>:
+  <ul>
+  <li><code>params[0]</code>: Sender address (SuiAddress).</li>
+  <li><code>params[1]</code>: BCS encoded TransactionKind (base64).</li>
+  <li><code>params[2]</code>: Gas price used for gas cost estimation.</li>
+  <li><code>params[3]</code>: Epoch number to use for dev inspection.</li>
+  <li><code>params[4]</code>: Optional DevInspectArgs including gas budget, gas objects, skip checks, etc.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Result of dev inspection, including simulated effects and optionally returned values.
+  <Expandable title='properties'>
+    <ResponseField name='effects' type='object'>
+      Likely effects of the transaction if actually run.
+      <Expandable title='properties'>
+        <ResponseField name='messageVersion' type='string'>
+        </ResponseField>
+        <ResponseField name='status' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='status' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='executedEpoch' type='string'>
+        </ResponseField>
+        <ResponseField name='gasUsed' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='computationCost' type='string'>
+            </ResponseField>
+            <ResponseField name='storageCost' type='string'>
+            </ResponseField>
+            <ResponseField name='storageRebate' type='string'>
+            </ResponseField>
+            <ResponseField name='nonRefundableStorageFee' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='transactionDigest' type='string'>
+        </ResponseField>
+        <ResponseField name='mutated' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='owner' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='AddressOwner' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+                <ResponseField name='reference' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='objectId' type='string'>
+                    </ResponseField>
+                    <ResponseField name='version' type='string'>
+                    </ResponseField>
+                    <ResponseField name='digest' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='gasObject' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='owner' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='ObjectOwner' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='reference' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='objectId' type='string'>
+                </ResponseField>
+                <ResponseField name='version' type='string'>
+                </ResponseField>
+                <ResponseField name='digest' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='eventsDigest' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='events' type='array'>
+      Events that would be emitted by the transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='error' type='string'>
+      Execution error if any.
+    </ResponseField>
+    <ResponseField name='rawEffects' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='rawTxnData' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='results' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='returnValues' type='array'>
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='array'>
+                  <Expandable title='items'>
+                    <ResponseField name='items[]' type='oneOf'>
+                      BCS-encoded value.
+                      <Expandable title='variants'>
+                        <ResponseField name='variant1' type='string'>
+                          BCS-encoded value.
+                        </ResponseField>
+                        <ResponseField name='variant2' type='string'>
+                          Type name.
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='status' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_devInspectTransactionBlock",
+    "params": [
+      "0xd70420418b84502e506794227f897237764dde8d79a01ab2104bf742a277a2ab",
+      "AAACACBnxtMcbJcOVn8D72fYEaT4Q2ZbjePygvpIs+AQO6m77QEAagY...",
+      "1000",
+      "8888",
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

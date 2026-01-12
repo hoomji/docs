@@ -1,6 +1,71 @@
 ---
 title: 'zks_getL2ToL1MsgProof'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='2741' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='zks_getL2ToL1MsgProof' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[5187,"0x87869cb87c4Fa78ca278dF358E890FF73B42a39E","0x22de7debaa98758afdaee89f447ff43bab5da3de6acca7528b281cc2f1be2ee9"]} placeholder='[5187,"0x87869cb87c4Fa78ca278dF358E890FF73B42a39E","0x22de7debaa98758afdaee89f447ff43bab5da3de6acca7528b281cc2f1be2ee9"]' required>
+  Positional parameters for <code>zks_getL2ToL1MsgProof</code>:
+  <ul>
+  <li><code>params[0]</code>: The block number in which the message was emitted.</li>
+  <li><code>params[1]</code>: The address that sent the message.</li>
+  <li><code>params[2]</code>: The keccak256 hash of the message being proved.</li>
+  <li><code>params[3]</code>: Optional index in the block of the L1Messenger event log. Defaults to the first message if omitted.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='id' type='integer'>
+      The position of the message in the Merkle tree.
+    </ResponseField>
+    <ResponseField name='proof' type='array'>
+      The Merkle proof array for the message.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='root' type='string'>
+      The Merkle root at the time the message was logged.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2741 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getL2ToL1MsgProof",
+    "params": [
+      5187,
+      "0x87869cb87c4Fa78ca278dF358E890FF73B42a39E",
+      "0x22de7debaa98758afdaee89f447ff43bab5da3de6acca7528b281cc2f1be2ee9"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

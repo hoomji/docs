@@ -1,6 +1,85 @@
 ---
 title: 'suix_getAllCoins'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='suix_getAllCoins' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x41f5975e3c6bd5c95f041a8493ad7e9934be26e69152d2c2e86d8a9bdbd242b3","0x2564cd31a71cf9833609b111436d8f0f47b7f8b9927ec3f8975a1dcbf9b25564",3]} placeholder='["0x41f5975e3c6bd5c95f041a8493ad7e9934be26e69152d2c2e86d8a9bdbd242b3","0x2564cd31a71cf9833609b111436d8f0f47b7f8b9927ec3f8975a1dcbf9b25564",3]' required>
+  Parameters for suix_getAllCoins: [ownerAddress, cursor, limit]
+  
+  Positional parameters for <code>suix_getAllCoins</code>:
+  <ul>
+  <li><code>params[0]</code>: The owner's Sui address</li>
+  <li><code>params[1]</code>: Optional paging cursor</li>
+  <li><code>params[2]</code>: Maximum number of items per page</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Response for suix_getAllCoins
+  <Expandable title='properties'>
+    <ResponseField name='data' type='array'>
+      List of coin objects
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='coinType' type='string'>
+            </ResponseField>
+            <ResponseField name='coinObjectId' type='string'>
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+            </ResponseField>
+            <ResponseField name='balance' type='string'>
+              uint128 string
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='hasNextPage' type='boolean'>
+      Whether more pages are available
+    </ResponseField>
+    <ResponseField name='nextCursor' type='string'>
+      Cursor to fetch the next page, or null if there is no next page
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getAllCoins",
+    "params": [
+      "0x41f5975e3c6bd5c95f041a8493ad7e9934be26e69152d2c2e86d8a9bdbd242b3",
+      "0x2564cd31a71cf9833609b111436d8f0f47b7f8b9927ec3f8975a1dcbf9b25564",
+      3
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

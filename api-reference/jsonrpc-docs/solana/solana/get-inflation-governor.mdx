@@ -1,6 +1,72 @@
 ---
 title: 'getInflationGovernor'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getInflationGovernor' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{}]} placeholder='[{}]'>
+  Parameters for method getInflationGovernor: [config]
+  
+  Positional parameters for <code>getInflationGovernor</code>:
+  <ul>
+  <li><code>params[]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Inflation parameters describing how new tokens are distributed over time.
+  <Expandable title='properties'>
+    <ResponseField name='foundation' type='number'>
+      Percentage of total inflation allocated to the foundation.
+    </ResponseField>
+    <ResponseField name='foundationTerm' type='number'>
+      Duration in years for which foundation inflation is active.
+    </ResponseField>
+    <ResponseField name='initial' type='number'>
+      Initial inflation rate (as a decimal) from genesis (time 0).
+    </ResponseField>
+    <ResponseField name='taper' type='number'>
+      Annual reduction rate for inflation (tapering schedule).
+    </ResponseField>
+    <ResponseField name='terminal' type='number'>
+      Terminal (long-term) inflation rate after tapering ends.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getInflationGovernor",
+    "params": [
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

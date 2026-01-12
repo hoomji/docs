@@ -1,6 +1,60 @@
 ---
 title: 'platform.sampleValidators'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='43113' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='platform.sampleValidators' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{}} required>
+  Parameters for <code>platform.sampleValidators</code>:
+  <ul>
+  <li><code>params.size</code>: Number of validators to sample from the specified Subnet.</li>
+  <li><code>params.subnetID</code>: Optional Subnet ID to sample validators from. Defaults to the Primary Network.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='validators' type='array'>
+      A list of sampled validator NodeIDs.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+          The NodeID of a validator.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43113 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "platform.sampleValidators",
+    "params": {}
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

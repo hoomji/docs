@@ -1,6 +1,71 @@
 ---
 title: 'broadcast_tx'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1329' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='broadcast_tx' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{}]} placeholder='[{}]'>
+  Positional parameters for <code>broadcast_tx</code>:
+  <ul>
+  <li><code>params[]</code>: Type: object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='code' type='integer'>
+      Status code returned by CheckTx (0 = success, non-zero = error)
+    </ResponseField>
+    <ResponseField name='data' type='string'>
+      Arbitrary binary data returned by the application
+    </ResponseField>
+    <ResponseField name='log' type='string'>
+      Human-readable log message, often from application layer
+    </ResponseField>
+    <ResponseField name='codespace' type='string'>
+      Namespace for the code (useful for modules returning the error)
+    </ResponseField>
+    <ResponseField name='hash' type='string'>
+      Hash of the transaction (typically in hex format)
+    </ResponseField>
+    <ResponseField name='error' type='string'>
+      Error message if any error occurred (alternative to code/log)
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1329 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "broadcast_tx",
+    "params": [
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

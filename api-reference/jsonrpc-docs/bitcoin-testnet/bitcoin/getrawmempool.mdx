@@ -1,6 +1,63 @@
 ---
 title: 'getrawmempool'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin-testnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getrawmempool' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[false]} placeholder='[false]'>
+  Parameters: [verbose?].
+  
+  Positional parameters for <code>getrawmempool</code>:
+  <ul>
+  <li><code>params[]</code>: If true, return detailed objects rather than just txids.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='oneOf'>
+  Mempool transaction ids or verbose objects.
+  <Expandable title='variants'>
+    <ResponseField name='variant1' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='variant2' type='object'>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getrawmempool",
+    "params": [
+      false
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

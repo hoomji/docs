@@ -1,6 +1,73 @@
 ---
 title: 'suix_getCoinMetadata'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='suix_getCoinMetadata' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x168da5bf1f48dafc111b0a488fa454aca95e0b5e::usdc::USDC"]} placeholder='["0x168da5bf1f48dafc111b0a488fa454aca95e0b5e::usdc::USDC"]' required>
+  Paramters for method suix_getCoinMetadata: [coinType].
+  
+  Positional parameters for <code>suix_getCoinMetadata</code>:
+  <ul>
+  <li><code>params[]</code>: Coin type</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The metadata for the coin type in the request
+  <Expandable title='properties'>
+    <ResponseField name='decimals' type='integer'>
+      Number of decimal places the coin uses.
+    </ResponseField>
+    <ResponseField name='description' type='string'>
+      Description of the token
+    </ResponseField>
+    <ResponseField name='iconUrl' type='string'>
+      URL for the token logo
+    </ResponseField>
+    <ResponseField name='id' type='string'>
+      Object ID for the CoinMetadata object
+    </ResponseField>
+    <ResponseField name='name' type='string'>
+      Name for the token
+    </ResponseField>
+    <ResponseField name='symbol' type='string'>
+      Symbol for the token
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getCoinMetadata",
+    "params": [
+      "0x168da5bf1f48dafc111b0a488fa454aca95e0b5e::usdc::USDC"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

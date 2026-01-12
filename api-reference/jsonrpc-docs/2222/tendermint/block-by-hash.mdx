@@ -1,6 +1,53 @@
 ---
 title: 'block_by_hash'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='2222' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='block_by_hash' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED"]} placeholder='["0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED"]' required>
+  The parameters for method block:_by_hash [hash].
+  
+  Positional parameters for <code>block_by_hash</code>:
+  <ul>
+  <li><code>params[]</code>: 32 Bytes - hash of the block where this transaction was included. Null when pending.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Block information.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2222 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "block_by_hash",
+    "params": [
+      "0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,72 @@
 ---
 title: 'EXPERIMENTAL_changes_in_block'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='398' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='EXPERIMENTAL_changes_in_block' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"block_id":187310138}} placeholder='{"block_id":187310138}'>
+  Parameters for <code>EXPERIMENTAL_changes_in_block</code>:
+  <ul>
+  <li><code>params.finality</code>: Optional finality condition. Use instead of block_id.</li>
+  <li><code>params.block_id</code>: Optional block ID. Use instead of finality.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='block_hash' type='string'>
+      Hash of the block these changes are from
+    </ResponseField>
+    <ResponseField name='changes' type='array'>
+      List of state changes in this block
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='type' type='string'>
+              Type of state change (e.g. account, access_key, contract_code)
+            </ResponseField>
+            <ResponseField name='change' type='object'>
+              The actual state change object, depends on the change type
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=398 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "EXPERIMENTAL_changes_in_block",
+    "params": {
+      "block_id": 187310138
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

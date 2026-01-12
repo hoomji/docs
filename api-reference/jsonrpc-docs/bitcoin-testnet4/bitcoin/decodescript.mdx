@@ -1,6 +1,53 @@
 ---
 title: 'decodescript'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin-testnet4' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='decodescript' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[""]} placeholder='[""]' required>
+  Parameters: [hexstring].
+  
+  Positional parameters for <code>decodescript</code>:
+  <ul>
+  <li><code>params[]</code>: Script hex string.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Decoded script information.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet4 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "decodescript",
+    "params": [
+      ""
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,97 @@
 ---
 title: 'unsafe_requestWithdrawStake'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='unsafe_requestWithdrawStake' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xabc123456789abcdef123456789abcdef123456789abcdef123456789abcdef","0xstakeobject1234567890abcdef1234567890abcdef","0xgasobject1234567890abcdef","100000"]} placeholder='["0xabc123456789abcdef123456789abcdef123456789abcdef123456789abcdef","0xstakeobject1234567890abcdef1234567890abcdef","0xgasobject1234567890abcdef","100000"]' required>
+  Creates an unsigned transaction to withdraw staked SUI.
+  
+  Positional parameters for <code>unsafe_requestWithdrawStake</code>:
+  <ul>
+  <li><code>params[0]</code>: The Sui address of the transaction signer.</li>
+  <li><code>params[1]</code>: The object ID of the staked SUI to withdraw.</li>
+  <li><code>params[2]</code>: Optional gas object ID. If omitted, a gas object will be selected automatically.</li>
+  <li><code>params[3]</code>: The gas budget for the transaction.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The unsigned transaction block that performs the stake withdrawal.
+  <Expandable title='properties'>
+    <ResponseField name='gas' type='array'>
+      Gas objects used in the transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='objectId' type='string'>
+              ID of the gas object.
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+              Version of the gas object.
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+              Digest of the gas object.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='inputObjects' type='array'>
+      List of input objects included in the transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='objectId' type='string'>
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='txBytes' type='string'>
+      BCS serialized transaction data encoded as base64 string.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_requestWithdrawStake",
+    "params": [
+      "0xabc123456789abcdef123456789abcdef123456789abcdef123456789abcdef",
+      "0xstakeobject1234567890abcdef1234567890abcdef",
+      "0xgasobject1234567890abcdef",
+      "100000"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,74 @@
 ---
 title: 'getSupply'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getSupply' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{}]} placeholder='[{}]'>
+  Parameters for method getSupply: [config].
+  
+  Positional parameters for <code>getSupply</code>:
+  <ul>
+  <li><code>params[0]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Current supply information object.
+  <Expandable title='properties'>
+    <ResponseField name='total' type='integer'>
+      Total supply in lamports.
+    </ResponseField>
+    <ResponseField name='circulating' type='integer'>
+      Circulating supply in lamports.
+    </ResponseField>
+    <ResponseField name='nonCirculating' type='integer'>
+      Non-circulating supply in lamports.
+    </ResponseField>
+    <ResponseField name='nonCirculatingAccounts' type='array'>
+      Array of account addresses (base-58 encoded) that are non-circulating. Will be empty if excludeNonCirculatingAccountsList is true.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+          Base-58 encoded account address.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getSupply",
+    "params": [
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

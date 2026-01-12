@@ -1,6 +1,56 @@
 ---
 title: 'getLedgers'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='stellar-soroban' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getLedgers' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"startLedger":"LEDGER_SEQUENCE","pagination":{"limit":10}}} placeholder='{"startLedger":"LEDGER_SEQUENCE","pagination":{"limit":10}}'>
+  Parameters for <code>getLedgers</code>:
+  <ul>
+  <li><code>params.startLedger</code>: Inclusive starting ledger sequence to list from.</li>
+  <li><code>params.order</code>: Sort order by ledger sequence.</li>
+  <li><code>params.pagination</code>: Pagination controls.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Horizon ledgers page.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=stellar-soroban \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getLedgers",
+    "params": {
+      "startLedger": "LEDGER_SEQUENCE",
+      "pagination": {
+        "limit": 10
+      }
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

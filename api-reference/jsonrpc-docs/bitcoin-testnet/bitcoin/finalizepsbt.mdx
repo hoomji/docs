@@ -1,6 +1,55 @@
 ---
 title: 'finalizepsbt'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin-testnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='finalizepsbt' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["",false]} placeholder='["",false]' required>
+  Parameters: [psbt, extract?].
+  
+  Positional parameters for <code>finalizepsbt</code>:
+  <ul>
+  <li><code>params[0]</code>: PSBT base64 string.</li>
+  <li><code>params[1]</code>: If true, also return the final raw transaction hex.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Result containing the finalized PSBT and optionally the hex transaction.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "finalizepsbt",
+    "params": [
+      "",
+      false
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

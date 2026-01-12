@@ -1,6 +1,83 @@
 ---
 title: 'block_search'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='2222' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='block_search' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{}]} placeholder='[{}]'>
+  Positional parameters for <code>block_search</code>:
+  <ul>
+  <li><code>params[]</code>: Type: object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Paginated list of blocks matching the query.
+  <Expandable title='properties'>
+    <ResponseField name='total_count' type='integer'>
+    </ResponseField>
+    <ResponseField name='page' type='integer'>
+    </ResponseField>
+    <ResponseField name='per_page' type='integer'>
+    </ResponseField>
+    <ResponseField name='blocks' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          Block metadata
+          <Expandable title='properties'>
+            <ResponseField name='height' type='string'>
+            </ResponseField>
+            <ResponseField name='block_id' type='string'>
+            </ResponseField>
+            <ResponseField name='time' type='string'>
+            </ResponseField>
+            <ResponseField name='proposer_address' type='string'>
+            </ResponseField>
+            <ResponseField name='txs' type='array'>
+              List of transaction hashes
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2222 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "block_search",
+    "params": [
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

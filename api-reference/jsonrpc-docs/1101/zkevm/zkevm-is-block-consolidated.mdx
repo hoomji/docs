@@ -1,6 +1,51 @@
 ---
 title: 'zkevm_isBlockConsolidated'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1101' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='zkevm_isBlockConsolidated' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x2a3b"]} placeholder='["0x2a3b"]' required>
+  Positional parameters for <code>zkevm_isBlockConsolidated</code>:
+  <ul>
+  <li><code>params[]</code>: The block number to check if it is connected to a verified batch, encoded as a hexadecimal string.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='boolean'>
+  True if the block is connected to a verified batch (consolidated), false otherwise. Example: <code>true</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1101 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zkevm_isBlockConsolidated",
+    "params": [
+      "0x2a3b"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,60 @@
 ---
 title: 'bor_getSignersAtHash'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='137' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='bor_getSignersAtHash' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x29fa73e3da83ddac98f527254fe37002e052725a88904bac14f03e919e1e2876"]} placeholder='["0x29fa73e3da83ddac98f527254fe37002e052725a88904bac14f03e919e1e2876"]' required>
+  Parameters for bor_getSignersAtHash: [blockHash]
+  
+  Positional parameters for <code>bor_getSignersAtHash</code>:
+  <ul>
+  <li><code>params[]</code>: 32-byte block hash (hex-encoded, 0x-prefixed).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  List of validator addresses (signers) for the specified block hash.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='string'>
+      Validator signer address (20-byte hex string).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=137 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "bor_getSignersAtHash",
+    "params": [
+      "0x29fa73e3da83ddac98f527254fe37002e052725a88904bac14f03e919e1e2876"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

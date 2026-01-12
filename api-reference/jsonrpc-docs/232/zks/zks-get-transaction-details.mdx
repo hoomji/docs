@@ -1,6 +1,82 @@
 ---
 title: 'zks_getTransactionDetails'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='232' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='zks_getTransactionDetails' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x22de7debaa98758afdaee89f447ff43bab5da3de6acca7528b281cc2f1be2ee9"]} placeholder='["0x22de7debaa98758afdaee89f447ff43bab5da3de6acca7528b281cc2f1be2ee9"]'>
+  The transaction hash in hexadecimal format.
+  
+  Positional parameters for <code>zks_getTransactionDetails</code>:
+  <ul>
+  <li><code>params[]</code>: Type: string.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Object containing transaction metadata and status details.
+  <Expandable title='properties'>
+    <ResponseField name='ethCommitTxHash' type='string'>
+      Transaction hash of the commit transaction.
+    </ResponseField>
+    <ResponseField name='ethExecuteTxHash' type='string'>
+      Transaction hash of the execution transaction.
+    </ResponseField>
+    <ResponseField name='ethProveTxHash' type='string'>
+      Ethereum transaction hash of the proof transaction.
+    </ResponseField>
+    <ResponseField name='fee' type='string'>
+      The fee for the transaction.
+    </ResponseField>
+    <ResponseField name='gasPerPubdata' type='string'>
+      Gas per public data unit.
+    </ResponseField>
+    <ResponseField name='initiatorAddress' type='string'>
+      The address of the transaction initiator.
+    </ResponseField>
+    <ResponseField name='isL1Originated' type='boolean'>
+      True if the transaction originated from L1.
+    </ResponseField>
+    <ResponseField name='receivedAt' type='string'>
+      Timestamp when the transaction was received.
+    </ResponseField>
+    <ResponseField name='status' type='string'>
+      The current status of the transaction.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=232 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getTransactionDetails",
+    "params": [
+      "0x22de7debaa98758afdaee89f447ff43bab5da3de6acca7528b281cc2f1be2ee9"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

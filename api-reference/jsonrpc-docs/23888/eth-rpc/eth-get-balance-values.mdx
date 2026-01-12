@@ -1,6 +1,66 @@
 ---
 title: 'eth_getBalanceValues'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='23888' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='eth_getBalanceValues' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x742d35Cc6634C0532925a3b844Bc454e4438f44e","latest"]} placeholder='["0x742d35Cc6634C0532925a3b844Bc454e4438f44e","latest"]' required>
+  Parameters for eth_getBalanceValues: [address, blockTag]
+  
+  Positional parameters for <code>eth_getBalanceValues</code>:
+  <ul>
+  <li><code>params[0]</code>: Address to query (20 bytes, hex-encoded).</li>
+  <li><code>params[1]</code>: Block tag (e.g., "latest", "earliest", or a hex block number).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Detailed balance values for an Ethereum address.
+  <Expandable title='properties'>
+    <ResponseField name='liquidBalance' type='string'>
+      ETH balance available for transfer (QUANTITY, 64 bits).
+    </ResponseField>
+    <ResponseField name='stakedBalance' type='string'>
+      Amount staked (QUANTITY, 64 bits).
+    </ResponseField>
+    <ResponseField name='pendingRewards' type='string'>
+      Pending rewards not yet claimed (QUANTITY, 64 bits).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=23888 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getBalanceValues",
+    "params": [
+      "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+      "latest"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

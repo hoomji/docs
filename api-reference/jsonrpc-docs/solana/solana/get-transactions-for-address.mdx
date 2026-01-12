@@ -1,6 +1,63 @@
 ---
 title: 'getTransactionsForAddress'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getTransactionsForAddress' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[["ADDRESS_PUBLIC_KEY",{"transactionDetails":"signatures","sortOrder":"desc","limit":1000,"commitment":"finalized"}]]} placeholder='[["ADDRESS_PUBLIC_KEY",{"transactionDetails":"signatures","sortOrder":"desc","limit":1000,"commitment":"finalized"}]]'>
+  Parameters for method getTransactionsForAddress: [address, txFilteringOptions]
+  
+  Positional parameters for <code>getTransactionsForAddress</code>:
+  <ul>
+  <li><code>params[]</code>: Base-58 encoded public key of the account to query transaction history for.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Transaction History for a given address
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getTransactionsForAddress",
+    "params": [
+      [
+        "ADDRESS_PUBLIC_KEY",
+        {
+          "transactionDetails": "signatures",
+          "sortOrder": "desc",
+          "limit": 1000,
+          "commitment": "finalized"
+        }
+      ]
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

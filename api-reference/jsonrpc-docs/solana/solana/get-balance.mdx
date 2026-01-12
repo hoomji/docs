@@ -1,6 +1,56 @@
 ---
 title: 'getBalance'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getBalance' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri"]} placeholder='["83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri"]' required>
+  Parameters for method getBalance: [pubkey, config]
+  
+  Positional parameters for <code>getBalance</code>:
+  <ul>
+  <li><code>params[0]</code>: Base-58 encoded public key of the account to query.</li>
+  <li><code>params[1]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Lamport balance of the account of provided Pubkey
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getBalance",
+    "params": [
+      "83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

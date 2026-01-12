@@ -1,6 +1,60 @@
 ---
 title: 'debug_getModifiedAccountsByNumber'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='11155111' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='debug_getModifiedAccountsByNumber' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[0,""]} placeholder='[0,""]' required>
+  Parameters: [blockNumber].
+  
+  Positional parameters for <code>debug_getModifiedAccountsByNumber</code>:
+  <ul>
+  <li><code>params[0]</code>: Type: number.</li>
+  <li><code>params[1]</code>: Type: string.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Modified account addresses.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='string'>
+      The address.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=11155111 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "debug_getModifiedAccountsByNumber",
+    "params": [
+      0,
+      ""
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

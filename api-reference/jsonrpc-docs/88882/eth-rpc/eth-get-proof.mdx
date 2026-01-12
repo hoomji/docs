@@ -1,6 +1,105 @@
 ---
 title: 'eth_getProof'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='88882' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='eth_getProof' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x7F0d15C7FAae65896648C8273B6d7E43f58Fa842",["0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"],"latest"]} placeholder='["0x7F0d15C7FAae65896648C8273B6d7E43f58Fa842",["0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"],"latest"]' required>
+  Parameters: [address, storageKeys, blockParameter]
+  
+  Positional parameters for <code>eth_getProof</code>:
+  <ul>
+  <li><code>params[0]</code>: The 20-byte address to check for balance, nonce, and storage.</li>
+  <li><code>params[1]</code>: Array of 32-byte storage keys (hex) to be included in the proof.</li>
+  <li><code>params[2]</code>: Block number or tag ("latest", "earliest", "pending", "safe", "finalized").</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Account details and Merkle proofs for storage verification.
+  <Expandable title='properties'>
+    <ResponseField name='address' type='string'>
+      The address of the account.
+    </ResponseField>
+    <ResponseField name='balance' type='string'>
+      Hex-encoded balance of the account in wei.
+    </ResponseField>
+    <ResponseField name='nonce' type='string'>
+      Transaction count (nonce) of the account.
+    </ResponseField>
+    <ResponseField name='codeHash' type='string'>
+      32-byte hash of the code of the account.
+    </ResponseField>
+    <ResponseField name='storageHash' type='string'>
+      SHA3 hash of the storage root.
+    </ResponseField>
+    <ResponseField name='accountProof' type='array'>
+      Array of RLP-encoded nodes forming the Merkle proof for the account.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='storageProof' type='array'>
+      Array of storage entries with their Merkle proofs.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='key' type='string'>
+              Storage key queried.
+            </ResponseField>
+            <ResponseField name='value' type='string'>
+              Hex-encoded value stored at the key.
+            </ResponseField>
+            <ResponseField name='proof' type='array'>
+              RLP-encoded Merkle proof nodes for this storage key.
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=88882 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getProof",
+    "params": [
+      "0x7F0d15C7FAae65896648C8273B6d7E43f58Fa842",
+      [
+        "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+      ],
+      "latest"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

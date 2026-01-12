@@ -1,6 +1,55 @@
 ---
 title: 'klay_getBlockByNumber'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='8217' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='klay_getBlockByNumber' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x1b4",false]} placeholder='["0x1b4",false]' required>
+  Parameters: [blockNumber, fullTransactions].
+  
+  Positional parameters for <code>klay_getBlockByNumber</code>:
+  <ul>
+  <li><code>params[0]</code>: Block number where this transaction was included. Null when pending.</li>
+  <li><code>params[1]</code>: If true, returns full transaction objects instead of hashes.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  A Klaytn block object. Null if the block cannot be found.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=8217 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "klay_getBlockByNumber",
+    "params": [
+      "0x1b4",
+      false
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

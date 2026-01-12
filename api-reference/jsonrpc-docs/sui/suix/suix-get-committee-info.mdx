@@ -1,6 +1,78 @@
 ---
 title: 'suix_getCommitteeInfo'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='suix_getCommitteeInfo' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[5000]} placeholder='[5000]'>
+  Parameters for suix_getCommitteeInfo: [epoch]. The epoch is optional; if omitted, the latest epoch is used.
+  
+  Positional parameters for <code>suix_getCommitteeInfo</code>:
+  <ul>
+  <li><code>params[]</code>: The epoch number as a BigInt for uint64, represented as a string (e.g., "1234567890").</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Committee information for the specified epoch.
+  <Expandable title='properties'>
+    <ResponseField name='epoch' type='string'>
+      The epoch number (as a BigInt for uint64).
+    </ResponseField>
+    <ResponseField name='validators' type='array'>
+      List of validators. Each validator is represented as a tuple [AuthorityPublicKeyBytes, BigInt for uint64].
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='oneOf'>
+              Authority public key bytes (Sui address or hex encoded).
+              <Expandable title='variants'>
+                <ResponseField name='variant1' type='string'>
+                  Authority public key bytes (Sui address or hex encoded).
+                </ResponseField>
+                <ResponseField name='variant2' type='string'>
+                  Validator value as a BigInt (uint64) in string form.
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getCommitteeInfo",
+    "params": [
+      5000
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,57 @@
 ---
 title: 'getAccountInfo'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getAccountInfo' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg",{"encoding":"base58"}]} placeholder='["vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg",{"encoding":"base58"}]' required>
+  Parameters: [pubkey, config]
+  
+  Positional parameters for <code>getAccountInfo</code>:
+  <ul>
+  <li><code>params[0]</code>: Base-58 encoded public key of the account to query.</li>
+  <li><code>params[1]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Requested account information or if the account doesn`t exist null
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getAccountInfo",
+    "params": [
+      "vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg",
+      {
+        "encoding": "base58"
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

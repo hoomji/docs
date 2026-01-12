@@ -1,6 +1,120 @@
 ---
 title: 'sui_tryGetPastObject'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_tryGetPastObject' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x11af4b844ff94b3fbef6e36b518da3ad4c5856fa686464524a876b463d129760",4,{"showType":true,"showOwner":true,"showPreviousTransaction":true,"showDisplay":false,"showContent":true,"showBcs":false,"showStorageRebate":true}]} placeholder='["0x11af4b844ff94b3fbef6e36b518da3ad4c5856fa686464524a876b463d129760",4,{"showType":true,"showOwner":true,"showPreviousTransaction":true,"showDisplay":false,"showContent":true,"showBcs":false,"showStorageRebate":true}]' required>
+  Retrieve object data at a specific version (if retained by the node).
+  
+  Positional parameters for <code>sui_tryGetPastObject</code>:
+  <ul>
+  <li><code>params[0]</code>: Object ID in hex format.</li>
+  <li><code>params[1]</code>: The version of the object to retrieve.</li>
+  <li><code>params[2]</code>: Options for customizing the object response fields.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Response for a past object retrieval attempt.
+  <Expandable title='properties'>
+    <ResponseField name='status' type='string'>
+      Status of the request. Possible values: "VersionFound", "VersionNotFound", etc.
+    </ResponseField>
+    <ResponseField name='details' type='object'>
+      Object data at the specified version, present if status is VersionFound.
+      <Expandable title='properties'>
+        <ResponseField name='objectId' type='string'>
+          The ID of the object.
+        </ResponseField>
+        <ResponseField name='version' type='string'>
+          Version of the object.
+        </ResponseField>
+        <ResponseField name='digest' type='string'>
+          Digest of the object.
+        </ResponseField>
+        <ResponseField name='type' type='string'>
+          Sui type of the object.
+        </ResponseField>
+        <ResponseField name='owner' type='object'>
+          Owner information of the object.
+        </ResponseField>
+        <ResponseField name='previousTransaction' type='string'>
+          The digest of the last transaction that mutated this object.
+        </ResponseField>
+        <ResponseField name='storageRebate' type='string'>
+          The amount of SUI to rebate if this object is deleted.
+        </ResponseField>
+        <ResponseField name='content' type='object'>
+          The actual content stored in the object.
+          <Expandable title='properties'>
+            <ResponseField name='dataType' type='string'>
+            </ResponseField>
+            <ResponseField name='type' type='string'>
+            </ResponseField>
+            <ResponseField name='hasPublicTransfer' type='boolean'>
+            </ResponseField>
+            <ResponseField name='fields' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='balance' type='string'>
+                  The coin balance.
+                </ResponseField>
+                <ResponseField name='id' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='id' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_tryGetPastObject",
+    "params": [
+      "0x11af4b844ff94b3fbef6e36b518da3ad4c5856fa686464524a876b463d129760",
+      4,
+      {
+        "showType": true,
+        "showOwner": true,
+        "showPreviousTransaction": true,
+        "showDisplay": false,
+        "showContent": true,
+        "showBcs": false,
+        "showStorageRebate": true
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

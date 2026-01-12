@@ -1,6 +1,55 @@
 ---
 title: 'getblock'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin-testnet4' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getblock' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["",0]} placeholder='["",0]' required>
+  Parameters: [blockHash, verbosity?].
+  
+  Positional parameters for <code>getblock</code>:
+  <ul>
+  <li><code>params[0]</code>: 32 Bytes - hash of the transaction.</li>
+  <li><code>params[1]</code>: Verbosity level (0-3) controlling JSON detail.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Block data or raw hex depending on verbosity.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet4 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getblock",
+    "params": [
+      "",
+      0
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,121 @@
 ---
 title: 'starknet_getClassAt'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='starknet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='starknet_getClassAt' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"block_id":{"block_hash":"0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"},"contract_address":"0x03b554093fb0a7460913be2d5c011cb5ac4333dfcfe6125851bcd3f926a3b558"}} placeholder='{"block_id":{"block_hash":"0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"},"contract_address":"0x03b554093fb0a7460913be2d5c011cb5ac4333dfcfe6125851bcd3f926a3b558"}' required>
+  Parameters for starknet_getNonce: [block_id, contract_address].
+  
+  Parameters for <code>starknet_getClassAt</code>:
+  <ul>
+  <li><code>params.block_id</code>: BlockID object containing hash and number.</li>
+  <li><code>params.contract_address</code>: The address of the request contract.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Contract class object.
+  <Expandable title='properties'>
+    <ResponseField name='abi' type='array'>
+      The class ABI, as supplied by the user declaring the class.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          ABI entry object.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='contract_class_version' type='string'>
+      Version of the contract class object.
+    </ResponseField>
+    <ResponseField name='entry_points_by_type' type='object'>
+      Entry points by type.
+      <Expandable title='properties'>
+        <ResponseField name='constructor' type='array'>
+          List of constructor entry points.
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='selector' type='string'>
+                </ResponseField>
+                <ResponseField name='offset' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='external' type='array'>
+          List of external entry points.
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='selector' type='string'>
+                </ResponseField>
+                <ResponseField name='offset' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='l1_handler' type='array'>
+          List of L1 handler entry points.
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='selector' type='string'>
+                </ResponseField>
+                <ResponseField name='offset' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='sierra_program' type='array'>
+      List of Sierra instructions of which the program consists.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getClassAt",
+    "params": {
+      "block_id": {
+        "block_hash": "0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"
+      },
+      "contract_address": "0x03b554093fb0a7460913be2d5c011cb5ac4333dfcfe6125851bcd3f926a3b558"
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

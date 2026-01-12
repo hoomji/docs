@@ -1,6 +1,116 @@
 ---
 title: 'zks_getRawBlockTransactions'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='232' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='zks_getRawBlockTransactions' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[5817]} placeholder='[5817]'>
+  Block number to get raw transaction data from.
+  
+  Positional parameters for <code>zks_getRawBlockTransactions</code>:
+  <ul>
+  <li><code>params[]</code>: The L2 block number.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  List of executed transactions in the given block.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='common_data' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='L1' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='canonicalTxHash' type='string'>
+                </ResponseField>
+                <ResponseField name='deadlineBlock' type='integer'>
+                </ResponseField>
+                <ResponseField name='ethBlock' type='integer'>
+                </ResponseField>
+                <ResponseField name='ethHash' type='string'>
+                </ResponseField>
+                <ResponseField name='fullFee' type='string'>
+                </ResponseField>
+                <ResponseField name='gasLimit' type='string'>
+                </ResponseField>
+                <ResponseField name='gasPerPubdataLimit' type='string'>
+                </ResponseField>
+                <ResponseField name='layer2TipFee' type='string'>
+                </ResponseField>
+                <ResponseField name='maxFeePerGas' type='string'>
+                </ResponseField>
+                <ResponseField name='opProcessingType' type='string'>
+                </ResponseField>
+                <ResponseField name='priorityQueueType' type='string'>
+                </ResponseField>
+                <ResponseField name='refundRecipient' type='string'>
+                </ResponseField>
+                <ResponseField name='sender' type='string'>
+                </ResponseField>
+                <ResponseField name='serialId' type='integer'>
+                </ResponseField>
+                <ResponseField name='toMint' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='execute' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='calldata' type='string'>
+            </ResponseField>
+            <ResponseField name='contractAddress' type='string'>
+            </ResponseField>
+            <ResponseField name='factoryDeps' type='array'>
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='value' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='received_timestamp_ms' type='integer'>
+          The timestamp in milliseconds the transaction was received.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=232 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getRawBlockTransactions",
+    "params": [
+      5817
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

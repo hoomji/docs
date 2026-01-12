@@ -1,6 +1,112 @@
 ---
 title: 'getTokenAccountsByOwner'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getTokenAccountsByOwner' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["A1TMhSGzQxMr1TboBKtgixKz1sS6REASMxPo1qsyTSJd",{"programId":"TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"},{"encoding":"jsonParsed"}]} placeholder='["A1TMhSGzQxMr1TboBKtgixKz1sS6REASMxPo1qsyTSJd",{"programId":"TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"},{"encoding":"jsonParsed"}]' required>
+  Parameters for method getTokenAccountsByOwner: [ownerAddress, filter, config]
+  
+  Positional parameters for <code>getTokenAccountsByOwner</code>:
+  <ul>
+  <li><code>params[0]</code>: Pubkey of the token account owner (base-58 encoded).</li>
+  <li><code>params[1]</code>: Filter object - must specify either mint or programId.</li>
+  <li><code>params[2]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of token accounts owned by the provided address.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      Token account object.
+      <Expandable title='properties'>
+        <ResponseField name='pubkey' type='string'>
+          Account Pubkey (base-58 encoded).
+        </ResponseField>
+        <ResponseField name='account' type='object'>
+          Account data object.
+          <Expandable title='properties'>
+            <ResponseField name='lamports' type='integer'>
+              Number of lamports assigned to this account.
+            </ResponseField>
+            <ResponseField name='owner' type='string'>
+              Pubkey of the Token Program this account belongs to.
+            </ResponseField>
+            <ResponseField name='data' type='oneOf'>
+              Encoded data as [data, encoding] tuple.
+              <Expandable title='variants'>
+                <ResponseField name='variant1' type='array'>
+                  Encoded data as [data, encoding] tuple.
+                  <Expandable title='items'>
+                    <ResponseField name='items[]' type='oneOf'>
+                      <Expandable title='variants'>
+                        <ResponseField name='variant1' type='string'>
+                        </ResponseField>
+                        <ResponseField name='variant2' type='string'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+                <ResponseField name='variant2' type='object'>
+                  Token state data if jsonParsed encoding is used.
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='executable' type='boolean'>
+              True if this account is executable (program account).
+            </ResponseField>
+            <ResponseField name='rentEpoch' type='integer'>
+              Epoch at which this account will next owe rent.
+            </ResponseField>
+            <ResponseField name='space' type='integer'>
+              Data size of the account in bytes.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getTokenAccountsByOwner",
+    "params": [
+      "A1TMhSGzQxMr1TboBKtgixKz1sS6REASMxPo1qsyTSJd",
+      {
+        "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+      },
+      {
+        "encoding": "jsonParsed"
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

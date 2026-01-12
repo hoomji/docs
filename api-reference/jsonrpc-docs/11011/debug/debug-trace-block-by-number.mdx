@@ -1,6 +1,57 @@
 ---
 title: 'debug_traceBlockByNumber'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='11011' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='debug_traceBlockByNumber' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xccde12",{"tracer":"callTracer"}]} placeholder='["0xccde12",{"tracer":"callTracer"}]' required>
+  Parameters for method debug_traceBlockByNumber: [blockNumber, traceConfig]
+  
+  Positional parameters for <code>debug_traceBlockByNumber</code>:
+  <ul>
+  <li><code>params[0]</code>: Block number where this transaction was included. Null when pending.</li>
+  <li><code>params[1]</code>: Optional configuration object passed to tracing RPC methods.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Full stack trace.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=11011 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "debug_traceBlockByNumber",
+    "params": [
+      "0xccde12",
+      {
+        "tracer": "callTracer"
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

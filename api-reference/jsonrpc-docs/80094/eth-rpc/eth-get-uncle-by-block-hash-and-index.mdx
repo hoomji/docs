@@ -1,6 +1,157 @@
 ---
 title: 'eth_getUncleByBlockHashAndIndex'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='80094' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='eth_getUncleByBlockHashAndIndex' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b","0x0"]} placeholder='["0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b","0x0"]' required>
+  Parameters for eth_getUncleByBlockHashAndIndex: [blockHash, index].
+  
+  Positional parameters for <code>eth_getUncleByBlockHashAndIndex</code>:
+  <ul>
+  <li><code>params[0]</code>: 32 Bytes - hash of the block where this transaction was included. Null when pending.</li>
+  <li><code>params[1]</code>: Integer of the uncle’s index position.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='oneOf'>
+  Ethereum block object. Null when no block was found.
+  <Expandable title='variants'>
+    <ResponseField name='variant1' type='object'>
+      Ethereum block object. Null when no block was found.
+      <Expandable title='properties'>
+        <ResponseField name='number' type='string'>
+          The block number. Null when pending.
+        </ResponseField>
+        <ResponseField name='hash' type='string'>
+          Hash of the block. Null when pending.
+        </ResponseField>
+        <ResponseField name='parentHash' type='string'>
+          Hash of the parent block.
+        </ResponseField>
+        <ResponseField name='nonce' type='string'>
+          8-byte proof-of-work nonce. Null when pending or in PoA networks.
+        </ResponseField>
+        <ResponseField name='sha3Uncles' type='string'>
+          SHA3 of the uncles data.
+        </ResponseField>
+        <ResponseField name='logsBloom' type='string'>
+          Bloom filter for logs in the block. Null when pending.
+        </ResponseField>
+        <ResponseField name='transactionsRoot' type='string'>
+          Root of the transaction trie.
+        </ResponseField>
+        <ResponseField name='stateRoot' type='string'>
+          Root of the final state trie.
+        </ResponseField>
+        <ResponseField name='receiptsRoot' type='string'>
+          Root of the receipts trie.
+        </ResponseField>
+        <ResponseField name='author' type='string'>
+          Address of the block author (beneficiary).
+        </ResponseField>
+        <ResponseField name='miner' type='string'>
+          Alias of `author`. Address of the miner.
+        </ResponseField>
+        <ResponseField name='difficulty' type='string'>
+          Block difficulty.
+        </ResponseField>
+        <ResponseField name='totalDifficulty' type='string'>
+          Total difficulty of the chain up to this block.
+        </ResponseField>
+        <ResponseField name='extraData' type='string'>
+          Extra data field of the block.
+        </ResponseField>
+        <ResponseField name='size' type='string'>
+          Size of the block in bytes.
+        </ResponseField>
+        <ResponseField name='gasLimit' type='string'>
+          Maximum gas allowed in the block.
+        </ResponseField>
+        <ResponseField name='gasUsed' type='string'>
+          Total gas used by all transactions.
+        </ResponseField>
+        <ResponseField name='timestamp' type='string'>
+          Unix timestamp for when the block was collated.
+        </ResponseField>
+        <ResponseField name='transactions' type='array'>
+          Array of either 32-byte transaction hashes or full transaction objects, depending on the request.
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='oneOf'>
+              Transaction hash.
+              <Expandable title='variants'>
+                <ResponseField name='variant1' type='string'>
+                  Transaction hash.
+                </ResponseField>
+                <ResponseField name='variant2' type='object'>
+                  Full transaction object.
+                  <Expandable title='properties'>
+                    <ResponseField name='hash' type='string'>
+                    </ResponseField>
+                    <ResponseField name='from' type='string'>
+                    </ResponseField>
+                    <ResponseField name='to' type='string'>
+                    </ResponseField>
+                    <ResponseField name='value' type='string'>
+                    </ResponseField>
+                    <ResponseField name='gas' type='string'>
+                    </ResponseField>
+                    <ResponseField name='gasPrice' type='string'>
+                    </ResponseField>
+                    <ResponseField name='nonce' type='string'>
+                    </ResponseField>
+                    <ResponseField name='input' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='uncles' type='array'>
+          Array of uncle block hashes.
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=80094 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getUncleByBlockHashAndIndex",
+    "params": [
+      "0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b",
+      "0x0"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

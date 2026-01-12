@@ -1,6 +1,60 @@
 ---
 title: 'getSlotLeaders'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getSlotLeaders' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[100,10]} placeholder='[100,10]' required>
+  Parameters for method getSlotLeaders: [startSlot, limit]
+  
+  Positional parameters for <code>getSlotLeaders</code>:
+  <ul>
+  <li><code>params[0]</code>: Starting slot number for the range.</li>
+  <li><code>params[1]</code>: Maximum number of results to return.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of base-58 encoded public keys of slot leaders.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='string'>
+      Base-58 encoded public key of the slot leader.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getSlotLeaders",
+    "params": [
+      100,
+      10
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

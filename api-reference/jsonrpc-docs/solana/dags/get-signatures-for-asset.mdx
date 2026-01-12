@@ -1,6 +1,94 @@
 ---
 title: 'getSignaturesForAsset'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getSignaturesForAsset' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{"id":"FNt6A9Mfnqbwc1tY7uwAguKQ1JcpBrxmhczDgbdJy5AC","page":1,"limit":100,"before":"string","after":"string"}]} placeholder='[{"id":"FNt6A9Mfnqbwc1tY7uwAguKQ1JcpBrxmhczDgbdJy5AC","page":1,"limit":100,"before":"string","after":"string"}]' required>
+  Positional parameters for <code>getSignaturesForAsset</code>:
+  <ul>
+  <li><code>params[]</code>: Type: object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='jsonrpc' type='string'>
+    </ResponseField>
+    <ResponseField name='result' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='total' type='integer'>
+        </ResponseField>
+        <ResponseField name='limit' type='integer'>
+        </ResponseField>
+        <ResponseField name='items' type='array'>
+          Array of [signature, action] pairs.
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='array'>
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='oneOf'>
+                  Transaction signature.
+                  <Expandable title='variants'>
+                    <ResponseField name='variant1' type='string'>
+                      Transaction signature.
+                    </ResponseField>
+                    <ResponseField name='variant2' type='string'>
+                      Action type (e.g., Transfer, MintToCollectionV1).
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='id' type='string'>
+      Request ID returned.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getSignaturesForAsset",
+    "params": [
+      {
+        "id": "FNt6A9Mfnqbwc1tY7uwAguKQ1JcpBrxmhczDgbdJy5AC",
+        "page": 1,
+        "limit": 100,
+        "before": "string",
+        "after": "string"
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

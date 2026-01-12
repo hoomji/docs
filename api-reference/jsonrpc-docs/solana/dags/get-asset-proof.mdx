@@ -1,6 +1,81 @@
 ---
 title: 'getAssetProof'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getAssetProof' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"id":"Bu1DEKeawy7txbnCEJE4BU3BKLXaNAKCYcHR4XhndGss"}} placeholder='{"id":"Bu1DEKeawy7txbnCEJE4BU3BKLXaNAKCYcHR4XhndGss"}'>
+  Request parameters for retrieving asset proof.
+  
+  Parameters for <code>getAssetProof</code>:
+  <ul>
+  <li><code>params.id</code>: The ID of the compressed asset.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Merkle proof data for the given asset.
+  <Expandable title='properties'>
+    <ResponseField name='root' type='string'>
+      Root hash of the Merkle tree.
+    </ResponseField>
+    <ResponseField name='proof' type='array'>
+      Merkle proof consisting of a list of sibling hashes.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='array'>
+          Each proof level as a list of sibling hashes.
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='node_index' type='integer'>
+      The index of the node in the tree.
+    </ResponseField>
+    <ResponseField name='leaf' type='string'>
+      The Merkle leaf corresponding to the asset.
+    </ResponseField>
+    <ResponseField name='tree_id' type='string'>
+      The tree ID where the asset resides.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getAssetProof",
+    "params": {
+      "id": "Bu1DEKeawy7txbnCEJE4BU3BKLXaNAKCYcHR4XhndGss"
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

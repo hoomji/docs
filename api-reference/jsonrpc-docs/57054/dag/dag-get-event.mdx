@@ -1,6 +1,94 @@
 ---
 title: 'dag_getEvent'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='57054' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='dag_getEvent' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x000170430000080cd8f7b782afe5d1f63be6cd73631598313200777062ba7383"]} placeholder='["0x000170430000080cd8f7b782afe5d1f63be6cd73631598313200777062ba7383"]' required>
+  Positional parameters for <code>dag_getEvent</code>:
+  <ul>
+  <li><code>params[0]</code>: The full event ID (hex-encoded 32 bytes) or short event ID.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Returns an event object, or null if not found.
+  <Expandable title='properties'>
+    <ResponseField name='version' type='integer'>
+    </ResponseField>
+    <ResponseField name='epoch' type='integer'>
+    </ResponseField>
+    <ResponseField name='seq' type='integer'>
+    </ResponseField>
+    <ResponseField name='hash' type='string'>
+      Hex-encoded 32-byte hash
+    </ResponseField>
+    <ResponseField name='frame' type='integer'>
+    </ResponseField>
+    <ResponseField name='creator' type='string'>
+      Address of the event creator
+    </ResponseField>
+    <ResponseField name='prevEpochHash' type='string'>
+    </ResponseField>
+    <ResponseField name='parents' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+          Parent event ID
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='gasPowerLeft' type='string'>
+    </ResponseField>
+    <ResponseField name='gasPowerUsed' type='string'>
+    </ResponseField>
+    <ResponseField name='lamport' type='integer'>
+    </ResponseField>
+    <ResponseField name='creationTime' type='string'>
+      UnixNano timestamp
+    </ResponseField>
+    <ResponseField name='medianTime' type='string'>
+      UnixNano timestamp
+    </ResponseField>
+    <ResponseField name='extraData' type='string'>
+      Optional extra data
+    </ResponseField>
+    <ResponseField name='transactionsRoot' type='string'>
+      Hash of transaction trie root
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=57054 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "dag_getEvent",
+    "params": [
+      "0x000170430000080cd8f7b782afe5d1f63be6cd73631598313200777062ba7383"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

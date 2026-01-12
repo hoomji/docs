@@ -1,6 +1,44 @@
 ---
 title: 'state_subscribeRuntimeVersion'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='polkadot' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='state_subscribeRuntimeVersion' required>
+    JSON-RPC method name.
+  </ParamField>
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=polkadot \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "state_subscribeRuntimeVersion",
+    "params": []
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

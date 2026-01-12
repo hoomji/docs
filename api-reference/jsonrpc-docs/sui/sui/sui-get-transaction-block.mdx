@@ -1,6 +1,113 @@
 ---
 title: 'sui_getTransactionBlock'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_getTransactionBlock' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["Hay2tj3GcDYcE3AMHrej5WDsHGPVAYsegcubixLUvXUF",{}]} placeholder='["Hay2tj3GcDYcE3AMHrej5WDsHGPVAYsegcubixLUvXUF",{}]' required>
+  Parameters to fetch transaction block information.
+  
+  Positional parameters for <code>sui_getTransactionBlock</code>:
+  <ul>
+  <li><code>params[0]</code>: Transaction digest (base58 string).</li>
+  <li><code>params[1]</code>: Optional transaction block response configuration options.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Detailed transaction block response object.
+  <Expandable title='properties'>
+    <ResponseField name='digest' type='string'>
+      The transaction digest identifier.
+    </ResponseField>
+    <ResponseField name='checkpoint' type='string'>
+      Checkpoint number this transaction was finalized in.
+    </ResponseField>
+    <ResponseField name='timestampMs' type='string'>
+      Timestamp in milliseconds when the transaction was processed.
+    </ResponseField>
+    <ResponseField name='confirmedLocalExecution' type='boolean'>
+      Whether this node confirmed execution locally.
+    </ResponseField>
+    <ResponseField name='transaction' type='object'>
+      Transaction input data (if showInput = true).
+    </ResponseField>
+    <ResponseField name='rawTransaction' type='string'>
+      BCS-encoded transaction input (if showRawInput = true).
+    </ResponseField>
+    <ResponseField name='effects' type='object'>
+      Transaction execution effects (if showEffects = true).
+    </ResponseField>
+    <ResponseField name='objectChanges' type='array'>
+      List of object state changes caused by the transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='balanceChanges' type='array'>
+      List of coin balance changes (if showBalanceChanges = true).
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='events' type='array'>
+      List of emitted events (if showEvents = true).
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='rawEffects' type='array'>
+      Raw BCS representation of the effects.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='errors' type='array'>
+      List of any execution errors.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getTransactionBlock",
+    "params": [
+      "Hay2tj3GcDYcE3AMHrej5WDsHGPVAYsegcubixLUvXUF",
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

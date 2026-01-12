@@ -1,6 +1,57 @@
 ---
 title: 'trace_get'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='146' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='trace_get' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",["0x0"]]} placeholder='["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",["0x0"]]' required>
+  Parameters for method trace_get: [transactionHash, index].
+  
+  Positional parameters for <code>trace_get</code>:
+  <ul>
+  <li><code>params[0]</code>: 32 Bytes - Hash of the transaction.</li>
+  <li><code>params[1]</code>: Array - Index positions of the traces.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Object - Trace object
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=146 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "trace_get",
+    "params": [
+      "0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",
+      [
+        "0x0"
+      ]
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

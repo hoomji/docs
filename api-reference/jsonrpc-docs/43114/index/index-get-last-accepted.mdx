@@ -1,6 +1,72 @@
 ---
 title: 'index.getLastAccepted'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='43114' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='index.getLastAccepted' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"encoding":"hex"}} placeholder='{"encoding":"hex"}' required>
+  Encoding configuration for the returned data.
+  
+  Parameters for <code>index.getLastAccepted</code>:
+  <ul>
+  <li><code>params.encoding</code>: Specifies the encoding format. Must be "hex".</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Details of the last accepted container on the chain.
+  <Expandable title='properties'>
+    <ResponseField name='id' type='string'>
+      The container ID of the last accepted container.
+    </ResponseField>
+    <ResponseField name='bytes' type='string'>
+      Hex-encoded byte representation of the container.
+    </ResponseField>
+    <ResponseField name='timestamp' type='string'>
+      Unix timestamp when the container was accepted.
+    </ResponseField>
+    <ResponseField name='encoding' type='string'>
+      Encoding format used in `bytes` (always "hex").
+    </ResponseField>
+    <ResponseField name='index' type='string'>
+      The sequential index of this container.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43114 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "index.getLastAccepted",
+    "params": {
+      "encoding": "hex"
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

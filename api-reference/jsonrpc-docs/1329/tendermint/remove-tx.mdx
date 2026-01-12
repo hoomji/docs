@@ -1,6 +1,51 @@
 ---
 title: 'remove_tx'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1329' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='remove_tx' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x7d7e3b8b2a0b7266b25559c9ff6224b6c5b8f6e9d7b3f7efb690e28e46ff13c3"]} placeholder='["0x7d7e3b8b2a0b7266b25559c9ff6224b6c5b8f6e9d7b3f7efb690e28e46ff13c3"]' required>
+  Positional parameters for <code>remove_tx</code>:
+  <ul>
+  <li><code>params[0]</code>: The hash or unique identifier of the transaction to be removed</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='boolean'>
+  Returns true if the transaction was successfully removed; false otherwise
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1329 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "remove_tx",
+    "params": [
+      "0x7d7e3b8b2a0b7266b25559c9ff6224b6c5b8f6e9d7b3f7efb690e28e46ff13c3"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

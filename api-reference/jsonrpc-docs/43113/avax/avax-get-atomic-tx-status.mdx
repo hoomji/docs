@@ -1,6 +1,57 @@
 ---
 title: 'avax.getAtomicTxStatus'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='43113' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='avax.getAtomicTxStatus' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{}} required>
+  Parameters for <code>avax.getAtomicTxStatus</code>:
+  <ul>
+  <li><code>params.txID</code>: The transaction ID (in CB58 format).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='status' type='string'>
+      The status of the atomic transaction.
+    </ResponseField>
+    <ResponseField name='blockHeight' type='string'>
+      The block height in which the transaction was accepted. Only present if status is "Accepted".
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43113 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "avax.getAtomicTxStatus",
+    "params": {}
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

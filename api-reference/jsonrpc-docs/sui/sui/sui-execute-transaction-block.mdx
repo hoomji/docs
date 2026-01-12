@@ -1,6 +1,174 @@
 ---
 title: 'sui_executeTransactionBlock'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_executeTransactionBlock' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["AAACACBqEB6aOvXIBwES+Ahkizbvv43uihqC3kbZUE6WoRCKFwEAjvdvVs...",[],{},"WaitForEffectsCert"]} placeholder='["AAACACBqEB6aOvXIBwES+Ahkizbvv43uihqC3kbZUE6WoRCKFwEAjvdvVs...",[],{},"WaitForEffectsCert"]' required>
+  Execute a signed transaction and optionally wait for effects or local execution.
+  
+  Positional parameters for <code>sui_executeTransactionBlock</code>:
+  <ul>
+  <li><code>params[0]</code>: Base64-encoded BCS serialized transaction data (without type tag).</li>
+  <li><code>params[1]</code>: Array of base64-encoded signatures.</li>
+  <li><code>params[2]</code>: Optional transaction response options.</li>
+  <li><code>params[3]</code>: Execution mode indicating how long to wait for confirmation.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Result of executing a transaction block.
+  <Expandable title='properties'>
+    <ResponseField name='digest' type='string'>
+      The transaction digest.
+    </ResponseField>
+    <ResponseField name='transaction' type='object'>
+      Transaction input data.
+      <Expandable title='properties'>
+        <ResponseField name='data' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='messageVersion' type='string'>
+            </ResponseField>
+            <ResponseField name='transaction' type='object'>
+            </ResponseField>
+            <ResponseField name='sender' type='string'>
+            </ResponseField>
+            <ResponseField name='gasData' type='object'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='txSignatures' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='rawTransaction' type='string'>
+      Raw BCS encoded transaction data.
+    </ResponseField>
+    <ResponseField name='effects' type='object'>
+      Effects of the executed transaction.
+      <Expandable title='properties'>
+        <ResponseField name='messageVersion' type='string'>
+        </ResponseField>
+        <ResponseField name='status' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='status' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='executedEpoch' type='string'>
+        </ResponseField>
+        <ResponseField name='gasUsed' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='computationCost' type='string'>
+            </ResponseField>
+            <ResponseField name='storageCost' type='string'>
+            </ResponseField>
+            <ResponseField name='storageRebate' type='string'>
+            </ResponseField>
+            <ResponseField name='nonRefundableStorageFee' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='transactionDigest' type='string'>
+        </ResponseField>
+        <ResponseField name='mutated' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='owner' type='object'>
+                </ResponseField>
+                <ResponseField name='reference' type='object'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='gasObject' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='owner' type='object'>
+            </ResponseField>
+            <ResponseField name='reference' type='object'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='eventsDigest' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='confirmedLocalExecution' type='boolean'>
+    </ResponseField>
+    <ResponseField name='checkpoint' type='string'>
+    </ResponseField>
+    <ResponseField name='balanceChanges' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='objectChanges' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='events' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='errors' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='rawEffects' type='string'>
+    </ResponseField>
+    <ResponseField name='timestampMs' type='string'>
+      Time in milliseconds when the transaction was included.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_executeTransactionBlock",
+    "params": [
+      "AAACACBqEB6aOvXIBwES+Ahkizbvv43uihqC3kbZUE6WoRCKFwEAjvdvVs...",
+      [],
+      {},
+      "WaitForEffectsCert"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

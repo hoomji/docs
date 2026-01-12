@@ -1,6 +1,142 @@
 ---
 title: 'starknet_getBlockWithTxHashes'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='starknet-sepolia' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='starknet_getBlockWithTxHashes' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"block_id":{"block_hash":"0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"}}} placeholder='{"block_id":{"block_hash":"0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"}}' required>
+  Parameters for starknet_getBlockWithTxHashes: [block_id].
+  
+  Parameters for <code>starknet_getBlockWithTxHashes</code>:
+  <ul>
+  <li><code>params.block_id</code>: BlockID object containing hash and number.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='oneOf'>
+  A block object or pending block object containing:
+  <Expandable title='variants'>
+    <ResponseField name='variant1' type='object'>
+      Pending block object containing only a subset of fields.
+      <Expandable title='properties'>
+        <ResponseField name='status' type='string'>
+          The status of the block.
+        </ResponseField>
+        <ResponseField name='parent_hash' type='string'>
+          The hash of this block's parent.
+        </ResponseField>
+        <ResponseField name='timestamp' type='string'>
+          The time at which the block was created.
+        </ResponseField>
+        <ResponseField name='sequencer_address' type='string'>
+          The Starknet identity of the sequencer submitting this block.
+        </ResponseField>
+        <ResponseField name='l1_gas_price' type='object'>
+          The price of L1 gas in the block.
+          <Expandable title='properties'>
+            <ResponseField name='price_in_fri' type='string'>
+              Gas price denominated in fri.
+            </ResponseField>
+            <ResponseField name='price_in_wei' type='string'>
+              Gas price denominated in wei.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='starknet_version' type='string'>
+          Version of the current Starknet protocol.
+        </ResponseField>
+        <ResponseField name='transactions' type='array'>
+          Array of transaction hashes included in this block.
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='variant2' type='object'>
+      Confirmed block object with full block details.
+      <Expandable title='properties'>
+        <ResponseField name='status' type='string'>
+          The status of the block.
+        </ResponseField>
+        <ResponseField name='block_hash' type='string'>
+          The block hash.
+        </ResponseField>
+        <ResponseField name='parent_hash' type='string'>
+          The hash of this block's parent.
+        </ResponseField>
+        <ResponseField name='block_number' type='string'>
+          The block number.
+        </ResponseField>
+        <ResponseField name='new_root' type='string'>
+          The new global state root.
+        </ResponseField>
+        <ResponseField name='timestamp' type='string'>
+          The time at which the block was created.
+        </ResponseField>
+        <ResponseField name='sequencer_address' type='string'>
+          The Starknet identity of the sequencer submitting this block.
+        </ResponseField>
+        <ResponseField name='l1_gas_price' type='object'>
+          The price of L1 gas in the block.
+          <Expandable title='properties'>
+            <ResponseField name='price_in_fri' type='string'>
+              Gas price denominated in fri.
+            </ResponseField>
+            <ResponseField name='price_in_wei' type='string'>
+              Gas price denominated in wei.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='starknet_version' type='string'>
+          Version of the current Starknet protocol.
+        </ResponseField>
+        <ResponseField name='transactions' type='array'>
+          Array of transaction hashes included in this block.
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet-sepolia \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getBlockWithTxHashes",
+    "params": {
+      "block_id": {
+        "block_hash": "0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"
+      }
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,74 @@
 ---
 title: 'ots_getInternalOperations'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='ots_getInternalOperations' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x9e63085271890a141297039b3b711913699f1ee4db1acb667ad7ce304772036b"]} placeholder='["0x9e63085271890a141297039b3b711913699f1ee4db1acb667ad7ce304772036b"]' required>
+  The parameters for the method ots_getInternalOperations: [txHash].
+  
+  Positional parameters for <code>ots_getInternalOperations</code>:
+  <ul>
+  <li><code>params[]</code>: 32 Bytes - Hash of the transaction.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of operations sorted by their occurrence inside the transaction.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      Represents an individual ETH operation within a transaction.
+      <Expandable title='properties'>
+        <ResponseField name='type' type='integer'>
+          Operation type: 0 = transfer, 1 = self-destruct, 2 = create, 3 = create2.
+        </ResponseField>
+        <ResponseField name='from' type='string'>
+          Sender address: ETH sender, contract creator, or contract being self-destructed.
+        </ResponseField>
+        <ResponseField name='to' type='string'>
+          Receiver address: ETH recipient, newly created contract address, or target of a self-destruct.
+        </ResponseField>
+        <ResponseField name='value' type='string'>
+          Amount of ETH transferred, in hexadecimal Wei.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "ots_getInternalOperations",
+    "params": [
+      "0x9e63085271890a141297039b3b711913699f1ee4db1acb667ad7ce304772036b"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

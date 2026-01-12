@@ -1,6 +1,55 @@
 ---
 title: 'eth_submitHashrate'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='2810' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='eth_submitHashrate' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x0000000000000000000000000000000000000000000000000000000000500000","0x59daa26581d0acd1fce254fb7e85952f4c09d0915afd33d3886cd914bc7d283c"]} placeholder='["0x0000000000000000000000000000000000000000000000000000000000500000","0x59daa26581d0acd1fce254fb7e85952f4c09d0915afd33d3886cd914bc7d283c"]' required>
+  Parameters for eth_submitHashrate: [hashrate, id].
+  
+  Positional parameters for <code>eth_submitHashrate</code>:
+  <ul>
+  <li><code>params[0]</code>: Data - a hexadecimal string representation (32 bytes) of the hash rate.</li>
+  <li><code>params[1]</code>: Data - A random hexadecimal(32 bytes) ID identifying the client.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='boolean'>
+  Boolean - Returns true if submitting hash rate was successful. Example: <code>true</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2810 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_submitHashrate",
+    "params": [
+      "0x0000000000000000000000000000000000000000000000000000000000500000",
+      "0x59daa26581d0acd1fce254fb7e85952f4c09d0915afd33d3886cd914bc7d283c"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

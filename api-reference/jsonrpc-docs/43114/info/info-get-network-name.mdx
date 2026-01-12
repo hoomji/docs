@@ -1,6 +1,51 @@
 ---
 title: 'info.getNetworkName'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='43114' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='info.getNetworkName' required>
+    JSON-RPC method name.
+  </ParamField>
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Returns the network name string.
+  <Expandable title='properties'>
+    <ResponseField name='networkName' type='string'>
+      The name of the network.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43114 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "info.getNetworkName",
+    "params": []
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

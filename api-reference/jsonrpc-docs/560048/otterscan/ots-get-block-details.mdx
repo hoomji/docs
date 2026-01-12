@@ -1,6 +1,127 @@
 ---
 title: 'ots_getBlockDetails'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='560048' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='ots_getBlockDetails' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x1"]} placeholder='["0x1"]' required>
+  The parameters for ots_getBlockDetails: [blockNumber].
+  
+  Positional parameters for <code>ots_getBlockDetails</code>:
+  <ul>
+  <li><code>params[0]</code>: Type: number.</li>
+  <li><code>params[1]</code>: Type: string.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Modified block object with additional fields and stripped transaction list.
+  <Expandable title='properties'>
+    <ResponseField name='block' type='object'>
+      Block data (similar to eth_getBlockByNumber/Hash but modified).
+      <Expandable title='properties'>
+        <ResponseField name='number' type='string'>
+          Block number (hex quantity) or null if pending.
+        </ResponseField>
+        <ResponseField name='hash' type='string'>
+          Block hash or null if pending.
+        </ResponseField>
+        <ResponseField name='parentHash' type='string'>
+        </ResponseField>
+        <ResponseField name='nonce' type='string'>
+        </ResponseField>
+        <ResponseField name='sha3Uncles' type='string'>
+        </ResponseField>
+        <ResponseField name='logsBloom' type='string'>
+          Always null in this format to reduce bandwidth.
+        </ResponseField>
+        <ResponseField name='transactionsRoot' type='string'>
+        </ResponseField>
+        <ResponseField name='stateRoot' type='string'>
+        </ResponseField>
+        <ResponseField name='receiptsRoot' type='string'>
+        </ResponseField>
+        <ResponseField name='miner' type='string'>
+        </ResponseField>
+        <ResponseField name='difficulty' type='string'>
+        </ResponseField>
+        <ResponseField name='totalDifficulty' type='string'>
+        </ResponseField>
+        <ResponseField name='extraData' type='string'>
+        </ResponseField>
+        <ResponseField name='size' type='string'>
+        </ResponseField>
+        <ResponseField name='gasLimit' type='string'>
+        </ResponseField>
+        <ResponseField name='gasUsed' type='string'>
+        </ResponseField>
+        <ResponseField name='timestamp' type='string'>
+        </ResponseField>
+        <ResponseField name='uncles' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='baseFeePerGas' type='string'>
+          Base fee per gas (EIP-1559 blocks only).
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='transactionCount' type='string'>
+      Number of transactions in the block (as a hex quantity).
+    </ResponseField>
+    <ResponseField name='issuance' type='object'>
+      Issuance details for the block.
+      <Expandable title='properties'>
+        <ResponseField name='blockReward' type='string'>
+          Block reward issued to the miner.
+        </ResponseField>
+        <ResponseField name='uncleReward' type='string'>
+          Total uncle rewards.
+        </ResponseField>
+        <ResponseField name='issuance' type='string'>
+          Total ETH issued (blockReward + uncleReward).
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='totalFees' type='string'>
+      Total fees paid by senders in this block (includes base fee; not all fees go to miner).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=560048 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "ots_getBlockDetails",
+    "params": [
+      "0x1"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

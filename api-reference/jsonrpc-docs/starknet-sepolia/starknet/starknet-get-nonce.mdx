@@ -1,6 +1,57 @@
 ---
 title: 'starknet_getNonce'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='starknet-sepolia' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='starknet_getNonce' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"block_id":{"block_number":470207},"contract_address":"0x0555ec3ba8aea37915c4cf850b4f9d33e4a0a1caa0ad3953d725860e38fa6e17"}} placeholder='{"block_id":{"block_number":470207},"contract_address":"0x0555ec3ba8aea37915c4cf850b4f9d33e4a0a1caa0ad3953d725860e38fa6e17"}' required>
+  Parameters for starknet_getNonce: [block_id, contract_address].
+  
+  Parameters for <code>starknet_getNonce</code>:
+  <ul>
+  <li><code>params.block_id</code>: BlockID object containing hash and number.</li>
+  <li><code>params.contract_address</code>: The address of the request contract.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  The last nonce used for the requested contract. Example: <code>"0x1c"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet-sepolia \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getNonce",
+    "params": {
+      "block_id": {
+        "block_number": 470207
+      },
+      "contract_address": "0x0555ec3ba8aea37915c4cf850b4f9d33e4a0a1caa0ad3953d725860e38fa6e17"
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

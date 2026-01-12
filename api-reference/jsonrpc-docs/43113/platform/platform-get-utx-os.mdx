@@ -1,6 +1,79 @@
 ---
 title: 'platform.getUTXOs'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='43113' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='platform.getUTXOs' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{}} required>
+  Parameters for <code>platform.getUTXOs</code>:
+  <ul>
+  <li><code>params.addresses</code>: A list of addresses to fetch UTXOs for.</li>
+  <li><code>params.limit</code>: Maximum number of UTXOs to fetch (max: 1024).</li>
+  <li><code>params.startIndex</code>: Pagination start index.</li>
+  <li><code>params.sourceChain</code>: Source chain ID (e.g. "X" or "C") to retrieve atomic UTXOs.</li>
+  <li><code>params.encoding</code>: Encoding for the UTXOs (currently supports "hex").</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='numFetched' type='integer'>
+      The number of UTXOs returned.
+    </ResponseField>
+    <ResponseField name='utxos' type='array'>
+      List of encoded UTXOs.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='endIndex' type='object'>
+      Pagination continuation index.
+      <Expandable title='properties'>
+        <ResponseField name='address' type='string'>
+          Address to resume pagination from.
+        </ResponseField>
+        <ResponseField name='utxo' type='string'>
+          UTXO to resume pagination from.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='encoding' type='string'>
+      Encoding used for UTXOs.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43113 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "platform.getUTXOs",
+    "params": {}
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,112 @@
 ---
 title: 'starknet_getBlockWithReceipts'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='starknet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='starknet_getBlockWithReceipts' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[""]} placeholder='[""]'>
+  Parameters for starknet_getBlockWithReceipts: [block_id]
+  
+  Positional parameters for <code>starknet_getBlockWithReceipts</code>:
+  <ul>
+  <li><code>params[0]</code>: Block identifier, block hash or block number of block tag.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Detailed block information with full transactions and receipts
+  <Expandable title='properties'>
+    <ResponseField name='status' type='string'>
+      Status of the block
+    </ResponseField>
+    <ResponseField name='block_hash' type='string'>
+      Block hash
+    </ResponseField>
+    <ResponseField name='parent_hash' type='string'>
+      Parent block hash
+    </ResponseField>
+    <ResponseField name='block_number' type='string'>
+      Block number
+    </ResponseField>
+    <ResponseField name='new_root' type='string'>
+      New global state root
+    </ResponseField>
+    <ResponseField name='timestamp' type='integer'>
+      Block creation time in Unix timestamp
+    </ResponseField>
+    <ResponseField name='sequencer_address' type='string'>
+      Starknet sequencer address
+    </ResponseField>
+    <ResponseField name='l1_gas_price' type='object'>
+      L1 gas price details
+      <Expandable title='properties'>
+        <ResponseField name='price_in_fri' type='string'>
+          Gas price in fri
+        </ResponseField>
+        <ResponseField name='price_in_wei' type='string'>
+          Gas price in wei
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='l1_data_gas_price' type='object'>
+      L1 data gas price details
+      <Expandable title='properties'>
+        <ResponseField name='price_in_fri' type='string'>
+          Data gas price in fri
+        </ResponseField>
+        <ResponseField name='price_in_wei' type='string'>
+          Data gas price in wei
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='l1_da_mode' type='string'>
+      Data availability mode
+    </ResponseField>
+    <ResponseField name='starknet_version' type='string'>
+      Starknet protocol version
+    </ResponseField>
+    <ResponseField name='transactions' type='array'>
+      Array of transactions with receipts
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          Transaction object with receipts
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getBlockWithReceipts",
+    "params": [
+      ""
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

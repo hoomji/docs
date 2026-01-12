@@ -1,6 +1,68 @@
 ---
 title: 'getRecentPrioritizationFees'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getRecentPrioritizationFees' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[["CxELquR1gPP8wHe33gZ4QxqGB3sZ9RSwsJ2KshVewkFY"]]} placeholder='[["CxELquR1gPP8wHe33gZ4QxqGB3sZ9RSwsJ2KshVewkFY"]]'>
+  The parameters for method getRecentPrioritizationFees: [accountAddresses]
+  
+  Positional parameters for <code>getRecentPrioritizationFees</code>:
+  <ul>
+  <li><code>params[]</code>: Optional array of account addresses (up to 128), base-58 encoded strings. Determines fee based on locking all provided accounts as writable.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of prioritization fee objects from recent blocks.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      Prioritization fee information for a specific slot.
+      <Expandable title='properties'>
+        <ResponseField name='slot' type='integer'>
+          Slot in which the fee was observed.
+        </ResponseField>
+        <ResponseField name='prioritizationFee' type='integer'>
+          Per-compute-unit fee paid by at least one successfully landed transaction, in micro-lamports (0.000001 lamports).
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getRecentPrioritizationFees",
+    "params": [
+      [
+        "CxELquR1gPP8wHe33gZ4QxqGB3sZ9RSwsJ2KshVewkFY"
+      ]
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

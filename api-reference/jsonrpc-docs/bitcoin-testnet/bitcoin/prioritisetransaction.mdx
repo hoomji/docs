@@ -1,6 +1,57 @@
 ---
 title: 'prioritisetransaction'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin-testnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='prioritisetransaction' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["",0,0]} placeholder='["",0,0]' required>
+  Parameters: [txid, dummy, fee_delta].
+  
+  Positional parameters for <code>prioritisetransaction</code>:
+  <ul>
+  <li><code>params[0]</code>: 32 Bytes - hash of the transaction.</li>
+  <li><code>params[1]</code>: Unused parameter kept for compatibility (set to 0).</li>
+  <li><code>params[2]</code>: Fee delta in satoshis added to virtual priority.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='boolean'>
+  True if the transaction priority was adjusted. Example: <code>true</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "prioritisetransaction",
+    "params": [
+      "",
+      0,
+      0
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

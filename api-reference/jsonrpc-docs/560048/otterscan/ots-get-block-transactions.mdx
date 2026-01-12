@@ -1,6 +1,160 @@
 ---
 title: 'ots_getBlockTransactions'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='560048' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='ots_getBlockTransactions' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x1"]} placeholder='["0x1"]' required>
+  Parameters for ots_getBlockTransactions: [defaultBlock].
+  
+  Positional parameters for <code>ots_getBlockTransactions</code>:
+  <ul>
+  <li><code>params[0]</code>: Block identifier. Can be an integer block number or a string tag: "latest", "earliest", or "pending".</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Block object with full transactions and their receipts, optimized for pagination. Includes truncated input data and simplified receipts.
+  <Expandable title='properties'>
+    <ResponseField name='number' type='string'>
+      Block number (hex quantity).
+    </ResponseField>
+    <ResponseField name='hash' type='string'>
+      Hash of the block.
+    </ResponseField>
+    <ResponseField name='parentHash' type='string'>
+    </ResponseField>
+    <ResponseField name='nonce' type='string'>
+    </ResponseField>
+    <ResponseField name='sha3Uncles' type='string'>
+    </ResponseField>
+    <ResponseField name='logsBloom' type='string'>
+    </ResponseField>
+    <ResponseField name='transactionsRoot' type='string'>
+    </ResponseField>
+    <ResponseField name='stateRoot' type='string'>
+    </ResponseField>
+    <ResponseField name='receiptsRoot' type='string'>
+    </ResponseField>
+    <ResponseField name='miner' type='string'>
+    </ResponseField>
+    <ResponseField name='difficulty' type='string'>
+    </ResponseField>
+    <ResponseField name='totalDifficulty' type='string'>
+    </ResponseField>
+    <ResponseField name='extraData' type='string'>
+    </ResponseField>
+    <ResponseField name='size' type='string'>
+    </ResponseField>
+    <ResponseField name='gasLimit' type='string'>
+    </ResponseField>
+    <ResponseField name='gasUsed' type='string'>
+    </ResponseField>
+    <ResponseField name='timestamp' type='string'>
+    </ResponseField>
+    <ResponseField name='baseFeePerGas' type='string'>
+    </ResponseField>
+    <ResponseField name='transactions' type='array'>
+      List of transaction bodies with truncated input fields.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='hash' type='string'>
+            </ResponseField>
+            <ResponseField name='nonce' type='string'>
+            </ResponseField>
+            <ResponseField name='blockHash' type='string'>
+            </ResponseField>
+            <ResponseField name='blockNumber' type='string'>
+            </ResponseField>
+            <ResponseField name='transactionIndex' type='string'>
+            </ResponseField>
+            <ResponseField name='from' type='string'>
+            </ResponseField>
+            <ResponseField name='to' type='string'>
+            </ResponseField>
+            <ResponseField name='value' type='string'>
+            </ResponseField>
+            <ResponseField name='gas' type='string'>
+            </ResponseField>
+            <ResponseField name='gasPrice' type='string'>
+            </ResponseField>
+            <ResponseField name='input' type='string'>
+              Only the 4-byte method selector is included.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='receipts' type='array'>
+      List of simplified receipts matching the order of the transactions.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='transactionHash' type='string'>
+            </ResponseField>
+            <ResponseField name='transactionIndex' type='string'>
+            </ResponseField>
+            <ResponseField name='blockHash' type='string'>
+            </ResponseField>
+            <ResponseField name='blockNumber' type='string'>
+            </ResponseField>
+            <ResponseField name='from' type='string'>
+            </ResponseField>
+            <ResponseField name='to' type='string'>
+            </ResponseField>
+            <ResponseField name='cumulativeGasUsed' type='string'>
+            </ResponseField>
+            <ResponseField name='gasUsed' type='string'>
+            </ResponseField>
+            <ResponseField name='contractAddress' type='string'>
+            </ResponseField>
+            <ResponseField name='status' type='string'>
+            </ResponseField>
+            <ResponseField name='logs' type='string'>
+              Logs are omitted to save bandwidth.
+            </ResponseField>
+            <ResponseField name='logsBloom' type='string'>
+              LogsBloom is omitted to save bandwidth.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=560048 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "ots_getBlockTransactions",
+    "params": [
+      "0x1"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,123 @@
 ---
 title: 'trace_transaction'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='9746' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='trace_transaction' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3"]} placeholder='["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3"]'>
+  Parameters for method trace_transaction: [transactionHash].
+  
+  Positional parameters for <code>trace_transaction</code>:
+  <ul>
+  <li><code>params[]</code>: 32 Bytes - Hash of the transaction.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array - Traces of given transaction
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='array'>
+      Traces matching given filter.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='action' type='object'>
+              Details of the trace action.
+              <Expandable title='properties'>
+                <ResponseField name='callType' type='string'>
+                  Type of call (e.g., "call", "delegatecall", etc.).
+                </ResponseField>
+                <ResponseField name='from' type='string'>
+                  Address that initiated the action.
+                </ResponseField>
+                <ResponseField name='gas' type='string'>
+                  Gas provided for the action (hex string).
+                </ResponseField>
+                <ResponseField name='input' type='string'>
+                  Input data for the action (hex string).
+                </ResponseField>
+                <ResponseField name='to' type='string'>
+                  Recipient address (if applicable).
+                </ResponseField>
+                <ResponseField name='value' type='string'>
+                  Value transferred in Wei (hex string).
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='blockHash' type='string'>
+              Hash of the block in which this trace occurred.
+            </ResponseField>
+            <ResponseField name='blockNumber' type='integer'>
+              Block number in which this trace occurred.
+            </ResponseField>
+            <ResponseField name='result' type='object'>
+              Result of the trace action.
+              <Expandable title='properties'>
+                <ResponseField name='gasUsed' type='string'>
+                  Gas used during this action (hex string).
+                </ResponseField>
+                <ResponseField name='output' type='string'>
+                  Returned output data (hex string).
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='subtraces' type='integer'>
+              Number of nested trace steps inside this trace.
+            </ResponseField>
+            <ResponseField name='traceAddress' type='array'>
+              Path to this trace in the nested trace structure.
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='integer'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='transactionHash' type='string'>
+              Hash of the transaction this trace belongs to.
+            </ResponseField>
+            <ResponseField name='transactionPosition' type='integer'>
+              Index position of the transaction within the block.
+            </ResponseField>
+            <ResponseField name='type' type='string'>
+              Type of trace (e.g., "call", "create", "suicide").
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=9746 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "trace_transaction",
+    "params": [
+      "0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

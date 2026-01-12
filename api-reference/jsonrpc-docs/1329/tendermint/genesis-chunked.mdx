@@ -1,6 +1,60 @@
 ---
 title: 'genesis_chunked'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1329' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='genesis_chunked' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{}}>
+  Parameters for <code>genesis_chunked</code>:
+  <ul>
+  <li><code>params.chunk</code>: Sequence number of the chunk to download.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='chunk' type='integer'>
+      Index of this chunk
+    </ResponseField>
+    <ResponseField name='total' type='integer'>
+      Total number of chunks available
+    </ResponseField>
+    <ResponseField name='data' type='string'>
+      Base64-encoded JSON chunk data
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1329 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "genesis_chunked",
+    "params": {}
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

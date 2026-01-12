@@ -1,6 +1,104 @@
 ---
 title: 'suix_getOwnedObjects'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='suix_getOwnedObjects' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827",{"filter":{"MatchAll":[{"StructType":"0x2::coin::Coin<0x2::sui::SUI>"},{"AddressOwner":"0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827"},{"Version":"13488"}]},"options":{"showType":true,"showOwner":true,"showPreviousTransaction":true,"showDisplay":false,"showContent":false,"showBcs":false,"showStorageRebate":false}},"0x0cd4bb4d4f520fe9bbf0cf1cebe3f2549412826c3c9261bff9786c240123749f",3]} placeholder='["0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827",{"filter":{"MatchAll":[{"StructType":"0x2::coin::Coin<0x2::sui::SUI>"},{"AddressOwner":"0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827"},{"Version":"13488"}]},"options":{"showType":true,"showOwner":true,"showPreviousTransaction":true,"showDisplay":false,"showContent":false,"showBcs":false,"showStorageRebate":false}},"0x0cd4bb4d4f520fe9bbf0cf1cebe3f2549412826c3c9261bff9786c240123749f",3]' required>
+  Parameters for suix_getOwnedObjects: [address, query, cursor, limit]. Only the address is required; query, cursor, and limit are optional.
+  
+  Positional parameters for <code>suix_getOwnedObjects</code>:
+  <ul>
+  <li><code>params[0]</code>: The owner's Sui address.</li>
+  <li><code>params[1]</code>: Optional objects query criteria.</li>
+  <li><code>params[2]</code>: Optional paging cursor. If provided, the query will start from the next item after the specified cursor. If not provided, paging starts from the first item.</li>
+  <li><code>params[3]</code>: Maximum number of items returned per page. Defaults to QUERY_MAX_RESULT_LIMIT if not specified.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Response object for suix_getOwnedObjects. Contains a page of SuiObjectResponse objects and pagination info.
+  <Expandable title='properties'>
+    <ResponseField name='data' type='array'>
+      An array of SuiObjectResponse objects.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          A Sui object response representing one owned object. This object may include various fields (e.g., objectId, owner, content, etc.).
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='hasNextPage' type='boolean'>
+      Indicates if there is a next page of results.
+    </ResponseField>
+    <ResponseField name='nextCursor' type='oneOf'>
+      Paging cursor for the next page. If null, there are no additional results.
+      <Expandable title='variants'>
+        <ResponseField name='variant1' type='string'>
+        </ResponseField>
+        <ResponseField name='variant2' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getOwnedObjects",
+    "params": [
+      "0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827",
+      {
+        "filter": {
+          "MatchAll": [
+            {
+              "StructType": "0x2::coin::Coin<0x2::sui::SUI>"
+            },
+            {
+              "AddressOwner": "0xdbc9abc01a87906b033a75750e741edb2df5ea5d55c96a611371d22799d26827"
+            },
+            {
+              "Version": "13488"
+            }
+          ]
+        },
+        "options": {
+          "showType": true,
+          "showOwner": true,
+          "showPreviousTransaction": true,
+          "showDisplay": false,
+          "showContent": false,
+          "showBcs": false,
+          "showStorageRebate": false
+        }
+      },
+      "0x0cd4bb4d4f520fe9bbf0cf1cebe3f2549412826c3c9261bff9786c240123749f",
+      3
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

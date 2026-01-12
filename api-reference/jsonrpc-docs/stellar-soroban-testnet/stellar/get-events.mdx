@@ -1,6 +1,72 @@
 ---
 title: 'getEvents'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='stellar-soroban-testnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getEvents' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"startLedger":"LEDGER_SEQUENCE","pagination":{"limit":100}}} placeholder='{"startLedger":"LEDGER_SEQUENCE","pagination":{"limit":100}}'>
+  Event filter and pagination options.
+  
+  Parameters for <code>getEvents</code>:
+  <ul>
+  <li><code>params.startLedger</code>: Inclusive starting ledger sequence to search from.</li>
+  <li><code>params.endLedger</code>: Exclusive ending ledger sequence to stop at.</li>
+  <li><code>params.contractIds</code>: Optional list of contract IDs to filter on.</li>
+  <li><code>params.topics</code>: Optional list of topic filters. Provider-specific matching may apply.</li>
+  <li><code>params.pagination</code>: Pagination controls.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Event page containing matched events and a paging cursor.
+  <Expandable title='properties'>
+    <ResponseField name='events' type='array'>
+      Matched events.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='cursor' type='string'>
+      Cursor to fetch the next page, or null if complete.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=stellar-soroban-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getEvents",
+    "params": {
+      "startLedger": "LEDGER_SEQUENCE",
+      "pagination": {
+        "limit": 100
+      }
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

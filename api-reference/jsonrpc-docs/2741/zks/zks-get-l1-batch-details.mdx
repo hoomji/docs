@@ -1,6 +1,93 @@
 ---
 title: 'zks_getL1BatchDetails'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='2741' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='zks_getL1BatchDetails' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[12345]} placeholder='[12345]' required>
+  Positional parameters for <code>zks_getL1BatchDetails</code>:
+  <ul>
+  <li><code>params[]</code>: The layer 1 batch number to query details for.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='baseSystemContractsHashes' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='bootloader' type='string'>
+        </ResponseField>
+        <ResponseField name='default_aa' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='commitTxHash' type='string'>
+    </ResponseField>
+    <ResponseField name='committedAt' type='string'>
+    </ResponseField>
+    <ResponseField name='executeTxHash' type='string'>
+    </ResponseField>
+    <ResponseField name='executedAt' type='string'>
+    </ResponseField>
+    <ResponseField name='l1BatchNumber' type='integer'>
+    </ResponseField>
+    <ResponseField name='l1GasPrice' type='integer'>
+    </ResponseField>
+    <ResponseField name='l1TxCount' type='integer'>
+    </ResponseField>
+    <ResponseField name='l2FairGasPrice' type='integer'>
+    </ResponseField>
+    <ResponseField name='l2TxCount' type='integer'>
+    </ResponseField>
+    <ResponseField name='number' type='integer'>
+    </ResponseField>
+    <ResponseField name='operatorAddress' type='string'>
+    </ResponseField>
+    <ResponseField name='proveTxHash' type='string'>
+    </ResponseField>
+    <ResponseField name='provenAt' type='string'>
+    </ResponseField>
+    <ResponseField name='rootHash' type='string'>
+    </ResponseField>
+    <ResponseField name='status' type='string'>
+    </ResponseField>
+    <ResponseField name='timestamp' type='integer'>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2741 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getL1BatchDetails",
+    "params": [
+      12345
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

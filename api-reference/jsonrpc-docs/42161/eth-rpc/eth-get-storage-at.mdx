@@ -1,6 +1,57 @@
 ---
 title: 'eth_getStorageAt'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='42161' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='eth_getStorageAt' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x407d73d8a49eeb85d32cf465507dd71d507100c1","0x0","0x2"]} placeholder='["0x407d73d8a49eeb85d32cf465507dd71d507100c1","0x0","0x2"]' required>
+  Parameters for eth_getStorageAt: [address, position, defaultBlock].
+  
+  Positional parameters for <code>eth_getStorageAt</code>:
+  <ul>
+  <li><code>params[0]</code>: The address.</li>
+  <li><code>params[1]</code>: Integer of the position in the storage.</li>
+  <li><code>params[2]</code>: Block identifier. Can be an integer block number or a string tag: "latest", "earliest", or "pending".</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  The value at this storage position. Example: <code>"0x0"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=42161 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getStorageAt",
+    "params": [
+      "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+      "0x0",
+      "0x2"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

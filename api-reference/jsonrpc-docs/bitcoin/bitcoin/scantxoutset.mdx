@@ -1,6 +1,55 @@
 ---
 title: 'scantxoutset'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='scantxoutset' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["",[]]} placeholder='["",[]]' required>
+  Parameters: [action, scanObjects].
+  
+  Positional parameters for <code>scantxoutset</code>:
+  <ul>
+  <li><code>params[0]</code>: Action (start, abort, status).</li>
+  <li><code>params[1]</code>: Descriptors or addresses to search for.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Scan status or results when complete.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "scantxoutset",
+    "params": [
+      "",
+      []
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

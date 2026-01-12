@@ -1,6 +1,60 @@
 ---
 title: 'debug_traceCall'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='300' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='debug_traceCall' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{"from":null,"to":"0x6b175474e89094c44da98b954eedeac495271d0f","data":"0x70a082310000000000000000000000006E0d01A76C3Cf4288372a29124A26D4353EE51BE"},"latest"]} placeholder='[{"from":null,"to":"0x6b175474e89094c44da98b954eedeac495271d0f","data":"0x70a082310000000000000000000000006E0d01A76C3Cf4288372a29124A26D4353EE51BE"},"latest"]' required>
+  Parameters for method debug_traceCall: [transactionObject, blockNrOrHash, traceConfig].
+  
+  Positional parameters for <code>debug_traceCall</code>:
+  <ul>
+  <li><code>params[0]</code>: Legacy transaction (pre-EIP-2718).</li>
+  <li><code>params[1]</code>: The block number or hash.</li>
+  <li><code>params[2]</code>: Optional configuration object passed to tracing RPC methods.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The tracer object.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=300 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "debug_traceCall",
+    "params": [
+      {
+        "from": null,
+        "to": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "data": "0x70a082310000000000000000000000006E0d01A76C3Cf4288372a29124A26D4353EE51BE"
+      },
+      "latest"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

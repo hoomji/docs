@@ -1,6 +1,66 @@
 ---
 title: 'getLargestAccounts'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getLargestAccounts' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{}]} placeholder='[{}]'>
+  Parameters for method getLargestAccounts: [config]
+  
+  Positional parameters for <code>getLargestAccounts</code>:
+  <ul>
+  <li><code>params[]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  An array of account balance objects.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      An object containing an address and its lamport balance.
+      <Expandable title='properties'>
+        <ResponseField name='address' type='string'>
+          Base-58 encoded address of the account.
+        </ResponseField>
+        <ResponseField name='lamports' type='integer'>
+          Number of lamports in the account.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getLargestAccounts",
+    "params": [
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

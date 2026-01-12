@@ -1,6 +1,57 @@
 ---
 title: 'createmultisig'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='createmultisig' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[0,[],""]} placeholder='[0,[],""]' required>
+  Parameters: [nrequired, keys, addressType?].
+  
+  Positional parameters for <code>createmultisig</code>:
+  <ul>
+  <li><code>params[0]</code>: Number of required signatures.</li>
+  <li><code>params[1]</code>: Public keys or descriptors.</li>
+  <li><code>params[2]</code>: Optional address type (legacy, p2sh-segwit, bech32).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Multisig address information including address and redeem script.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "createmultisig",
+    "params": [
+      0,
+      [],
+      ""
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

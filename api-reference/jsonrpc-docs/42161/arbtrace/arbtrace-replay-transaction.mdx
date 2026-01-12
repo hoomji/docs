@@ -1,6 +1,120 @@
 ---
 title: 'arbtrace_replayTransaction'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='42161' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='arbtrace_replayTransaction' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xa3a97b9d1de234efb2ca9374c5918f9a7fc2adff4102aff686df01b6a3dc74f7",["trace"]]} placeholder='["0xa3a97b9d1de234efb2ca9374c5918f9a7fc2adff4102aff686df01b6a3dc74f7",["trace"]]' required>
+  An array containing the transaction hash and a list of trace types to include.
+  
+  Positional parameters for <code>arbtrace_replayTransaction</code>:
+  <ul>
+  <li><code>params[0]</code>: Transaction hash (32-byte hex).</li>
+  <li><code>params[1]</code>: List of trace types to include in the output.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Execution trace details for the replayed transaction.
+  <Expandable title='properties'>
+    <ResponseField name='output' type='string'>
+      Output returned by the contract call (hex).
+    </ResponseField>
+    <ResponseField name='trace' type='array'>
+      Call-level execution trace of the transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='action' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='from' type='string'>
+                </ResponseField>
+                <ResponseField name='to' type='string'>
+                </ResponseField>
+                <ResponseField name='callType' type='string'>
+                </ResponseField>
+                <ResponseField name='gas' type='string'>
+                </ResponseField>
+                <ResponseField name='input' type='string'>
+                </ResponseField>
+                <ResponseField name='value' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='result' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='gasUsed' type='string'>
+                </ResponseField>
+                <ResponseField name='output' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='subtraces' type='integer'>
+            </ResponseField>
+            <ResponseField name='traceAddress' type='array'>
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='integer'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='transactionHash' type='string'>
+            </ResponseField>
+            <ResponseField name='type' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='vmTrace' type='object'>
+      Virtual machine execution trace (if requested).
+    </ResponseField>
+    <ResponseField name='stateDiff' type='object'>
+      State differences after execution (if requested).
+    </ResponseField>
+    <ResponseField name='destroyedContracts' type='array'>
+      List of contracts self-destructed during execution.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=42161 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "arbtrace_replayTransaction",
+    "params": [
+      "0xa3a97b9d1de234efb2ca9374c5918f9a7fc2adff4102aff686df01b6a3dc74f7",
+      [
+        "trace"
+      ]
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

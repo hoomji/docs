@@ -1,6 +1,173 @@
 ---
 title: 'platform.getTx'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='43113' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='platform.getTx' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{}} required>
+  Parameters for <code>platform.getTx</code>:
+  <ul>
+  <li><code>params.txID</code>: The ID of the transaction to retrieve.</li>
+  <li><code>params.encoding</code>: The encoding format for the returned transaction. Defaults to hex.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='tx' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='unsignedTx' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='networkID' type='integer'>
+            </ResponseField>
+            <ResponseField name='blockchainID' type='string'>
+            </ResponseField>
+            <ResponseField name='outputs' type='array'>
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='object'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='inputs' type='array'>
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='txID' type='string'>
+                    </ResponseField>
+                    <ResponseField name='outputIndex' type='integer'>
+                    </ResponseField>
+                    <ResponseField name='assetID' type='string'>
+                    </ResponseField>
+                    <ResponseField name='fxID' type='string'>
+                    </ResponseField>
+                    <ResponseField name='input' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='amount' type='integer'>
+                        </ResponseField>
+                        <ResponseField name='signatureIndices' type='array'>
+                          <Expandable title='items'>
+                            <ResponseField name='items[]' type='integer'>
+                            </ResponseField>
+                          </Expandable>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='memo' type='string'>
+            </ResponseField>
+            <ResponseField name='validator' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='nodeID' type='string'>
+                </ResponseField>
+                <ResponseField name='start' type='integer'>
+                </ResponseField>
+                <ResponseField name='end' type='integer'>
+                </ResponseField>
+                <ResponseField name='weight' type='integer'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='stake' type='array'>
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='assetID' type='string'>
+                    </ResponseField>
+                    <ResponseField name='fxID' type='string'>
+                    </ResponseField>
+                    <ResponseField name='output' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='addresses' type='array'>
+                          <Expandable title='items'>
+                            <ResponseField name='items[]' type='string'>
+                            </ResponseField>
+                          </Expandable>
+                        </ResponseField>
+                        <ResponseField name='amount' type='integer'>
+                        </ResponseField>
+                        <ResponseField name='locktime' type='integer'>
+                        </ResponseField>
+                        <ResponseField name='threshold' type='integer'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='rewardsOwner' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='addresses' type='array'>
+                  <Expandable title='items'>
+                    <ResponseField name='items[]' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+                <ResponseField name='locktime' type='integer'>
+                </ResponseField>
+                <ResponseField name='threshold' type='integer'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='credentials' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='signatures' type='array'>
+                  <Expandable title='items'>
+                    <ResponseField name='items[]' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='id' type='string'>
+          The transaction ID
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='encoding' type='string'>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43113 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "platform.getTx",
+    "params": {}
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

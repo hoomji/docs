@@ -1,6 +1,108 @@
 ---
 title: 'check_tx'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1329' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='check_tx' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{}} required>
+  Parameters for <code>check_tx</code>:
+  <ul>
+  <li><code>params.tx</code>: The transaction to check (encoded according to Tendermint’s requirements)</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='jsonrpc' type='string'>
+    </ResponseField>
+    <ResponseField name='id' type='integer'>
+    </ResponseField>
+    <ResponseField name='result' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='code' type='string'>
+          Status code (0 = success)
+        </ResponseField>
+        <ResponseField name='data' type='string'>
+          Arbitrary application data (base64)
+        </ResponseField>
+        <ResponseField name='log' type='string'>
+          Human-readable log message
+        </ResponseField>
+        <ResponseField name='info' type='string'>
+          Additional info from the app
+        </ResponseField>
+        <ResponseField name='gas_wanted' type='string'>
+          Requested gas units
+        </ResponseField>
+        <ResponseField name='gas_used' type='string'>
+          Gas units actually used
+        </ResponseField>
+        <ResponseField name='events' type='array'>
+          Events emitted during CheckTx
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='type' type='string'>
+                </ResponseField>
+                <ResponseField name='attributes' type='array'>
+                  <Expandable title='items'>
+                    <ResponseField name='items[]' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='key' type='string'>
+                        </ResponseField>
+                        <ResponseField name='value' type='string'>
+                        </ResponseField>
+                        <ResponseField name='index' type='boolean'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='codespace' type='string'>
+          Application namespace for codes
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='error' type='string'>
+      Error message if the request failed
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1329 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "check_tx",
+    "params": {}
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

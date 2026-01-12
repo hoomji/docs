@@ -1,6 +1,93 @@
 ---
 title: 'sui_multiGetObjects'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_multiGetObjects' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[[],{}]} placeholder='[[],{}]' required>
+  Fetch metadata for multiple Sui objects by ID.
+  
+  Positional parameters for <code>sui_multiGetObjects</code>:
+  <ul>
+  <li><code>params[0]</code>: Array of Object IDs to retrieve.</li>
+  <li><code>params[1]</code>: Optional flags to customize object data returned.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of SuiObjectResponse items, each representing one object.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='data' type='object'>
+          Detailed object data if available.
+          <Expandable title='properties'>
+            <ResponseField name='objectId' type='string'>
+              Unique identifier of the object.
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+              Version number of the object.
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+              Object digest (hash).
+            </ResponseField>
+            <ResponseField name='type' type='string'>
+              Fully qualified type of the object.
+            </ResponseField>
+            <ResponseField name='owner' type='object'>
+              Ownership information.
+            </ResponseField>
+            <ResponseField name='previousTransaction' type='string'>
+              Transaction digest that last mutated the object.
+            </ResponseField>
+            <ResponseField name='storageRebate' type='string'>
+              Amount of SUI that can be refunded if object is deleted.
+            </ResponseField>
+            <ResponseField name='content' type='object'>
+              Deserialized or raw content of the object.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='error' type='object'>
+          Error encountered while fetching this object.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_multiGetObjects",
+    "params": [
+      [],
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

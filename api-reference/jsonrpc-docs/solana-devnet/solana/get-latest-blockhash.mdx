@@ -1,6 +1,76 @@
 ---
 title: 'getLatestBlockhash'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getLatestBlockhash' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{"commitment":"processed"}]} placeholder='[{"commitment":"processed"}]'>
+  Parameters for method getLatestBlockhash: [config]
+  
+  Positional parameters for <code>getLatestBlockhash</code>:
+  <ul>
+  <li><code>params[]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  RPC response object containing blockhash info in the value field.
+  <Expandable title='properties'>
+    <ResponseField name='context' type='object'>
+      Context information including slot.
+      <Expandable title='properties'>
+        <ResponseField name='slot' type='integer'>
+          Slot at which the blockhash was queried.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='value' type='object'>
+      Blockhash information.
+      <Expandable title='properties'>
+        <ResponseField name='blockhash' type='string'>
+          Blockhash as a base-58 encoded string.
+        </ResponseField>
+        <ResponseField name='lastValidBlockHeight' type='integer'>
+          Last block height at which the blockhash will be valid.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getLatestBlockhash",
+    "params": [
+      {
+        "commitment": "processed"
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

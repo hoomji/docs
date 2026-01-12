@@ -1,6 +1,70 @@
 ---
 title: 'avm.getAddressTxs'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='43113' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='avm.getAddressTxs' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"address":"X-avax19pm62y5n0yt76wgp8pd7jdhepmppc67y7yg0cq","assetID":"AVAX","pageSize":20}} placeholder='{"address":"X-avax19pm62y5n0yt76wgp8pd7jdhepmppc67y7yg0cq","assetID":"AVAX","pageSize":20}' required>
+  Filter options to query transactions for an address and asset.
+  
+  Parameters for <code>avm.getAddressTxs</code>:
+  <ul>
+  <li><code>params.address</code>: The address for which to fetch balance-changing transactions.</li>
+  <li><code>params.assetID</code>: The asset ID or alias to filter transactions by.</li>
+  <li><code>params.cursor</code>: Pagination offset (page number or record index). Optional.</li>
+  <li><code>params.pageSize</code>: Number of transactions to return per page. Defaults to 1024.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  List of transaction IDs affecting the address balance and the current pagination cursor.
+  <Expandable title='properties'>
+    <ResponseField name='txIDs' type='array'>
+      List of transaction IDs (strings) that affected the balance.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='cursor' type='integer'>
+      Pagination offset for the next batch.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43113 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "avm.getAddressTxs",
+    "params": {
+      "address": "X-avax19pm62y5n0yt76wgp8pd7jdhepmppc67y7yg0cq",
+      "assetID": "AVAX",
+      "pageSize": 20
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

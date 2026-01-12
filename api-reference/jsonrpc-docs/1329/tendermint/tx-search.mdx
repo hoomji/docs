@@ -1,6 +1,63 @@
 ---
 title: 'tx_search'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1329' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='tx_search' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["tx.height=1000",true,1,30,"asc",true]} placeholder='["tx.height=1000",true,1,30,"asc",true]' required>
+  Transaction search parameters in the order: [query, prove, page, per_page, order_by, match_events]
+  
+  Positional parameters for <code>tx_search</code>:
+  <ul>
+  <li><code>params[0]</code>: A transaction query string (e.g., "tx.height=1000").</li>
+  <li><code>params[1]</code>: Include proofs of the transaction inclusion in the block.</li>
+  <li><code>params[2]</code>: Page number (1-based).</li>
+  <li><code>params[3]</code>: Number of entries per page (max: 100).</li>
+  <li><code>params[4]</code>: Order of transaction sorting ("asc" or "desc"), by height & index.</li>
+  <li><code>params[5]</code>: Match attributes in query within events in addition to height & txhash.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The transactions returned with the search queries.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1329 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "tx_search",
+    "params": [
+      "tx.height=1000",
+      true,
+      1,
+      30,
+      "asc",
+      true
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,120 @@
 ---
 title: 'getProgramAccounts'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getProgramAccounts' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["4Nd1mBQtrMJVYVfKf2PJy9NZUZdTAsp7D4xWLs4gDB4T",{"filters":[{"dataSize":17},{"memcmp":{"offset":4,"bytes":"3Mc6vR"}}]}]} placeholder='["4Nd1mBQtrMJVYVfKf2PJy9NZUZdTAsp7D4xWLs4gDB4T",{"filters":[{"dataSize":17},{"memcmp":{"offset":4,"bytes":"3Mc6vR"}}]}]' required>
+  Parameters for method getProgramAccounts: [programId, config]
+  
+  Positional parameters for <code>getProgramAccounts</code>:
+  <ul>
+  <li><code>params[0]</code>: Pubkey of the program (base-58 encoded).</li>
+  <li><code>params[1]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of account info objects. If withContext=true, response will be wrapped in RpcResponse object.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      Program account object.
+      <Expandable title='properties'>
+        <ResponseField name='pubkey' type='string'>
+          Account Pubkey (base-58 encoded).
+        </ResponseField>
+        <ResponseField name='account' type='object'>
+          Account data object.
+          <Expandable title='properties'>
+            <ResponseField name='lamports' type='integer'>
+              Lamports assigned to this account.
+            </ResponseField>
+            <ResponseField name='owner' type='string'>
+              Pubkey of the program this account has been assigned to.
+            </ResponseField>
+            <ResponseField name='data' type='oneOf'>
+              Tuple of [encoded data string, encoding type].
+              <Expandable title='variants'>
+                <ResponseField name='variant1' type='array'>
+                  Tuple of [encoded data string, encoding type].
+                  <Expandable title='items'>
+                    <ResponseField name='items[]' type='oneOf'>
+                      <Expandable title='variants'>
+                        <ResponseField name='variant1' type='string'>
+                        </ResponseField>
+                        <ResponseField name='variant2' type='string'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+                <ResponseField name='variant2' type='object'>
+                  JSON object representing program-specific state (if jsonParsed).
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='executable' type='boolean'>
+              True if the account contains a program (strictly read-only).
+            </ResponseField>
+            <ResponseField name='rentEpoch' type='integer'>
+              Epoch at which this account will next owe rent.
+            </ResponseField>
+            <ResponseField name='space' type='integer'>
+              Data size of the account (in bytes).
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getProgramAccounts",
+    "params": [
+      "4Nd1mBQtrMJVYVfKf2PJy9NZUZdTAsp7D4xWLs4gDB4T",
+      {
+        "filters": [
+          {
+            "dataSize": 17
+          },
+          {
+            "memcmp": {
+              "offset": 4,
+              "bytes": "3Mc6vR"
+            }
+          }
+        ]
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

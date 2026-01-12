@@ -1,6 +1,70 @@
 ---
 title: 'sui_getProtocolConfig'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_getProtocolConfig' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["6"]} placeholder='["6"]'>
+  Optional array with a single protocol version to fetch configuration for.
+  
+  Positional parameters for <code>sui_getProtocolConfig</code>:
+  <ul>
+  <li><code>params[]</code>: Type: string.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Protocol configuration response for the given or latest protocol version.
+  <Expandable title='properties'>
+    <ResponseField name='attributes' type='boolean'>
+      Attributes field indicates protocol configuration attributes exist.
+    </ResponseField>
+    <ResponseField name='featureFlags' type='boolean'>
+      Whether protocol-level feature flags are supported in this version.
+    </ResponseField>
+    <ResponseField name='maxSupportedProtocolVersion' type='string'>
+      Maximum supported protocol version for this node.
+    </ResponseField>
+    <ResponseField name='minSupportedProtocolVersion' type='string'>
+      Minimum supported protocol version for this node.
+    </ResponseField>
+    <ResponseField name='protocolVersion' type='string'>
+      Protocol version number being used.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getProtocolConfig",
+    "params": [
+      "6"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

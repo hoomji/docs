@@ -1,6 +1,69 @@
 ---
 title: 'starknet_getStateUpdate'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='starknet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='starknet_getStateUpdate' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"block_id":{"block_hash":"0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"}}} placeholder='{"block_id":{"block_hash":"0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"}}' required>
+  Parameters for starknet_getStateUpdate
+  
+  Parameters for <code>starknet_getStateUpdate</code>:
+  <ul>
+  <li><code>params.block_id</code>: BlockID object containing hash and number.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  State update object returned by starknet_getStateUpdate
+  <Expandable title='properties'>
+    <ResponseField name='block_hash' type='string'>
+      Hash of the block. Not included in pending state update.
+    </ResponseField>
+    <ResponseField name='old_root' type='string'>
+      Previous global state root.
+    </ResponseField>
+    <ResponseField name='new_root' type='string'>
+      New global state root. Not included in pending state update.
+    </ResponseField>
+    <ResponseField name='state_diff' type='object'>
+      State diff applied in this block (map of address to changes).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getStateUpdate",
+    "params": {
+      "block_id": {
+        "block_hash": "0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"
+      }
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

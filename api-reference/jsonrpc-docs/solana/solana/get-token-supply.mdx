@@ -1,6 +1,70 @@
 ---
 title: 'getTokenSupply'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getTokenSupply' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["3wyAj7Rt1TWVPZVteFJPLa26JmLvdb1CAKEFZm3NY75E"]} placeholder='["3wyAj7Rt1TWVPZVteFJPLa26JmLvdb1CAKEFZm3NY75E"]' required>
+  Parameters for method getTokenSupply: [mintAddress, config]
+  
+  Positional parameters for <code>getTokenSupply</code>:
+  <ul>
+  <li><code>params[0]</code>: Pubkey of the token Mint to query (base-58 encoded string).</li>
+  <li><code>params[1]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Token supply information for the given mint.
+  <Expandable title='properties'>
+    <ResponseField name='amount' type='string'>
+      The raw total token supply without decimals (string representation of u64).
+    </ResponseField>
+    <ResponseField name='decimals' type='integer'>
+      Number of base 10 digits to the right of the decimal place.
+    </ResponseField>
+    <ResponseField name='uiAmount' type='number'>
+      Total token supply using mint-prescribed decimals (deprecated).
+    </ResponseField>
+    <ResponseField name='uiAmountString' type='string'>
+      Total token supply as a string using mint-prescribed decimals.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getTokenSupply",
+    "params": [
+      "3wyAj7Rt1TWVPZVteFJPLa26JmLvdb1CAKEFZm3NY75E"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

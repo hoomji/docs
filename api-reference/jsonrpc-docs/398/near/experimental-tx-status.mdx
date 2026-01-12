@@ -1,6 +1,133 @@
 ---
 title: 'EXPERIMENTAL_tx_status'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='398' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='EXPERIMENTAL_tx_status' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{}} required>
+  Checks status of a transaction by hash and includes all receipt outcomes and metadata.
+  
+  Parameters for <code>EXPERIMENTAL_tx_status</code>:
+  <ul>
+  <li><code>params.tx_hash</code>: Base58-encoded transaction hash.</li>
+  <li><code>params.sender_account_id</code>: Account ID of the sender. Used to determine which shard to search in.</li>
+  <li><code>params.wait_until</code>: Optional execution level to wait for before responding. Use NONE for immediate response.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Complete transaction status, including all related receipts and outcomes.
+  <Expandable title='properties'>
+    <ResponseField name='final_execution_status' type='string'>
+      Final status of the transaction execution.
+    </ResponseField>
+    <ResponseField name='transaction' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='signer_id' type='string'>
+        </ResponseField>
+        <ResponseField name='receiver_id' type='string'>
+        </ResponseField>
+        <ResponseField name='hash' type='string'>
+        </ResponseField>
+        <ResponseField name='actions' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='object'>
+              Action objects such as Transfer, CreateAccount, etc.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='transaction_outcome' type='object'>
+      Execution result of the transaction itself.
+      <Expandable title='properties'>
+        <ResponseField name='block_hash' type='string'>
+        </ResponseField>
+        <ResponseField name='outcome' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='gas_burnt' type='integer'>
+            </ResponseField>
+            <ResponseField name='tokens_burnt' type='string'>
+            </ResponseField>
+            <ResponseField name='status' type='object'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='receipts' type='array'>
+      List of receipts generated from this transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='receipt_id' type='string'>
+            </ResponseField>
+            <ResponseField name='receiver_id' type='string'>
+            </ResponseField>
+            <ResponseField name='receipt' type='object'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='receipts_outcome' type='array'>
+      Execution results of each receipt.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='id' type='string'>
+            </ResponseField>
+            <ResponseField name='outcome' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='gas_burnt' type='integer'>
+                </ResponseField>
+                <ResponseField name='tokens_burnt' type='string'>
+                </ResponseField>
+                <ResponseField name='executor_id' type='string'>
+                </ResponseField>
+                <ResponseField name='status' type='object'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='status' type='object'>
+      Overall final execution status.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=398 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "EXPERIMENTAL_tx_status",
+    "params": {}
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

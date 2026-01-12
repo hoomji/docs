@@ -1,6 +1,131 @@
 ---
 title: 'eth_getBlockRange'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='5003' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='eth_getBlockRange' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x1","0x2",false]} placeholder='["0x1","0x2",false]' required>
+  Parameters for eth_getBlockRange: [startBlockTag, endBlockTag, fullTxObjects]
+  
+  Positional parameters for <code>eth_getBlockRange</code>:
+  <ul>
+  <li><code>params[0]</code>: Start block number (hex) or tag (latest, earliest, pending, safe, finalized).</li>
+  <li><code>params[1]</code>: End block number (hex) or tag (latest, earliest, pending, safe, finalized).</li>
+  <li><code>params[2]</code>: Set to true to return full transaction objects, false for only transaction hashes.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  List of block objects in the specified range.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      Block object structure.
+      <Expandable title='properties'>
+        <ResponseField name='difficulty' type='string'>
+          Block difficulty (hex).
+        </ResponseField>
+        <ResponseField name='extraData' type='string'>
+          Extra data field (hex).
+        </ResponseField>
+        <ResponseField name='gasLimit' type='string'>
+          Maximum gas allowed (hex).
+        </ResponseField>
+        <ResponseField name='gasUsed' type='string'>
+          Total gas used (hex).
+        </ResponseField>
+        <ResponseField name='hash' type='string'>
+          Block hash (32 bytes hex).
+        </ResponseField>
+        <ResponseField name='logsBloom' type='string'>
+          Bloom filter (256 bytes hex).
+        </ResponseField>
+        <ResponseField name='miner' type='string'>
+          Miner address (20 bytes hex).
+        </ResponseField>
+        <ResponseField name='nonce' type='string'>
+          Block nonce (8 bytes hex).
+        </ResponseField>
+        <ResponseField name='number' type='string'>
+          Block number (hex).
+        </ResponseField>
+        <ResponseField name='parentHash' type='string'>
+          Parent block hash (hex).
+        </ResponseField>
+        <ResponseField name='receiptsRoot' type='string'>
+          Receipts trie root (hex).
+        </ResponseField>
+        <ResponseField name='sha3Uncles' type='string'>
+          SHA3 of uncles (hex).
+        </ResponseField>
+        <ResponseField name='size' type='string'>
+          Block size in bytes (hex).
+        </ResponseField>
+        <ResponseField name='stateRoot' type='string'>
+          State trie root (hex).
+        </ResponseField>
+        <ResponseField name='timestamp' type='string'>
+          Unix timestamp (hex).
+        </ResponseField>
+        <ResponseField name='totalDifficulty' type='string'>
+          Total difficulty up to this block (hex).
+        </ResponseField>
+        <ResponseField name='transactions' type='array'>
+          Array of transaction objects or transaction hashes.
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='string'>
+              Transaction hash (32 bytes hex) or transaction object.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='transactionsRoot' type='string'>
+          Transaction trie root (hex).
+        </ResponseField>
+        <ResponseField name='uncles' type='array'>
+          Array of uncle hashes.
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='string'>
+              Uncle hash (hex).
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=5003 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getBlockRange",
+    "params": [
+      "0x1",
+      "0x2",
+      false
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,57 @@
 ---
 title: 'gettxout'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin-testnet4' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='gettxout' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["",0,false]} placeholder='["",0,false]' required>
+  Parameters: [txid, vout, includeMempool?].
+  
+  Positional parameters for <code>gettxout</code>:
+  <ul>
+  <li><code>params[0]</code>: 32 Bytes - hash of the transaction.</li>
+  <li><code>params[1]</code>: Output index.</li>
+  <li><code>params[2]</code>: Include mempool transactions (default true).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  UTXO information or null if the output is spent.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet4 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "gettxout",
+    "params": [
+      "",
+      0,
+      false
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

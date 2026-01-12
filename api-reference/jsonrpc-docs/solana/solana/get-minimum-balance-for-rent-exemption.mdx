@@ -1,6 +1,57 @@
 ---
 title: 'getMinimumBalanceForRentExemption'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getMinimumBalanceForRentExemption' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[0,{}]} placeholder='[0,{}]'>
+  Parameters for method getMinimumBalanceForRentExemption: [dataLength, config]
+  
+  Positional parameters for <code>getMinimumBalanceForRentExemption</code>:
+  <ul>
+  <li><code>params[0]</code>: Length of the data in bytes for which to calculate the minimum balance.</li>
+  <li><code>params[1]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='integer'>
+  Minimum balance required to make an account rent exempt for the specified data length. Example: <code>203928</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getMinimumBalanceForRentExemption",
+    "params": [
+      0,
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

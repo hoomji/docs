@@ -1,6 +1,53 @@
 ---
 title: 'help'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='help' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[""]} placeholder='[""]'>
+  Parameters: [command?].
+  
+  Positional parameters for <code>help</code>:
+  <ul>
+  <li><code>params[]</code>: Optional command name to get detailed help for.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  Human-readable help text.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "help",
+    "params": [
+      ""
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

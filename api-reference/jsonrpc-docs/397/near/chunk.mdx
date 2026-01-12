@@ -1,6 +1,84 @@
 ---
 title: 'chunk'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='397' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='chunk' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"block_id":187310138,"shard_id":0}} placeholder='{"block_id":187310138,"shard_id":0}' />
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='author' type='string'>
+      Validator who produced the chunk
+    </ResponseField>
+    <ResponseField name='header' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='chunk_hash' type='string'>
+        </ResponseField>
+        <ResponseField name='height_created' type='integer'>
+        </ResponseField>
+        <ResponseField name='shard_id' type='integer'>
+        </ResponseField>
+        <ResponseField name='gas_limit' type='integer'>
+        </ResponseField>
+        <ResponseField name='gas_used' type='integer'>
+        </ResponseField>
+        <ResponseField name='validator_proposals' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='object'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='transactions' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='receipts' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=397 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "chunk",
+    "params": {
+      "block_id": 187310138,
+      "shard_id": 0
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

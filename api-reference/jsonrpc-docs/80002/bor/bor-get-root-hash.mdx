@@ -1,6 +1,55 @@
 ---
 title: 'bor_getRootHash'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='80002' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='bor_getRootHash' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[1000,1032]} placeholder='[1000,1032]' required>
+  Parameters for bor_getRootHash: [fromBlock, toBlock]
+  
+  Positional parameters for <code>bor_getRootHash</code>:
+  <ul>
+  <li><code>params[0]</code>: Starting block number (inclusive).</li>
+  <li><code>params[1]</code>: Ending block number (inclusive). Maximum difference: 32,767 blocks.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  Root hash of the specified block range. Example: <code>"67518d9fc6bf9ff886ba1a4e932a0d0a8a1318b3f300518773aaf2210410cf73"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=80002 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "bor_getRootHash",
+    "params": [
+      1000,
+      1032
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

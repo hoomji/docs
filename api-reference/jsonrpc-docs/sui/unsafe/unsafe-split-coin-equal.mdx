@@ -1,6 +1,99 @@
 ---
 title: 'unsafe_splitCoinEqual'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='unsafe_splitCoinEqual' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788","0xcoinobjectabc123456789abcdef","3","0xgasobject001122334455","100000"]} placeholder='["0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788","0xcoinobjectabc123456789abcdef","3","0xgasobject001122334455","100000"]' required>
+  Creates an unsigned transaction to split a coin object into multiple equal-size coins.
+  
+  Positional parameters for <code>unsafe_splitCoinEqual</code>:
+  <ul>
+  <li><code>params[0]</code>: The transaction signer's Sui address.</li>
+  <li><code>params[1]</code>: The coin object ID to split.</li>
+  <li><code>params[2]</code>: The number of equal-sized coins to split into.</li>
+  <li><code>params[3]</code>: Optional gas object ID. If not specified, the node selects one.</li>
+  <li><code>params[4]</code>: The gas budget for the transaction.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The unsigned transaction block that performs the coin split into equal-size parts.
+  <Expandable title='properties'>
+    <ResponseField name='gas' type='array'>
+      Gas objects used in the transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='objectId' type='string'>
+              ID of the gas object.
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+              Version of the gas object.
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+              Digest of the gas object.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='inputObjects' type='array'>
+      Objects involved in the transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='objectId' type='string'>
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='txBytes' type='string'>
+      BCS serialized transaction data without the type tag, encoded as a base64 string.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_splitCoinEqual",
+    "params": [
+      "0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788",
+      "0xcoinobjectabc123456789abcdef",
+      "3",
+      "0xgasobject001122334455",
+      "100000"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

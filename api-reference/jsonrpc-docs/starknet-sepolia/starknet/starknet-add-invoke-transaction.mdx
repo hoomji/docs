@@ -1,6 +1,81 @@
 ---
 title: 'starknet_addInvokeTransaction'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='starknet-sepolia' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='starknet_addInvokeTransaction' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"invoke_transaction":{"type":"INVOKE","sender_address":"0x13e3ca9a377084c37dc7eacbd1d9f8c3e3733935bcbad887c32a0e213cd6fe0","calldata":["0x1","0x677bb1cdc050e8d63855e8743ab6e09179138def390676cc03c484daf112ba1","0x362398bec32bc0ebb411203221a35a0301193a96f317ebe5e40be9f60d15320","0x0","0x1","0x1","0x2b","0x0"],"version":"0x3","signature":["3557065757165699682249469970267166698995647077461960906176449260016084767701","3202126414680946801789588986259466145787792017299869598314522555275920413944"],"nonce":"0x7","resource_bounds":{"l1_gas":"0x28ed6103d0000","l2_gas":"0x28ed6103d0000"},"tip":"0x0","paymaster_data":[],"account_deployment_data":[],"nonce_data_availability_mode":"L1","fee_data_availability_mode":"L1"}}} placeholder='{"invoke_transaction":{"type":"INVOKE","sender_address":"0x13e3ca9a377084c37dc7eacbd1d9f8c3e3733935bcbad887c32a0e213cd6fe0","calldata":["0x1","0x677bb1cdc050e8d63855e8743ab6e09179138def390676cc03c484daf112ba1","0x362398bec32bc0ebb411203221a35a0301193a96f317ebe5e40be9f60d15320","0x0","0x1","0x1","0x2b","0x0"],"version":"0x3","signature":["3557065757165699682249469970267166698995647077461960906176449260016084767701","3202126414680946801789588986259466145787792017299869598314522555275920413944"],"nonce":"0x7","resource_bounds":{"l1_gas":"0x28ed6103d0000","l2_gas":"0x28ed6103d0000"},"tip":"0x0","paymaster_data":[],"account_deployment_data":[],"nonce_data_availability_mode":"L1","fee_data_availability_mode":"L1"}}' required>
+  Parameters for method starknet_addInvokeTransaction: [invoke_transaction].
+  
+  Parameters for <code>starknet_addInvokeTransaction</code>:
+  <ul>
+  <li><code>params.invoke_transaction</code>: Type: object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The result of the transaction submission, containing transaction_hash, the hash of the invoke transaction.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet-sepolia \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_addInvokeTransaction",
+    "params": {
+      "invoke_transaction": {
+        "type": "INVOKE",
+        "sender_address": "0x13e3ca9a377084c37dc7eacbd1d9f8c3e3733935bcbad887c32a0e213cd6fe0",
+        "calldata": [
+          "0x1",
+          "0x677bb1cdc050e8d63855e8743ab6e09179138def390676cc03c484daf112ba1",
+          "0x362398bec32bc0ebb411203221a35a0301193a96f317ebe5e40be9f60d15320",
+          "0x0",
+          "0x1",
+          "0x1",
+          "0x2b",
+          "0x0"
+        ],
+        "version": "0x3",
+        "signature": [
+          "3557065757165699682249469970267166698995647077461960906176449260016084767701",
+          "3202126414680946801789588986259466145787792017299869598314522555275920413944"
+        ],
+        "nonce": "0x7",
+        "resource_bounds": {
+          "l1_gas": "0x28ed6103d0000",
+          "l2_gas": "0x28ed6103d0000"
+        },
+        "tip": "0x0",
+        "paymaster_data": [],
+        "account_deployment_data": [],
+        "nonce_data_availability_mode": "L1",
+        "fee_data_availability_mode": "L1"
+      }
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

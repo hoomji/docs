@@ -1,6 +1,91 @@
 ---
 title: 'getVoteAccounts'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getVoteAccounts' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{"votePubkey":"3ZT31jkAGhUaw8jsy4bTknwBMP8i4Eueh52By4zXcsVw"}]} placeholder='[{"votePubkey":"3ZT31jkAGhUaw8jsy4bTknwBMP8i4Eueh52By4zXcsVw"}]'>
+  Parameters for method getVoteAccounts: [config].
+  
+  Positional parameters for <code>getVoteAccounts</code>:
+  <ul>
+  <li><code>params[0]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Vote account information.
+  <Expandable title='properties'>
+    <ResponseField name='votePubkey' type='string'>
+      Vote account pubkey (base-58 encoded).
+    </ResponseField>
+    <ResponseField name='nodePubkey' type='string'>
+      Validator identity pubkey (base-58 encoded).
+    </ResponseField>
+    <ResponseField name='activatedStake' type='integer'>
+      Stake delegated to this vote account.
+    </ResponseField>
+    <ResponseField name='epochVoteAccount' type='boolean'>
+      True if vote account is staked for this epoch.
+    </ResponseField>
+    <ResponseField name='commission' type='number'>
+      Percentage (0-100) of rewards payout owed to vote account.
+    </ResponseField>
+    <ResponseField name='lastVote' type='integer'>
+      Most recent slot voted on by this vote account.
+    </ResponseField>
+    <ResponseField name='epochCredits' type='array'>
+      Epoch vote credits history.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='integer'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='rootSlot' type='integer'>
+      Current root slot for this vote account.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getVoteAccounts",
+    "params": [
+      {
+        "votePubkey": "3ZT31jkAGhUaw8jsy4bTknwBMP8i4Eueh52By4zXcsVw"
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

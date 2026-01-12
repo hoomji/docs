@@ -1,6 +1,122 @@
 ---
 title: 'getAssetsByGroup'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getAssetsByGroup' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{"groupKey":"collection","groupValue":"J2ZfLdQsaZ3GCmbucJef3cPnPwGcgjDW1SSYtMdq3L9p","options":{"limit":10,"sortBy":{"sortBy":"created","sortDirection":"desc"},"showCollectionMetadata":true}}]} placeholder='[{"groupKey":"collection","groupValue":"J2ZfLdQsaZ3GCmbucJef3cPnPwGcgjDW1SSYtMdq3L9p","options":{"limit":10,"sortBy":{"sortBy":"created","sortDirection":"desc"},"showCollectionMetadata":true}}]' required>
+  Positional parameters for <code>getAssetsByGroup</code>:
+  <ul>
+  <li><code>params[]</code>: Type: object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='assetList' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='total' type='integer'>
+        </ResponseField>
+        <ResponseField name='limit' type='integer'>
+        </ResponseField>
+        <ResponseField name='page' type='integer'>
+        </ResponseField>
+        <ResponseField name='cursor' type='string'>
+        </ResponseField>
+        <ResponseField name='items' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='asset' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='interface' type='string'>
+                    </ResponseField>
+                    <ResponseField name='id' type='string'>
+                    </ResponseField>
+                    <ResponseField name='content' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='$schema' type='string'>
+                        </ResponseField>
+                        <ResponseField name='json_uri' type='string'>
+                        </ResponseField>
+                        <ResponseField name='files' type='array'>
+                          <Expandable title='items'>
+                            <ResponseField name='items[]' type='object'>
+                              <Expandable title='properties'>
+                                <ResponseField name='uri' type='string'>
+                                </ResponseField>
+                                <ResponseField name='mime' type='string'>
+                                </ResponseField>
+                                <ResponseField name='quality' type='object'>
+                                </ResponseField>
+                                <ResponseField name='contexts' type='array'>
+                                  <Expandable title='items'>
+                                    <ResponseField name='items[]' type='string'>
+                                    </ResponseField>
+                                  </Expandable>
+                                </ResponseField>
+                              </Expandable>
+                            </ResponseField>
+                          </Expandable>
+                        </ResponseField>
+                        <ResponseField name='metadata' type='object'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getAssetsByGroup",
+    "params": [
+      {
+        "groupKey": "collection",
+        "groupValue": "J2ZfLdQsaZ3GCmbucJef3cPnPwGcgjDW1SSYtMdq3L9p",
+        "options": {
+          "limit": 10,
+          "sortBy": {
+            "sortBy": "created",
+            "sortDirection": "desc"
+          },
+          "showCollectionMetadata": true
+        }
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

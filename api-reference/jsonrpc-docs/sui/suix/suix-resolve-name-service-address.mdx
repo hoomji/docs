@@ -1,6 +1,53 @@
 ---
 title: 'suix_resolveNameServiceAddress'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='suix_resolveNameServiceAddress' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["example.sui"]} placeholder='["example.sui"]' required>
+  Parameters for suix_resolveNameServiceAddress: [name]
+  
+  Positional parameters for <code>suix_resolveNameServiceAddress</code>:
+  <ul>
+  <li><code>params[]</code>: The name to resolve.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  The resolved Sui address (as a base-58 encoded string). Example: <code>"0x6710024f81dd33ab6833482ee8034e779a48e6ef635c7f856df4905022458bfb"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_resolveNameServiceAddress",
+    "params": [
+      "example.sui"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,83 @@
 ---
 title: 'platform.getSubnets'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='43114' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='platform.getSubnets' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{}} required>
+  Get ownership and control metadata about a given Subnet or L1 Subnet.
+  
+  Parameters for <code>platform.getSubnets</code>:
+  <ul>
+  <li><code>params.subnetID</code>: The Subnet ID to query.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='isPermissioned' type='boolean'>
+      Whether the subnet requires permissioned control for updates.
+    </ResponseField>
+    <ResponseField name='controlKeys' type='array'>
+      List of control addresses that can modify the subnet.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='threshold' type='string'>
+      Number of control signatures required to approve subnet changes.
+    </ResponseField>
+    <ResponseField name='locktime' type='string'>
+      Unix timestamp until which subnet updates are locked.
+    </ResponseField>
+    <ResponseField name='subnetTransformationTxID' type='string'>
+      The transaction ID that transformed the subnet (e.g., to Elastic or L1).
+    </ResponseField>
+    <ResponseField name='conversionID' type='string'>
+      ID of conversion to L1 if applicable.
+    </ResponseField>
+    <ResponseField name='managerChainID' type='string'>
+      The Chain ID that can modify this subnet’s validator set.
+    </ResponseField>
+    <ResponseField name='managerAddress' type='string'>
+      Address that has management permissions on this subnet.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43114 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "platform.getSubnets",
+    "params": {}
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

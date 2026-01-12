@@ -1,6 +1,61 @@
 ---
 title: 'debug_storageRangeAt'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='11142220' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='debug_storageRangeAt' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x76f64c40d6493cf00426be2eecdaf3f968768619bfb21ce6c57921be497ab3f7",0,"0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5","0x0000000000000000000000000000000000000000000000000000000000000000",1]} placeholder='["0x76f64c40d6493cf00426be2eecdaf3f968768619bfb21ce6c57921be497ab3f7",0,"0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5","0x0000000000000000000000000000000000000000000000000000000000000000",1]' required>
+  Parameters: [blockHash, txIdx, contractAddress, keyStart, maxResult]
+  
+  Positional parameters for <code>debug_storageRangeAt</code>:
+  <ul>
+  <li><code>params[0]</code>: 32 Bytes - hash of the block where this transaction was included. Null when pending.</li>
+  <li><code>params[1]</code>: Index of the transaction within the block.</li>
+  <li><code>params[2]</code>: 20 Bytes - The contract address created, if the transaction was a contract creation. Null otherwise.</li>
+  <li><code>params[3]</code>: Starting key (32-byte hex string) used for filtering storage or entries.</li>
+  <li><code>params[4]</code>: Maximum number of results to return.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  The array of storage items.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=11142220 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "debug_storageRangeAt",
+    "params": [
+      "0x76f64c40d6493cf00426be2eecdaf3f968768619bfb21ce6c57921be497ab3f7",
+      0,
+      "0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5",
+      "0x0000000000000000000000000000000000000000000000000000000000000000",
+      1
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

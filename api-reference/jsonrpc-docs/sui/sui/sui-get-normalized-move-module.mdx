@@ -1,6 +1,80 @@
 ---
 title: 'sui_getNormalizedMoveModule'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_getNormalizedMoveModule' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x0047d5fa0a823e7d0ff4d55c32b09995a0ae1eedfee9c7b1354e805ed10ee3d0","module"]} placeholder='["0x0047d5fa0a823e7d0ff4d55c32b09995a0ae1eedfee9c7b1354e805ed10ee3d0","module"]' required>
+  Parameters for retrieving a normalized Move module.
+  
+  Positional parameters for <code>sui_getNormalizedMoveModule</code>:
+  <ul>
+  <li><code>params[0]</code>: Object ID of the Move package.</li>
+  <li><code>params[1]</code>: The name of the Move module.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Structured representation of a Move module.
+  <Expandable title='properties'>
+    <ResponseField name='fileFormatVersion' type='integer'>
+      The Move binary file format version.
+    </ResponseField>
+    <ResponseField name='address' type='string'>
+      The hexadecimal address of the package.
+    </ResponseField>
+    <ResponseField name='name' type='string'>
+      Name of the module.
+    </ResponseField>
+    <ResponseField name='friends' type='array'>
+      List of module IDs that this module declares as friends.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+          SuiMoveModuleId (formatted as <address>::<module>).
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='structs' type='object'>
+      Map of struct names to normalized struct definitions.
+    </ResponseField>
+    <ResponseField name='exposedFunctions' type='object'>
+      Map of function names to normalized function definitions.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getNormalizedMoveModule",
+    "params": [
+      "0x0047d5fa0a823e7d0ff4d55c32b09995a0ae1eedfee9c7b1354e805ed10ee3d0",
+      "module"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

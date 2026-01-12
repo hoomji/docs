@@ -1,6 +1,59 @@
 ---
 title: 'trace_replayTransaction'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='137' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='trace_replayTransaction' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f",["trace"]]} placeholder='["0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f",["trace"]]' required>
+  Parameters for method trace_replayTransaction: [hash, traceTypes].
+  
+  Positional parameters for <code>trace_replayTransaction</code>:
+  <ul>
+  <li><code>params[0]</code>: 32 Bytes - Hash of the transaction.</li>
+  <li><code>params[1]</code>: Types of traces to collect: "vmTrace", "trace", and/or "stateDiff".</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Object - Block traces.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=137 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "trace_replayTransaction",
+    "params": [
+      "0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f",
+      [
+        "trace"
+      ]
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

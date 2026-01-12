@@ -1,6 +1,59 @@
 ---
 title: 'signrawtransactionwithkey'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='signrawtransactionwithkey' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["",[],[],""]} placeholder='["",[],[],""]' required>
+  Parameters: [rawTx, privKeys, prevTxs?, sighashType?].
+  
+  Positional parameters for <code>signrawtransactionwithkey</code>:
+  <ul>
+  <li><code>params[0]</code>: Raw transaction hex.</li>
+  <li><code>params[1]</code>: Private keys in WIF format.</li>
+  <li><code>params[2]</code>: Optional previous transaction outputs used for signing.</li>
+  <li><code>params[3]</code>: Optional signature hash type (e.g., ALL).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Signed transaction result containing hex and completion flag.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "signrawtransactionwithkey",
+    "params": [
+      "",
+      [],
+      [],
+      ""
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

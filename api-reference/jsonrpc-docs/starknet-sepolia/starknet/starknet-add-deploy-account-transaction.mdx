@@ -1,6 +1,89 @@
 ---
 title: 'starknet_addDeployAccountTransaction'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='starknet-sepolia' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='starknet_addDeployAccountTransaction' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"deploy_account_transaction":{"type":"DEPLOY_ACCOUNT","version":"0x3","signature":["3557065757165699682249469970267166698995647077461960906176449260016084767701","3202126414680946801789588986259466145787792017299869598314522555275920413944"],"nonce":"0x7","contract_address_salt":"0x23371b227eaecd8e8920cd429d2cd0f3fee6abaacca08d3ab82a7cdd","class_hash":"0x23371b227eaecd8e8920cd429d2cd0f3fee6abaacca08d3ab82a7cdd","constructor_calldata":["0x1","0x677bb1cdc050e8d63855e8743ab6e09179138def390676cc03c484daf112ba1","0x362398bec32bc0ebb411203221a35a0301193a96f317ebe5e40be9f60d15320","0x0","0x1","0x1","0x2b","0x0"],"resource_bounds":{"l1_gas":"0x28ed6103d0000","l2_gas":"0x28ed6103d0000"},"tip":"0x0","paymaster_data":[],"nonce_data_availability_mode":"L1","fee_data_availability_mode":"L1"}}} placeholder='{"deploy_account_transaction":{"type":"DEPLOY_ACCOUNT","version":"0x3","signature":["3557065757165699682249469970267166698995647077461960906176449260016084767701","3202126414680946801789588986259466145787792017299869598314522555275920413944"],"nonce":"0x7","contract_address_salt":"0x23371b227eaecd8e8920cd429d2cd0f3fee6abaacca08d3ab82a7cdd","class_hash":"0x23371b227eaecd8e8920cd429d2cd0f3fee6abaacca08d3ab82a7cdd","constructor_calldata":["0x1","0x677bb1cdc050e8d63855e8743ab6e09179138def390676cc03c484daf112ba1","0x362398bec32bc0ebb411203221a35a0301193a96f317ebe5e40be9f60d15320","0x0","0x1","0x1","0x2b","0x0"],"resource_bounds":{"l1_gas":"0x28ed6103d0000","l2_gas":"0x28ed6103d0000"},"tip":"0x0","paymaster_data":[],"nonce_data_availability_mode":"L1","fee_data_availability_mode":"L1"}}'>
+  Parameters for method starknet_addDeployAccountTransaction: [deploy_account_transaction]
+  
+  Parameters for <code>starknet_addDeployAccountTransaction</code>:
+  <ul>
+  <li><code>params.deploy_account_transaction</code>: DEPLOY_ACCOUNT Transaction V3 Schema</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Result object of deploy account transaction submission.
+  <Expandable title='properties'>
+    <ResponseField name='transaction_hash' type='string'>
+      Hash of the deploy account transaction (DATA, 32 Bytes).
+    </ResponseField>
+    <ResponseField name='contract_address' type='string'>
+      Address of the newly deployed contract.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet-sepolia \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_addDeployAccountTransaction",
+    "params": {
+      "deploy_account_transaction": {
+        "type": "DEPLOY_ACCOUNT",
+        "version": "0x3",
+        "signature": [
+          "3557065757165699682249469970267166698995647077461960906176449260016084767701",
+          "3202126414680946801789588986259466145787792017299869598314522555275920413944"
+        ],
+        "nonce": "0x7",
+        "contract_address_salt": "0x23371b227eaecd8e8920cd429d2cd0f3fee6abaacca08d3ab82a7cdd",
+        "class_hash": "0x23371b227eaecd8e8920cd429d2cd0f3fee6abaacca08d3ab82a7cdd",
+        "constructor_calldata": [
+          "0x1",
+          "0x677bb1cdc050e8d63855e8743ab6e09179138def390676cc03c484daf112ba1",
+          "0x362398bec32bc0ebb411203221a35a0301193a96f317ebe5e40be9f60d15320",
+          "0x0",
+          "0x1",
+          "0x1",
+          "0x2b",
+          "0x0"
+        ],
+        "resource_bounds": {
+          "l1_gas": "0x28ed6103d0000",
+          "l2_gas": "0x28ed6103d0000"
+        },
+        "tip": "0x0",
+        "paymaster_data": [],
+        "nonce_data_availability_mode": "L1",
+        "fee_data_availability_mode": "L1"
+      }
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,53 @@
 ---
 title: 'debug_getRawReceipts'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='57073' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='debug_getRawReceipts' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x1"]} placeholder='["0x1"]' required>
+  The parameters for method debug_getRawReceipts: [blockNrOrHash].
+  
+  Positional parameters for <code>debug_getRawReceipts</code>:
+  <ul>
+  <li><code>params[]</code>: The block number or hash.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The consensus-encoding of all receipts.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=57073 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "debug_getRawReceipts",
+    "params": [
+      "0x1"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

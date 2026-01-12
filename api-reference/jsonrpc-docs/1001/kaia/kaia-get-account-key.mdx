@@ -1,6 +1,63 @@
 ---
 title: 'kaia_getAccountKey'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1001' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='kaia_getAccountKey' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["",0]} placeholder='["",0]' required>
+  Parameters: [address, block parameter].
+  
+  Positional parameters for <code>kaia_getAccountKey</code>:
+  <ul>
+  <li><code>params[0]</code>: The address.</li>
+  <li><code>params[1]</code>: Block identifier. Can be an integer block number or a string tag: "latest", "earliest", or "pending".</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Account key definition for the specified account.
+  <Expandable title='properties'>
+    <ResponseField name='keyType' type='string'>
+      Type of the account key.
+    </ResponseField>
+    <ResponseField name='key' type='object'>
+      Account key payload and parameters.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1001 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "kaia_getAccountKey",
+    "params": [
+      "",
+      0
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

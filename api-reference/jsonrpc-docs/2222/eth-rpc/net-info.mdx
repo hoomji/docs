@@ -1,6 +1,92 @@
 ---
 title: 'net_info'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='2222' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='net_info' required>
+    JSON-RPC method name.
+  </ParamField>
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Network status and peer connection information.
+  <Expandable title='properties'>
+    <ResponseField name='listening' type='boolean'>
+      Indicates whether the node is actively listening for incoming P2P connections.
+    </ResponseField>
+    <ResponseField name='listeners' type='array'>
+      List of listener socket addresses (e.g., TCP endpoints).
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='n_peers' type='integer'>
+      Total number of connected peers.
+    </ResponseField>
+    <ResponseField name='peers' type='array'>
+      List of connected peers with metadata.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='node_id' type='string'>
+              The unique identifier of the peer node.
+            </ResponseField>
+            <ResponseField name='url' type='string'>
+              The remote address or URL of the peer connection.
+            </ResponseField>
+            <ResponseField name='peer_connections' type='array'>
+              Array of connection instances with status and quality metrics.
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='node_id' type='string'>
+                      The peer node ID this connection is associated with.
+                    </ResponseField>
+                    <ResponseField name='state' type='string'>
+                      Connection state (e.g., "connected", "ready").
+                    </ResponseField>
+                    <ResponseField name='score' type='number'>
+                      Connection reliability or quality score.
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2222 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "net_info",
+    "params": []
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

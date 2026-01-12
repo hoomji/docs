@@ -1,6 +1,49 @@
 ---
 title: 'eth_accounts'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='4157' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='eth_accounts' required>
+    JSON-RPC method name.
+  </ParamField>
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  20 Bytes - addresses owned by the client.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='string'>
+      The address.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=4157 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_accounts",
+    "params": []
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

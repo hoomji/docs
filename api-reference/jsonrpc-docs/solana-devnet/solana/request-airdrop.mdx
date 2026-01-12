@@ -1,6 +1,56 @@
 ---
 title: 'requestAirdrop'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='requestAirdrop' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri",1000000000]} placeholder='["83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri",1000000000]' required>
+  Parameters for method requestAirdrop: [accountPubkey, lamports, config]
+  
+  Positional parameters for <code>requestAirdrop</code>:
+  <ul>
+  <li><code>params[0]</code>: Pubkey of account to receive lamports (base-58 encoded string).</li>
+  <li><code>params[1]</code>: Amount of lamports to airdrop.</li>
+  <li><code>params[2]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  String - Transaction signature of the airdrop. Example: <code>"5VERv8NMvzbJMEkV8xnrLkEaWRtSz9CosKDYjCJjBRnbJLgp8uirBgmQpjKhoR4tjF3ZpRzrFmBV6UjKdiSZkQUW"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "requestAirdrop",
+    "params": [
+      "83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri",
+      1000000000
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

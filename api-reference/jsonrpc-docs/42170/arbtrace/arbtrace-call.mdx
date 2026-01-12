@@ -1,6 +1,122 @@
 ---
 title: 'arbtrace_call'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='42170' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='arbtrace_call' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{},["trace"],"latest"]} placeholder='[{},["trace"],"latest"]' required>
+  An array containing the transaction call object, trace types, and block tag/number.
+  
+  Positional parameters for <code>arbtrace_call</code>:
+  <ul>
+  <li><code>params[0]</code>: Transaction call object for simulation.</li>
+  <li><code>params[1]</code>: Trace types to return: trace, vmTrace, or stateDiff.</li>
+  <li><code>params[2]</code>: Block number (hex) or tag ("latest", "pending").</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Traces of the simulated call execution.
+  <Expandable title='properties'>
+    <ResponseField name='output' type='string'>
+      Output returned by the simulated contract call (hex encoded).
+    </ResponseField>
+    <ResponseField name='trace' type='array'>
+      Basic call traces.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='action' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='from' type='string'>
+                </ResponseField>
+                <ResponseField name='to' type='string'>
+                </ResponseField>
+                <ResponseField name='callType' type='string'>
+                </ResponseField>
+                <ResponseField name='gas' type='string'>
+                </ResponseField>
+                <ResponseField name='input' type='string'>
+                </ResponseField>
+                <ResponseField name='value' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='result' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='gasUsed' type='string'>
+                </ResponseField>
+                <ResponseField name='output' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='subtraces' type='integer'>
+            </ResponseField>
+            <ResponseField name='traceAddress' type='array'>
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='integer'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='transactionPosition' type='integer'>
+            </ResponseField>
+            <ResponseField name='type' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='vmTrace' type='object'>
+      Virtual machine execution trace (if requested).
+    </ResponseField>
+    <ResponseField name='stateDiff' type='object'>
+      State difference result of call (if requested).
+    </ResponseField>
+    <ResponseField name='destroyedContracts' type='array'>
+      List of self-destructed contracts.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=42170 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "arbtrace_call",
+    "params": [
+      {},
+      [
+        "trace"
+      ],
+      "latest"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

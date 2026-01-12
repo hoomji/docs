@@ -1,6 +1,118 @@
 ---
 title: 'kaia_syncing'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='8217' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='kaia_syncing' required>
+    JSON-RPC method name.
+  </ParamField>
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Snapshot of rollup driver sync status.
+  <Expandable title='properties'>
+    <ResponseField name='current_l1' type='object'>
+      L1BlockRef object with hash, number, parentHash, and timestamp.
+      <Expandable title='properties'>
+        <ResponseField name='hash' type='string'>
+          Hash of the block (32 Bytes).
+        </ResponseField>
+        <ResponseField name='number' type='string'>
+          Block number (QUANTITY, 64 Bits).
+        </ResponseField>
+        <ResponseField name='parentHash' type='string'>
+          Parent block hash (32 Bytes).
+        </ResponseField>
+        <ResponseField name='timestamp' type='string'>
+          Block timestamp (QUANTITY, 64 Bits).
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='current_l1_finalized' type='object'>
+      L1BlockRef object with hash, number, parentHash, and timestamp.
+    </ResponseField>
+    <ResponseField name='head_l1' type='object'>
+      L1BlockRef object with hash, number, parentHash, and timestamp.
+    </ResponseField>
+    <ResponseField name='safe_l1' type='object'>
+      L1BlockRef object with hash, number, parentHash, and timestamp.
+    </ResponseField>
+    <ResponseField name='finalized_l1' type='object'>
+      L1BlockRef object with hash, number, parentHash, and timestamp.
+    </ResponseField>
+    <ResponseField name='unsafe_l2' type='object'>
+      L2BlockRef object with hash, number, parentHash, timestamp, l1origin, and sequenceNumber.
+      <Expandable title='properties'>
+        <ResponseField name='hash' type='string'>
+          Hash of the block (32 Bytes).
+        </ResponseField>
+        <ResponseField name='number' type='string'>
+          Block number (QUANTITY, 64 Bits).
+        </ResponseField>
+        <ResponseField name='parentHash' type='string'>
+          Parent block hash (32 Bytes).
+        </ResponseField>
+        <ResponseField name='timestamp' type='string'>
+          Block timestamp (QUANTITY, 64 Bits).
+        </ResponseField>
+        <ResponseField name='l1origin' type='object'>
+          BlockID object containing hash and number.
+          <Expandable title='properties'>
+            <ResponseField name='block_hash' type='string'>
+              Block hash (32 Bytes, DATA).
+            </ResponseField>
+            <ResponseField name='block_number' type='string'>
+              Block number (QUANTITY, 64 Bits).
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='sequenceNumber' type='string'>
+          Distance to first block of epoch (QUANTITY, 64 Bits).
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='safe_l2' type='object'>
+      L2BlockRef object with hash, number, parentHash, timestamp, l1origin, and sequenceNumber.
+    </ResponseField>
+    <ResponseField name='finalized_l2' type='object'>
+      L2BlockRef object with hash, number, parentHash, timestamp, l1origin, and sequenceNumber.
+    </ResponseField>
+    <ResponseField name='pending_safe_l2' type='object'>
+      L2BlockRef object with hash, number, parentHash, timestamp, l1origin, and sequenceNumber.
+    </ResponseField>
+    <ResponseField name='queued_unsafe_l2' type='object'>
+      L2BlockRef object with hash, number, parentHash, timestamp, l1origin, and sequenceNumber.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=8217 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "kaia_syncing",
+    "params": []
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

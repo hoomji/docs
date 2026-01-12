@@ -1,6 +1,55 @@
 ---
 title: 'gettxoutproof'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='gettxoutproof' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[[],""]} placeholder='[[],""]' required>
+  Parameters: [txids, blockHash?].
+  
+  Positional parameters for <code>gettxoutproof</code>:
+  <ul>
+  <li><code>params[0]</code>: List of transaction ids to prove.</li>
+  <li><code>params[1]</code>: 32 Bytes - hash of the block where this transaction was included. Null when pending.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  Hex-encoded proof data.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "gettxoutproof",
+    "params": [
+      [],
+      ""
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,72 @@
 ---
 title: 'getClusterNodes'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getClusterNodes' required>
+    JSON-RPC method name.
+  </ParamField>
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  List of node metadata results.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      Node information including public key, network addresses, and software metadata.
+      <Expandable title='properties'>
+        <ResponseField name='pubkey' type='string'>
+          Node public key, as base-58 encoded string.
+        </ResponseField>
+        <ResponseField name='gossip' type='object'>
+          Gossip network address, or null if unavailable.
+        </ResponseField>
+        <ResponseField name='tpu' type='object'>
+          TPU network address, or null if unavailable.
+        </ResponseField>
+        <ResponseField name='rpc' type='object'>
+          JSON RPC network address, or null if RPC is disabled.
+        </ResponseField>
+        <ResponseField name='version' type='object'>
+          Software version of the node, or null if not reported.
+        </ResponseField>
+        <ResponseField name='featureSet' type='object'>
+          Unique feature set ID for the node, or null.
+        </ResponseField>
+        <ResponseField name='shredVersion' type='object'>
+          Shred version configured for the node, or null.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getClusterNodes",
+    "params": []
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

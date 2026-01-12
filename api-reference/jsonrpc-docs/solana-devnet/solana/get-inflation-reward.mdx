@@ -1,6 +1,82 @@
 ---
 title: 'getInflationReward'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getInflationReward' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[["6dmNQ5jwLeLk5REvio1JcMshcbvkYMwy26sJ8pbkvStu","BGsqMegLpV6n6Ve146sSX2dTjUMj3M92HnU8BbNRMhF2"],{"epoch":2}]} placeholder='[["6dmNQ5jwLeLk5REvio1JcMshcbvkYMwy26sJ8pbkvStu","BGsqMegLpV6n6Ve146sSX2dTjUMj3M92HnU8BbNRMhF2"],{"epoch":2}]' required>
+  Parameters for method getInflationReward: [addresses, config]
+  
+  Positional parameters for <code>getInflationReward</code>:
+  <ul>
+  <li><code>params[0]</code>: List of addresses to get inflation rewards for.</li>
+  <li><code>params[1]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of reward objects for epochs in which rewards were credited.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      Reward details for a specific epoch and slot.
+      <Expandable title='properties'>
+        <ResponseField name='epoch' type='integer'>
+          Epoch during which the reward was earned.
+        </ResponseField>
+        <ResponseField name='effectiveSlot' type='integer'>
+          Slot at which the reward became effective.
+        </ResponseField>
+        <ResponseField name='amount' type='integer'>
+          Reward amount in lamports.
+        </ResponseField>
+        <ResponseField name='postBalance' type='integer'>
+          Account balance after reward was applied (in lamports).
+        </ResponseField>
+        <ResponseField name='commission' type='integer'>
+          Commission percentage of the vote account at the time of reward. May be undefined.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getInflationReward",
+    "params": [
+      [
+        "6dmNQ5jwLeLk5REvio1JcMshcbvkYMwy26sJ8pbkvStu",
+        "BGsqMegLpV6n6Ve146sSX2dTjUMj3M92HnU8BbNRMhF2"
+      ],
+      {
+        "epoch": 2
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

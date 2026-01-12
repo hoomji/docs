@@ -1,6 +1,105 @@
 ---
 title: 'sui_getEvents'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_getEvents' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["11a72GCQ5hGNpWGh2QhQkkusTEGS6EDqifJqxr7nSYX"]} placeholder='["11a72GCQ5hGNpWGh2QhQkkusTEGS6EDqifJqxr7nSYX"]' required>
+  Get all events emitted by the transaction.
+  
+  Positional parameters for <code>sui_getEvents</code>:
+  <ul>
+  <li><code>params[]</code>: The transaction digest.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='data' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='id' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='txDigest' type='string'>
+                  Transaction digest
+                </ResponseField>
+                <ResponseField name='eventSeq' type='string'>
+                  Event sequence number
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='packageId' type='string'>
+              Package ID of the event origin
+            </ResponseField>
+            <ResponseField name='transactionModule' type='string'>
+              Move module that emitted the event
+            </ResponseField>
+            <ResponseField name='sender' type='string'>
+              Sui address of the sender
+            </ResponseField>
+            <ResponseField name='type' type='string'>
+              Move event type
+            </ResponseField>
+            <ResponseField name='parsedJson' type='object'>
+              Parsed JSON representation of the event
+            </ResponseField>
+            <ResponseField name='bcsEncoding' type='string'>
+              Encoding type (e.g., base64)
+            </ResponseField>
+            <ResponseField name='bcs' type='string'>
+              BCS serialized event data
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='nextCursor' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='txDigest' type='string'>
+        </ResponseField>
+        <ResponseField name='eventSeq' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='hasNextPage' type='boolean'>
+      True if there are more pages of events to fetch
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getEvents",
+    "params": [
+      "11a72GCQ5hGNpWGh2QhQkkusTEGS6EDqifJqxr7nSYX"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

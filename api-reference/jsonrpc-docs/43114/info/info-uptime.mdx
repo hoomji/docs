@@ -1,6 +1,61 @@
 ---
 title: 'info.uptime'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='43114' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='info.uptime' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{}}>
+  Optional object specifying a particular subnet ID to evaluate uptime against.
+  
+  Parameters for <code>info.uptime</code>:
+  <ul>
+  <li><code>params.subnetID</code>: Optional subnet ID to query uptime within. If omitted, uptime is evaluated on the Primary Network.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Uptime metrics based on stake-weighted observations from the network.
+  <Expandable title='properties'>
+    <ResponseField name='rewardingStakePercentage' type='string'>
+      Percentage of stake that sees this node as meeting the uptime requirement.
+    </ResponseField>
+    <ResponseField name='weightedAveragePercentage' type='string'>
+      Stake-weighted average of observed uptime for this node.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43114 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "info.uptime",
+    "params": {}
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,57 @@
 ---
 title: 'kaia_getStorageAt'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='8217' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='kaia_getStorageAt' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x8d97689c9818892b700e27f316cc3e41e17fbeb9","0x0","latest"]} placeholder='["0x8d97689c9818892b700e27f316cc3e41e17fbeb9","0x0","latest"]' required>
+  Parameters: [address, position, block parameter].
+  
+  Positional parameters for <code>kaia_getStorageAt</code>:
+  <ul>
+  <li><code>params[0]</code>: The address.</li>
+  <li><code>params[1]</code>: Hex-encoded storage slot index.</li>
+  <li><code>params[2]</code>: Block identifier. Can be an integer block number or a string tag: "latest", "earliest", or "pending".</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  Hex-encoded storage value. Example: <code>"0x0000000000000000000000000000000000000000000000000000000000000000"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=8217 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "kaia_getStorageAt",
+    "params": [
+      "0x8d97689c9818892b700e27f316cc3e41e17fbeb9",
+      "0x0",
+      "latest"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

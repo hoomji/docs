@@ -1,6 +1,114 @@
 ---
 title: 'sui_tryMultiGetPastObjects'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_tryMultiGetPastObjects' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[[],{"showType":true,"showOwner":true,"showPreviousTransaction":true,"showDisplay":false,"showContent":true,"showBcs":false,"showStorageRebate":true}]} placeholder='[[],{"showType":true,"showOwner":true,"showPreviousTransaction":true,"showDisplay":false,"showContent":true,"showBcs":false,"showStorageRebate":true}]' required>
+  Get data for multiple past objects with optional display options.
+  
+  Positional parameters for <code>sui_tryMultiGetPastObjects</code>:
+  <ul>
+  <li><code>params[0]</code>: Array of GetPastObjectRequest objects.</li>
+  <li><code>params[1]</code>: Options for customizing the object response fields.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of past object responses with version-specific information.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='status' type='string'>
+          Status of the lookup. e.g., "VersionFound", "VersionNotFound".
+        </ResponseField>
+        <ResponseField name='details' type='object'>
+          Detailed object data if the version was found.
+          <Expandable title='properties'>
+            <ResponseField name='objectId' type='string'>
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+            </ResponseField>
+            <ResponseField name='type' type='string'>
+            </ResponseField>
+            <ResponseField name='owner' type='object'>
+              Owner of the object.
+            </ResponseField>
+            <ResponseField name='previousTransaction' type='string'>
+            </ResponseField>
+            <ResponseField name='storageRebate' type='string'>
+            </ResponseField>
+            <ResponseField name='content' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='dataType' type='string'>
+                </ResponseField>
+                <ResponseField name='type' type='string'>
+                </ResponseField>
+                <ResponseField name='hasPublicTransfer' type='boolean'>
+                </ResponseField>
+                <ResponseField name='fields' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='balance' type='string'>
+                    </ResponseField>
+                    <ResponseField name='id' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='id' type='string'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_tryMultiGetPastObjects",
+    "params": [
+      [],
+      {
+        "showType": true,
+        "showOwner": true,
+        "showPreviousTransaction": true,
+        "showDisplay": false,
+        "showContent": true,
+        "showBcs": false,
+        "showStorageRebate": true
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

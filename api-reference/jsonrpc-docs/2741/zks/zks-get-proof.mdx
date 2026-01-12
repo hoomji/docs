@@ -1,6 +1,87 @@
 ---
 title: 'zks_getProof'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='2741' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='zks_getProof' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x0000000000000000000000000000000000008003",["0x8b65c0cf1012ea9f393197eb24619fd814379b298b238285649e14f936a5eb12"],354895]} placeholder='["0x0000000000000000000000000000000000008003",["0x8b65c0cf1012ea9f393197eb24619fd814379b298b238285649e14f936a5eb12"],354895]' required>
+  Positional parameters for <code>zks_getProof</code>:
+  <ul>
+  <li><code>params[0]</code>: The account address to fetch storage proofs for.</li>
+  <li><code>params[1]</code>: Vector of storage keys in the account.</li>
+  <li><code>params[2]</code>: The L1 batch number specifying the point in time for the storage proof.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='address' type='string'>
+      The account address for which the proof was fetched.
+    </ResponseField>
+    <ResponseField name='storageProof' type='array'>
+      An array of proofs for each requested key.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='key' type='string'>
+              The requested storage key.
+            </ResponseField>
+            <ResponseField name='value' type='string'>
+              The value stored at the key.
+            </ResponseField>
+            <ResponseField name='index' type='integer'>
+              The index of the entry in the Merkle tree.
+            </ResponseField>
+            <ResponseField name='proof' type='array'>
+              Merkle proof path from root to the leaf (excluding root).
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2741 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getProof",
+    "params": [
+      "0x0000000000000000000000000000000000008003",
+      [
+        "0x8b65c0cf1012ea9f393197eb24619fd814379b298b238285649e14f936a5eb12"
+      ],
+      354895
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

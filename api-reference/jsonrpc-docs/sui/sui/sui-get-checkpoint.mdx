@@ -1,6 +1,106 @@
 ---
 title: 'sui_getCheckpoint'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_getCheckpoint' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["1000"]} placeholder='["1000"]' required>
+  Parameters to fetch checkpoint data by digest or sequence number.
+  
+  Positional parameters for <code>sui_getCheckpoint</code>:
+  <ul>
+  <li><code>params[]</code>: Checkpoint ID - can be a checkpoint digest or sequence number.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='checkpointCommitments' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          Checkpoint commitment structure
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='digest' type='string'>
+      Checkpoint digest as base64 string
+    </ResponseField>
+    <ResponseField name='endOfEpochData' type='object'>
+      Optional data available on final checkpoint of an epoch
+    </ResponseField>
+    <ResponseField name='epoch' type='string'>
+      Checkpoint epoch ID
+    </ResponseField>
+    <ResponseField name='epochRollingGasCostSummary' type='object'>
+      Running total gas costs in the epoch until this checkpoint
+      <Expandable title='properties'>
+        <ResponseField name='computationCost' type='string'>
+        </ResponseField>
+        <ResponseField name='storageCost' type='string'>
+        </ResponseField>
+        <ResponseField name='storageRebate' type='string'>
+        </ResponseField>
+        <ResponseField name='nonRefundableStorageFee' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='networkTotalTransactions' type='string'>
+      Total number of transactions committed since genesis
+    </ResponseField>
+    <ResponseField name='previousDigest' type='string'>
+      Digest of the previous checkpoint
+    </ResponseField>
+    <ResponseField name='sequenceNumber' type='string'>
+      Checkpoint sequence number
+    </ResponseField>
+    <ResponseField name='timestampMs' type='string'>
+      Checkpoint timestamp in milliseconds since epoch
+    </ResponseField>
+    <ResponseField name='transactions' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+          Transaction digests
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='validatorSignature' type='string'>
+      Validator’s signature of this checkpoint
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getCheckpoint",
+    "params": [
+      "1000"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

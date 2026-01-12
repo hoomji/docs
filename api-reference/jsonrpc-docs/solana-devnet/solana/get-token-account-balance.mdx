@@ -1,6 +1,68 @@
 ---
 title: 'getTokenAccountBalance'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getTokenAccountBalance' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["7fUAJdStEuGbc3sM84cKRL6yYaaSstyLSU4ve5oovLS7"]} placeholder='["7fUAJdStEuGbc3sM84cKRL6yYaaSstyLSU4ve5oovLS7"]' required>
+  Parameters for method getTokenAccountBalance: [tokenAccountAddress, config]
+  
+  Positional parameters for <code>getTokenAccountBalance</code>:
+  <ul>
+  <li><code>params[0]</code>: Pubkey of the Token account to query (base-58 encoded string).</li>
+  <li><code>params[1]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Token balance information for the given Token account.
+  <Expandable title='properties'>
+    <ResponseField name='amount' type='string'>
+      The raw token balance without decimals (u64 string representation).
+    </ResponseField>
+    <ResponseField name='decimals' type='integer'>
+      Number of base 10 digits to the right of the decimal place.
+    </ResponseField>
+    <ResponseField name='uiAmount' type='number'>
+      Deprecated. The balance using mint-prescribed decimals.
+    </ResponseField>
+    <ResponseField name='uiAmountString' type='string'>
+      The balance as a string, using mint-prescribed decimals.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getTokenAccountBalance",
+    "params": [
+      "7fUAJdStEuGbc3sM84cKRL6yYaaSstyLSU4ve5oovLS7"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

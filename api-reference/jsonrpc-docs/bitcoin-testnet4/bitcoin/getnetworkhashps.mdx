@@ -1,6 +1,55 @@
 ---
 title: 'getnetworkhashps'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin-testnet4' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getnetworkhashps' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[0,0]} placeholder='[0,0]'>
+  Parameters: [nblocks?, height?].
+  
+  Positional parameters for <code>getnetworkhashps</code>:
+  <ul>
+  <li><code>params[0]</code>: Number of blocks to average over.</li>
+  <li><code>params[1]</code>: Block height to estimate at (default best chain tip).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='number'>
+  Estimated hashes per second.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet4 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getnetworkhashps",
+    "params": [
+      0,
+      0
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

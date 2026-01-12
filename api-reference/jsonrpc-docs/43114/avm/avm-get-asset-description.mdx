@@ -1,6 +1,65 @@
 ---
 title: 'avm.getAssetDescription'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='43114' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='avm.getAssetDescription' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{}} required>
+  Parameters for <code>avm.getAssetDescription</code>:
+  <ul>
+  <li><code>params.assetID</code>: The asset ID to query. For example, the AVAX asset ID differs by network (Mainnet: FvwEAhmxK..., Testnet: U8iRqJoi...).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='assetID' type='string'>
+      The ID of the queried asset.
+    </ResponseField>
+    <ResponseField name='name' type='string'>
+      The human-readable name of the asset.
+    </ResponseField>
+    <ResponseField name='symbol' type='string'>
+      The short symbol used to represent the asset.
+    </ResponseField>
+    <ResponseField name='denomination' type='integer'>
+      Determines display formatting. E.g., denomination=9 means 1000000000 base units = 1 displayed unit.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43114 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "avm.getAssetDescription",
+    "params": {}
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

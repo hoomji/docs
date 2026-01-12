@@ -1,6 +1,99 @@
 ---
 title: 'starknet_getEvents'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='starknet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='starknet_getEvents' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"filter":{"from_block":"latest","to_block":"latest","address":"0x04c0a5193d58f74fbace4b74dcf65481e734ed1714121bdc571da345540efa05","chunk_size":10}}} placeholder='{"filter":{"from_block":"latest","to_block":"latest","address":"0x04c0a5193d58f74fbace4b74dcf65481e734ed1714121bdc571da345540efa05","chunk_size":10}}' required>
+  Paramters for method starknet_getEvents: [filter].
+  
+  Parameters for <code>starknet_getEvents</code>:
+  <ul>
+  <li><code>params.filter</code>: Filter conditions used to return event objects.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Response object containing events matching the provided filter.
+  <Expandable title='properties'>
+    <ResponseField name='continuation_token' type='string'>
+      Token to fetch the next page of results if more results exist.
+    </ResponseField>
+    <ResponseField name='events' type='array'>
+      Array of event objects matching the filter.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          Event object.
+          <Expandable title='properties'>
+            <ResponseField name='from_address' type='string'>
+              Contract address that emitted the event.
+            </ResponseField>
+            <ResponseField name='keys' type='array'>
+              Event keys.
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='data' type='array'>
+              Event data payload.
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='block_hash' type='string'>
+              Hash of the block where the event was emitted.
+            </ResponseField>
+            <ResponseField name='block_number' type='integer'>
+              Block number where the event was emitted.
+            </ResponseField>
+            <ResponseField name='transaction_hash' type='string'>
+              Hash of the transaction that emitted the event.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getEvents",
+    "params": {
+      "filter": {
+        "from_block": "latest",
+        "to_block": "latest",
+        "address": "0x04c0a5193d58f74fbace4b74dcf65481e734ed1714121bdc571da345540efa05",
+        "chunk_size": 10
+      }
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

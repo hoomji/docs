@@ -1,6 +1,51 @@
 ---
 title: 'zkevm_isBlockVirtualized'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1101' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='zkevm_isBlockVirtualized' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x245f"]} placeholder='["0x245f"]' required>
+  Positional parameters for <code>zkevm_isBlockVirtualized</code>:
+  <ul>
+  <li><code>params[]</code>: The block number to check if it has been virtualized, encoded in hexadecimal format.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='boolean'>
+  True if the specified block has been virtualized, otherwise false. Example: <code>true</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1101 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zkevm_isBlockVirtualized",
+    "params": [
+      "0x245f"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

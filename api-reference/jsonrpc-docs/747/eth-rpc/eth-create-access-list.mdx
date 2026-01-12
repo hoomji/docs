@@ -1,6 +1,83 @@
 ---
 title: 'eth_createAccessList'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='747' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='eth_createAccessList' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{"from":"0xaeA8F8f781326bfE6A7683C2BD48Dd6AA4d3Ba63","to":"0xa02457e5dfd32bda5fc7e1f1b008aa5979568150","data":"0x608060806080608155"},"pending"]} placeholder='[{"from":"0xaeA8F8f781326bfE6A7683C2BD48Dd6AA4d3Ba63","to":"0xa02457e5dfd32bda5fc7e1f1b008aa5979568150","data":"0x608060806080608155"},"pending"]' required>
+  Parameters: [transaction call object, block identifier]
+  
+  Positional parameters for <code>eth_createAccessList</code>:
+  <ul>
+  <li><code>params[0]</code>: Transaction call object used to simulate the access list.</li>
+  <li><code>params[1]</code>: Block identifier: number, block hash, or tag ("latest", "earliest", "pending", "safe", or "finalized").</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Access list and estimated gas usage.
+  <Expandable title='properties'>
+    <ResponseField name='accessList' type='array'>
+      List of addresses and storage keys accessed.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='address' type='string'>
+              Hex-encoded address accessed.
+            </ResponseField>
+            <ResponseField name='storageKeys' type='array'>
+              List of accessed storage keys.
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='gasUsed' type='string'>
+      Estimated gas usage with the generated access list (hex).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=747 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_createAccessList",
+    "params": [
+      {
+        "from": "0xaeA8F8f781326bfE6A7683C2BD48Dd6AA4d3Ba63",
+        "to": "0xa02457e5dfd32bda5fc7e1f1b008aa5979568150",
+        "data": "0x608060806080608155"
+      },
+      "pending"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

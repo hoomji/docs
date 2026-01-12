@@ -1,6 +1,79 @@
 ---
 title: 'suix_getDynamicFields'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='suix_getDynamicFields' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x5612581eba57ebe7e594b809ccceec2be4dac6ff6945d49b3ecc043d049611f6","0x671832358f25bfacde706e528df4e15bb8de6dadd21835dfe44f4973139c15f9",3]} placeholder='["0x5612581eba57ebe7e594b809ccceec2be4dac6ff6945d49b3ecc043d049611f6","0x671832358f25bfacde706e528df4e15bb8de6dadd21835dfe44f4973139c15f9",3]'>
+  Parameters for suix_getDynamicFields.
+  
+  Positional parameters for <code>suix_getDynamicFields</code>:
+  <ul>
+  <li><code>params[0]</code>: The ID of the parent object.</li>
+  <li><code>params[1]</code>: Optional paging cursor. If provided, the query will start from the item after this cursor.</li>
+  <li><code>params[2]</code>: Maximum number of items per page. Defaults to QUERY_MAX_RESULT_LIMIT if not specified.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  DynamicFieldPage object containing dynamic field info and pagination cursor.
+  <Expandable title='properties'>
+    <ResponseField name='data' type='array'>
+      Array of dynamic field info objects.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          DynamicFieldInfo object. Extend with additional properties as needed.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='hasNextPage' type='boolean'>
+      Indicates whether there are more pages available.
+    </ResponseField>
+    <ResponseField name='nextCursor' type='oneOf'>
+      Cursor for the next page (or null if none).
+      <Expandable title='variants'>
+        <ResponseField name='variant1' type='string'>
+        </ResponseField>
+        <ResponseField name='variant2' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getDynamicFields",
+    "params": [
+      "0x5612581eba57ebe7e594b809ccceec2be4dac6ff6945d49b3ecc043d049611f6",
+      "0x671832358f25bfacde706e528df4e15bb8de6dadd21835dfe44f4973139c15f9",
+      3
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

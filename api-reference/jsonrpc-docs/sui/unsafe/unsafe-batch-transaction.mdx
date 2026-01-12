@@ -1,6 +1,72 @@
 ---
 title: 'unsafe_batchTransaction'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='unsafe_batchTransaction' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6",[],"0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051","100000","Commit"]} placeholder='["0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6",[],"0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051","100000","Commit"]' required>
+  Create an unsigned batched transaction.
+  
+  Positional parameters for <code>unsafe_batchTransaction</code>:
+  <ul>
+  <li><code>params[0]</code>: The transaction signer's Sui address.</li>
+  <li><code>params[1]</code>: List of transaction request parameters.</li>
+  <li><code>params[2]</code>: Optional gas object ID to be used. If not provided, one will be chosen by the node.</li>
+  <li><code>params[3]</code>: Gas budget (maximum gas units that can be used).</li>
+  <li><code>params[4]</code>: Transaction builder mode. Optional.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Unsigned batched transaction block.
+  <Expandable title='properties'>
+    <ResponseField name='gas' type='array'>
+      Gas objects used in this transaction.
+    </ResponseField>
+    <ResponseField name='inputObjects' type='array'>
+      List of objects used as input in the transaction.
+    </ResponseField>
+    <ResponseField name='txBytes' type='string'>
+      BCS serialized transaction data bytes (base64).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_batchTransaction",
+    "params": [
+      "0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6",
+      [],
+      "0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051",
+      "100000",
+      "Commit"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

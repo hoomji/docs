@@ -1,6 +1,57 @@
 ---
 title: 'starknet_getBlockTransactionCount'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='starknet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='starknet_getBlockTransactionCount' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"block_id":{"block_hash":"0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"},"index":1}} placeholder='{"block_id":{"block_hash":"0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"},"index":1}' required>
+  Parameters for starknet_getBlockTransactionCount: [block_id].
+  
+  Parameters for <code>starknet_getBlockTransactionCount</code>:
+  <ul>
+  <li><code>params.block_id</code>: BlockID object containing hash and number.</li>
+  <li><code>params.index</code>: Index of the transaction within the specified block.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='integer'>
+  Integer - Number of transactions in the requested block. Example: <code>148</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getBlockTransactionCount",
+    "params": {
+      "block_id": {
+        "block_hash": "0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"
+      },
+      "index": 1
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

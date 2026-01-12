@@ -1,6 +1,55 @@
 ---
 title: 'zks_getBytecodeByHash'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='37111' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='zks_getBytecodeByHash' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc"]} placeholder='["0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc"]' required>
+  Positional parameters for <code>zks_getBytecodeByHash</code>:
+  <ul>
+  <li><code>params[]</code>: The hash of the bytecode to retrieve.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  The bytecode array representing the transaction's bytecode.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='integer'>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=37111 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getBytecodeByHash",
+    "params": [
+      "0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,174 @@
 ---
 title: 'sui_dryRunTransactionBlock'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_dryRunTransactionBlock' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["AAACACB7qR3cfnF89wjJNwYPBASHNuwz+xdG2Zml5YzVxnftgAEAT4LxyFh7mNZMAL..."]} placeholder='["AAACACB7qR3cfnF89wjJNwYPBASHNuwz+xdG2Zml5YzVxnftgAEAT4LxyFh7mNZMAL..."]' required>
+  Base64-encoded BCS transaction block data.
+  
+  Positional parameters for <code>sui_dryRunTransactionBlock</code>:
+  <ul>
+  <li><code>params[]</code>: BCS-encoded transaction block (TransactionKind).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Simulated transaction block execution result, including effects, events, and gas usage.
+  <Expandable title='properties'>
+    <ResponseField name='balanceChanges' type='array'>
+      List of balance changes that would occur.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='effects' type='object'>
+      Simulated effects of the transaction.
+      <Expandable title='properties'>
+        <ResponseField name='messageVersion' type='string'>
+        </ResponseField>
+        <ResponseField name='status' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='status' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='executedEpoch' type='string'>
+        </ResponseField>
+        <ResponseField name='gasUsed' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='computationCost' type='string'>
+            </ResponseField>
+            <ResponseField name='storageCost' type='string'>
+            </ResponseField>
+            <ResponseField name='storageRebate' type='string'>
+            </ResponseField>
+            <ResponseField name='nonRefundableStorageFee' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='transactionDigest' type='string'>
+        </ResponseField>
+        <ResponseField name='mutated' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='owner' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='AddressOwner' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+                <ResponseField name='reference' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='objectId' type='string'>
+                    </ResponseField>
+                    <ResponseField name='version' type='string'>
+                    </ResponseField>
+                    <ResponseField name='digest' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='gasObject' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='owner' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='ObjectOwner' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='reference' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='objectId' type='string'>
+                </ResponseField>
+                <ResponseField name='version' type='string'>
+                </ResponseField>
+                <ResponseField name='digest' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='eventsDigest' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='events' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='executionErrorSource' type='string'>
+    </ResponseField>
+    <ResponseField name='input' type='object'>
+      Input transaction block data and metadata.
+      <Expandable title='properties'>
+        <ResponseField name='messageVersion' type='string'>
+        </ResponseField>
+        <ResponseField name='transaction' type='object'>
+        </ResponseField>
+        <ResponseField name='sender' type='string'>
+        </ResponseField>
+        <ResponseField name='gasData' type='object'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='objectChanges' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          Object-level changes such as transfers or creations.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='suggestedGasPrice' type='string'>
+      Gas price recommended based on dry run.
+    </ResponseField>
+    <ResponseField name='digest' type='string'>
+      Digest of the dry run transaction.
+    </ResponseField>
+    <ResponseField name='rawTransaction' type='string'>
+      BCS encoded base64 transaction bytes.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_dryRunTransactionBlock",
+    "params": [
+      "AAACACB7qR3cfnF89wjJNwYPBASHNuwz+xdG2Zml5YzVxnftgAEAT4LxyFh7mNZMAL..."
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

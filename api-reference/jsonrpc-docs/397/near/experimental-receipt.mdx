@@ -1,6 +1,133 @@
 ---
 title: 'EXPERIMENTAL_receipt'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='397' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='EXPERIMENTAL_receipt' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{}} required>
+  Returns the original receipt object by ID, without execution outcome or status.
+  
+  Parameters for <code>EXPERIMENTAL_receipt</code>:
+  <ul>
+  <li><code>params.receipt_id</code>: Base58-encoded receipt ID. You can find valid IDs via transaction status results.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Returns the raw receipt object for a given receipt ID.
+  <Expandable title='properties'>
+    <ResponseField name='predecessor_id' type='string'>
+      Account ID that issued the receipt.
+    </ResponseField>
+    <ResponseField name='priority' type='integer'>
+      Priority score of the receipt.
+    </ResponseField>
+    <ResponseField name='receipt' type='object'>
+      The action receipt object containing the list of actions and metadata.
+      <Expandable title='properties'>
+        <ResponseField name='Action' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='actions' type='array'>
+              List of actions this receipt performs.
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='oneOf'>
+                  <Expandable title='variants'>
+                    <ResponseField name='variant1' type='string'>
+                    </ResponseField>
+                    <ResponseField name='variant2' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='Transfer' type='object'>
+                          <Expandable title='properties'>
+                            <ResponseField name='deposit' type='string'>
+                            </ResponseField>
+                          </Expandable>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                    <ResponseField name='variant3' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='AddKey' type='object'>
+                          <Expandable title='properties'>
+                            <ResponseField name='access_key' type='object'>
+                              <Expandable title='properties'>
+                                <ResponseField name='nonce' type='integer'>
+                                </ResponseField>
+                                <ResponseField name='permission' type='string'>
+                                </ResponseField>
+                              </Expandable>
+                            </ResponseField>
+                            <ResponseField name='public_key' type='string'>
+                            </ResponseField>
+                          </Expandable>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='gas_price' type='string'>
+            </ResponseField>
+            <ResponseField name='input_data_ids' type='array'>
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='is_promise_yield' type='boolean'>
+            </ResponseField>
+            <ResponseField name='output_data_receivers' type='array'>
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='signer_id' type='string'>
+            </ResponseField>
+            <ResponseField name='signer_public_key' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='receipt_id' type='string'>
+      The original receipt ID used to fetch this result.
+    </ResponseField>
+    <ResponseField name='receiver_id' type='string'>
+      Account ID that this receipt is intended for.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=397 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "EXPERIMENTAL_receipt",
+    "params": {}
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

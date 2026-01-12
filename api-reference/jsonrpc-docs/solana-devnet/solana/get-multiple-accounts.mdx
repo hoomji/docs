@@ -1,6 +1,109 @@
 ---
 title: 'getMultipleAccounts'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getMultipleAccounts' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[[],{}]} placeholder='[[],{}]'>
+  Parameters for method getMultipleAccounts: [pubkeys, config]
+  
+  Positional parameters for <code>getMultipleAccounts</code>:
+  <ul>
+  <li><code>params[0]</code>: List of base-58 encoded public keys for which to retrieve account information.</li>
+  <li><code>params[1]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of account info objects or null (if the account does not exist).
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='oneOf'>
+      Null if the account does not exist at the given Pubkey.
+      <Expandable title='variants'>
+        <ResponseField name='variant1' type='string'>
+          Null if the account does not exist at the given Pubkey.
+        </ResponseField>
+        <ResponseField name='variant2' type='object'>
+          Account info object.
+          <Expandable title='properties'>
+            <ResponseField name='lamports' type='integer'>
+              Number of lamports assigned to this account.
+            </ResponseField>
+            <ResponseField name='owner' type='string'>
+              Base-58 encoded Pubkey of the program this account is assigned to.
+            </ResponseField>
+            <ResponseField name='data' type='oneOf'>
+              Data associated with the account. Can be an encoded [string, encoding] tuple or a JSON object representing state.
+              <Expandable title='variants'>
+                <ResponseField name='variant1' type='array'>
+                  Encoded account data tuple [data, encoding].
+                  <Expandable title='items'>
+                    <ResponseField name='items[]' type='oneOf'>
+                      Base64 or base58 encoded string.
+                      <Expandable title='variants'>
+                        <ResponseField name='variant1' type='string'>
+                          Base64 or base58 encoded string.
+                        </ResponseField>
+                        <ResponseField name='variant2' type='string'>
+                          Encoding type (e.g., base58, base64, jsonParsed).
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+                <ResponseField name='variant2' type='object'>
+                  Decoded JSON object representing program-specific state if encoding=jsonParsed.
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='executable' type='boolean'>
+              True if the account contains a program (strictly read-only).
+            </ResponseField>
+            <ResponseField name='rentEpoch' type='integer'>
+              Epoch at which this account will next owe rent.
+            </ResponseField>
+            <ResponseField name='space' type='integer'>
+              The data size of the account (in bytes).
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getMultipleAccounts",
+    "params": [
+      [],
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

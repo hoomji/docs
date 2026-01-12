@@ -1,6 +1,125 @@
 ---
 title: 'arbtrace_filter'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='42161' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='arbtrace_filter' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{"fromBlock":"0xa7816b","toBlock":"0xa7816c","fromAddress":["0x1c7d91ccbdbf378bac0f074678b09cb589184e4e"]}]} placeholder='[{"fromBlock":"0xa7816b","toBlock":"0xa7816c","fromAddress":["0x1c7d91ccbdbf378bac0f074678b09cb589184e4e"]}]' required>
+  An array with a single object specifying filter criteria.
+  
+  Positional parameters for <code>arbtrace_filter</code>:
+  <ul>
+  <li><code>params[]</code>: Type: object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  List of trace objects that match the filter.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='action' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='from' type='string'>
+              Sender address
+            </ResponseField>
+            <ResponseField name='callType' type='string'>
+              Call type (call, delegatecall)
+            </ResponseField>
+            <ResponseField name='gas' type='string'>
+              Gas limit (hex)
+            </ResponseField>
+            <ResponseField name='input' type='string'>
+              Input data
+            </ResponseField>
+            <ResponseField name='to' type='string'>
+              Recipient address
+            </ResponseField>
+            <ResponseField name='value' type='string'>
+              Transferred value (hex)
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='blockHash' type='string'>
+          Hash of the block
+        </ResponseField>
+        <ResponseField name='blockNumber' type='string'>
+          Block number (hex)
+        </ResponseField>
+        <ResponseField name='error' type='string'>
+          Error message if execution failed
+        </ResponseField>
+        <ResponseField name='result' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='gasUsed' type='string'>
+              Gas used in execution
+            </ResponseField>
+            <ResponseField name='output' type='string'>
+              Return value from the contract call
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='subtraces' type='integer'>
+          Number of subcalls
+        </ResponseField>
+        <ResponseField name='traceAddress' type='array'>
+          Nesting structure of the trace call stack
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='integer'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='transactionHash' type='string'>
+          Hash of the transaction
+        </ResponseField>
+        <ResponseField name='transactionPosition' type='integer'>
+          Position of tx in block
+        </ResponseField>
+        <ResponseField name='type' type='string'>
+          Type of the trace (e.g., call, create)
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=42161 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "arbtrace_filter",
+    "params": [
+      {
+        "fromBlock": "0xa7816b",
+        "toBlock": "0xa7816c",
+        "fromAddress": [
+          "0x1c7d91ccbdbf378bac0f074678b09cb589184e4e"
+        ]
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

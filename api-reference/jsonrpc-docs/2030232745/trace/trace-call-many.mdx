@@ -1,6 +1,59 @@
 ---
 title: 'trace_callMany'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='2030232745' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='trace_callMany' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[[],0]} placeholder='[[],0]' required>
+  Parameters for the trace call method: [traceCalls, block identifier]. The first element is an array of trace calls; the second is an optional block identifier.
+  
+  Positional parameters for <code>trace_callMany</code>:
+  <ul>
+  <li><code>params[0]</code>: List of trace calls. Each trace call is an array of two items: a transaction object and an array of trace types.</li>
+  <li><code>params[1]</code>: Block identifier. Can be an integer block number or a string tag: "latest", "earliest", or "pending".</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array - Array of the given transactions’ traces
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2030232745 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "trace_callMany",
+    "params": [
+      [],
+      0
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

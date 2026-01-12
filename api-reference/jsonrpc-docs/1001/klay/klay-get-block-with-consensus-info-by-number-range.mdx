@@ -1,6 +1,59 @@
 ---
 title: 'klay_getBlockWithConsensusInfoByNumberRange'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1001' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='klay_getBlockWithConsensusInfoByNumberRange' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[0,""]} placeholder='[0,""]' required>
+  Parameters: [startBlockNumber, endBlockNumber].
+  
+  Positional parameters for <code>klay_getBlockWithConsensusInfoByNumberRange</code>:
+  <ul>
+  <li><code>params[0]</code>: Type: number.</li>
+  <li><code>params[1]</code>: Type: string.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of block objects with consensus metadata.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1001 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "klay_getBlockWithConsensusInfoByNumberRange",
+    "params": [
+      0,
+      ""
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

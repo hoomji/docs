@@ -1,6 +1,57 @@
 ---
 title: 'sui_getMoveFunctionArgTypes'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_getMoveFunctionArgTypes' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xa0a7b108f5023b7356f2c6a4be6f058e267aae38e08260c7d519d8641897490c","suifrens","mint"]} placeholder='["0xa0a7b108f5023b7356f2c6a4be6f058e267aae38e08260c7d519d8641897490c","suifrens","mint"]' required>
+  Parameters to get the argument types of a Move function.
+  
+  Positional parameters for <code>sui_getMoveFunctionArgTypes</code>:
+  <ul>
+  <li><code>params[0]</code>: Object ID of the Move package.</li>
+  <li><code>params[1]</code>: Module name within the package.</li>
+  <li><code>params[2]</code>: Function name in the module.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  List of normalized argument types for the specified Move function.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getMoveFunctionArgTypes",
+    "params": [
+      "0xa0a7b108f5023b7356f2c6a4be6f058e267aae38e08260c7d519d8641897490c",
+      "suifrens",
+      "mint"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

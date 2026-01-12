@@ -1,6 +1,55 @@
 ---
 title: 'getNetwork'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='stellar-soroban-testnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getNetwork' required>
+    JSON-RPC method name.
+  </ParamField>
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Network information for the connected Soroban network.
+  <Expandable title='properties'>
+    <ResponseField name='networkPassphrase' type='string'>
+      Stellar network passphrase.
+    </ResponseField>
+    <ResponseField name='protocolVersion' type='integer'>
+      Current protocol version supported.
+    </ResponseField>
+    <ResponseField name='friendbotUrl' type='string'>
+      Optional friendbot URL if provided by the server.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=stellar-soroban-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getNetwork",
+    "params": []
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

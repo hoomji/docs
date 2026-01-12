@@ -1,6 +1,53 @@
 ---
 title: 'getBlockTime'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getBlockTime' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[5]} placeholder='[5]' required>
+  The parameters for method getBlockTime: [slot].
+  
+  Positional parameters for <code>getBlockTime</code>:
+  <ul>
+  <li><code>params[]</code>: Slot number of the block to retrieve.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='integer'>
+  Estimated production time of the block Example: <code>1574721591</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getBlockTime",
+    "params": [
+      5
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

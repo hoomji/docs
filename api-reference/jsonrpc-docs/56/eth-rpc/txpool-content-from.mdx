@@ -1,6 +1,63 @@
 ---
 title: 'txpool_contentFrom'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='56' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='txpool_contentFrom' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x9431D1615FA755Faa25A74da7f34C8Bd6963bd0A"]} placeholder='["0x9431D1615FA755Faa25A74da7f34C8Bd6963bd0A"]' required>
+  Array containing the address to filter transactions by.
+  
+  Positional parameters for <code>txpool_contentFrom</code>:
+  <ul>
+  <li><code>params[]</code>: The sender address (20-byte hex string).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Pending and queued transactions for the specified address.
+  <Expandable title='properties'>
+    <ResponseField name='pending' type='array'>
+      List of pending transactions grouped by nonce.
+    </ResponseField>
+    <ResponseField name='queued' type='array'>
+      List of queued transactions grouped by nonce.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=56 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "txpool_contentFrom",
+    "params": [
+      "0x9431D1615FA755Faa25A74da7f34C8Bd6963bd0A"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

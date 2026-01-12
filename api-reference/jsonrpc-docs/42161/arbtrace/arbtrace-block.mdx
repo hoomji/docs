@@ -1,6 +1,121 @@
 ---
 title: 'arbtrace_block'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='42161' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='arbtrace_block' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xb48c3c"]} placeholder='["0xb48c3c"]' required>
+  Array containing a single block number (as hex) or tag (e.g., "latest").
+  
+  Positional parameters for <code>arbtrace_block</code>:
+  <ul>
+  <li><code>params[]</code>: The block number (hex) or tag ("latest", "pending").</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  List of trace objects for all transactions in the block.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='action' type='object'>
+          Details of the call or contract creation.
+          <Expandable title='properties'>
+            <ResponseField name='from' type='string'>
+              Sender address
+            </ResponseField>
+            <ResponseField name='callType' type='string'>
+              Call type (call, delegatecall, etc.)
+            </ResponseField>
+            <ResponseField name='gas' type='string'>
+              Gas provided (hex)
+            </ResponseField>
+            <ResponseField name='input' type='string'>
+              Input data
+            </ResponseField>
+            <ResponseField name='to' type='string'>
+              Receiver address
+            </ResponseField>
+            <ResponseField name='value' type='string'>
+              Value sent (hex)
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='blockHash' type='string'>
+          Hash of the block
+        </ResponseField>
+        <ResponseField name='blockNumber' type='string'>
+          Block number (hex)
+        </ResponseField>
+        <ResponseField name='error' type='string'>
+          Error message if the trace failed
+        </ResponseField>
+        <ResponseField name='result' type='object'>
+          Result of the traced call
+          <Expandable title='properties'>
+            <ResponseField name='gasUsed' type='string'>
+              Gas used in the call
+            </ResponseField>
+            <ResponseField name='output' type='string'>
+              Output returned by the contract call
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='subtraces' type='integer'>
+          Number of internal calls
+        </ResponseField>
+        <ResponseField name='traceAddress' type='array'>
+          List representing call nesting path
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='integer'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='transactionHash' type='string'>
+          Hash of the related transaction
+        </ResponseField>
+        <ResponseField name='transactionPosition' type='integer'>
+          Index of the transaction in the block
+        </ResponseField>
+        <ResponseField name='type' type='string'>
+          Trace type (call, create)
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=42161 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "arbtrace_block",
+    "params": [
+      "0xb48c3c"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

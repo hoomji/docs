@@ -1,6 +1,99 @@
 ---
 title: 'unsafe_transferObject'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='unsafe_transferObject' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788","0xobjectid123456789abcdef","0xgasobject998877","50000","0xrecipient00112233445566778899aabbccddeeff0011223344556677889900"]} placeholder='["0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788","0xobjectid123456789abcdef","0xgasobject998877","50000","0xrecipient00112233445566778899aabbccddeeff0011223344556677889900"]' required>
+  Create an unsigned transaction to transfer an object to a recipient. The object must allow public transfers.
+  
+  Positional parameters for <code>unsafe_transferObject</code>:
+  <ul>
+  <li><code>params[0]</code>: The signer's Sui address.</li>
+  <li><code>params[1]</code>: The ID of the object to be transferred.</li>
+  <li><code>params[2]</code>: Optional gas object ID. If not specified, the node picks one automatically.</li>
+  <li><code>params[3]</code>: The gas budget for the transaction.</li>
+  <li><code>params[4]</code>: The recipient's Sui address.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Unsigned transaction bytes and metadata for the object transfer.
+  <Expandable title='properties'>
+    <ResponseField name='gas' type='array'>
+      The gas objects used in the transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='objectId' type='string'>
+              ID of the gas object.
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+              Version of the object.
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+              Digest of the object.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='inputObjects' type='array'>
+      The objects involved in this transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='objectId' type='string'>
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='txBytes' type='string'>
+      BCS serialized transaction data without type tag, encoded as base64.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_transferObject",
+    "params": [
+      "0xaabbccddeeff0011223344556677889900aabbccddeeff001122334455667788",
+      "0xobjectid123456789abcdef",
+      "0xgasobject998877",
+      "50000",
+      "0xrecipient00112233445566778899aabbccddeeff0011223344556677889900"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

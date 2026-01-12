@@ -1,6 +1,76 @@
 ---
 title: 'getLedgerEntries'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='stellar-soroban-testnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getLedgerEntries' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"keys":["YOUR_KEYS_OF_LEDGER_ENTRIES"]}} placeholder='{"keys":["YOUR_KEYS_OF_LEDGER_ENTRIES"]}' required>
+  Parameters for <code>getLedgerEntries</code>:
+  <ul>
+  <li><code>params.keys</code>: Array of base64-encoded XDR LedgerKey values.</li>
+  <li><code>params.includeProof</code>: If true, include cryptographic proofs when supported.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Resolved ledger entries and optional proof data.
+  <Expandable title='properties'>
+    <ResponseField name='entries' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='key' type='string'>
+              Base64 XDR LedgerKey.
+            </ResponseField>
+            <ResponseField name='xdr' type='string'>
+              Base64 XDR-encoded LedgerEntry data.
+            </ResponseField>
+            <ResponseField name='lastModifiedLedgerSeq' type='integer'>
+              Ledger in which the entry was last modified.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='latestLedger' type='integer'>
+      Current latest ledger at the time of query.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=stellar-soroban-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getLedgerEntries",
+    "params": {
+      "keys": [
+        "YOUR_KEYS_OF_LEDGER_ENTRIES"
+      ]
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

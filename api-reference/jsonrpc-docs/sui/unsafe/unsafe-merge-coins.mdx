@@ -1,6 +1,72 @@
 ---
 title: 'unsafe_mergeCoins'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='unsafe_mergeCoins' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6","0x5eeb1d449e2516166d57d71fdeb154d0dc9ecdb7b30057d0a932684cac352cdc","0x77b3482580ee8d5bdc5b824808df54bfec4fc817622e5add0e48f749f01def98","0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051","100000"]} placeholder='["0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6","0x5eeb1d449e2516166d57d71fdeb154d0dc9ecdb7b30057d0a932684cac352cdc","0x77b3482580ee8d5bdc5b824808df54bfec4fc817622e5add0e48f749f01def98","0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051","100000"]' required>
+  Create an unsigned transaction to merge multiple coins into one coin.
+  
+  Positional parameters for <code>unsafe_mergeCoins</code>:
+  <ul>
+  <li><code>params[0]</code>: The signer's Sui address.</li>
+  <li><code>params[1]</code>: The primary coin object to merge into. This coin will remain.</li>
+  <li><code>params[2]</code>: The coin object to be merged. This coin will be destroyed.</li>
+  <li><code>params[3]</code>: Optional gas object to be used. Node will auto-select if not provided.</li>
+  <li><code>params[4]</code>: Gas budget for the transaction.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Unsigned transaction block for merging coins.
+  <Expandable title='properties'>
+    <ResponseField name='gas' type='array'>
+      Gas objects used in this transaction.
+    </ResponseField>
+    <ResponseField name='inputObjects' type='array'>
+      Input objects used in the transaction.
+    </ResponseField>
+    <ResponseField name='txBytes' type='string'>
+      Base64-encoded BCS serialized transaction data bytes.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_mergeCoins",
+    "params": [
+      "0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6",
+      "0x5eeb1d449e2516166d57d71fdeb154d0dc9ecdb7b30057d0a932684cac352cdc",
+      "0x77b3482580ee8d5bdc5b824808df54bfec4fc817622e5add0e48f749f01def98",
+      "0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051",
+      "100000"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

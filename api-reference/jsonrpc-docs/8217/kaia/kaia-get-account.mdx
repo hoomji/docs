@@ -1,6 +1,69 @@
 ---
 title: 'kaia_getAccount'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='8217' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='kaia_getAccount' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["",0]} placeholder='["",0]' required>
+  Parameters: [address, block parameter].
+  
+  Positional parameters for <code>kaia_getAccount</code>:
+  <ul>
+  <li><code>params[0]</code>: The address.</li>
+  <li><code>params[1]</code>: Block identifier. Can be an integer block number or a string tag: "latest", "earliest", or "pending".</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Account metadata at the specified block.
+  <Expandable title='properties'>
+    <ResponseField name='balance' type='string'>
+      Account balance in peb.
+    </ResponseField>
+    <ResponseField name='nonce' type='string'>
+      Transaction count for the account.
+    </ResponseField>
+    <ResponseField name='storageRoot' type='string'>
+      Storage trie root hash.
+    </ResponseField>
+    <ResponseField name='codeHash' type='string'>
+      Hash of the account code.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=8217 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "kaia_getAccount",
+    "params": [
+      "",
+      0
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

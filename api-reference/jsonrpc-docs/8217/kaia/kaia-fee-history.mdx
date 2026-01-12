@@ -1,6 +1,91 @@
 ---
 title: 'kaia_feeHistory'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='8217' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='kaia_feeHistory' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x5",0,[10,50,90]]} placeholder='["0x5",0,[10,50,90]]' required>
+  Parameters: [blockCount, newestBlock, rewardPercentiles].
+  
+  Positional parameters for <code>kaia_feeHistory</code>:
+  <ul>
+  <li><code>params[0]</code>: Hex-encoded number of blocks in the requested range (max 1024).</li>
+  <li><code>params[1]</code>: Block number where this transaction was included. Null when pending.</li>
+  <li><code>params[2]</code>: Percentiles of priority fees to include in the response (0-100).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Base fee history for the requested block range.
+  <Expandable title='properties'>
+    <ResponseField name='oldestBlock' type='string'>
+      Hex block number of the first block in the range.
+    </ResponseField>
+    <ResponseField name='baseFeePerGas' type='array'>
+      Base fee per gas for each block in the range.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='gasUsedRatio' type='array'>
+      Gas used ratio for each returned block.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='number'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='reward' type='array'>
+      Priority fee rewards per percentile requested (omitted if no percentages were supplied).
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=8217 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "kaia_feeHistory",
+    "params": [
+      "0x5",
+      0,
+      [
+        10,
+        50,
+        90
+      ]
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

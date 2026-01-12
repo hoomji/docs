@@ -1,6 +1,48 @@
 ---
 title: 'eth_blobBaseFee'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='44787' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='eth_blobBaseFee' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[null]} placeholder='[null]'>
+  This method does not accept any parameters.
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  The expected blob base fee for the next block (QUANTITY in wei, 64 bits). Example: <code>"0x174876e800"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=44787 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_blobBaseFee",
+    "params": [
+      null
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

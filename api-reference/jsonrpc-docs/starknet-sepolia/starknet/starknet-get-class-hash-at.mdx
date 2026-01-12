@@ -1,6 +1,57 @@
 ---
 title: 'starknet_getClassHashAt'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='starknet-sepolia' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='starknet_getClassHashAt' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"block_id":{"block_hash":"0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"},"contract_address":"0x03b554093fb0a7460913be2d5c011cb5ac4333dfcfe6125851bcd3f926a3b558"}} placeholder='{"block_id":{"block_hash":"0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"},"contract_address":"0x03b554093fb0a7460913be2d5c011cb5ac4333dfcfe6125851bcd3f926a3b558"}'>
+  Parameters for method starknet_getClassHashAt: [block_id, contract_address]
+  
+  Parameters for <code>starknet_getClassHashAt</code>:
+  <ul>
+  <li><code>params.block_id</code>: BlockID object containing hash and number.</li>
+  <li><code>params.contract_address</code>: Address of the requested contract class.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  The class hash of the requested contract class (DATA, 32 Bytes). Example: <code>"0xabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdef"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet-sepolia \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getClassHashAt",
+    "params": {
+      "block_id": {
+        "block_hash": "0x041b10c45dc3f39372f7b9409261cac9d880c5d75a5bb077d028db20b1bd76c4"
+      },
+      "contract_address": "0x03b554093fb0a7460913be2d5c011cb5ac4333dfcfe6125851bcd3f926a3b558"
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

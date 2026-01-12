@@ -1,6 +1,89 @@
 ---
 title: 'suix_queryEvents'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='suix_queryEvents' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{"MoveModule":{"package":"0xa395759ca37c6e1ffc179184e98a6f9a2da5d78f6e34b0e5044ed52a6bc0a1bc","module":"test"}},{"txDigest":"Eg3ynETJfTfPKyvJzq3VLG6MngURYHPMjjUJ3Xt1t7tf","eventSeq":"1"},100,false]} placeholder='[{"MoveModule":{"package":"0xa395759ca37c6e1ffc179184e98a6f9a2da5d78f6e34b0e5044ed52a6bc0a1bc","module":"test"}},{"txDigest":"Eg3ynETJfTfPKyvJzq3VLG6MngURYHPMjjUJ3Xt1t7tf","eventSeq":"1"},100,false]' required>
+  Parameters for suix_queryEvents: [query, cursor, limit, descending_order]. The query object specifies event filter criteria. Cursor, limit, and descending_order are optional.
+  
+  Positional parameters for <code>suix_queryEvents</code>:
+  <ul>
+  <li><code>params[0]</code>: Event query criteria object. See Event filter documentation for examples.</li>
+  <li><code>params[1]</code>: Optional paging cursor. If provided, the query will start from the next item after this cursor.</li>
+  <li><code>params[2]</code>: Maximum number of items per page. Defaults to QUERY_MAX_RESULT_LIMIT if not specified.</li>
+  <li><code>params[3]</code>: Query result ordering. Default is false (ascending order, oldest record first).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The response object for suix_queryEvents. Contains an array of event objects and pagination information.
+  <Expandable title='properties'>
+    <ResponseField name='data' type='array'>
+      An array of event objects matching the specified query criteria.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          Event object with event details.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='hasNextPage' type='boolean'>
+      Indicates whether there are more pages available beyond the current page.
+    </ResponseField>
+    <ResponseField name='nextCursor' type='oneOf'>
+      Paging cursor for the next page. If present, use it to fetch the next page; if null, the current page is the last one.
+      <Expandable title='variants'>
+        <ResponseField name='variant1' type='string'>
+        </ResponseField>
+        <ResponseField name='variant2' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_queryEvents",
+    "params": [
+      {
+        "MoveModule": {
+          "package": "0xa395759ca37c6e1ffc179184e98a6f9a2da5d78f6e34b0e5044ed52a6bc0a1bc",
+          "module": "test"
+        }
+      },
+      {
+        "txDigest": "Eg3ynETJfTfPKyvJzq3VLG6MngURYHPMjjUJ3Xt1t7tf",
+        "eventSeq": "1"
+      },
+      100,
+      false
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

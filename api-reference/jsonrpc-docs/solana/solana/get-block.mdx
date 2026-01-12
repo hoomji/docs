@@ -1,6 +1,62 @@
 ---
 title: 'getBlock'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getBlock' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[430,{"encoding":"json","maxSupportedTransactionVersion":0,"transactionDetails":"full","rewards":false}]} placeholder='[430,{"encoding":"json","maxSupportedTransactionVersion":0,"transactionDetails":"full","rewards":false}]' required>
+  Parameters for method getBlock: [slot, config]
+  
+  Positional parameters for <code>getBlock</code>:
+  <ul>
+  <li><code>params[0]</code>: Slot number of the block to retrieve.</li>
+  <li><code>params[1]</code>: Optional configuration object for getBlock: [commitment, encoding, transactionDetails, maxSupportedTransactionVersion, rewards].</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Block information including identity and transaction details but if block is not confirmed returns null.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getBlock",
+    "params": [
+      430,
+      {
+        "encoding": "json",
+        "maxSupportedTransactionVersion": 0,
+        "transactionDetails": "full",
+        "rewards": false
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

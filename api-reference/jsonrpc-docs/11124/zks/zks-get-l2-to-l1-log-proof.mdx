@@ -1,6 +1,69 @@
 ---
 title: 'zks_getL2ToL1LogProof'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='11124' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='zks_getL2ToL1LogProof' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x2a1c6c74b184965c0cb015aae9ea134fd96215d2e4f4979cfec12563295f610e",0]} placeholder='["0x2a1c6c74b184965c0cb015aae9ea134fd96215d2e4f4979cfec12563295f610e",0]' required>
+  Positional parameters for <code>zks_getL2ToL1LogProof</code>:
+  <ul>
+  <li><code>params[0]</code>: The hash of the L2 transaction.</li>
+  <li><code>params[1]</code>: The index of the L2 to L1 log in the transaction.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='id' type='integer'>
+      The position of the leaf in the Merkle tree of L2->L1 messages for the block.
+    </ResponseField>
+    <ResponseField name='proof' type='array'>
+      The Merkle proof for the message.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+          Hex-encoded proof element.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='root' type='string'>
+      The root hash representing the Merkle tree root at the time the L2 to L1 log was generated.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=11124 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getL2ToL1LogProof",
+    "params": [
+      "0x2a1c6c74b184965c0cb015aae9ea134fd96215d2e4f4979cfec12563295f610e",
+      0
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

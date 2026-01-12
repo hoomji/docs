@@ -1,6 +1,115 @@
 ---
 title: 'sui_getObject'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_getObject' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x53e4567ccafa5f36ce84c80aa8bc9be64e0d5ae796884274aef3005ae6733809",{}]} placeholder='["0x53e4567ccafa5f36ce84c80aa8bc9be64e0d5ae796884274aef3005ae6733809",{}]' required>
+  Parameters for fetching object data from Sui.
+  
+  Positional parameters for <code>sui_getObject</code>:
+  <ul>
+  <li><code>params[0]</code>: The object ID to query.</li>
+  <li><code>params[1]</code>: Optional flags to control which parts of the object data are returned.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='data' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='objectId' type='string'>
+          Object ID
+        </ResponseField>
+        <ResponseField name='version' type='string'>
+          Version of the object
+        </ResponseField>
+        <ResponseField name='digest' type='string'>
+          Object digest
+        </ResponseField>
+        <ResponseField name='type' type='string'>
+          The type of the object
+        </ResponseField>
+        <ResponseField name='owner' type='object'>
+          The current owner of the object
+        </ResponseField>
+        <ResponseField name='previousTransaction' type='string'>
+          The digest of the transaction that created or last mutated this object
+        </ResponseField>
+        <ResponseField name='storageRebate' type='string'>
+          Rebate value in SUI if this object were deleted
+        </ResponseField>
+        <ResponseField name='content' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='dataType' type='string'>
+            </ResponseField>
+            <ResponseField name='type' type='string'>
+            </ResponseField>
+            <ResponseField name='hasPublicTransfer' type='boolean'>
+            </ResponseField>
+            <ResponseField name='fields' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='balance' type='string'>
+                </ResponseField>
+                <ResponseField name='id' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='id' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='error' type='object'>
+      Error returned if object fetch fails
+      <Expandable title='properties'>
+        <ResponseField name='code' type='integer'>
+        </ResponseField>
+        <ResponseField name='message' type='string'>
+        </ResponseField>
+        <ResponseField name='details' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getObject",
+    "params": [
+      "0x53e4567ccafa5f36ce84c80aa8bc9be64e0d5ae796884274aef3005ae6733809",
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

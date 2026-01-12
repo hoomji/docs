@@ -1,6 +1,176 @@
 ---
 title: 'eth_getTransactionByBlockHashAndIndex'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='2741' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='eth_getTransactionByBlockHashAndIndex' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xbfb3bb785c60ee4f93aa6e506f6f5d5fc5173301f537d856cac59d91e7a0ce09","0x0"]} placeholder='["0xbfb3bb785c60ee4f93aa6e506f6f5d5fc5173301f537d856cac59d91e7a0ce09","0x0"]' required>
+  Parameters for eth_getTransactionByBlockHashAndIndex: [blockHash, index].
+  
+  Positional parameters for <code>eth_getTransactionByBlockHashAndIndex</code>:
+  <ul>
+  <li><code>params[0]</code>: 32 Bytes - hash of the block where this transaction was included. Null when pending.</li>
+  <li><code>params[1]</code>: Integer of the transaction index position.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='oneOf'>
+  Transaction response object. Can be a legacy transaction (pre-EIP-2718) or an AccessList transaction (EIP-2930).
+  <Expandable title='variants'>
+    <ResponseField name='variant1' type='object'>
+      Legacy transaction (pre-EIP-2718).
+      <Expandable title='properties'>
+        <ResponseField name='hash' type='string'>
+          32 Bytes - hash of the transaction.
+        </ResponseField>
+        <ResponseField name='nonce' type='integer'>
+          Quantity - (optional) Integer of a nonce. This allows you to overwrite your own pending transactions that use the same nonce.
+        </ResponseField>
+        <ResponseField name='blockHash' type='string'>
+          32 Bytes - hash of the block where this transaction was included. Null when pending.
+        </ResponseField>
+        <ResponseField name='blockNumber' type='oneOf'>
+          Block number where this transaction was included. Null when pending.
+          <Expandable title='variants'>
+            <ResponseField name='variant1' type='integer'>
+            </ResponseField>
+            <ResponseField name='variant2' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='transactionIndex' type='integer'>
+          The transaction's index position in the block. Null when pending.
+        </ResponseField>
+        <ResponseField name='from' type='string'>
+          20 Bytes - The address the transaction is sent from.
+        </ResponseField>
+        <ResponseField name='to' type='string'>
+          20 Bytes - The address the transaction is directed to. (Optional when creating new contract)
+        </ResponseField>
+        <ResponseField name='value' type='integer'>
+          Quantity - (optional) Integer of the value sent with this transaction.
+        </ResponseField>
+        <ResponseField name='gasPrice' type='integer'>
+          Quantity - (optional) Integer of the gas price used for each paid gas.
+        </ResponseField>
+        <ResponseField name='gas' type='integer'>
+          Quantity - (optional) Integer of the gas provided for the transaction execution. (eth_call consumes zero gas)
+        </ResponseField>
+        <ResponseField name='input' type='string'>
+          The data sent along with the transaction.
+        </ResponseField>
+        <ResponseField name='v' type='integer'>
+          The standardised V field of the signature.
+        </ResponseField>
+        <ResponseField name='standardV' type='integer'>
+          The standardised V field of the signature (0 or 1). Only applicable to legacy transactions.
+        </ResponseField>
+        <ResponseField name='r' type='integer'>
+          The R field of the signature.
+        </ResponseField>
+        <ResponseField name='raw' type='string'>
+          Raw transaction data.
+        </ResponseField>
+        <ResponseField name='publicKey' type='string'>
+          Public key of the signer.
+        </ResponseField>
+        <ResponseField name='chainId' type='integer'>
+          The chain id of the transaction, if any.
+        </ResponseField>
+        <ResponseField name='creates' type='string'>
+          Creates contract hash.
+        </ResponseField>
+        <ResponseField name='condition' type='oneOf'>
+          Conditional submission of the transaction. Can be an object with a block number (&#123; block: 1 &#125;), a UTC timestamp in seconds (&#123; time: 1491290692 &#125;), or null.
+          <Expandable title='variants'>
+            <ResponseField name='variant1' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='block' type='integer'>
+                  Block number condition
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='variant2' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='time' type='integer'>
+                  UTC timestamp condition in seconds
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='variant2' type='allOf'>
+      Legacy transaction (pre-EIP-2718).
+      <Expandable title='variants'>
+        <ResponseField name='variant1' type='object'>
+          Legacy transaction (pre-EIP-2718).
+        </ResponseField>
+        <ResponseField name='variant2' type='object'>
+          AccessList transaction (EIP-2930). Extends LegacyTransaction but omits standardV.
+          <Expandable title='properties'>
+            <ResponseField name='type' type='string'>
+              Transaction type (EIP-2930). Fixed value "0x1" for accessList transactions.
+            </ResponseField>
+            <ResponseField name='accessList' type='array'>
+              List of objects specifying the address (20 Bytes) and storageKeys (32 Byte items) that will be accessed.
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='address' type='string'>
+                      20 Bytes address
+                    </ResponseField>
+                    <ResponseField name='storageKeys' type='array'>
+                      List of storage keys, each 32 Bytes in length.
+                      <Expandable title='items'>
+                        <ResponseField name='items[]' type='string'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=2741 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getTransactionByBlockHashAndIndex",
+    "params": [
+      "0xbfb3bb785c60ee4f93aa6e506f6f5d5fc5173301f537d856cac59d91e7a0ce09",
+      "0x0"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

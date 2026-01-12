@@ -1,6 +1,59 @@
 ---
 title: 'createpsbt'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin-testnet4' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='createpsbt' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[[],{},0,false]} placeholder='[[],{},0,false]' required>
+  Parameters: [inputs, outputs, locktime?, replaceable?].
+  
+  Positional parameters for <code>createpsbt</code>:
+  <ul>
+  <li><code>params[0]</code>: Transaction inputs (each with txid, vout, sequence).</li>
+  <li><code>params[1]</code>: Transaction outputs mapping addresses to amounts or scripts.</li>
+  <li><code>params[2]</code>: Optional locktime.</li>
+  <li><code>params[3]</code>: Optional replaceable flag.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  Newly crafted PSBT encoded as base64.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet4 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "createpsbt",
+    "params": [
+      [],
+      {},
+      0,
+      false
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

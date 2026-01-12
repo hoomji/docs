@@ -1,6 +1,96 @@
 ---
 title: 'sui_getNormalizedMoveStruct'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_getNormalizedMoveStruct' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xc95b9e341bc3aba1654bdbad707dcd773bd6309363447ef3fe58a960de92aa93","module","StructName"]} placeholder='["0xc95b9e341bc3aba1654bdbad707dcd773bd6309363447ef3fe58a960de92aa93","module","StructName"]' required>
+  Parameters for retrieving a structured representation of a Move struct.
+  
+  Positional parameters for <code>sui_getNormalizedMoveStruct</code>:
+  <ul>
+  <li><code>params[0]</code>: Object ID of the package containing the Move module.</li>
+  <li><code>params[1]</code>: Name of the Move module.</li>
+  <li><code>params[2]</code>: Name of the Move struct.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='abilities' type='object'>
+      Set of abilities declared on the Move struct.
+      <Expandable title='properties'>
+        <ResponseField name='abilities' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='typeParameters' type='array'>
+      Type parameters declared on the struct.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='isPhantom' type='boolean'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='fields' type='array'>
+      Fields defined within the Move struct.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='name' type='string'>
+              The name of the field.
+            </ResponseField>
+            <ResponseField name='type' type='string'>
+              The type of the field.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getNormalizedMoveStruct",
+    "params": [
+      "0xc95b9e341bc3aba1654bdbad707dcd773bd6309363447ef3fe58a960de92aa93",
+      "module",
+      "StructName"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

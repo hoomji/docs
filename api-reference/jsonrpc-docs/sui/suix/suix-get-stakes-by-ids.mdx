@@ -1,6 +1,66 @@
 ---
 title: 'suix_getStakesByIds'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='suix_getStakesByIds' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[[]]} placeholder='[[]]' required>
+  Parameters for suix_getStakesByIds: [staked_sui_ids].
+  
+  Positional parameters for <code>suix_getStakesByIds</code>:
+  <ul>
+  <li><code>params[]</code>: Array of ObjectIDs representing staked SUI positions.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of DelegatedStake objects representing stake status by ID.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      Object representing a delegated stake.
+      <Expandable title='properties'>
+        <ResponseField name='validator' type='string'>
+          The Sui address of the validator receiving the stake.
+        </ResponseField>
+        <ResponseField name='stake_amount' type='string'>
+          The amount staked (u64, as a string representing a BigInt).
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getStakesByIds",
+    "params": [
+      []
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

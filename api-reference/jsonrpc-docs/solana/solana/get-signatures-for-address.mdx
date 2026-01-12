@@ -1,6 +1,84 @@
 ---
 title: 'getSignaturesForAddress'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getSignaturesForAddress' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["Vote111111111111111111111111111111111111111",{"limit":1}]} placeholder='["Vote111111111111111111111111111111111111111",{"limit":1}]' required>
+  Parameters for method getSignaturesForAddress: [address, config]
+  
+  Positional parameters for <code>getSignaturesForAddress</code>:
+  <ul>
+  <li><code>params[0]</code>: Account address as base-58 encoded string.</li>
+  <li><code>params[1]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array of transaction signature info objects, ordered from newest to oldest.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      Transaction signature info object.
+      <Expandable title='properties'>
+        <ResponseField name='signature' type='string'>
+          Transaction signature as base-58 encoded string.
+        </ResponseField>
+        <ResponseField name='slot' type='integer'>
+          Slot that contains the block with the transaction.
+        </ResponseField>
+        <ResponseField name='err' type='object'>
+          Error object if transaction failed, null if transaction succeeded.
+        </ResponseField>
+        <ResponseField name='memo' type='string'>
+          Memo associated with the transaction, null if none.
+        </ResponseField>
+        <ResponseField name='blockTime' type='integer'>
+          Estimated Unix timestamp of when transaction was processed.
+        </ResponseField>
+        <ResponseField name='confirmationStatus' type='string'>
+          Cluster confirmation status: processed, confirmed, finalized, or null.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getSignaturesForAddress",
+    "params": [
+      "Vote111111111111111111111111111111111111111",
+      {
+        "limit": 1
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

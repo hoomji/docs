@@ -1,6 +1,53 @@
 ---
 title: 'combinepsbt'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='bitcoin-testnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='combinepsbt' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[[]]} placeholder='[[]]' required>
+  Parameters: [psbts].
+  
+  Positional parameters for <code>combinepsbt</code>:
+  <ul>
+  <li><code>params[]</code>: List of PSBT strings to merge.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  Combined PSBT encoded as base64.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=bitcoin-testnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "combinepsbt",
+    "params": [
+      []
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

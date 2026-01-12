@@ -1,6 +1,74 @@
 ---
 title: 'suix_getBalance'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='suix_getBalance' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xa6f5a7953a75dc632e696cabe60560522a017bf2fb0bd930d1ec22c06f1ee4e4","0x168da5bf1f48dafc111b0a488fa454aca95e0b5e::usdc::USDC"]} placeholder='["0xa6f5a7953a75dc632e696cabe60560522a017bf2fb0bd930d1ec22c06f1ee4e4","0x168da5bf1f48dafc111b0a488fa454aca95e0b5e::usdc::USDC"]' required>
+  Parameters for suix_getBalance [ownerAddress, coin_type]
+  
+  Positional parameters for <code>suix_getBalance</code>:
+  <ul>
+  <li><code>params[0]</code>: The owner's Sui address</li>
+  <li><code>params[1]</code>: Optional coin type. Defaults to 0x2::sui::SUI if not provided.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Response for suix_getBalance
+  <Expandable title='properties'>
+    <ResponseField name='result' type='object'>
+      SuixBalance object
+      <Expandable title='properties'>
+        <ResponseField name='coinObjectCount' type='integer'>
+          Number of coin objects
+        </ResponseField>
+        <ResponseField name='coinType' type='string'>
+          Type of coin
+        </ResponseField>
+        <ResponseField name='lockedBalance' type='object'>
+          Map of locked balances
+        </ResponseField>
+        <ResponseField name='totalBalance' type='string'>
+          Total balance formatted as uint128 string
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getBalance",
+    "params": [
+      "0xa6f5a7953a75dc632e696cabe60560522a017bf2fb0bd930d1ec22c06f1ee4e4",
+      "0x168da5bf1f48dafc111b0a488fa454aca95e0b5e::usdc::USDC"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

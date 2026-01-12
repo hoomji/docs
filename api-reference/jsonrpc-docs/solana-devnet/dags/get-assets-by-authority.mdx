@@ -1,6 +1,230 @@
 ---
 title: 'getAssetsByAuthority'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='solana-devnet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getAssetsByAuthority' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"authorityAddress":"mdaoxg4DVGptU4WSpzGyVpK3zqsgn7Qzx5XNgWTcEA2","limit":10}} placeholder='{"authorityAddress":"mdaoxg4DVGptU4WSpzGyVpK3zqsgn7Qzx5XNgWTcEA2","limit":10}' required>
+  Positional parameters for <code>getAssetsByAuthority</code>:
+  <ul>
+  <li><code>params[]</code>: Type: object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='assetList' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='total' type='integer'>
+        </ResponseField>
+        <ResponseField name='limit' type='integer'>
+        </ResponseField>
+        <ResponseField name='page' type='integer'>
+        </ResponseField>
+        <ResponseField name='cursor' type='string'>
+        </ResponseField>
+        <ResponseField name='items' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='asset' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='interface' type='string'>
+                    </ResponseField>
+                    <ResponseField name='id' type='string'>
+                    </ResponseField>
+                    <ResponseField name='content' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='$schema' type='string'>
+                        </ResponseField>
+                        <ResponseField name='json_uri' type='string'>
+                        </ResponseField>
+                        <ResponseField name='files' type='array'>
+                          <Expandable title='items'>
+                            <ResponseField name='items[]' type='object'>
+                              <Expandable title='properties'>
+                                <ResponseField name='uri' type='string'>
+                                </ResponseField>
+                                <ResponseField name='mime' type='string'>
+                                </ResponseField>
+                                <ResponseField name='quality' type='object'>
+                                </ResponseField>
+                                <ResponseField name='contexts' type='array'>
+                                  <Expandable title='items'>
+                                    <ResponseField name='items[]' type='string'>
+                                    </ResponseField>
+                                  </Expandable>
+                                </ResponseField>
+                              </Expandable>
+                            </ResponseField>
+                          </Expandable>
+                        </ResponseField>
+                        <ResponseField name='metadata' type='object'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                    <ResponseField name='authorities' type='array'>
+                      <Expandable title='items'>
+                        <ResponseField name='items[]' type='object'>
+                          <Expandable title='properties'>
+                            <ResponseField name='address' type='string'>
+                            </ResponseField>
+                            <ResponseField name='scopes' type='array'>
+                              <Expandable title='items'>
+                                <ResponseField name='items[]' type='string'>
+                                </ResponseField>
+                              </Expandable>
+                            </ResponseField>
+                          </Expandable>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                    <ResponseField name='compression' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='asset_hash' type='string'>
+                        </ResponseField>
+                        <ResponseField name='compressed' type='boolean'>
+                        </ResponseField>
+                        <ResponseField name='creator_hash' type='string'>
+                        </ResponseField>
+                        <ResponseField name='data_hash' type='string'>
+                        </ResponseField>
+                        <ResponseField name='eligible' type='boolean'>
+                        </ResponseField>
+                        <ResponseField name='leaf_id' type='integer'>
+                        </ResponseField>
+                        <ResponseField name='seq' type='integer'>
+                        </ResponseField>
+                        <ResponseField name='tree' type='string'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                    <ResponseField name='grouping' type='array'>
+                      <Expandable title='items'>
+                        <ResponseField name='items[]' type='object'>
+                          <Expandable title='properties'>
+                            <ResponseField name='group_key' type='string'>
+                            </ResponseField>
+                            <ResponseField name='group_value' type='string'>
+                            </ResponseField>
+                          </Expandable>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                    <ResponseField name='royalty' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='basis_points' type='number'>
+                        </ResponseField>
+                        <ResponseField name='locked' type='boolean'>
+                        </ResponseField>
+                        <ResponseField name='percent' type='integer'>
+                        </ResponseField>
+                        <ResponseField name='primary_sale_happened' type='boolean'>
+                        </ResponseField>
+                        <ResponseField name='royalty_model' type='string'>
+                        </ResponseField>
+                        <ResponseField name='target' type='string'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                    <ResponseField name='creators' type='array'>
+                      <Expandable title='items'>
+                        <ResponseField name='items[]' type='object'>
+                          <Expandable title='properties'>
+                            <ResponseField name='address' type='string'>
+                            </ResponseField>
+                            <ResponseField name='share' type='integer'>
+                            </ResponseField>
+                            <ResponseField name='verified' type='boolean'>
+                            </ResponseField>
+                          </Expandable>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                    <ResponseField name='ownership' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='delegate' type='string'>
+                        </ResponseField>
+                        <ResponseField name='delegated' type='boolean'>
+                        </ResponseField>
+                        <ResponseField name='frozen' type='boolean'>
+                        </ResponseField>
+                        <ResponseField name='owner' type='string'>
+                        </ResponseField>
+                        <ResponseField name='ownership_model' type='string'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                    <ResponseField name='uses' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='remaining' type='number'>
+                        </ResponseField>
+                        <ResponseField name='total' type='integer'>
+                        </ResponseField>
+                        <ResponseField name='use_method' type='string'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                    <ResponseField name='supply' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='edition_nonce' type='integer'>
+                        </ResponseField>
+                        <ResponseField name='print_current_supply' type='integer'>
+                        </ResponseField>
+                        <ResponseField name='print_max_supply' type='integer'>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                    <ResponseField name='mutable' type='boolean'>
+                    </ResponseField>
+                    <ResponseField name='burnt' type='boolean'>
+                    </ResponseField>
+                    <ResponseField name='mint_extensions' type='object'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=solana-devnet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getAssetsByAuthority",
+    "params": {
+      "authorityAddress": "mdaoxg4DVGptU4WSpzGyVpK3zqsgn7Qzx5XNgWTcEA2",
+      "limit": 10
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

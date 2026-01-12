@@ -1,6 +1,75 @@
 ---
 title: 'starknet_estimateMessageFee'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='starknet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='starknet_estimateMessageFee' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{},{}]} placeholder='[{},{}]'>
+  Parameters for starknet_estimateMessageFee
+  
+  Positional parameters for <code>starknet_estimateMessageFee</code>:
+  <ul>
+  <li><code>params[0]</code>: Message from L1 object</li>
+  <li><code>params[1]</code>: Block identifier object</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Estimated fee for processing the l1_handler transaction
+  <Expandable title='properties'>
+    <ResponseField name='gas_consumed' type='string'>
+      Ethereum gas consumed by the transaction
+    </ResponseField>
+    <ResponseField name='gas_price' type='string'>
+      Gas price used in estimation (wei or fri)
+    </ResponseField>
+    <ResponseField name='data_gas_consumed' type='string'>
+      Ethereum data gas consumed by the transaction
+    </ResponseField>
+    <ResponseField name='data_gas_price' type='string'>
+      Data gas price used in estimation (wei or fri)
+    </ResponseField>
+    <ResponseField name='overall_fee' type='string'>
+      Estimated total fee = gas + data gas cost
+    </ResponseField>
+    <ResponseField name='unit' type='string'>
+      Fee units (wei or fri)
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_estimateMessageFee",
+    "params": [
+      {},
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,55 @@
 ---
 title: 'eth_estimateGas'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='324' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='eth_estimateGas' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{},0]} placeholder='[{},0]' required>
+  Two-element array: [modified transaction object, default block]. The transaction omits "nonce" and allows optional "from".
+  
+  Positional parameters for <code>eth_estimateGas</code>:
+  <ul>
+  <li><code>params[0]</code>: Legacy transaction (pre-EIP-2718).</li>
+  <li><code>params[1]</code>: Block identifier. Can be an integer block number or a string tag: "latest", "earliest", or "pending".</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='string'>
+  The amount of gas used. Example: <code>"0x5208"</code>.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=324 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_estimateGas",
+    "params": [
+      {},
+      0
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

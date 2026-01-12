@@ -1,6 +1,104 @@
 ---
 title: 'eth_feeHistory'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='6900' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='eth_feeHistory' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x5","latest",[20,30]]} placeholder='["0x5","latest",[20,30]]' required>
+  Parameters: [blockCount, newestBlock, rewardPercentiles]
+  
+  Positional parameters for <code>eth_feeHistory</code>:
+  <ul>
+  <li><code>params[0]</code>: Hex-encoded number of blocks in the requested range (max: 0x400 / 1024 blocks).</li>
+  <li><code>params[1]</code>: Newest block identifier: a hex block number or one of: "latest", "earliest", "pending".</li>
+  <li><code>params[2]</code>: Optional array of integers representing percentiles (ascending).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Historical gas fee statistics over the requested range of blocks.
+  <Expandable title='properties'>
+    <ResponseField name='oldestBlock' type='string'>
+      The lowest block number in the returned range (hex).
+    </ResponseField>
+    <ResponseField name='baseFeePerGas' type='array'>
+      Base fee per gas for each block in the range, plus one for the next block.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='baseFeePerBlobGas' type='array'>
+      Base fee per blob gas (EIP-4844). Zeroes for pre-4844 blocks.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='string'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='gasUsedRatio' type='array'>
+      Ratio of gas used to gas limit for each block.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='number'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='blobGasUsedRatio' type='array'>
+      Ratio of blob gas used to max blob gas per block (EIP-4844).
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='number'>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='reward' type='array'>
+      Effective priority fees per gas for specified percentiles across each block.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='array'>
+          <Expandable title='items'>
+            <ResponseField name='items[]' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=6900 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_feeHistory",
+    "params": [
+      "0x5",
+      "latest",
+      [
+        20,
+        30
+      ]
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

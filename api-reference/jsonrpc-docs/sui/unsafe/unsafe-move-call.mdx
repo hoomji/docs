@@ -1,6 +1,115 @@
 ---
 title: 'unsafe_moveCall'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='unsafe_moveCall' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6","0x2","pay","split",["0x2::sui::SUI"],["\"10000\"","\"0x5eeb1d...\""],"0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051","100000","Commit"]} placeholder='["0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6","0x2","pay","split",["0x2::sui::SUI"],["\"10000\"","\"0x5eeb1d...\""],"0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051","100000","Commit"]' required>
+  Create an unsigned transaction to execute a Move call on the network.
+  
+  Positional parameters for <code>unsafe_moveCall</code>:
+  <ul>
+  <li><code>params[0]</code>: The signer's Sui address.</li>
+  <li><code>params[1]</code>: The Move package ID.</li>
+  <li><code>params[2]</code>: The Move module name.</li>
+  <li><code>params[3]</code>: The Move function name.</li>
+  <li><code>params[4]</code>: The type arguments of the Move function.</li>
+  <li><code>params[5]</code>: Arguments for the Move function, in SuiJson format.</li>
+  <li><code>params[6]</code>: Optional gas object to use. If not provided, one will be auto-selected.</li>
+  <li><code>params[7]</code>: The gas budget for the transaction.</li>
+  <li><code>params[8]</code>: Execution mode: normal or dev inspect.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Unsigned transaction block for executing a Move function.
+  <Expandable title='properties'>
+    <ResponseField name='gas' type='array'>
+      List of gas objects used in the transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='objectId' type='string'>
+              Object ID of the gas coin.
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+              Version of the object.
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+              Digest of the object.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='inputObjects' type='array'>
+      Objects used in the transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='objectId' type='string'>
+              Object ID used in the call.
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+              Version of the object.
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+              Digest of the object.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='txBytes' type='string'>
+      BCS serialized transaction data bytes, base64 encoded.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_moveCall",
+    "params": [
+      "0x9b5cd5df0df2a168259b7115a41ccc0a372b6fd0026e0c63043492ce4d0c19a6",
+      "0x2",
+      "pay",
+      "split",
+      [
+        "0x2::sui::SUI"
+      ],
+      [
+        "\"10000\"",
+        "\"0x5eeb1d...\""
+      ],
+      "0x1a3e898029d024eec1d44c6af5e2facded84d03b5373514f16e3d66e00081051",
+      "100000",
+      "Commit"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

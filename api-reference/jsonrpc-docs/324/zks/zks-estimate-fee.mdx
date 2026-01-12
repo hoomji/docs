@@ -1,6 +1,69 @@
 ---
 title: 'zks_estimateFee'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='324' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='zks_estimateFee' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{"from":"0x1111111111111111111111111111111111111111","to":"0x2222222222222222222222222222222222222222","data":"0xffffffff"}]} placeholder='[{"from":"0x1111111111111111111111111111111111111111","to":"0x2222222222222222222222222222222222222222","data":"0xffffffff"}]' required>
+  Positional parameters for <code>zks_estimateFee</code>:
+  <ul>
+  <li><code>params[]</code>: Type: object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='gas_limit' type='string'>
+      Maximum amount of gas the transaction is allowed to use (hex).
+    </ResponseField>
+    <ResponseField name='gas_per_pubdata_limit' type='string'>
+      Amount of gas consumed per public data byte (hex).
+    </ResponseField>
+    <ResponseField name='max_fee_per_gas' type='string'>
+      Maximum fee in wei that can be paid per gas unit (hex).
+    </ResponseField>
+    <ResponseField name='max_priority_fee_per_gas' type='string'>
+      Maximum priority fee in wei that can be paid per gas unit (hex).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=324 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_estimateFee",
+    "params": [
+      {
+        "from": "0x1111111111111111111111111111111111111111",
+        "to": "0x2222222222222222222222222222222222222222",
+        "data": "0xffffffff"
+      }
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

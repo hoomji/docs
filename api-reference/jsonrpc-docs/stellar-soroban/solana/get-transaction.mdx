@@ -1,6 +1,97 @@
 ---
 title: 'getTransaction'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='stellar-soroban' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='getTransaction' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["2nBhEBYYvfaAe16UMNqRHre4YNSskvuYgx3M6E4JP1oDYvZEJHvoPzyUidNgNX5r9sTyN1J9UxtbCXy2rqYcuyuv","json"]} placeholder='["2nBhEBYYvfaAe16UMNqRHre4YNSskvuYgx3M6E4JP1oDYvZEJHvoPzyUidNgNX5r9sTyN1J9UxtbCXy2rqYcuyuv","json"]' required>
+  Parameters for method getTransaction: [transactionSignature, config]
+  
+  Positional parameters for <code>getTransaction</code>:
+  <ul>
+  <li><code>params[0]</code>: Transaction signature as base-58 encoded string.</li>
+  <li><code>params[1]</code>: Optional configuration object.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='oneOf'>
+  Transaction response object if found and confirmed.
+  <Expandable title='variants'>
+    <ResponseField name='variant1' type='object'>
+    </ResponseField>
+    <ResponseField name='variant2' type='object'>
+      Transaction response object if found and confirmed.
+      <Expandable title='properties'>
+        <ResponseField name='slot' type='integer'>
+          Slot in which the transaction was processed.
+        </ResponseField>
+        <ResponseField name='blockTime' type='integer'>
+          Estimated Unix timestamp when transaction was processed, null if unavailable.
+        </ResponseField>
+        <ResponseField name='meta' type='object'>
+          Transaction status metadata object or null.
+        </ResponseField>
+        <ResponseField name='transaction' type='oneOf'>
+          Transaction object in JSON format (if encoding=json or jsonParsed).
+          <Expandable title='variants'>
+            <ResponseField name='variant1' type='object'>
+              Transaction object in JSON format (if encoding=json or jsonParsed).
+            </ResponseField>
+            <ResponseField name='variant2' type='array'>
+              Encoded transaction data as [string, encoding] tuple.
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='oneOf'>
+                  <Expandable title='variants'>
+                    <ResponseField name='variant1' type='string'>
+                    </ResponseField>
+                    <ResponseField name='variant2' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='version' type='string'>
+          Transaction version: "legacy", version number, or undefined.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=stellar-soroban \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getTransaction",
+    "params": [
+      "2nBhEBYYvfaAe16UMNqRHre4YNSskvuYgx3M6E4JP1oDYvZEJHvoPzyUidNgNX5r9sTyN1J9UxtbCXy2rqYcuyuv",
+      "json"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

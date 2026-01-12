@@ -1,6 +1,58 @@
 ---
 title: 'zks_getL1BatchBlockRange'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='232' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='zks_getL1BatchBlockRange' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[12345]} placeholder='[12345]' required>
+  Returns the L2 block range included in the given L1 batch.
+  
+  Positional parameters for <code>zks_getL1BatchBlockRange</code>:
+  <ul>
+  <li><code>params[]</code>: The L1 batch number.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Hexadecimal range of block numbers included in the batch.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='string'>
+      A hexadecimal-encoded block number.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=232 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "zks_getL1BatchBlockRange",
+    "params": [
+      12345
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

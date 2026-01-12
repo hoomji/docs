@@ -1,6 +1,57 @@
 ---
 title: 'tx'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='137' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='tx' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED",true]} placeholder='["0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED",true]' required>
+  The parameters for method tx: [transactionHash, prove].
+  
+  Positional parameters for <code>tx</code>:
+  <ul>
+  <li><code>params[0]</code>: 32 Bytes - Hash of the transaction.</li>
+  <li><code>params[1]</code>: To include proofs into the response.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The transactions with or without proof information.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=137 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "tx",
+    "params": [
+      "0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED",
+      true
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

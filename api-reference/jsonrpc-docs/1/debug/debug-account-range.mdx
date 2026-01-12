@@ -1,6 +1,68 @@
 ---
 title: 'debug_accountRange'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='debug_accountRange' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["","",0,{}]} placeholder='["","",0,{}]' required>
+  Parameters: [blockIdentifier, startKey, maxResults, context?].
+  
+  Positional parameters for <code>debug_accountRange</code>:
+  <ul>
+  <li><code>params[0]</code>: Block number or hash at which to inspect state (hex quantity or 32-byte hash).</li>
+  <li><code>params[1]</code>: Hex-encoded start account key (inclusive).</li>
+  <li><code>params[2]</code>: Maximum number of accounts to return.</li>
+  <li><code>params[3]</code>: Optional context returned from a previous call to continue iteration.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Account range response including account details and continuation token.
+  <Expandable title='properties'>
+    <ResponseField name='accounts' type='object'>
+    </ResponseField>
+    <ResponseField name='nextKey' type='string'>
+      Next account key to resume iteration, or null if complete.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "debug_accountRange",
+    "params": [
+      "",
+      "",
+      0,
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

@@ -1,6 +1,83 @@
 ---
 title: 'suix_getDynamicFieldObject'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='suix_getDynamicFieldObject' required>
+    JSON-RPC method name.
+  </ParamField>
+
+This method does not require any parameters.
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='data' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='bcs' type='object'>
+          Move object content or package content in BCS. Only present if SuiObjectDataOptions.showBcs is true.
+        </ResponseField>
+        <ResponseField name='content' type='object'>
+          Move object content or package content. Only present if SuiObjectDataOptions.showContent is true.
+        </ResponseField>
+        <ResponseField name='digest' type='string'>
+          Base64 string representing the object digest
+        </ResponseField>
+        <ResponseField name='display' type='object'>
+          Display metadata for frontend UI rendering, or null if no Display is defined
+        </ResponseField>
+        <ResponseField name='objectId' type='string'>
+          Unique ObjectID for this object
+        </ResponseField>
+        <ResponseField name='owner' type='string'>
+          The owner of this object. Optional unless showOwner is enabled
+        </ResponseField>
+        <ResponseField name='previousTransaction' type='string'>
+          Digest of the last transaction that modified this object
+        </ResponseField>
+        <ResponseField name='storageRebate' type='string'>
+          Amount of SUI rebated if the object is deleted (uint64 as string)
+        </ResponseField>
+        <ResponseField name='type' type='string'>
+          Type of the object, if known
+        </ResponseField>
+        <ResponseField name='version' type='string'>
+          Version of the object
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='error' type='object'>
+      Error information if the request failed
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getDynamicFieldObject",
+    "params": []
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

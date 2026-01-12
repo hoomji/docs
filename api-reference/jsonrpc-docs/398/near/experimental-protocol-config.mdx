@@ -1,6 +1,88 @@
 ---
 title: 'EXPERIMENTAL_protocol_config'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='398' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='EXPERIMENTAL_protocol_config' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"finality":"final"}} placeholder='{"finality":"final"}'>
+  Specify either `finality` or `block_id` to get protocol config at a given block state.
+  
+  Parameters for <code>EXPERIMENTAL_protocol_config</code>:
+  <ul>
+  <li><code>params.finality</code>: Optional finality level to query protocol config at. Cannot be used with block_id.</li>
+  <li><code>params.block_id</code>: Block height or hash. Cannot be used with finality.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Current or historical protocol configuration used by the NEAR blockchain.
+  <Expandable title='properties'>
+    <ResponseField name='protocol_version' type='integer'>
+    </ResponseField>
+    <ResponseField name='transaction_costs' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='action_receipt_creation_config' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='send_sir' type='integer'>
+            </ResponseField>
+            <ResponseField name='send_not_sir' type='integer'>
+            </ResponseField>
+            <ResponseField name='execution' type='integer'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='storage_usage_config' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='num_bytes_account' type='integer'>
+            </ResponseField>
+            <ResponseField name='num_extra_bytes_record' type='integer'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='wasm_config' type='object'>
+      WebAssembly runtime related configuration
+      <Expandable title='properties'>
+        <ResponseField name='ext_costs' type='object'>
+          Map of cost names to integer values
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=398 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "EXPERIMENTAL_protocol_config",
+    "params": {
+      "finality": "final"
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

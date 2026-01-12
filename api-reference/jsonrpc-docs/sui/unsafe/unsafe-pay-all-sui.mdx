@@ -1,6 +1,101 @@
 ---
 title: 'unsafe_payAllSui'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='unsafe_payAllSui' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xabcde1234567890abcde1234567890abcde1234567890abcde1234567890abcd",["0xcoin1","0xcoin2","0xcoin3"],"0xrecipientaddress1234567890abcdefabcdef1234567890abcdef","100000"]} placeholder='["0xabcde1234567890abcde1234567890abcde1234567890abcde1234567890abcd",["0xcoin1","0xcoin2","0xcoin3"],"0xrecipientaddress1234567890abcdefabcdef1234567890abcdef","100000"]' required>
+  Create an unsigned transaction to send all SUI coins to a recipient.
+  
+  Positional parameters for <code>unsafe_payAllSui</code>:
+  <ul>
+  <li><code>params[0]</code>: The Sui address of the transaction signer.</li>
+  <li><code>params[1]</code>: List of SUI coin object IDs to be used, including the gas coin.</li>
+  <li><code>params[2]</code>: The recipient's Sui address.</li>
+  <li><code>params[3]</code>: The gas budget for the transaction.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Unsigned transaction block for sending all SUI coins to a recipient.
+  <Expandable title='properties'>
+    <ResponseField name='gas' type='array'>
+      List of gas objects used in the transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='objectId' type='string'>
+              Object ID of the gas coin.
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+              Version of the gas coin.
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+              Digest of the gas coin.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='inputObjects' type='array'>
+      Objects used in this transaction.
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='objectId' type='string'>
+            </ResponseField>
+            <ResponseField name='version' type='string'>
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='txBytes' type='string'>
+      Base64-encoded BCS serialized transaction bytes.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "unsafe_payAllSui",
+    "params": [
+      "0xabcde1234567890abcde1234567890abcde1234567890abcde1234567890abcd",
+      [
+        "0xcoin1",
+        "0xcoin2",
+        "0xcoin3"
+      ],
+      "0xrecipientaddress1234567890abcdefabcdef1234567890abcdef",
+      "100000"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

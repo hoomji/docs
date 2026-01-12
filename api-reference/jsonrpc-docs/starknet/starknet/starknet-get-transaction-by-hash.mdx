@@ -1,6 +1,53 @@
 ---
 title: 'starknet_getTransactionByHash'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='starknet' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='starknet_getTransactionByHash' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"transaction_hash":"0x121aaba2894a63cce81acabb559eb2c114f4859dc5803e0b91349ec398d2eb0"}} placeholder='{"transaction_hash":"0x121aaba2894a63cce81acabb559eb2c114f4859dc5803e0b91349ec398d2eb0"}' required>
+  The parameters for method starknet_getTransactionByHash: [transaction_hash].
+  
+  Parameters for <code>starknet_getTransactionByHash</code>:
+  <ul>
+  <li><code>params.transaction_hash</code>: 32 Bytes - Hash of the transaction.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  A starknet transaction object.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=starknet \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "starknet_getTransactionByHash",
+    "params": {
+      "transaction_hash": "0x121aaba2894a63cce81acabb559eb2c114f4859dc5803e0b91349ec398d2eb0"
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

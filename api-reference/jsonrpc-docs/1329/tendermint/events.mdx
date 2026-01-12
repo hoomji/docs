@@ -1,6 +1,70 @@
 ---
 title: 'events'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1329' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='events' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{}]} placeholder='[{}]' required>
+  Positional parameters for <code>events</code>:
+  <ul>
+  <li><code>params[0]</code>: The query object to filter specific events</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Real-time event stream payloads from the Tendermint network
+  <Expandable title='properties'>
+    <ResponseField name='result' type='object'>
+      <Expandable title='properties'>
+        <ResponseField name='data' type='object'>
+          Event-specific data returned
+          <Expandable title='properties'>
+            <ResponseField name='type' type='string'>
+            </ResponseField>
+            <ResponseField name='value' type='object'>
+              Event payload (depends on event type)
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name='query' type='string'>
+          The event query used for the subscription
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1329 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "events",
+    "params": [
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

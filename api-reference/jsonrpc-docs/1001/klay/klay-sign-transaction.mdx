@@ -1,6 +1,61 @@
 ---
 title: 'klay_signTransaction'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='1001' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='klay_signTransaction' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={[{}]} placeholder='[{}]' required>
+  Parameters: [transactionObject].
+  
+  Positional parameters for <code>klay_signTransaction</code>:
+  <ul>
+  <li><code>params[]</code>: Legacy transaction (pre-EIP-2718).</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Signed transaction payload and decoded transaction.
+  <Expandable title='properties'>
+    <ResponseField name='raw' type='string'>
+      Raw signed transaction.
+    </ResponseField>
+    <ResponseField name='tx' type='string'>
+      The transaction.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1001 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "klay_signTransaction",
+    "params": [
+      {}
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

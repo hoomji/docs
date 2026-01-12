@@ -1,6 +1,72 @@
 ---
 title: 'suix_getAllBalances'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='suix_getAllBalances' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0x94f1a597b4e8f709a396f7f6b1482bdcd65a673d111e49286c527fab7c2d0961"]} placeholder='["0x94f1a597b4e8f709a396f7f6b1482bdcd65a673d111e49286c527fab7c2d0961"]' required>
+  Parameters for method suix_getAllBalances: [ownerAddress]
+  
+  Positional parameters for <code>suix_getAllBalances</code>:
+  <ul>
+  <li><code>params[]</code>: The address.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='array'>
+  Array - Balances for the address in the request.
+  <Expandable title='items'>
+    <ResponseField name='items[]' type='object'>
+      SuixBalance object
+      <Expandable title='properties'>
+        <ResponseField name='coinObjectCount' type='integer'>
+          Number of coin objects
+        </ResponseField>
+        <ResponseField name='coinType' type='string'>
+          Type of coin
+        </ResponseField>
+        <ResponseField name='lockedBalance' type='object'>
+          Map of locked balances
+        </ResponseField>
+        <ResponseField name='totalBalance' type='string'>
+          Total balance formatted as uint128 string
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "suix_getAllBalances",
+    "params": [
+      "0x94f1a597b4e8f709a396f7f6b1482bdcd65a673d111e49286c527fab7c2d0961"
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

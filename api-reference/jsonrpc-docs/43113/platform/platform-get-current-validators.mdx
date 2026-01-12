@@ -1,6 +1,200 @@
 ---
 title: 'platform.getCurrentValidators'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='43113' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='platform.getCurrentValidators' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{}}>
+  Parameters for <code>platform.getCurrentValidators</code>:
+  <ul>
+  <li><code>params.subnetID</code>: Optional ID of the subnet. If omitted, returns validators of the Primary Network.</li>
+  <li><code>params.nodeIDs</code>: Optional list of NodeIDs to filter the validators returned.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='validators' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='txID' type='string'>
+              Validator transaction ID.
+            </ResponseField>
+            <ResponseField name='startTime' type='string'>
+              Unix time when validation starts.
+            </ResponseField>
+            <ResponseField name='endTime' type='string'>
+              Unix time when validation ends.
+            </ResponseField>
+            <ResponseField name='nodeID' type='string'>
+              Validator node ID.
+            </ResponseField>
+            <ResponseField name='weight' type='string'>
+              Stake weight used for sampling.
+            </ResponseField>
+            <ResponseField name='validationID' type='string'>
+              L1 validator registration tx ID.
+            </ResponseField>
+            <ResponseField name='publicKey' type='string'>
+              Compressed BLS public key.
+            </ResponseField>
+            <ResponseField name='remainingBalanceOwner' type='object'>
+              OutputOwners for withdrawn balance.
+              <Expandable title='properties'>
+                <ResponseField name='locktime' type='string'>
+                </ResponseField>
+                <ResponseField name='threshold' type='string'>
+                </ResponseField>
+                <ResponseField name='addresses' type='array'>
+                  <Expandable title='items'>
+                    <ResponseField name='items[]' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='deactivationOwner' type='object'>
+              OutputOwners who can deactivate.
+              <Expandable title='properties'>
+                <ResponseField name='locktime' type='string'>
+                </ResponseField>
+                <ResponseField name='threshold' type='string'>
+                </ResponseField>
+                <ResponseField name='addresses' type='array'>
+                  <Expandable title='items'>
+                    <ResponseField name='items[]' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='minNonce' type='string'>
+              Minimum nonce for SetL1ValidatorWeightTx.
+            </ResponseField>
+            <ResponseField name='balance' type='string'>
+              Remaining balance for continuous fee.
+            </ResponseField>
+            <ResponseField name='validationRewardOwner' type='object'>
+              Owner of staking rewards.
+              <Expandable title='properties'>
+                <ResponseField name='locktime' type='string'>
+                </ResponseField>
+                <ResponseField name='threshold' type='string'>
+                </ResponseField>
+                <ResponseField name='addresses' type='array'>
+                  <Expandable title='items'>
+                    <ResponseField name='items[]' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='delegationRewardOwner' type='object'>
+              Owner of delegation rewards.
+              <Expandable title='properties'>
+                <ResponseField name='locktime' type='string'>
+                </ResponseField>
+                <ResponseField name='threshold' type='string'>
+                </ResponseField>
+                <ResponseField name='addresses' type='array'>
+                  <Expandable title='items'>
+                    <ResponseField name='items[]' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='potentialReward' type='string'>
+              Potential reward from staking.
+            </ResponseField>
+            <ResponseField name='delegationFee' type='string'>
+              Fee rate charged to delegators.
+            </ResponseField>
+            <ResponseField name='uptime' type='string'>
+              % time node was online.
+            </ResponseField>
+            <ResponseField name='connected' type='boolean'>
+              Whether node is currently connected.
+            </ResponseField>
+            <ResponseField name='delegatorCount' type='string'>
+              Number of delegators.
+            </ResponseField>
+            <ResponseField name='delegatorWeight' type='string'>
+              Total stake of delegators.
+            </ResponseField>
+            <ResponseField name='delegators' type='array'>
+              List of delegators (only when a single nodeID is requested).
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='object'>
+                  <Expandable title='properties'>
+                    <ResponseField name='txID' type='string'>
+                    </ResponseField>
+                    <ResponseField name='startTime' type='string'>
+                    </ResponseField>
+                    <ResponseField name='endTime' type='string'>
+                    </ResponseField>
+                    <ResponseField name='weight' type='string'>
+                    </ResponseField>
+                    <ResponseField name='nodeID' type='string'>
+                    </ResponseField>
+                    <ResponseField name='rewardOwner' type='object'>
+                      <Expandable title='properties'>
+                        <ResponseField name='locktime' type='string'>
+                        </ResponseField>
+                        <ResponseField name='threshold' type='string'>
+                        </ResponseField>
+                        <ResponseField name='addresses' type='array'>
+                          <Expandable title='items'>
+                            <ResponseField name='items[]' type='string'>
+                            </ResponseField>
+                          </Expandable>
+                        </ResponseField>
+                      </Expandable>
+                    </ResponseField>
+                    <ResponseField name='potentialReward' type='string'>
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43113 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "platform.getCurrentValidators",
+    "params": {}
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

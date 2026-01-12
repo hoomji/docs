@@ -1,6 +1,74 @@
 ---
 title: 'index.getContainerByIndex'
+api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
+playground: 'interactive' 
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='43114' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='index.getContainerByIndex' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={{"index":0,"encoding":"hex"}} placeholder='{"index":0,"encoding":"hex"}' required>
+  Parameters to specify the container index and encoding format.
+  
+  Parameters for <code>index.getContainerByIndex</code>:
+  <ul>
+  <li><code>params.index</code>: The sequential index of the container (starting from 0).</li>
+  <li><code>params.encoding</code>: The encoding format for the container data. Only "hex" is supported.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Details and content of the container at the specified index.
+  <Expandable title='properties'>
+    <ResponseField name='id' type='string'>
+      The unique ID of the container.
+    </ResponseField>
+    <ResponseField name='bytes' type='string'>
+      Hex-encoded byte representation of the container.
+    </ResponseField>
+    <ResponseField name='timestamp' type='string'>
+      The timestamp (in Unix seconds) when the container was accepted.
+    </ResponseField>
+    <ResponseField name='index' type='string'>
+      The index of the container (same as the request).
+    </ResponseField>
+    <ResponseField name='encoding' type='string'>
+      The encoding used for the bytes field. Always "hex".
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=43114 \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "index.getContainerByIndex",
+    "params": {
+      "index": 0,
+      "encoding": "hex"
+    }
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success

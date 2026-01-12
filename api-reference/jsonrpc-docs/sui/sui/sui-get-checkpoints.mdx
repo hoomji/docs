@@ -1,6 +1,109 @@
 ---
 title: 'sui_getCheckpoints'
 ---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='sui' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='sui_getCheckpoints' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["1004",4,false]} placeholder='["1004",4,false]' required>
+  Fetch a paginated list of checkpoints.
+  
+  Positional parameters for <code>sui_getCheckpoints</code>:
+  <ul>
+  <li><code>params[0]</code>: An optional paging cursor (sequence number).</li>
+  <li><code>params[1]</code>: Maximum number of items to return per page.</li>
+  <li><code>params[2]</code>: Whether to return results in descending order.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
+  <Expandable title='properties'>
+    <ResponseField name='data' type='array'>
+      <Expandable title='items'>
+        <ResponseField name='items[]' type='object'>
+          <Expandable title='properties'>
+            <ResponseField name='epoch' type='string'>
+            </ResponseField>
+            <ResponseField name='sequenceNumber' type='string'>
+            </ResponseField>
+            <ResponseField name='digest' type='string'>
+            </ResponseField>
+            <ResponseField name='networkTotalTransactions' type='string'>
+            </ResponseField>
+            <ResponseField name='previousDigest' type='string'>
+            </ResponseField>
+            <ResponseField name='epochRollingGasCostSummary' type='object'>
+              <Expandable title='properties'>
+                <ResponseField name='computationCost' type='string'>
+                </ResponseField>
+                <ResponseField name='storageCost' type='string'>
+                </ResponseField>
+                <ResponseField name='storageRebate' type='string'>
+                </ResponseField>
+                <ResponseField name='nonRefundableStorageFee' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='timestampMs' type='string'>
+            </ResponseField>
+            <ResponseField name='transactions' type='array'>
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='string'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='checkpointCommitments' type='array'>
+              <Expandable title='items'>
+                <ResponseField name='items[]' type='object'>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name='validatorSignature' type='string'>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name='hasNextPage' type='boolean'>
+    </ResponseField>
+    <ResponseField name='nextCursor' type='string'>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=sui \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "sui_getCheckpoints",
+    "params": [
+      "1004",
+      4,
+      false
+    ]
+  }'
+```
+
+</RequestExample>
 <ResponseExample>
 
 ```json Success
