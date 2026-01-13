@@ -1,33 +1,145 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'API Overview'
+description: 'Explore Uniblock’s Unified JSON-RPC, Unified APIs, and Direct Provider APIs — with intelligent routing across hundreds of chains.'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
-
-## Welcome
-
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+Welcome to Uniblock’s API Reference. Use this page to quickly find the right API for your use case, learn what Uniblock does for each request, and jump to supported chains.
 
 <Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
+  title='Get started on the dashboard'
+  icon='rocket'
+  href='https://dashboard.uniblock.dev'
+  horizontal
 >
-  View the OpenAPI specification file
+  Create a project, grab your API key, and start making requests in minutes.
 </Card>
 
-## Authentication
+## What is Uniblock?
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Uniblock is an AI-powered routing layer for Web3. For every request, Uniblock selects the best upstream provider based on reliability, cost, and performance — with automatic retries and failover to help keep your calls from failing.
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+<Columns cols={3}>
+  <Card title='Smart provider routing' icon='shuffle'>
+    Automatically routes requests to the best provider per chain and method.
+  </Card>
+  <Card title='Automatic retries' icon='arrows-rotate'>
+    Retries transient failures so your requests are more resilient.
+  </Card>
+  <Card title='Failover & fallback' icon='life-ring'>
+    Falls back to alternate providers when an upstream is degraded.
+  </Card>
+</Columns>
+
+## APIs
+
+Choose the API style that best matches what you’re building.
+
+<Columns cols={3}>
+  <Card
+    title="Unified JSON-RPC"
+    icon="terminal"
+    href="ref:overview"
+  >
+    The foundation for blockchain interaction — one endpoint for JSON-RPC across hundreds of chains.
+  </Card>
+
+{' '}
+<Card title='Unified APIs' icon='layer-group' href='ref:token'>
+  Higher-level endpoints for common data needs like tokens, NFTs, transactions,
+  and market data.
+</Card>
+
+  <Card
+    title="Direct Provider APIs"
+    icon="plug"
+    href="ref:overview-direct-api"
+  >
+    Provider-specific methods when you need an endpoint that isn’t available in Unified APIs.
+  </Card>
+</Columns>
+
+## Unified JSON-RPC
+
+Use Unified JSON-RPC when you want maximum compatibility with existing tooling and standard blockchain methods.
+
+<Columns cols={2}>
+  <Card title='JSON-RPC reference' icon='book' href='ref:overview'>
+    Browse supported methods, request/response formats, and examples.
+  </Card>
+  <Card
+    title='Supported methods by chain'
+    icon='link'
+    href='doc:supported-methods-by-chain'
+  >
+    See which JSON-RPC methods are supported on each chain.
+  </Card>
+</Columns>
+
+## Unified APIs
+
+Use Unified APIs when you want higher-level, easier-to-use endpoints for common workflows without stitching together raw JSON-RPC calls.
+
+<Columns cols={3}>
+  <Card title='Token API' icon='coins' href='ref:token'>
+    Token metadata, balances, and contract-related token data.
+  </Card>
+  <Card title='Market Data API' icon='chart-line' href='ref:market-data'>
+    Pricing and market data endpoints to power dashboards and analytics.
+  </Card>
+  <Card title='NFT API' icon='images' href='ref:nft-1'>
+    NFT collections, assets, and related NFT metadata.
+  </Card>
+  <Card
+    title='Transaction API'
+    icon='arrow-right-arrow-left'
+    href='ref:transaction'
+  >
+    Transaction lookups and transaction-related data.
+  </Card>
+  <Card title='Scan API' icon='magnifying-glass' href='ref:scan'>
+    Chain scanning and explorer-style access patterns.
+  </Card>
+  <Card title='Webhook API' icon='bell' href='ref:webhook'>
+    Event-driven updates so you don’t have to poll.
+  </Card>
+</Columns>
+
+## Direct Provider APIs
+
+Direct APIs give you access to provider-specific endpoints exactly as offered by the upstream provider. Use this when you need a method that isn’t yet abstracted into Uniblock’s Unified APIs.
+
+<Card
+  title='Browse Direct APIs'
+  icon='plug'
+  href='ref:overview-direct-api'
+  horizontal
+>
+  Find provider-specific methods and quickly integrate them into your app.
+</Card>
+
+## Supported chains
+
+Uniblock supports a wide range of blockchain networks, with availability varying by product. Use the links below to confirm support for your service.
+
+<Columns cols={3}>
+  <Card
+    title="Unified JSON-RPC chains"
+    icon="sitemap"
+    href="doc:supported-methods-by-chain"
+  >
+    Supported JSON-RPC methods and coverage by chain.
+  </Card>
+
+{' '}
+<Card title='Unified API chain IDs' icon='hashtag' href='ref:chainids-mapping'>
+  Chain ID mapping and supported networks for Unified APIs.
+</Card>
+
+  <Card
+    title="Market Data supported chains"
+    icon="chart-simple"
+    href="ref:market-data-chains"
+  >
+    Networks supported by the Unified Market Data API.
+  </Card>
+</Columns>

@@ -12,6 +12,7 @@
     "tabs": [
       {
         "tab": "Guides",
+        "hidden": true,
         "groups": [
           {
             "group": "Getting started",
@@ -50,13 +51,12 @@
           {
             "group": "Resources",
             "pages": [
-              "api-reference/resources/unified-api-reference-overview",
               "api-reference/resources/pricing-plans",
               "api-reference/resources/compute-units",
-              "api-reference/resources/chains",
               {
                 "group": "Chains",
                 "pages": [
+                  "api-reference/resources/chains",
                   "api-reference/resources/chains/supported-chains",
                   "api-reference/resources/chains/market-data-chains",
                   "api-reference/resources/chains/supported-json-rpc-methods-by-chain-union-across-services"
