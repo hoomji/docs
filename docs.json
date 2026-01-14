@@ -120,7 +120,7 @@
             "pages": [
               "reference/webhook/webhooks-overview",
               "reference/webhook/webhook-quickstart",
-              "reference/webhook/webhook-types/providers",
+              "reference/webhook/providers",
               {
                 "group": "Webhook Types",
                 "pages": [
