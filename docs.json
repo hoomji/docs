@@ -56,7 +56,6 @@
               {
                 "group": "Chains",
                 "pages": [
-                  "reference/resources/chains",
                   "reference/resources/chains/supported-chains",
                   "reference/resources/chains/supported-market-data-chains",
                   "reference/resources/chains/supported-json-rpc-chains"
