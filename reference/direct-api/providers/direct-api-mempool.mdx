@@ -1,6 +1,5 @@
 ---
-title: "Mempool"
-description: "Ask AI"
+title: 'Mempool'
 ---
 
 For more information regarding the endpoints, please visit Mempools's website: [\<https://mempool.space/docs/api/rest>](https://mempool.space/docs/api/rest).
@@ -12,96 +11,94 @@ No prefix is required for Mempool, an example URL will therefore look like: `htt
 # Example:
 
 <CodeGroup>
-  ```bash bash
-  curl --request GET \
-    --url https://api.uniblock.dev/direct/v1/Mempool/v1/services/accelerator/accelerations/history \
-    --header 'accept: application/json' \
-    --header 'x-api-key: YOUR_UNIBLOCK_API_KEY'
-  ```
+  ```bash bash curl --request GET \ --url
+  https://api.uniblock.dev/direct/v1/Mempool/v1/services/accelerator/accelerations/history
+  \ --header 'accept: application/json' \ --header 'x-api-key:
+  YOUR_UNIBLOCK_API_KEY' ```
 </CodeGroup>
 
 # Supported Endpoints:
 
-* `v1/difficulty-adjustment`
-* `v1/prices`
-* `v1/historical-price`
-* `address/{address}`
-* `address/{address}/txs`
-* `address/{address}/txs/chain`
-* `address/{address}/txs/mempool`
-* `address/{address}/utxo`
-* `v1/validate-address/{address}`
-* `block/{hash}`
-* `block/{hash}/header`
-* `block-height/{height}`
-* `v1/mining/blocks/timestamp/{timestamp}`
-* `block/{hash}/raw`
-* `block/{hash}/status`
-* `blocks/tip/height`
-* `blocks/tip/hash`
-* `block/{hash}/txid/{index}`
-* `block/{hash}/txids`
-* `block/{hash}/txs`
-* `v1/blocks/{startHeight}`
-* `v1/blocks-bulk/{minHeight}/{maxHeight}`
-* `v1/mining/pools/{timePeriod}`
-* `v1/mining/pool/{slug}`
-* `v1/mining/hashrate/pools/{timePeriod}`
-* `v1/mining/pool/{slug}/hashrate`
-* `v1/mining/pool/luxor/blocks/{blockHeight}`
-* `v1/mining/hashrate/{timePeriod}`
-* `v1/mining/difficulty-adjustments/{interval}`
-* `v1/mining/reward-stats/{blockCount}`
-* `v1/mining/blocks/fees/{timePeriod}`
-* `v1/mining/blocks/rewards/{timePeriod}`
-* `v1/mining/blocks/fee-rates/{timePeriod}`
-* `v1/mining/blocks/sizes-weights/{timePeriod}`
-* `v1/mining/blocks/predictions/{timePeriod}`
-* `v1/mining/blocks/audit/score/{blockHash}`
-* `v1/mining/blocks/audit/scores/{startHeight}`
-* `v1/block/{blockHash}/audit-summary`
-* `v1/fees/mempool-blocks`
-* `v1/fees/recommended`
-* `mempool`
-* `mempool/txids`
-* `mempool/recent`
-* `v1/replacements`
-* `v1/fullrbf/replacements`
-* `v1/cpfp`
-* `tx/{txId}`
-* `tx/{txId}/hex`
-* `tx/{txId}/merkleblock-proof`
-* `tx/{txId}/merkle-proof`
-* `tx/{txId}/outspend/{vout}`
-* `tx/{txId}/outspends`
-* `tx/{txId}/raw`
-* `v1/tx/{txId}/rbf`
-* `tx/{txId}/status`
-* `v1/transaction-times`
-* `tx`
-* `v1/lightning/statistics/{interval}`
-* `v1/lightning/search`
-* `v1/lightning/nodes/country/{country}`
-* `v1/lightning/nodes/countries`
-* `v1/lightning/nodes/isp/{isp}`
-* `v1/lightning/nodes/isp-ranking`
-* `v1/lightning/nodes/rankings`
-* `v1/lightning/nodes/rankings/liquidity`
-* `v1/lightning/nodes/rankings/connectivity`
-* `v1/lightning/nodes/rankings/age`
-* `v1/lightning/nodes/{pubKey}`
-* `v1/lightning/nodes/{pubKey}/statistics`
-* `v1/lightning/channels/{channelId}`
-* `v1/lightning/channels/txids`
-* `v1/lightning/channels`
-* `v1/lightning/channels-geo`
-* `v1/lightning/channels-geo/{pubKey}`
-* `v1/services/accelerator/estimate`
-* `v1/services/payments/bitcoin`
-* `v1/services/accelerator/accelerations`
-* `v1/services/accelerator/accelerations/history`
-* `v1/services/accelerator/top-up-history`
-* `v1/services/accelerator/balance`
-* `v1/services/accelerator/accelerate`
-* `v1/services/accelerator/history`
-* `v1/services/accelerator/cancel`
+- `v1/difficulty-adjustment`
+- `v1/prices`
+- `v1/historical-price`
+- `address/{address}`
+- `address/{address}/txs`
+- `address/{address}/txs/chain`
+- `address/{address}/txs/mempool`
+- `address/{address}/utxo`
+- `v1/validate-address/{address}`
+- `block/{hash}`
+- `block/{hash}/header`
+- `block-height/{height}`
+- `v1/mining/blocks/timestamp/{timestamp}`
+- `block/{hash}/raw`
+- `block/{hash}/status`
+- `blocks/tip/height`
+- `blocks/tip/hash`
+- `block/{hash}/txid/{index}`
+- `block/{hash}/txids`
+- `block/{hash}/txs`
+- `v1/blocks/{startHeight}`
+- `v1/blocks-bulk/{minHeight}/{maxHeight}`
+- `v1/mining/pools/{timePeriod}`
+- `v1/mining/pool/{slug}`
+- `v1/mining/hashrate/pools/{timePeriod}`
+- `v1/mining/pool/{slug}/hashrate`
+- `v1/mining/pool/luxor/blocks/{blockHeight}`
+- `v1/mining/hashrate/{timePeriod}`
+- `v1/mining/difficulty-adjustments/{interval}`
+- `v1/mining/reward-stats/{blockCount}`
+- `v1/mining/blocks/fees/{timePeriod}`
+- `v1/mining/blocks/rewards/{timePeriod}`
+- `v1/mining/blocks/fee-rates/{timePeriod}`
+- `v1/mining/blocks/sizes-weights/{timePeriod}`
+- `v1/mining/blocks/predictions/{timePeriod}`
+- `v1/mining/blocks/audit/score/{blockHash}`
+- `v1/mining/blocks/audit/scores/{startHeight}`
+- `v1/block/{blockHash}/audit-summary`
+- `v1/fees/mempool-blocks`
+- `v1/fees/recommended`
+- `mempool`
+- `mempool/txids`
+- `mempool/recent`
+- `v1/replacements`
+- `v1/fullrbf/replacements`
+- `v1/cpfp`
+- `tx/{txId}`
+- `tx/{txId}/hex`
+- `tx/{txId}/merkleblock-proof`
+- `tx/{txId}/merkle-proof`
+- `tx/{txId}/outspend/{vout}`
+- `tx/{txId}/outspends`
+- `tx/{txId}/raw`
+- `v1/tx/{txId}/rbf`
+- `tx/{txId}/status`
+- `v1/transaction-times`
+- `tx`
+- `v1/lightning/statistics/{interval}`
+- `v1/lightning/search`
+- `v1/lightning/nodes/country/{country}`
+- `v1/lightning/nodes/countries`
+- `v1/lightning/nodes/isp/{isp}`
+- `v1/lightning/nodes/isp-ranking`
+- `v1/lightning/nodes/rankings`
+- `v1/lightning/nodes/rankings/liquidity`
+- `v1/lightning/nodes/rankings/connectivity`
+- `v1/lightning/nodes/rankings/age`
+- `v1/lightning/nodes/{pubKey}`
+- `v1/lightning/nodes/{pubKey}/statistics`
+- `v1/lightning/channels/{channelId}`
+- `v1/lightning/channels/txids`
+- `v1/lightning/channels`
+- `v1/lightning/channels-geo`
+- `v1/lightning/channels-geo/{pubKey}`
+- `v1/services/accelerator/estimate`
+- `v1/services/payments/bitcoin`
+- `v1/services/accelerator/accelerations`
+- `v1/services/accelerator/accelerations/history`
+- `v1/services/accelerator/top-up-history`
+- `v1/services/accelerator/balance`
+- `v1/services/accelerator/accelerate`
+- `v1/services/accelerator/history`
+- `v1/services/accelerator/cancel`

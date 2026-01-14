@@ -1,6 +1,5 @@
 ---
-title: "Shyft"
-description: "Ask AI"
+title: 'Shyft'
 ---
 
 Shyft offers a comprehensive suite of Solana development tools, including RPCs, APIs, and callbacks, to streamline your Web3 projects.
@@ -11,98 +10,96 @@ For more information regarding the endpoints, please visit Shyft's website: [Shy
 
 No prefix is required for Shyft, an example URL will therefore look like:
 
-* Version 1 : `https://api.uniblock.dev/direct/v1/Shyft` + `/[Shyft_endpoint]`
+- Version 1 : `https://api.uniblock.dev/direct/v1/Shyft` + `/[Shyft_endpoint]`
 
 # Example:
 
 <CodeGroup>
-  ```bash bash
-  curl --request GET \
-    --url https://api.uniblock.dev/direct/v1/Shyft/sol/v1/wallet/balance?network=mainnet-beta&wallet=YOUR_WALLET_ADDRESS \
-    --header 'accept: application/json' \
-    --header 'x-api-key: YOUR_UNIBLOCK_API_KEY'
-  ```
+  ```bash bash curl --request GET \ --url
+  https://api.uniblock.dev/direct/v1/Shyft/sol/v1/wallet/balance?network=mainnet-beta&wallet=YOUR_WALLET_ADDRESS
+  \ --header 'accept: application/json' \ --header 'x-api-key:
+  YOUR_UNIBLOCK_API_KEY' ```
 </CodeGroup>
 
 # Endpoint Overview
 
-* **GET** `sol/v1/wallet/balance`
-* **POST** `sol/v1/wallet/send_sol`
-* **GET** `sol/v1/wallet/token_balance`
-* **GET** `sol/v1/wallet/all_tokens`
-* **GET** `sol/v1/wallet/get_portfolio`
-* **GET** `sol/v1/wallet/get_domains`
-* **GET** `sol/v1/wallet/resolve_address`
-* **POST** `sol/v1/wallet/sign_transaction`
-* **GET** `sol/v1/wallet/transaction_history`
-* **GET** `sol/v1/wallet/parsed_transaction_history`
-* **GET** `sol/v1/wallet/transaction`
-* **POST** `sol/v1/wallet/send_sol_detach`
-* **GET** `sol/v1/wallet/collections`
-* **POST** `sol/v1/wallet/create_semi_wallet/`
-* **GET** `sol/v1/wallet/decrypt_semi_wallet`
-* **GET** `sol/v1/wallet/get_keypair`
-* **GET** `sol/v1/wallet/stake_accounts`
-* **POST** `sol/v1/semi_wallet/create`
-* **GET** `sol/v1/semi_wallet/decrypt`
-* **GET** `sol/v1/semi_wallet/get_keypair`
-* **POST** `sol/v1/semi_wallet/change_password`
-* **POST** `sol/v1/nft/create_detach`
-* **POST** `sol/v1/nft/create`
-* **POST** `sol/v1/nft/mint_detach`
-* **DELETE** `sol/v1/nft/burn_detach`
-* **POST** `sol/v1/nft/update_detach`
-* **POST** `sol/v1/nft/transfer_detach`
-* **GET** `sol/v1/nft/search`
-* **GET** `sol/v1/nft/read_all`
-* **GET** `sol/v1/nft/read`
-* **POST** `sol/v1/nft/read_selected`
-* **POST** `sol/v1/nft/update`
-* **POST** `sol/v1/nft/transfer_many`
-* **POST** `sol/v1/nft/update_metadata_uri`
-* **POST** `sol/v1/nft/create_from_metadata`
-* **POST** `sol/v1/nft/get_owners`
-* **DELETE** `sol/v1/nft/burn_many`
-* **POST** `sol/v1/storage/upload`
-* **POST** `sol/v1/metadata/create`
-* **GET** `sol/v1/token/get_info`
-* **POST** `sol/v1/token/create_detach`
-* **POST** `sol/v1/token/mint_detach`
-* **DELETE** `sol/v1/token/burn_detach`
-* **POST** `sol/v1/token/transfer_detach`
-* **POST** `sol/v1/token/airdrop`
-* **GET** `sol/v1/token/get_owners`
-* **POST** `sol/v1/token/create_from_metadata`
-* **POST** `sol/v1/marketplace/create`
-* **POST** `sol/v1/marketplace/update`
-* **POST** `sol/v1/marketplace/withdraw_fee`
-* **GET** `sol/v1/marketplace/find`
-* **GET** `sol/v1/marketplace/my_markets`
-* **GET** `sol/v1/marketplace/treasury_balance`
-* **GET** `sol/v1/marketplace/stats`
-* **PUT** `sol/v1/marketplace/index`
-* **GET** `sol/v1/candy_machine/nft_addresses`
-* **GET** `sol/v1/candy_machine/nfts`
-* **POST** `sol/v1/candy_machine/create`
-* **POST** `sol/v1/candy_machine/insert`
-* **POST** `sol/v1/candy_machine/mint`
-* **GET** `sol/v1/collections/get_nfts`
-* **POST** `sol/v1/txn_relayer/create`
-* **POST** `sol/v1/txn_relayer/sign`
-* **POST** `sol/v1/txn_relayer/sign_many`
-* **GET** `sol/v1/transaction/raw`
-* **GET** `sol/v1/transaction/parsed`
-* **GET** `sol/v1/transaction/history`
-* **POST** `sol/v1/transaction/send_txn`
-* **POST** `sol/v1/transaction/send_many_txns`
-* **POST** `sol/v1/sol/v1/transaction/parse_selected`
-* **POST** `sol/v1/candy_machine/monitor`
-* **DELETE** `sol/v1/candy_machine/unmonitor`
-* **POST** `sol/v1/sol/v1/callback/create`
-* **DELETE** `sol/v1/sol/v1/callback/remove`
-* **POST** `sol/v1/callback/update`
-* **GET** `sol/v1/callback/list`
-* **POST** `sol/v1/callback/add-addresses`
-* **POST** `sol/v1/callback/remove-addresses`
-* **POST** `sol/v1/callback/pause`
-* **POST** `sol/v1/callback/resume`
+- **GET** `sol/v1/wallet/balance`
+- **POST** `sol/v1/wallet/send_sol`
+- **GET** `sol/v1/wallet/token_balance`
+- **GET** `sol/v1/wallet/all_tokens`
+- **GET** `sol/v1/wallet/get_portfolio`
+- **GET** `sol/v1/wallet/get_domains`
+- **GET** `sol/v1/wallet/resolve_address`
+- **POST** `sol/v1/wallet/sign_transaction`
+- **GET** `sol/v1/wallet/transaction_history`
+- **GET** `sol/v1/wallet/parsed_transaction_history`
+- **GET** `sol/v1/wallet/transaction`
+- **POST** `sol/v1/wallet/send_sol_detach`
+- **GET** `sol/v1/wallet/collections`
+- **POST** `sol/v1/wallet/create_semi_wallet/`
+- **GET** `sol/v1/wallet/decrypt_semi_wallet`
+- **GET** `sol/v1/wallet/get_keypair`
+- **GET** `sol/v1/wallet/stake_accounts`
+- **POST** `sol/v1/semi_wallet/create`
+- **GET** `sol/v1/semi_wallet/decrypt`
+- **GET** `sol/v1/semi_wallet/get_keypair`
+- **POST** `sol/v1/semi_wallet/change_password`
+- **POST** `sol/v1/nft/create_detach`
+- **POST** `sol/v1/nft/create`
+- **POST** `sol/v1/nft/mint_detach`
+- **DELETE** `sol/v1/nft/burn_detach`
+- **POST** `sol/v1/nft/update_detach`
+- **POST** `sol/v1/nft/transfer_detach`
+- **GET** `sol/v1/nft/search`
+- **GET** `sol/v1/nft/read_all`
+- **GET** `sol/v1/nft/read`
+- **POST** `sol/v1/nft/read_selected`
+- **POST** `sol/v1/nft/update`
+- **POST** `sol/v1/nft/transfer_many`
+- **POST** `sol/v1/nft/update_metadata_uri`
+- **POST** `sol/v1/nft/create_from_metadata`
+- **POST** `sol/v1/nft/get_owners`
+- **DELETE** `sol/v1/nft/burn_many`
+- **POST** `sol/v1/storage/upload`
+- **POST** `sol/v1/metadata/create`
+- **GET** `sol/v1/token/get_info`
+- **POST** `sol/v1/token/create_detach`
+- **POST** `sol/v1/token/mint_detach`
+- **DELETE** `sol/v1/token/burn_detach`
+- **POST** `sol/v1/token/transfer_detach`
+- **POST** `sol/v1/token/airdrop`
+- **GET** `sol/v1/token/get_owners`
+- **POST** `sol/v1/token/create_from_metadata`
+- **POST** `sol/v1/marketplace/create`
+- **POST** `sol/v1/marketplace/update`
+- **POST** `sol/v1/marketplace/withdraw_fee`
+- **GET** `sol/v1/marketplace/find`
+- **GET** `sol/v1/marketplace/my_markets`
+- **GET** `sol/v1/marketplace/treasury_balance`
+- **GET** `sol/v1/marketplace/stats`
+- **PUT** `sol/v1/marketplace/index`
+- **GET** `sol/v1/candy_machine/nft_addresses`
+- **GET** `sol/v1/candy_machine/nfts`
+- **POST** `sol/v1/candy_machine/create`
+- **POST** `sol/v1/candy_machine/insert`
+- **POST** `sol/v1/candy_machine/mint`
+- **GET** `sol/v1/collections/get_nfts`
+- **POST** `sol/v1/txn_relayer/create`
+- **POST** `sol/v1/txn_relayer/sign`
+- **POST** `sol/v1/txn_relayer/sign_many`
+- **GET** `sol/v1/transaction/raw`
+- **GET** `sol/v1/transaction/parsed`
+- **GET** `sol/v1/transaction/history`
+- **POST** `sol/v1/transaction/send_txn`
+- **POST** `sol/v1/transaction/send_many_txns`
+- **POST** `sol/v1/sol/v1/transaction/parse_selected`
+- **POST** `sol/v1/candy_machine/monitor`
+- **DELETE** `sol/v1/candy_machine/unmonitor`
+- **POST** `sol/v1/sol/v1/callback/create`
+- **DELETE** `sol/v1/sol/v1/callback/remove`
+- **POST** `sol/v1/callback/update`
+- **GET** `sol/v1/callback/list`
+- **POST** `sol/v1/callback/add-addresses`
+- **POST** `sol/v1/callback/remove-addresses`
+- **POST** `sol/v1/callback/pause`
+- **POST** `sol/v1/callback/resume`

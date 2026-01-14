@@ -1,6 +1,5 @@
 ---
-title: "Contract Event"
-description: "Ask AI"
+title: 'Contract Event'
 ---
 
 Trigger Actions upon Specific Contract Events.
@@ -31,13 +30,13 @@ Contract Event is a custom webhook type offering great flexibility, while the ot
 
 **Value:**
 
-* Enter specific values, comma-separated lists for "in" and "not in" operators, or regular expressions for regex matching.
+- Enter specific values, comma-separated lists for "in" and "not in" operators, or regular expressions for regex matching.
 
 **Example:**
 
 Assume you're interested in tracking a specific "Approval" event that approves to a spender (0x123abc...) within a smart contract. To receive notifications only when such Approval event occurs, set up the following filters:
 
-* `topic0 == "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"` (the topic hash that represents an ApprovalApproval)
-* `topic2 == "0x123abc..."`(spender is the second input defined in the ABI inputs for this event)
+- `topic0 == "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"` (the topic hash that represents an ApprovalApproval)
+- `topic2 == "0x123abc..."`(spender is the second input defined in the ABI inputs for this event)
 
 This ensures you're only notified about relevant approval within the smart contract, allowing you to stay informed about the community activity.

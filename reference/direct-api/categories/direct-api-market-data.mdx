@@ -1,6 +1,5 @@
 ---
-title: "Direct API — Market Data"
-description: "Ask AI"
+title: 'Direct API — Market Data'
 ---
 
 API endpoints for Market Data.
@@ -29,38 +28,38 @@ API endpoints for Market Data.
 
 | Path                                                                                                                           | Est. CU | Description                     |
 | ------------------------------------------------------------------------------------------------------------------------------ | ------- | ------------------------------- |
-| [direct/v1/Birdeye/defi/historical\_price\_unix](https://docs.birdeye.so/reference/get_defi-historical-price-unix)             | 705     | Price - Historical by unix time |
-| [direct/v1/Birdeye/defi/history\_price](https://docs.birdeye.so/reference/get_defi-history-price)                              | 4240    | Price - Historical              |
+| [direct/v1/Birdeye/defi/historical_price_unix](https://docs.birdeye.so/reference/get_defi-historical-price-unix)               | 705     | Price - Historical by unix time |
+| [direct/v1/Birdeye/defi/history_price](https://docs.birdeye.so/reference/get_defi-history-price)                               | 4240    | Price - Historical              |
 | [direct/v1/Birdeye/defi/ohlcv](https://docs.birdeye.so/reference/get_defi-ohlcv)                                               | 2120    | OHLCV                           |
-| [direct/v1/Birdeye/defi/ohlcv/base\_quote](https://docs.birdeye.so/reference/get_defi-ohlcv-base-quote)                        | 2120    | OHLCV - Base/Quote              |
+| [direct/v1/Birdeye/defi/ohlcv/base_quote](https://docs.birdeye.so/reference/get_defi-ohlcv-base-quote)                         | 2120    | OHLCV - Base/Quote              |
 | [direct/v1/Birdeye/defi/ohlcv/pair](https://docs.birdeye.so/reference/get_defi-ohlcv-pair)                                     | 2120    | OHLCV - Pair                    |
 | [direct/v1/Birdeye/defi/price](https://docs.birdeye.so/reference/get_defi-price)                                               | 705     | Price                           |
-| [direct/v1/Birdeye/defi/price\_volume/single](https://docs.birdeye.so/reference/get_defi-price-volume-single)                  | 1060    | Price Volume - Single           |
+| [direct/v1/Birdeye/defi/price_volume/single](https://docs.birdeye.so/reference/get_defi-price-volume-single)                   | 1060    | Price Volume - Single           |
 | [direct/v1/Birdeye/defi/v2/markets](https://docs.birdeye.so/reference/get_defi-v2-markets)                                     | 3535    | Token - All Market List         |
 | [direct/v1/Birdeye/defi/v3/token/market-data](https://docs.birdeye.so/reference/get_defi-v3-token-market-data)                 | 1060    | Token - Market Data (Single)    |
 | [direct/v1/Birdeye/defi/v3/token/trade-data/multiple](https://docs.birdeye.so/reference/get_defi-v3-token-trade-data-multiple) | 6690    | Token - Trade Data (Multiple)   |
 | [direct/v1/Birdeye/defi/v3/token/trade-data/single](https://docs.birdeye.so/reference/get_defi-v3-token-trade-data-single)     | 1060    | Token - Trade Data (Single)     |
 | [direct/v1/Birdeye/trader/gainers-losers](https://docs.birdeye.so/reference/get_trader-gainers-losers)                         | 2120    | Trader - Gainers/Losers         |
-| [direct/v1/Birdeye/trader/txs/seek\_by\_time](https://docs.birdeye.so/reference/gettradertxsseekbytime)                        | 1060    | Trader - Trades Seek By Time    |
+| [direct/v1/Birdeye/trader/txs/seek_by_time](https://docs.birdeye.so/reference/gettradertxsseekbytime)                          | 1060    | Trader - Trades Seek By Time    |
 
 ### POST
 
-| Path                                                                                                         | Est. CU | Description          |
-| ------------------------------------------------------------------------------------------------------------ | ------- | -------------------- |
-| [direct/v1/Birdeye/defi/multi\_price](https://docs.birdeye.so/reference/post_defi-multi-price)               | 2230    | Price - Multiple     |
-| [direct/v1/Birdeye/defi/price\_volume/multi](https://docs.birdeye.so/reference/post_defi-price-volume-multi) | 2230    | Price Volume - Multi |
+| Path                                                                                                        | Est. CU | Description          |
+| ----------------------------------------------------------------------------------------------------------- | ------- | -------------------- |
+| [direct/v1/Birdeye/defi/multi_price](https://docs.birdeye.so/reference/post_defi-multi-price)               | 2230    | Price - Multiple     |
+| [direct/v1/Birdeye/defi/price_volume/multi](https://docs.birdeye.so/reference/post_defi-price-volume-multi) | 2230    | Price Volume - Multi |
 
 ## Covalent
 
 ### GET
 
-| Path                                                                                                                                                                                                         | Est. CU | Description                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | -------------------------------------------- |
-| [direct/v1/Covalent/v1/\{chainName}/nft\_market/\{contractAddress}/floor\_price](https://goldrush.dev/docs/api-reference/foundational-api/nft/get-nft-market-floor-price)                                    | 5000    | Get historical floor prices for a collection |
-| [direct/v1/Covalent/v1/\{chainName}/event/\{eventType}/gas\_prices](https://goldrush.dev/docs/api-reference/foundational-api/utility/get-gas-prices)                                                         | 5000    | Get gas prices                               |
-| [direct/v1/Covalent/v1/\{chainName}/nft\_market/\{contractAddress}/sale\_count](https://goldrush.dev/docs/api-reference/foundational-api/nft/get-nft-market-sale-count)                                      | 5000    | Get historical sales count for a collection  |
-| [direct/v1/Covalent/v1/pricing/historical\_by\_addresses\_v2/\{chainName}/\{quoteCurrency}/\{contractAddress}](https://goldrush.dev/docs/api-reference/foundational-api/utility/get-historical-token-prices) | 5000    | Get historical token prices                  |
-| [direct/v1/Covalent/v1/\{chainName}/nft\_market/\{contractAddress}/volume](https://goldrush.dev/docs/api-reference/foundational-api/nft/get-nft-market-volume)                                               | 5000    | Get historical volume for a collection       |
+| Path                                                                                                                                                                                                      | Est. CU | Description                                  |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | -------------------------------------------- |
+| [direct/v1/Covalent/v1/\{chainName}/nft_market/\{contractAddress}/floor_price](https://goldrush.dev/docs/api-reference/foundational-api/nft/get-nft-market-floor-price)                                   | 5000    | Get historical floor prices for a collection |
+| [direct/v1/Covalent/v1/\{chainName}/event/\{eventType}/gas_prices](https://goldrush.dev/docs/api-reference/foundational-api/utility/get-gas-prices)                                                       | 5000    | Get gas prices                               |
+| [direct/v1/Covalent/v1/\{chainName}/nft_market/\{contractAddress}/sale_count](https://goldrush.dev/docs/api-reference/foundational-api/nft/get-nft-market-sale-count)                                     | 5000    | Get historical sales count for a collection  |
+| [direct/v1/Covalent/v1/pricing/historical_by_addresses_v2/\{chainName}/\{quoteCurrency}/\{contractAddress}](https://goldrush.dev/docs/api-reference/foundational-api/utility/get-historical-token-prices) | 5000    | Get historical token prices                  |
+| [direct/v1/Covalent/v1/\{chainName}/nft_market/\{contractAddress}/volume](https://goldrush.dev/docs/api-reference/foundational-api/nft/get-nft-market-volume)                                             | 5000    | Get historical volume for a collection       |
 
 ## Defined
 
@@ -90,8 +89,8 @@ API endpoints for Market Data.
 | [direct/v1/HelloMoon/v0/nft/marketplace/tensor/floor-price-by-creator](https://docs.hellomoon.io/reference/post_v0-nft-marketplace-tensor-floor-price-by-creator) | 50      | Retrieve floor price data for Tensor marketplace NFTs, grouped by creator.                     |
 | [direct/v1/HelloMoon/v0/nft/marketplace/transactions](https://docs.hellomoon.io/reference/post_v0-nft-marketplace-transactions)                                   | 50      | Retrieve NFT marketplace transaction records, including sale amounts and times.                |
 | [direct/v1/HelloMoon/v0/nft/market-stats](https://docs.hellomoon.io/reference/post_v0-nft-market-stats)                                                           | 50      | Fetch general market statistics for NFTs.                                                      |
-| [direct/v1/HelloMoon/v0/nft/sales\_per\_market\_daily](https://docs.hellomoon.io/reference/post_v0-nft-sales-per-market-daily)                                    | 50      | Fetch daily sales data for NFTs across different marketplaces.                                 |
-| [direct/v1/HelloMoon/v0/spider/wenlambo/usdc\_price\_in\_sol](https://docs.hellomoon.io/reference/post_v0-spider-wenlambo-usdc-price-in-sol)                      | 50      | Retrieve the price of USDC in SOL under the Spider Wenlambo category.                          |
+| [direct/v1/HelloMoon/v0/nft/sales_per_market_daily](https://docs.hellomoon.io/reference/post_v0-nft-sales-per-market-daily)                                       | 50      | Fetch daily sales data for NFTs across different marketplaces.                                 |
+| [direct/v1/HelloMoon/v0/spider/wenlambo/usdc_price_in_sol](https://docs.hellomoon.io/reference/post_v0-spider-wenlambo-usdc-price-in-sol)                         | 50      | Retrieve the price of USDC in SOL under the Spider Wenlambo category.                          |
 | [direct/v1/HelloMoon/v0/token/candlesticks](https://docs.hellomoon.io/reference/post_v0-token-candlesticks)                                                       | 50      | Retrieve candlestick data for token price movements, filtered by start time or other criteria. |
 | [direct/v1/HelloMoon/v0/token/price](https://docs.hellomoon.io/reference/post_v0-token-price)                                                                     | 50      | Fetch the current price of a specified token.                                                  |
 | [direct/v1/HelloMoon/v0/token/price/batched](https://docs.hellomoon.io/reference/post_v0-token-price-batched)                                                     | 50      | Retrieve batched price information for multiple tokens.                                        |
@@ -107,7 +106,7 @@ API endpoints for Market Data.
 | [direct/v1/Moralis/erc20/\{address}/price](https://docs.moralis.com/web3-data-api/evm/reference/get-token-price)                                          | 7500    | Get ERC20 token price                            |
 | [direct/v1/Moralis/nft/\{address}/lowestprice](https://docs.moralis.com/web3-data-api/evm/reference/get-nft-lowest-price)                                 | 6000    | Get lowest price                                 |
 | [direct/v1/Moralis/erc20/prices](https://docs.moralis.com/web3-data-api/evm/reference/get-multiple-token-prices)                                          | 15000   | Get multiple token prices                        |
-| [direct/v1/Moralis/nft/\{address}/\{token\_id}/price](https://docs.moralis.com/web3-data-api/evm/reference/get-nft-sale-prices)                           | 6750    | Get sale prices                                  |
+| [direct/v1/Moralis/nft/\{address}/\{token_id}/price](https://docs.moralis.com/web3-data-api/evm/reference/get-nft-sale-prices)                            | 6750    | Get sale prices                                  |
 | [direct/v1/Moralis/solana/token/\{network}/pairs/\{address}/ohlcv](https://docs.moralis.com/web3-data-api/solana/reference/get-ohlcv-by-pair-address)     | 11250   | Get candlestick data for a pair on Solana        |
 | [direct/v1/Moralis/solana/token/\{network}/pairs/\{pairAddress}/swaps](https://docs.moralis.com/web3-data-api/solana/reference/get-swaps-by-pair-address) | 3750    | Get swaps for a specific pair address on Solana  |
 | [direct/v1/Moralis/solana/token/\{network}/pairs/\{pairAddress}/stats](https://docs.moralis.com/web3-data-api/solana/reference/get-token-pair-stats)      | 3750    | Get pair stats by address on Solana              |
@@ -123,20 +122,20 @@ API endpoints for Market Data.
 
 ### GET
 
-| Path                                                                                                                           | Est. CU | Description                                          |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------- | ---------------------------------------------------- |
-| [direct/v1/Shyft/sol/v1/marketplace/find](https://docs.shyft.to/solana-apis/nft-marketplace#find-marketplace)                  | 20      | Find a marketplace                                   |
-| [direct/v1/Shyft/sol/v1/marketplace/stats](https://docs.shyft.to/solana-apis/nft-marketplace#get-stats)                        | 20      | Fetch the stats of the marketplace.                  |
-| [direct/v1/Shyft/sol/v1/marketplace/my\_markets](https://docs.shyft.to/solana-apis/nft-marketplace#my-markets)                 | 20      | Get details of all the marketplaces you have created |
-| [direct/v1/Shyft/sol/v1/marketplace/treasury\_balance](https://docs.shyft.to/solana-apis/nft-marketplace#get-treasury-balance) | 20      | Check the fund balance in the marketplace account.   |
+| Path                                                                                                                          | Est. CU | Description                                          |
+| ----------------------------------------------------------------------------------------------------------------------------- | ------- | ---------------------------------------------------- |
+| [direct/v1/Shyft/sol/v1/marketplace/find](https://docs.shyft.to/solana-apis/nft-marketplace#find-marketplace)                 | 20      | Find a marketplace                                   |
+| [direct/v1/Shyft/sol/v1/marketplace/stats](https://docs.shyft.to/solana-apis/nft-marketplace#get-stats)                       | 20      | Fetch the stats of the marketplace.                  |
+| [direct/v1/Shyft/sol/v1/marketplace/my_markets](https://docs.shyft.to/solana-apis/nft-marketplace#my-markets)                 | 20      | Get details of all the marketplaces you have created |
+| [direct/v1/Shyft/sol/v1/marketplace/treasury_balance](https://docs.shyft.to/solana-apis/nft-marketplace#get-treasury-balance) | 20      | Check the fund balance in the marketplace account.   |
 
 ### POST
 
-| Path                                                                                                                | Est. CU | Description                                     |
-| ------------------------------------------------------------------------------------------------------------------- | ------- | ----------------------------------------------- |
-| [direct/v1/Shyft/sol/v1/marketplace/create](https://docs.shyft.to/solana-apis/nft-marketplace#create-marketplace)   | 20      | Create your own on-chain NFT marketplace.       |
-| [direct/v1/Shyft/sol/v1/marketplace/update](https://docs.shyft.to/solana-apis/nft-marketplace#update-marketplace)   | 20      | Update an already created on-chain marketplace. |
-| [direct/v1/Shyft/sol/v1/marketplace/withdraw\_fee](https://docs.shyft.to/solana-apis/nft-marketplace#withdraw-fees) | 20      | Withdraw fees from the marketplace.             |
+| Path                                                                                                               | Est. CU | Description                                     |
+| ------------------------------------------------------------------------------------------------------------------ | ------- | ----------------------------------------------- |
+| [direct/v1/Shyft/sol/v1/marketplace/create](https://docs.shyft.to/solana-apis/nft-marketplace#create-marketplace)  | 20      | Create your own on-chain NFT marketplace.       |
+| [direct/v1/Shyft/sol/v1/marketplace/update](https://docs.shyft.to/solana-apis/nft-marketplace#update-marketplace)  | 20      | Update an already created on-chain marketplace. |
+| [direct/v1/Shyft/sol/v1/marketplace/withdraw_fee](https://docs.shyft.to/solana-apis/nft-marketplace#withdraw-fees) | 20      | Withdraw fees from the marketplace.             |
 
 ### PUT
 

@@ -1,12 +1,12 @@
 ---
-title: "Overview"
-description: "Ask AI"
+title: 'Overview'
 ---
 
 Details on Uniblock's JSON-RPC service with our AI router to facilitate your requests.
 
 <Info>
-  ### Remember to create your project & get your API-KEY through our [Uniblock's dashboard](http://dashboard.uniblock.dev).
+  ### Remember to create your project & get your API-KEY through our [Uniblock's
+  dashboard](http://dashboard.uniblock.dev).
 </Info>
 
 JSON-RPC is a protocol used to communicate with blockchain nodes, enabling both read and write operations. They have a JSON-RPC interface for read requests.
@@ -16,7 +16,8 @@ JSON-RPC is a remote procedure call (RPC) protocol that uses JSON to encode mess
 Uniblock's JSON-RPC implementation adds in our AI router to help route your request to the best provider based on reliability, latency and cost. With features like automated fallback and auto retry, we try to make sure your request will not fail.
 
 <Info>
-  Looking for a full list of supported JSON-RPC chains? Head to the [JSON-RPC chains](doc:supported-methods-by-chain) page.
+  Looking for a full list of supported JSON-RPC chains? Head to the [JSON-RPC
+  chains](doc:supported-methods-by-chain) page.
 </Info>
 
 ## Supported JSON-RPC Chains
@@ -29,10 +30,10 @@ For more details on our JSON-RPC service, head to our [JSON-RPC chains](doc:supp
 
 Some common JSON-RPC methods available on Ethereum nodes include:
 
-* `eth_blockNumber`
-* `eth_getBalance`
-* `eth_getBlockByNumber`
-* `eth_sendRawTransaction` (for write operations)
+- `eth_blockNumber`
+- `eth_getBalance`
+- `eth_getBlockByNumber`
+- `eth_sendRawTransaction` (for write operations)
 
 ### JSON-RPC Request Example
 
@@ -49,10 +50,10 @@ A typical JSON-RPC request to get the balance of an address looks like this:
   ```
 </CodeGroup>
 
-* `jsonrpc`: Version (always 2.0)
-* `method`: The method to call
-* `params`: Relevant parameters
-* `id`: Request identifier
+- `jsonrpc`: Version (always 2.0)
+- `method`: The method to call
+- `params`: Relevant parameters
+- `id`: Request identifier
 
 ### JSON-RPC Response Example
 
@@ -68,9 +69,9 @@ A response to the above request might look like this:
   ```
 </CodeGroup>
 
-* `jsonrpc`: Mirrored version (2.0)
-* `result`: The balance in wei
-* `id`: Request identifier
+- `jsonrpc`: Mirrored version (2.0)
+- `result`: The balance in wei
+- `id`: Request identifier
 
 ## Tester
 

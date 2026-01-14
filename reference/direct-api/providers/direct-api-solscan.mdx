@@ -1,6 +1,5 @@
 ---
-title: "Solscan"
-description: "Ask AI"
+title: 'Solscan'
 ---
 
 You'll find comprehensive guides and documentation to help you start working with Solscan as quickly as possible
@@ -14,74 +13,71 @@ No prefix is required for Solscan, an example URL will therefore look like:`http
 # Example:
 
 <CodeGroup>
-  ```bash bash
-  curl --request GET \
-    --url https://api.uniblock.dev/direct/v1/SolScan/v2.0/block/last \
-    --header 'accept: application/json' \
-    --header 'x-api-key: YOUR_UNIBLOCK_API_KEY'
-  ```
+  ```bash bash curl --request GET \ --url
+  https://api.uniblock.dev/direct/v1/SolScan/v2.0/block/last \ --header 'accept:
+  application/json' \ --header 'x-api-key: YOUR_UNIBLOCK_API_KEY' ```
 </CodeGroup>
 
 # Supported Endpoints:
 
 ### Account APIs
 
-* **Account Transfer** **Description**: Transfer tokens between accounts. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/transfer`
+- **Account Transfer** **Description**: Transfer tokens between accounts. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/transfer`
 
-* **Account Token Accounts** **Description**: Retrieve token accounts associated with a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/token-accounts`
+- **Account Token Accounts** **Description**: Retrieve token accounts associated with a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/token-accounts`
 
-* **Account DeFi Activities** **Description**: Retrieve DeFi activities for a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/defi/activities`
+- **Account DeFi Activities** **Description**: Retrieve DeFi activities for a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/defi/activities`
 
-* **Account Balance Change Activities** **Description**: Retrieve balance change activities for a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/balance_change`
+- **Account Balance Change Activities** **Description**: Retrieve balance change activities for a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/balance_change`
 
-* **Account Transactions** **Description**: Retrieve all transactions for a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/transactions`
+- **Account Transactions** **Description**: Retrieve all transactions for a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/transactions`
 
-* **Account Stake** **Description**: Retrieve staking information for a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/stake`
+- **Account Stake** **Description**: Retrieve staking information for a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/stake`
 
-* **Account Detail** **Description**: Retrieve detailed information for a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/detail`
+- **Account Detail** **Description**: Retrieve detailed information for a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/detail`
 
-* **Account Rewards Export** **Description**: Export reward information for a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/reward/export`
+- **Account Rewards Export** **Description**: Export reward information for a specific account. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/account/reward/export`
 
 ### Token APIs
 
-* **Token Transfer** **Description**: Retrieve transfer details for a specific token. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/transfer`
+- **Token Transfer** **Description**: Retrieve transfer details for a specific token. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/transfer`
 
-* **Token DeFi Activities** **Description**: Retrieve DeFi activities for a specific token. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/defi/activities`
+- **Token DeFi Activities** **Description**: Retrieve DeFi activities for a specific token. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/defi/activities`
 
-* **Token Markets** **Description**: Retrieve market information for tokens. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/markets`
+- **Token Markets** **Description**: Retrieve market information for tokens. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/markets`
 
-* **Token List** **Description**: Retrieve a list of tokens. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/list`
+- **Token List** **Description**: Retrieve a list of tokens. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/list`
 
-* **Token Trending** **Description**: Retrieve trending tokens. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/trending`
+- **Token Trending** **Description**: Retrieve trending tokens. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/trending`
 
-* **Token Price** **Description**: Retrieve price information for a specific token. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/price`
+- **Token Price** **Description**: Retrieve price information for a specific token. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/price`
 
-* **Token Holders** **Description**: Retrieve holders of a specific token. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/holders`
+- **Token Holders** **Description**: Retrieve holders of a specific token. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/holders`
 
-* **Token Meta** **Description**: Retrieve metadata for a specific token. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/meta`
+- **Token Meta** **Description**: Retrieve metadata for a specific token. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/token/meta`
 
 ### NFT APIs
 
-* **News NFT** **Description**: Retrieve the latest NFT news. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/nft/news`
+- **News NFT** **Description**: Retrieve the latest NFT news. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/nft/news`
 
-* **NFT Activities** **Description**: Retrieve activities related to NFTs. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/nft/activities`
+- **NFT Activities** **Description**: Retrieve activities related to NFTs. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/nft/activities`
 
-* **NFT Collection Lists** **Description**: Retrieve lists of NFT collections. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/nft/collection/lists`
+- **NFT Collection Lists** **Description**: Retrieve lists of NFT collections. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/nft/collection/lists`
 
-* **NFT Collection Items** **Description**: Retrieve items within an NFT collection. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/nft/collection/items`
+- **NFT Collection Items** **Description**: Retrieve items within an NFT collection. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/nft/collection/items`
 
 ### Transaction APIs
 
-* **Transaction Last** **Description**: Fetch the most recent transaction. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/transaction/last`
+- **Transaction Last** **Description**: Fetch the most recent transaction. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/transaction/last`
 
-* **Transaction Actions** **Description**: Retrieve actions related to a specific transaction. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/transaction/actions`
+- **Transaction Actions** **Description**: Retrieve actions related to a specific transaction. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/transaction/actions`
 
-* **Transaction Detail** **Description**: Get the detail of a transaction. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/transaction/detail`
+- **Transaction Detail** **Description**: Get the detail of a transaction. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/transaction/detail`
 
 ### Block APIs
 
-* **Block Last** **Description**: Fetch the latest block. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/block/last`
+- **Block Last** **Description**: Fetch the latest block. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/block/last`
 
-* **Block Transactions** **Description**: Retrieve transactions for a specific block. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/block/transactions`
+- **Block Transactions** **Description**: Retrieve transactions for a specific block. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/block/transactions`
 
-* **Block Detail** **Description**: Get detailed information about a block. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/block/detail`
+- **Block Detail** **Description**: Get detailed information about a block. **URL**: `https://api.uniblock.dev/direct/v1/SolScan/v2.0/block/detail`

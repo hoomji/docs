@@ -71,7 +71,6 @@
             },
             "pages": [
               "reference/unified-api/overview-unified-apis",
-              "reference/unified-api/stellarhttp",
               "reference/unified-api/uniblock-mcp-server-overview-and-setup"
             ]
           },
@@ -79,20 +78,19 @@
             "group": "Direct API",
             "pages": [
               "reference/direct-api/overview-direct-api",
-              "reference/direct-api/providers-direct-api",
               {
                 "group": "Providers",
                 "pages": [
-                  "reference/direct-api/providers/helius-direct-api",
-                  "reference/direct-api/providers/tonapi-direct-api",
+                  "reference/direct-api/providers/direct-api-coingecko",
+                  "reference/direct-api/providers/direct-api-coinmarketcap",
+                  "reference/direct-api/providers/direct-api-alchemy",
+                  "reference/direct-api/providers/direct-api-helius",
+                  "reference/direct-api/providers/direct-api-tonapi",
                   "reference/direct-api/providers/direct-api-defined",
                   "reference/direct-api/providers/direct-api-lunarcrush",
-                  "reference/direct-api/providers/direct-api-coingecko",
-                  "reference/direct-api/providers/coinmarketcap",
                   "reference/direct-api/providers/direct-api-solscan",
                   "reference/direct-api/providers/direct-api-shyft",
                   "reference/direct-api/providers/direct-api-birdeye",
-                  "reference/direct-api/providers/direct-api-alchemy",
                   "reference/direct-api/providers/direct-api-covalent",
                   "reference/direct-api/providers/direct-api-geniidata",
                   "reference/direct-api/providers/direct-api-mempool",
@@ -100,7 +98,6 @@
                   "reference/direct-api/providers/direct-api-hellomoon"
                 ]
               },
-              "reference/direct-api/direct-api-categories",
               {
                 "group": "Categories",
                 "pages": [

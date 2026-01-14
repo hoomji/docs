@@ -1,6 +1,5 @@
 ---
-title: "Direct API — Wallet"
-description: "Ask AI"
+title: 'Direct API — Wallet'
 ---
 
 API endpoints for Wallet.
@@ -28,14 +27,14 @@ API endpoints for Wallet.
 
 ### GET
 
-| Path                                                                                                                         | Est. CU | Description                             |
-| ---------------------------------------------------------------------------------------------------------------------------- | ------- | --------------------------------------- |
-| [direct/v1/Birdeye/v1/wallet/list\_supported\_chain](https://docs.birdeye.so/reference/get_v1-wallet-list-supported-chain)   | 70      | Supported Networks                      |
-| [direct/v1/Birdeye/v1/wallet/multichain\_token\_list](https://docs.birdeye.so/reference/get_v1-wallet-multichain-token-list) | 70      | Wallet Portfolio - Multichain           |
-| [direct/v1/Birdeye/v1/wallet/multichain\_tx\_list](https://docs.birdeye.so/reference/get_v1-wallet-multichain-tx-list)       | 70      | Wallet Transaction History - Multichain |
-| [direct/v1/Birdeye/v1/wallet/token\_balance](https://docs.birdeye.so/reference/get_v1-wallet-token-balance)                  | 1060    | Wallet - Token Balance                  |
-| [direct/v1/Birdeye/v1/wallet/token\_list](https://docs.birdeye.so/reference/get_v1-wallet-token-list)                        | 1060    | Wallet Portfolio                        |
-| [direct/v1/Birdeye/v1/wallet/tx\_list](https://docs.birdeye.so/reference/get_v1-wallet-tx-list)                              | 70      | Wallet Transaction History              |
+| Path                                                                                                                       | Est. CU | Description                             |
+| -------------------------------------------------------------------------------------------------------------------------- | ------- | --------------------------------------- |
+| [direct/v1/Birdeye/v1/wallet/list_supported_chain](https://docs.birdeye.so/reference/get_v1-wallet-list-supported-chain)   | 70      | Supported Networks                      |
+| [direct/v1/Birdeye/v1/wallet/multichain_token_list](https://docs.birdeye.so/reference/get_v1-wallet-multichain-token-list) | 70      | Wallet Portfolio - Multichain           |
+| [direct/v1/Birdeye/v1/wallet/multichain_tx_list](https://docs.birdeye.so/reference/get_v1-wallet-multichain-tx-list)       | 70      | Wallet Transaction History - Multichain |
+| [direct/v1/Birdeye/v1/wallet/token_balance](https://docs.birdeye.so/reference/get_v1-wallet-token-balance)                 | 1060    | Wallet - Token Balance                  |
+| [direct/v1/Birdeye/v1/wallet/token_list](https://docs.birdeye.so/reference/get_v1-wallet-token-list)                       | 1060    | Wallet Portfolio                        |
+| [direct/v1/Birdeye/v1/wallet/tx_list](https://docs.birdeye.so/reference/get_v1-wallet-tx-list)                             | 70      | Wallet Transaction History              |
 
 ### POST
 
@@ -50,24 +49,24 @@ API endpoints for Wallet.
 | Path                                                                                                                                                                                                                  | Est. CU | Description                                          |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ---------------------------------------------------- |
 | [direct/v1/Covalent/v1/address/\{walletAddress}/activity](https://goldrush.dev/docs/api-reference/foundational-api/cross-chain/get-address-activity)                                                                  | 5000    | Get activity across all chains for address           |
-| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/balances\_native](https://goldrush.dev/docs/api-reference/foundational-api/balances/get-native-token-balance)                                            | 5000    | Get native token balance for address                 |
-| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/balances\_nft](https://goldrush.dev/docs/api-reference/foundational-api/nft/get-nfts-for-address)                                                        | 5000    | Get NFTs for address                                 |
-| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/balances\_v2](https://goldrush.dev/docs/api-reference/balances/get-token-balances-for-address)                                                           | 5000    | Get token balances for address                       |
-| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/historical\_balances](https://goldrush.dev/docs/api-reference/foundational-api/balances/get-historical-token-balances-for-address)                       | 5000    | Get historical token balances for address            |
-| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/transactions\_summary](https://goldrush.dev/docs/api-reference/foundational-api/transactions/get-transaction-summary-for-address)                        | 5000    | Get transaction summary for address                  |
-| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/transfers\_v2](https://goldrush.dev/docs/api-reference/foundational-api/balances/get-erc20-token-transfers-for-address)                                  | 5000    | Get ERC20 token transfers for address                |
-| [direct/v1/Covalent/v1/btc-mainnet/address/\{walletAddress}/balances\_v2](https://goldrush.dev/docs/api-reference/foundational-api/balances/get-bitcoin-balance-for-address)                                          | 5000    | Get Bitcoin balances for non-HD address              |
-| [direct/v1/Covalent/v1/btc-mainnet/address/\{walletAddress}/hd\_wallets](https://goldrush.dev/docs/api-reference/foundational-api/balances/get-bitcoin-balances-for-hd-address)                                       | 5000    | Get Bitcoin balances for HD address                  |
+| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/balances_native](https://goldrush.dev/docs/api-reference/foundational-api/balances/get-native-token-balance)                                             | 5000    | Get native token balance for address                 |
+| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/balances_nft](https://goldrush.dev/docs/api-reference/foundational-api/nft/get-nfts-for-address)                                                         | 5000    | Get NFTs for address                                 |
+| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/balances_v2](https://goldrush.dev/docs/api-reference/balances/get-token-balances-for-address)                                                            | 5000    | Get token balances for address                       |
+| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/historical_balances](https://goldrush.dev/docs/api-reference/foundational-api/balances/get-historical-token-balances-for-address)                        | 5000    | Get historical token balances for address            |
+| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/transactions_summary](https://goldrush.dev/docs/api-reference/foundational-api/transactions/get-transaction-summary-for-address)                         | 5000    | Get transaction summary for address                  |
+| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/transfers_v2](https://goldrush.dev/docs/api-reference/foundational-api/balances/get-erc20-token-transfers-for-address)                                   | 5000    | Get ERC20 token transfers for address                |
+| [direct/v1/Covalent/v1/btc-mainnet/address/\{walletAddress}/balances_v2](https://goldrush.dev/docs/api-reference/foundational-api/balances/get-bitcoin-balance-for-address)                                           | 5000    | Get Bitcoin balances for non-HD address              |
+| [direct/v1/Covalent/v1/btc-mainnet/address/\{walletAddress}/hd_wallets](https://goldrush.dev/docs/api-reference/foundational-api/balances/get-bitcoin-balances-for-hd-address)                                        | 5000    | Get Bitcoin balances for HD address                  |
 | [direct/v1/Covalent/v1/cq/covalent/app/bitcoin/transactions](https://goldrush.dev/docs/api-reference/foundational-api/transactions/get-transactions-for-bitcoin-address)                                              | 5000    | Get transactions for Bitcoin address                 |
 | [direct/v1/Covalent/v1/\{chainName}/bulk/transactions/\{walletAddress}/\{timeBucket}](https://goldrush.dev/docs/api-reference/foundational-api/transactions/get-time-bucket-transactions-for-address-v3)              | 5000    | Get bulk time bucket transactions for address (v3)   |
 | [direct/v1/Covalent/v1/\{chainName}/bulk/transactions/\{walletAddress}](https://goldrush.dev/docs/api-reference/foundational-api/transactions/get-earliest-transactions-for-address-v3)                               | 5000    | Get earliest transactions for address (v3)           |
 | [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/collection/\{collectionContract}](https://goldrush.dev/docs/api-reference/foundational-api/nft/check-ownership-in-nft-collection)                        | 5000    | Check ownership in NFT collection                    |
 | [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/collection/\{collectionContract}/token/\{tokenId}](https://goldrush.dev/docs/api-reference/foundational-api/nft/check-ownership-in-nft-collection-token) | 5000    | Check ownership in NFT collection for specific token |
 | [direct/v1/Covalent/v1/\{chainName}/nft/approvals/\{walletAddress}](https://goldrush.dev/docs/api-reference/foundational-api/security/get-nft-approvals)                                                              | 5000    | Get NFT approvals for address                        |
-| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/resolve\_address](https://goldrush.dev/docs/api-reference/foundational-api/utility/get-resolved-address-for-registered-address)                          | 5000    | Get resolved address for registered address          |
+| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/resolve_address](https://goldrush.dev/docs/api-reference/foundational-api/utility/get-resolved-address-for-registered-address)                           | 5000    | Get resolved address for registered address          |
 | [direct/v1/Covalent/v1/\{chainName}/approvals/\{walletAddress}](https://goldrush.dev/docs/api-reference/foundational-api/security/get-token-approvals-for-address)                                                    | 5000    | Get token approvals for address                      |
-| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/transactions\_v3](https://goldrush.dev/docs/api-reference/foundational-api/transactions/get-recent-transactions-for-address-v3)                          | 5000    | Get recent transactions for address (v3)             |
-| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/transactions\_v3/page/\{page}](https://goldrush.dev/docs/api-reference/foundational-api/transactions/get-paginated-transactions-for-address-v3)          | 5000    | Get paginated transactions for address (v3)          |
+| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/transactions_v3](https://goldrush.dev/docs/api-reference/foundational-api/transactions/get-recent-transactions-for-address-v3)                           | 5000    | Get recent transactions for address (v3)             |
+| [direct/v1/Covalent/v1/\{chainName}/address/\{walletAddress}/transactions_v3/page/\{page}](https://goldrush.dev/docs/api-reference/foundational-api/transactions/get-paginated-transactions-for-address-v3)           | 5000    | Get paginated transactions for address (v3)          |
 
 ## Defined
 
@@ -132,35 +131,35 @@ API endpoints for Wallet.
 
 ### GET
 
-| Path                                                                                                                                             | Est. CU | Description                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | ------------------------------------------------------------------------------------- |
-| [direct/v1/Shyft/sol/v1/wallet/get\_domains](https://docs.shyft.to/solana-apis/wallet#get-all-domains)                                           | 20      | Get all domains of a wallet                                                           |
-| [direct/v1/Shyft/sol/v1/wallet/all\_tokens](https://docs.shyft.to/solana-apis/wallet#get-all-tokens)                                             | 20      | Get the balance of all tokens in a wallet                                             |
-| [direct/v1/Shyft/sol/v1/wallet/balance](https://docs.shyft.to/solana-apis/wallet#get-balance)                                                    | 20      | lets you check the balance in your solana wallet                                      |
-| [direct/v1/Shyft/sol/v1/semi\_wallet/decrypt](https://docs.shyft.to/solana-apis/semi-custodial-wallet#decrypt-semi-custodial-wallet)             | 20      | Decrypt a semi custodial wallet and get the keypair                                   |
-| [direct/v1/Shyft/sol/v1/wallet/get\_keypair](https://docs.shyft.to/solana-apis/wallet#get-keypair)                                               | 20      | Get the keypair of a semi custodial wallet                                            |
-| [direct/v1/Shyft/sol/v1/semi\_wallet/get\_keypair](https://docs.shyft.to/solana-apis/semi-custodial-wallet#get-keypair-of-semi-custodial-wallet) | 20      | Get the keypair of a semi custodial wallet                                            |
-| [direct/v1/Shyft/sol/v1/wallet/collections](https://docs.shyft.to/solana-apis/wallet#get-collections-in-wallet)                                  | 20      | For getting all the collections in a wallet                                           |
-| [direct/v1/Shyft/sol/v1/wallet/parsed\_transaction\_history](https://docs.shyft.to/solana-apis/wallet#get-parsed-transaction-history)            | 20      | Get the parsed transaction history of a wallet                                        |
-| [direct/v1/Shyft/sol/v1/wallet/get\_portfolio](https://docs.shyft.to/solana-apis/wallet#get-portfolio)                                           | 20      | Get the portfolio of a wallet                                                         |
-| [direct/v1/Shyft/sol/v1/nft/read\_all](https://docs.shyft.to/solana-apis/nft#read-all)                                                           | 20      | Read all NFTs                                                                         |
-| [direct/v1/Shyft/sol/v1/wallet/resolve\_address](https://docs.shyft.to/solana-apis/wallet#resolve-address)                                       | 20      | Get the address of a domain                                                           |
-| [direct/v1/Shyft/sol/v1/wallet/stake\_accounts](https://docs.shyft.to/solana-apis/wallet#get-stake-accounts)                                     | 20      | Get the stake accounts of a wallet                                                    |
-| [direct/v1/Shyft/sol/v1/wallet/token\_balance](https://docs.shyft.to/solana-apis/wallet#get-token-balance)                                       | 20      | Get the balance of a particular token in a wallet (Supports Token 2022 token info 🆕) |
-| [direct/v1/Shyft/sol/v1/wallet/transaction](https://docs.shyft.to/solana-apis/wallet#get-transaction-history-1)                                  | 20      | Get the details of a transaction                                                      |
-| [direct/v1/Shyft/sol/v1/wallet/transaction\_history](https://docs.shyft.to/solana-apis/wallet#get-transaction-history)                           | 20      | Get the transaction history of a wallet                                               |
-| [direct/v1/Shyft/sol/v1/wallet/decrypt\_semi\_wallet](https://docs.shyft.to/solana-apis/wallet#decrypt-semi-custodial-wallet)                    | 20      | Decrypt a semi custodial wallet                                                       |
+| Path                                                                                                                                           | Est. CU | Description                                                                           |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------- |
+| [direct/v1/Shyft/sol/v1/wallet/get_domains](https://docs.shyft.to/solana-apis/wallet#get-all-domains)                                          | 20      | Get all domains of a wallet                                                           |
+| [direct/v1/Shyft/sol/v1/wallet/all_tokens](https://docs.shyft.to/solana-apis/wallet#get-all-tokens)                                            | 20      | Get the balance of all tokens in a wallet                                             |
+| [direct/v1/Shyft/sol/v1/wallet/balance](https://docs.shyft.to/solana-apis/wallet#get-balance)                                                  | 20      | lets you check the balance in your solana wallet                                      |
+| [direct/v1/Shyft/sol/v1/semi_wallet/decrypt](https://docs.shyft.to/solana-apis/semi-custodial-wallet#decrypt-semi-custodial-wallet)            | 20      | Decrypt a semi custodial wallet and get the keypair                                   |
+| [direct/v1/Shyft/sol/v1/wallet/get_keypair](https://docs.shyft.to/solana-apis/wallet#get-keypair)                                              | 20      | Get the keypair of a semi custodial wallet                                            |
+| [direct/v1/Shyft/sol/v1/semi_wallet/get_keypair](https://docs.shyft.to/solana-apis/semi-custodial-wallet#get-keypair-of-semi-custodial-wallet) | 20      | Get the keypair of a semi custodial wallet                                            |
+| [direct/v1/Shyft/sol/v1/wallet/collections](https://docs.shyft.to/solana-apis/wallet#get-collections-in-wallet)                                | 20      | For getting all the collections in a wallet                                           |
+| [direct/v1/Shyft/sol/v1/wallet/parsed_transaction_history](https://docs.shyft.to/solana-apis/wallet#get-parsed-transaction-history)            | 20      | Get the parsed transaction history of a wallet                                        |
+| [direct/v1/Shyft/sol/v1/wallet/get_portfolio](https://docs.shyft.to/solana-apis/wallet#get-portfolio)                                          | 20      | Get the portfolio of a wallet                                                         |
+| [direct/v1/Shyft/sol/v1/nft/read_all](https://docs.shyft.to/solana-apis/nft#read-all)                                                          | 20      | Read all NFTs                                                                         |
+| [direct/v1/Shyft/sol/v1/wallet/resolve_address](https://docs.shyft.to/solana-apis/wallet#resolve-address)                                      | 20      | Get the address of a domain                                                           |
+| [direct/v1/Shyft/sol/v1/wallet/stake_accounts](https://docs.shyft.to/solana-apis/wallet#get-stake-accounts)                                    | 20      | Get the stake accounts of a wallet                                                    |
+| [direct/v1/Shyft/sol/v1/wallet/token_balance](https://docs.shyft.to/solana-apis/wallet#get-token-balance)                                      | 20      | Get the balance of a particular token in a wallet (Supports Token 2022 token info 🆕) |
+| [direct/v1/Shyft/sol/v1/wallet/transaction](https://docs.shyft.to/solana-apis/wallet#get-transaction-history-1)                                | 20      | Get the details of a transaction                                                      |
+| [direct/v1/Shyft/sol/v1/wallet/transaction_history](https://docs.shyft.to/solana-apis/wallet#get-transaction-history)                          | 20      | Get the transaction history of a wallet                                               |
+| [direct/v1/Shyft/sol/v1/wallet/decrypt_semi_wallet](https://docs.shyft.to/solana-apis/wallet#decrypt-semi-custodial-wallet)                    | 20      | Decrypt a semi custodial wallet                                                       |
 
 ### POST
 
-| Path                                                                                                                                                     | Est. CU | Description                                              |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | -------------------------------------------------------- |
-| [direct/v1/Shyft/sol/v1/semi\_wallet/change\_password](https://docs.shyft.to/solana-apis/semi-custodial-wallet#change-password-of-semi-custodial-wallet) | 20      | Change the password of a semi custodial wallet           |
-| [direct/v1/Shyft/sol/v1/semi\_wallet/create](https://docs.shyft.to/solana-apis/semi-custodial-wallet#create-semi-custodial-wallet)                       | 20      | Create a semi custodial wallet                           |
-| [direct/v1/Shyft/sol/v1/wallet/send\_sol](https://docs.shyft.to/solana-apis/wallet#send-sol)                                                             | 20      | allows you to transfer SOL from your account to another. |
-| [direct/v1/Shyft/sol/v1/wallet/send\_sol\_detach](https://docs.shyft.to/solana-apis/wallet#post-sol-v1-wallet-send_sol)                                  | 20      | Send SOL to another wallet                               |
-| [direct/v1/Shyft/sol/v1/wallet/create\_semi\_wallet](https://docs.shyft.to/solana-apis/wallet#create-semi-custodial-wallet)                              | 20      | Create a semi custodial wallet                           |
-| [direct/v1/Shyft/sol/v1/wallet/sign\_transaction](https://docs.shyft.to/solana-apis/wallet#sign-transaction)                                             | 20      | Sign a transaction                                       |
+| Path                                                                                                                                                   | Est. CU | Description                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | -------------------------------------------------------- |
+| [direct/v1/Shyft/sol/v1/semi_wallet/change_password](https://docs.shyft.to/solana-apis/semi-custodial-wallet#change-password-of-semi-custodial-wallet) | 20      | Change the password of a semi custodial wallet           |
+| [direct/v1/Shyft/sol/v1/semi_wallet/create](https://docs.shyft.to/solana-apis/semi-custodial-wallet#create-semi-custodial-wallet)                      | 20      | Create a semi custodial wallet                           |
+| [direct/v1/Shyft/sol/v1/wallet/send_sol](https://docs.shyft.to/solana-apis/wallet#send-sol)                                                            | 20      | allows you to transfer SOL from your account to another. |
+| [direct/v1/Shyft/sol/v1/wallet/send_sol_detach](https://docs.shyft.to/solana-apis/wallet#post-sol-v1-wallet-send_sol)                                  | 20      | Send SOL to another wallet                               |
+| [direct/v1/Shyft/sol/v1/wallet/create_semi_wallet](https://docs.shyft.to/solana-apis/wallet#create-semi-custodial-wallet)                              | 20      | Create a semi custodial wallet                           |
+| [direct/v1/Shyft/sol/v1/wallet/sign_transaction](https://docs.shyft.to/solana-apis/wallet#sign-transaction)                                            | 20      | Sign a transaction                                       |
 
 ## SolScan
 
@@ -174,7 +173,7 @@ API endpoints for Wallet.
 | [direct/v1/SolScan/v1.0/account/transactions](https://pro-api.solscan.io/pro-api-docs/v2.0/reference)                               | 20      | Get the transaction history of a specific account on Solana.    |
 | [direct/v1/SolScan/v1.0/account/exportRewards](https://pro-api.solscan.io/pro-api-docs/v2.0/reference)                              | 20      | Export rewards for a specific account on Solana.                |
 | [direct/v1/SolScan/v1.0/account/exportTransactions](https://pro-api.solscan.io/pro-api-docs/v2.0/reference)                         | 20      | Export transactions for a specific account on Solana.           |
-| [direct/v1/SolScan/v2.0/account/balance\_change](https://pro-api.solscan.io/pro-api-docs/v2.0/reference/v2-account-balance_change)  | 650     | Get balance change activities for a specific account on Solana. |
+| [direct/v1/SolScan/v2.0/account/balance_change](https://pro-api.solscan.io/pro-api-docs/v2.0/reference/v2-account-balance_change)   | 650     | Get balance change activities for a specific account on Solana. |
 | [direct/v1/SolScan/v2.0/account/transfer](https://pro-api.solscan.io/pro-api-docs/v2.0/reference/v2-account-transfer)               | 650     | Get transfer information for a specific account on Solana.      |
 | [direct/v1/SolScan/v2.0/account/transfer/export](https://pro-api.solscan.io/pro-api-docs/v2.0/reference/v2-account-transfer-export) | 20      | Export transfer information for a specific account on Solana.   |
 
@@ -182,13 +181,13 @@ API endpoints for Wallet.
 
 ### GET
 
-| Path                                                                                                                                      | Est. CU | Description                                                                    |
-| ----------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------ |
-| [direct/v1/TonAPI/v2/wallet/\{account\_id}/seqno](https://tonapi.io/api-v2#operations-Wallet-getAccountSeqno)                             | 20      | Get account seqno                                                              |
-| [direct/v1/TonAPI/v2/blockchain/accounts/\{account\_id}](https://tonapi.io/api-v2#operations-Blockchain-getBlockchainRawAccount)          | 20      | Get low-level information about an account taken directly from the blockchain. |
-| [direct/v1/TonAPI/v2/liteserver/get\_account\_state/\{account\_id}](https://tonapi.io/api-v2#operations-Lite%20Server-getRawAccountState) | 20      | Get raw account state                                                          |
-| [direct/v1/TonAPI/v2/liteserver/get\_transactions/\{account\_id}](https://tonapi.io/api-v2#operations-Lite%20Server-getRawTransactions)   | 20      | Get raw transactions                                                           |
-| [direct/v1/TonAPI/v2/pubkeys/\{public\_key}/wallets](https://tonapi.io/api-v2#operations-Wallet-getWalletsByPublicKey)                    | 20      | Get wallets by public key                                                      |
+| Path                                                                                                                                   | Est. CU | Description                                                                    |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------ |
+| [direct/v1/TonAPI/v2/wallet/\{account_id}/seqno](https://tonapi.io/api-v2#operations-Wallet-getAccountSeqno)                           | 20      | Get account seqno                                                              |
+| [direct/v1/TonAPI/v2/blockchain/accounts/\{account_id}](https://tonapi.io/api-v2#operations-Blockchain-getBlockchainRawAccount)        | 20      | Get low-level information about an account taken directly from the blockchain. |
+| [direct/v1/TonAPI/v2/liteserver/get_account_state/\{account_id}](https://tonapi.io/api-v2#operations-Lite%20Server-getRawAccountState) | 20      | Get raw account state                                                          |
+| [direct/v1/TonAPI/v2/liteserver/get_transactions/\{account_id}](https://tonapi.io/api-v2#operations-Lite%20Server-getRawTransactions)  | 20      | Get raw transactions                                                           |
+| [direct/v1/TonAPI/v2/pubkeys/\{public_key}/wallets](https://tonapi.io/api-v2#operations-Wallet-getWalletsByPublicKey)                  | 20      | Get wallets by public key                                                      |
 
 ### POST
 

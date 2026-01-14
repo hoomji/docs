@@ -1,6 +1,5 @@
 ---
-title: "GeniiData"
-description: "Ask AI"
+title: 'GeniiData'
 ---
 
 For more information regarding the endpoints, please visit GeniiData's website: [\<https://geniidata.readme.io/reference/introduction>](https://geniidata.readme.io/reference/introduction).
@@ -12,36 +11,33 @@ No prefix is required for GeniiData, an example URL will therefore look like: `h
 # Example:
 
 <CodeGroup>
-  ```bash bash
-  curl --request GET \
-    --url https://api.uniblock.dev/direct/v1/GeniiData/1/runes/listinfo \
-    --header 'accept: application/json' \
-    --header 'x-api-key: YOUR_UNIBLOCK_API_KEY'
-  ```
+  ```bash bash curl --request GET \ --url
+  https://api.uniblock.dev/direct/v1/GeniiData/1/runes/listinfo \ --header
+  'accept: application/json' \ --header 'x-api-key: YOUR_UNIBLOCK_API_KEY' ```
 </CodeGroup>
 
 # Supported Endpoints:
 
-* `1/runes/listinfo`
-* `1/runes/{runeid}/info`
-* `1/runes/{runeid}/holders`
-* `1/runes/address/{address}/balance`
-* `1/runes/address/{address}/{runeid}/utxo`
-* `1/runes/utxo/{txid}/{index}/balance`
-* `1/collection/collaborator/balances/{address}`
-* `1/collection/collaborator/{collection_id}/holders`
-* `1/brc20/ticks`
-* `1/brc20/tickinfo/{tick}`
-* `1/brc20/balance`
-* `1/brc20/activities`
-* `1/brc20/address/{address}/tick/{tick}/transferableInscriptions`
-* `1/sns/namelist`
-* `1/sns/namespace/{namespace}/names`
-* `1/sns/name/{name}`
-* `1/sns/inscriptionId/{inscriptionId}/info`
-* `1/sns/address/{address}`
-* `1/bitmap/listinfo`
-* `1/bitmap/bitmapInfo/bitmapNumber/{bitmapNumber}`
-* `1/bitmap/bitmapInfo/inscriptionId/{inscriptionId}`
-* `1/bitmap/bitmapInfo/address/{address}`
-* `1/key/info`
+- `1/runes/listinfo`
+- `1/runes/{runeid}/info`
+- `1/runes/{runeid}/holders`
+- `1/runes/address/{address}/balance`
+- `1/runes/address/{address}/{runeid}/utxo`
+- `1/runes/utxo/{txid}/{index}/balance`
+- `1/collection/collaborator/balances/{address}`
+- `1/collection/collaborator/{collection_id}/holders`
+- `1/brc20/ticks`
+- `1/brc20/tickinfo/{tick}`
+- `1/brc20/balance`
+- `1/brc20/activities`
+- `1/brc20/address/{address}/tick/{tick}/transferableInscriptions`
+- `1/sns/namelist`
+- `1/sns/namespace/{namespace}/names`
+- `1/sns/name/{name}`
+- `1/sns/inscriptionId/{inscriptionId}/info`
+- `1/sns/address/{address}`
+- `1/bitmap/listinfo`
+- `1/bitmap/bitmapInfo/bitmapNumber/{bitmapNumber}`
+- `1/bitmap/bitmapInfo/inscriptionId/{inscriptionId}`
+- `1/bitmap/bitmapInfo/address/{address}`
+- `1/key/info`

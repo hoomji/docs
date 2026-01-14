@@ -1,6 +1,5 @@
 ---
-title: "/stellar-http/*path"
-description: "Ask AI"
+title: '/stellar-http/*path'
 ---
 
 get
@@ -13,66 +12,65 @@ Provides access to all Stellar Horizon endpoints. All usage instructions on the 
 
 ## Endpoints available
 
-* `/ledgers/:sequence`
-* `/ledgers/:sequence/transactions`
-* `/ledgers/:sequence/operations`
-* `/ledgers/:sequence/payments`
-* `/ledgers/:sequence/effects`
-* `/ledgers`
-* `/transactions/:transaction_hash`
-* `/transactions/:transaction_hash/operations`
-* `/transactions/:transaction_hash/effects`
-* `/transactions`
-* `/transactions`
-* `/operations/:id`
-* `/operations/:id/effects`
-* `/operations`
-* `/payments`
-* `/effects`
-* `/accounts`
-* `/accounts/:account_id`
-* `/accounts/:account_id/transactions`
-* `/accounts/:account_id/operations`
-* `/accounts/:account_id/payments`
-* `/accounts/:account_id/effects`
-* `/accounts/:account_id/offers`
-* `/accounts/:account_id/trades`
-* `/accounts/:account_id/data/:`
-* `/offers`
-* `/offers/:offer_id`
-* `/offers/:offer_id/trades`
-* `/trades`
-* `/assets`
-* `/claimable_balances`
-* `/claimable_balances/:claimable_balance_id`
-* `/claimable_balances/:claimable_balance_id/transactions`
-* `/claimable_balances/:claimable_balance_id/operations`
-* `/liquidity_pools`
-* `/liquidity_pools/:liquidity_pool_id`
-* `/liquidity_pools/:liquidity_pool_id/effects`
-* `/liquidity_pools/:liquidity_pool_id/transactions`
-* `/liquidity_pools/:liquidity_pool_id/operations`
-* `/order_book`
-* `/paths/strict-receive`
-* `/paths/strict-send`
-* `/trade_aggregations`
-* `/fee_stats`
+- `/ledgers/:sequence`
+- `/ledgers/:sequence/transactions`
+- `/ledgers/:sequence/operations`
+- `/ledgers/:sequence/payments`
+- `/ledgers/:sequence/effects`
+- `/ledgers`
+- `/transactions/:transaction_hash`
+- `/transactions/:transaction_hash/operations`
+- `/transactions/:transaction_hash/effects`
+- `/transactions`
+- `/transactions`
+- `/operations/:id`
+- `/operations/:id/effects`
+- `/operations`
+- `/payments`
+- `/effects`
+- `/accounts`
+- `/accounts/:account_id`
+- `/accounts/:account_id/transactions`
+- `/accounts/:account_id/operations`
+- `/accounts/:account_id/payments`
+- `/accounts/:account_id/effects`
+- `/accounts/:account_id/offers`
+- `/accounts/:account_id/trades`
+- `/accounts/:account_id/data/:`
+- `/offers`
+- `/offers/:offer_id`
+- `/offers/:offer_id/trades`
+- `/trades`
+- `/assets`
+- `/claimable_balances`
+- `/claimable_balances/:claimable_balance_id`
+- `/claimable_balances/:claimable_balance_id/transactions`
+- `/claimable_balances/:claimable_balance_id/operations`
+- `/liquidity_pools`
+- `/liquidity_pools/:liquidity_pool_id`
+- `/liquidity_pools/:liquidity_pool_id/effects`
+- `/liquidity_pools/:liquidity_pool_id/transactions`
+- `/liquidity_pools/:liquidity_pool_id/operations`
+- `/order_book`
+- `/paths/strict-receive`
+- `/paths/strict-send`
+- `/trade_aggregations`
+- `/fee_stats`
 
 ## Uniblock Query Params
 
-* `chainId`: `stellar` or `stellar-testnet`
-* `provider`: select from ones available
+- `chainId`: `stellar` or `stellar-testnet`
+- `provider`: select from ones available
 
 ## Basic Request
 
 Replace `API_KEY` with actual uniblock api key
 
 <CodeGroup>
-  ```bash bash
-  curl --location 'https://api.uniblock.dev/uni/v1/stellar-http/fee_stats?chainId=stellar' \
-  --header 'x-api-key: {{API_KEY}}' \
-  --header 'Content-Type: application/json'
-  ```
+  ```bash bash curl --location
+  'https://api.uniblock.dev/uni/v1/stellar-http/fee_stats?chainId=stellar' \
+  --header 'x-api-key: {{ API_KEY }}' \ --header 'Content-Type:
+  application/json' ```
 </CodeGroup>
 
 ## Dynamic Path
@@ -80,11 +78,10 @@ Replace `API_KEY` with actual uniblock api key
 Replace `API_KEY` with actual uniblock api key
 
 <CodeGroup>
-  ```bash bash
-  curl --location 'https://api.uniblock.dev/uni/v1/stellar-http/accounts/GDAYVCINVNUZ57EOCN4FK2VVWGQ3L3NW37L6UJLZCK3C7S7CNSS5EHHG?chainId=stellar' \
-  --header 'x-api-key: {{API_KEY}}' \
-  --header 'Content-Type: application/json'
-  ```
+  ```bash bash curl --location
+  'https://api.uniblock.dev/uni/v1/stellar-http/accounts/GDAYVCINVNUZ57EOCN4FK2VVWGQ3L3NW37L6UJLZCK3C7S7CNSS5EHHG?chainId=stellar'
+  \ --header 'x-api-key: {{ API_KEY }}' \ --header 'Content-Type:
+  application/json' ```
 </CodeGroup>
 
 ## Stellar Query Param
@@ -92,9 +89,8 @@ Replace `API_KEY` with actual uniblock api key
 Replace `API_KEY` with actual uniblock api key
 
 <CodeGroup>
-  ```bash bash
-  curl --location 'https://api.uniblock.dev/uni/v1/stellar-http/accounts/GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN/payments?chainId=stellar&limit=2' \
-  --header 'x-api-key: {{API_KEY}}' \
-  --header 'accept: application/json'
+  ```bash bash curl --location
+  'https://api.uniblock.dev/uni/v1/stellar-http/accounts/GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN/payments?chainId=stellar&limit=2'
+  \ --header 'x-api-key: {{ API_KEY }}' \ --header 'accept: application/json'
   ```
 </CodeGroup>
