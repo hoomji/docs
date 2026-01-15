@@ -1,28 +1,48 @@
 ---
 title: 'sui_getNormalizedMoveModule'
 ---
+
 ### Parameters
 
-  <ParamField query='chainId' type='string' default='sui' required>
-    Unique identifier for a blockchain network.
-  </ParamField>
-  <ParamField body='id' type='number' default={1} required>
-    Request identifier used to match responses.
-  </ParamField>
-  <ParamField body='jsonrpc' type='string' default='2.0' required>
-    JSON-RPC version.
-  </ParamField>
-  <ParamField body='method' type='string' default='sui_getNormalizedMoveModule' required>
-    JSON-RPC method name.
-  </ParamField>
+{' '}
 
-<ParamField body='params' type='object' default={["0x0047d5fa0a823e7d0ff4d55c32b09995a0ae1eedfee9c7b1354e805ed10ee3d0","module"]} placeholder='["0x0047d5fa0a823e7d0ff4d55c32b09995a0ae1eedfee9c7b1354e805ed10ee3d0","module"]' required>
-  Parameters for retrieving a normalized Move module.
-  
-  Positional parameters for <code>sui_getNormalizedMoveModule</code>:
+<ParamField query='chainId' type='string' default='sui' required>
+  Unique identifier for a blockchain network.
+</ParamField>
+<ParamField body='id' type='number' default={1} required>
+  Request identifier used to match responses.
+</ParamField>
+<ParamField body='jsonrpc' type='string' default='2.0' required>
+  JSON-RPC version.
+</ParamField>
+<ParamField
+  body='method'
+  type='string'
+  default='sui_getNormalizedMoveModule'
+  required
+>
+  JSON-RPC method name.
+</ParamField>
+
+<ParamField
+  body='params'
+  type='object'
+  default={[
+    '0x0047d5fa0a823e7d0ff4d55c32b09995a0ae1eedfee9c7b1354e805ed10ee3d0',
+    'module',
+  ]}
+  placeholder='["0x0047d5fa0a823e7d0ff4d55c32b09995a0ae1eedfee9c7b1354e805ed10ee3d0","module"]'
+  required
+>
+  Parameters for retrieving a normalized Move module. Positional parameters for{' '}
+  <code>sui_getNormalizedMoveModule</code>:
   <ul>
-  <li><code>params[0]</code>: Object ID of the Move package.</li>
-  <li><code>params[1]</code>: The name of the Move module.</li>
+    <li>
+      <code>params[0]</code>: Object ID of the Move package.
+    </li>
+    <li>
+      <code>params[1]</code>: The name of the Move module.
+    </li>
   </ul>
 </ParamField>
 
@@ -44,7 +64,7 @@ title: 'sui_getNormalizedMoveModule'
       List of module IDs that this module declares as friends.
       <Expandable title='items'>
         <ResponseField name='items[]' type='string'>
-          SuiMoveModuleId (formatted as <address>::<module>).
+          SuiMoveModuleId (formatted as &lt;address>::&lt;module>).
         </ResponseField>
       </Expandable>
     </ResponseField>

@@ -1,32 +1,65 @@
 ---
 title: 'unsafe_requestAddStake'
 ---
+
 ### Parameters
 
-  <ParamField query='chainId' type='string' default='sui' required>
-    Unique identifier for a blockchain network.
-  </ParamField>
-  <ParamField body='id' type='number' default={1} required>
-    Request identifier used to match responses.
-  </ParamField>
-  <ParamField body='jsonrpc' type='string' default='2.0' required>
-    JSON-RPC version.
-  </ParamField>
-  <ParamField body='method' type='string' default='unsafe_requestAddStake' required>
-    JSON-RPC method name.
-  </ParamField>
+{' '}
+<ParamField query='chainId' type='string' default='sui' required>
+  Unique identifier for a blockchain network.
+</ParamField>
+<ParamField body='id' type='number' default={1} required>
+  Request identifier used to match responses.
+</ParamField>
+<ParamField body='jsonrpc' type='string' default='2.0' required>
+  JSON-RPC version.
+</ParamField>
+<ParamField
+  body='method'
+  type='string'
+  default='unsafe_requestAddStake'
+  required
+>
+  JSON-RPC method name.
+</ParamField>
 
-<ParamField body='params' type='object' default={["0xabc123456789defabc123456789defabc123456789defabc123456789defabcd",[],"100000000","0xval123456789abcdef123456789abcdef123456789abcdef123456789abcdef","0xgasobject1234567890abcdef","50000"]} placeholder='["0xabc123456789defabc123456789defabc123456789defabc123456789defabcd",[],"100000000","0xval123456789abcdef123456789abcdef123456789abcdef123456789abcdef","0xgasobject1234567890abcdef","50000"]' required>
-  Create an unsigned transaction to stake SUI to a validator.
-  
-  Positional parameters for <code>unsafe_requestAddStake</code>:
+<ParamField
+  body='params'
+  type='object'
+  default={[
+    '0xabc123456789defabc123456789defabc123456789defabc123456789defabcd',
+    [],
+    '100000000',
+    '0xval123456789abcdef123456789abcdef123456789abcdef123456789abcdef',
+    '0xgasobject1234567890abcdef',
+    '50000',
+  ]}
+  placeholder='["0xabc123456789defabc123456789defabc123456789defabc123456789defabcd",[],"100000000","0xval123456789abcdef123456789abcdef123456789abcdef123456789abcdef","0xgasobject1234567890abcdef","50000"]'
+  required
+>
+  Create an unsigned transaction to stake SUI to a validator. Positional
+  parameters for <code>unsafe_requestAddStake</code>:
   <ul>
-  <li><code>params[0]</code>: The Sui address of the transaction signer.</li>
-  <li><code>params[1]</code>: List of Coin<SUI> object IDs to be staked.</li>
-  <li><code>params[2]</code>: Amount to stake. If omitted, the full balance of all coins will be used.</li>
-  <li><code>params[3]</code>: The validator's Sui address.</li>
-  <li><code>params[4]</code>: Optional gas object ID. If not provided, a gas object will be auto-selected.</li>
-  <li><code>params[5]</code>: Gas budget for the transaction.</li>
+    <li>
+      <code>params[0]</code>: The Sui address of the transaction signer.
+    </li>
+    <li>
+      <code>params[1]</code>: List of Coin&lt;SUI> object IDs to be staked.
+    </li>
+    <li>
+      <code>params[2]</code>: Amount to stake. If omitted, the full balance of
+      all coins will be used.
+    </li>
+    <li>
+      <code>params[3]</code>: The validator's Sui address.
+    </li>
+    <li>
+      <code>params[4]</code>: Optional gas object ID. If not provided, a gas
+      object will be auto-selected.
+    </li>
+    <li>
+      <code>params[5]</code>: Gas budget for the transaction.
+    </li>
   </ul>
 </ParamField>
 
@@ -58,12 +91,9 @@ title: 'unsafe_requestAddStake'
       <Expandable title='items'>
         <ResponseField name='items[]' type='object'>
           <Expandable title='properties'>
-            <ResponseField name='objectId' type='string'>
-            </ResponseField>
-            <ResponseField name='version' type='string'>
-            </ResponseField>
-            <ResponseField name='digest' type='string'>
-            </ResponseField>
+            <ResponseField name='objectId' type='string'></ResponseField>
+            <ResponseField name='version' type='string'></ResponseField>
+            <ResponseField name='digest' type='string'></ResponseField>
           </Expandable>
         </ResponseField>
       </Expandable>
