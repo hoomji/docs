@@ -1,97 +1,137 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: 'Introduction'
+description: "Welcome to Uniblock's documentation!"
 ---
 
-## Setting up
-
-Get your documentation site up and running in minutes.
+Welcome to Uniblock’s API Reference. Use this page to quickly find the right API for your use case, learn what Uniblock does for each request, and jump to supported chains.
 
 <Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
+  title='Get started on the dashboard'
+  icon='rocket'
+  href='https://dashboard.uniblock.dev'
   horizontal
 >
-  Follow our three step quickstart guide.
+  Create a project, grab your API key, and start making requests in minutes.
 </Card>
 
-## Make it yours
+## What is Uniblock?
 
-Design a docs site that looks great and empowers your users.
+Uniblock is an AI-powered routing layer for Web3. For every request, Uniblock selects the best upstream provider based on reliability, cost, and performance — with automatic retries and failover to help keep your calls from failing.
 
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
+<Columns cols={3}>
+  <Card title='Smart provider routing' icon='shuffle'>
+    Automatically routes requests to the best provider per chain and method.
   </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
+  <Card title='Automatic retries' icon='arrows-rotate'>
+    Retries transient failures so your requests are more resilient.
   </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
+  <Card title='Failover & fallback' icon='life-ring'>
+    Falls back to alternate providers when an upstream is degraded.
   </Card>
 </Columns>
 
-## Create beautiful pages
+## APIs
 
-Everything you need to create world-class documentation.
+Choose the API style that best matches what you’re building.
 
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
+<Columns cols={3}>
+  <Card title='Unified JSON-RPC' icon='terminal'>
+    The foundation for blockchain interaction — one endpoint for JSON-RPC across
+    hundreds of chains.
   </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
+  <Card title='Unified APIs' icon='layer-group'>
+    Higher-level endpoints for common data needs like tokens, NFTs,
+    transactions, and market data.
   </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
+  <Card title='Direct Provider APIs' icon='plug'>
+    Provider-specific methods when you need an endpoint that isn’t available in
+    Unified APIs.
   </Card>
 </Columns>
 
-## Need inspiration?
+## Unified JSON-RPC
+
+Use Unified JSON-RPC when you want maximum compatibility with existing tooling and standard blockchain methods.
+
+<Columns cols={2}>
+  <Card
+    title='JSON-RPC reference'
+    icon='book'
+    href='jsonrpc-docs/1/ethereum-overview'
+  >
+    Browse supported methods, request/response formats, and examples.
+  </Card>
+  <Card
+    title='Supported methods by chain'
+    icon='link'
+    href='resources/chains/supported-json-rpc-chains'
+  >
+    See which JSON-RPC methods are supported on each chain.
+  </Card>
+</Columns>
+
+## Unified APIs
+
+Use Unified APIs when you want higher-level, easier-to-use endpoints for common workflows without stitching together raw JSON-RPC calls.
+
+<Columns cols={3}>
+  <Card title='Token API' icon='coins'>
+    Token metadata, balances, and contract-related token data.
+  </Card>
+  <Card title='Market Data API' icon='chart-line'>
+    Pricing and market data endpoints to power dashboards and analytics.
+  </Card>
+  <Card title='NFT API' icon='images'>
+    NFT collections, assets, and related NFT metadata.
+  </Card>
+  <Card title='Transaction API' icon='arrow-right-arrow-left'>
+    Transaction lookups and transaction-related data.
+  </Card>
+  <Card title='Scan API' icon='magnifying-glass'>
+    Chain scanning and explorer-style access patterns.
+  </Card>
+  <Card title='Webhook API' icon='bell'>
+    Event-driven updates so you don’t have to poll.
+  </Card>
+</Columns>
+
+## Direct Provider APIs
+
+Direct APIs give you access to provider-specific endpoints exactly as offered by the upstream provider. Use this when you need a method that isn’t yet abstracted into Uniblock’s Unified APIs.
 
 <Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
+  title='Browse Direct APIs'
+  icon='plug'
+  href='direct-api/overview-direct-api'
+  horizontal
 >
-  Browse our showcase of exceptional documentation sites.
+  Find provider-specific methods and quickly integrate them into your app.
 </Card>
+
+## Supported chains
+
+Uniblock supports a wide range of blockchain networks, with availability varying by product. Use the links below to confirm support for your service.
+
+<Columns cols={3}>
+  <Card
+    title='Unified JSON-RPC chains'
+    icon='sitemap'
+    href='resources/chains/supported-json-rpc-chains'
+  >
+    Supported JSON-RPC methods and coverage by chain.
+  </Card>
+  <Card
+    title='Unified API chain IDs'
+    icon='hashtag'
+    href='resources/chains/supported-chains'
+  >
+    Chain ID mapping and supported networks for Unified APIs.
+  </Card>
+  <Card
+    title='Market Data supported chains'
+    icon='chart-simple'
+    href='resources/chains/supported-market-data-chains'
+  >
+    Networks supported by the Unified Market Data API.
+  </Card>
+</Columns>
