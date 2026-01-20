@@ -44,7 +44,9 @@
               "reference/unified-api/overview-unified-apis",
               "reference/unified-api/uniblock-mcp-setup",
               "reference/unified-api/overview-jsonrpc",
-              "reference/unified-api/overview-stellar"
+              "reference/unified-api/overview-stellar",
+              "reference/unified-api/overview-ton",
+              "reference/unified-api/ton-http-status"
             ]
           },
           {
