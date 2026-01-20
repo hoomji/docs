@@ -1,0 +1,141 @@
+---
+title: 'TON HTTP API'
+api: 'GET https://api.uniblock.dev/uni/v1/ton-http/*path'
+playground: 'interactive'
+---
+
+Access all TON API endpoints through Uniblock's unified interface. This playground allows you to test any TON API endpoint interactively.
+
+For complete endpoint documentation, visit [TON API Docs](https://docs.tonconsole.com/tonapi/api-v2).
+
+### Parameters
+
+<ParamField query='chainId' type='string' default='ton' required>
+  Network identifier. Use `ton` for mainnet or `ton-testnet` for testnet.
+</ParamField>
+
+<ParamField path='*path' type='string' default='v2/status' required>
+  TON API endpoint path. Examples:
+  - `v2/status` - Get API status
+  - `v2/accounts/{account_id}` - Get account information
+  - `v2/blockchain/masterchain-head` - Get masterchain head
+  - `v2/rates` - Get exchange rates
+  
+  See the [TON Overview](/reference/unified-api/overview-ton) for all available endpoints.
+</ParamField>
+
+### Common Endpoints
+
+#### Account Endpoints
+- `v2/accounts/{account_id}` - Get account information
+- `v2/accounts/{account_id}/events` - Get account events
+- `v2/accounts/{account_id}/jettons` - Get account jettons
+- `v2/accounts/{account_id}/nfts` - Get account NFTs
+- `v2/accounts/{account_id}/transactions` - Get account transactions
+
+#### Blockchain Endpoints
+- `v2/blockchain/masterchain-head` - Get masterchain head
+- `v2/blockchain/blocks/{block_id}` - Get block information
+- `v2/blockchain/transactions/{transaction_id}` - Get transaction details
+- `v2/blockchain/validators` - Get validators list
+
+#### Jetton Endpoints
+- `v2/jettons` - Get jettons list
+- `v2/jettons/{account_id}` - Get jetton information
+- `v2/jettons/{account_id}/holders` - Get jetton holders
+
+#### NFT Endpoints
+- `v2/nfts/collections` - Get NFT collections
+- `v2/nfts/collections/{account_id}` - Get collection information
+- `v2/nfts/{account_id}` - Get NFT information
+
+#### Other Endpoints
+- `v2/status` - Get API status
+- `v2/rates` - Get exchange rates
+- `v2/dns/{domain_name}` - Resolve DNS name
+- `v2/staking/pools` - Get staking pools
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Response varies by endpoint. See [TON API Docs](https://docs.tonconsole.com/tonapi/api-v2) for specific endpoint responses.
+</ResponseField>
+
+<RequestExample>
+
+```bash Get Status
+curl --location \
+'https://api.uniblock.dev/uni/v1/ton-http/v2/status?chainId=ton' \
+--header 'x-api-key: YOUR_API_KEY' \
+--header 'Content-Type: application/json'
+```
+
+```bash Get Account
+curl --location \
+'https://api.uniblock.dev/uni/v1/ton-http/v2/accounts/EQCkR1cGmnsE45N4K0otPl5EnxnRakmGqeJUNua5fkWhales?chainId=ton' \
+--header 'x-api-key: YOUR_API_KEY' \
+--header 'Content-Type: application/json'
+```
+
+```bash Get Account Events
+curl --location \
+'https://api.uniblock.dev/uni/v1/ton-http/v2/accounts/EQCkR1cGmnsE45N4K0otPl5EnxnRakmGqeJUNua5fkWhales/events?chainId=ton&limit=10' \
+--header 'x-api-key: YOUR_API_KEY' \
+--header 'accept: application/json'
+```
+
+```bash Get Rates
+curl --location \
+'https://api.uniblock.dev/uni/v1/ton-http/v2/rates?chainId=ton' \
+--header 'x-api-key: YOUR_API_KEY' \
+--header 'accept: application/json'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Status Response
+{
+  "rest_online": true,
+  "indexing_latency": 0
+}
+```
+
+```json Account Response
+{
+  "address": "EQCkR1cGmnsE45N4K0otPl5EnxnRakmGqeJUNua5fkWhales",
+  "balance": 1000000000,
+  "status": "active",
+  "interfaces": ["wallet_v4r2"],
+  "name": "Example Account"
+}
+```
+
+```json Events Response
+{
+  "events": [
+    {
+      "event_id": "abc123",
+      "timestamp": 1234567890,
+      "actions": []
+    }
+  ],
+  "next_from": 1234567890
+}
+```
+
+```json Rates Response
+{
+  "rates": {
+    "TON": {
+      "prices": {
+        "USD": 2.5,
+        "EUR": 2.3
+      }
+    }
+  }
+}
+```
+
+</ResponseExample>
