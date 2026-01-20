@@ -17967,21 +17967,7 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://docs.uniblock.dev",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://uniblock.dev/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
@@ -18015,7 +18001,9 @@
   "footer": {
     "socials": {
       "x": "https://x.com/Uniblock",
-      "linkedin": "https://linkedin.com/company/uniblock-dapp"
+      "linkedin": "https://linkedin.com/company/uniblock-dapp",
+      "discord": "https://discord.com/invite/cQmm6Bg6b7",
+      "reddit": "https://www.reddit.com/user/Uniblock_dev/",
     }
   },
   "api": {
