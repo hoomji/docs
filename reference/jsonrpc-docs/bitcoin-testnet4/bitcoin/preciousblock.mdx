@@ -1,5 +1,6 @@
 ---
 title: 'preciousblock'
+description: 'Treats a block as precious, favoring it in reorganization logic.'
 ---
 ### Parameters
 
@@ -21,7 +22,7 @@ title: 'preciousblock'
   
   Positional parameters for <code>preciousblock</code>:
   <ul>
-  <li><code>params[]</code>: 32 Bytes - hash of the transaction.</li>
+  <li><code>params[]</code>: 32 Bytes - hash of the block where this transaction was included. Null when pending.</li>
   </ul>
 </ParamField>
 

@@ -1,5 +1,6 @@
 ---
 title: 'getblockheader'
+description: 'Returns information about a block header given its hash.'
 ---
 ### Parameters
 
@@ -21,7 +22,7 @@ title: 'getblockheader'
   
   Positional parameters for <code>getblockheader</code>:
   <ul>
-  <li><code>params[0]</code>: 32 Bytes - hash of the transaction.</li>
+  <li><code>params[0]</code>: 32 Bytes - hash of the block where this transaction was included. Null when pending.</li>
   <li><code>params[1]</code>: If false, return the header as hex instead of JSON.</li>
   </ul>
 </ParamField>

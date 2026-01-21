@@ -1,5 +1,6 @@
 ---
 title: 'getchaintxstats'
+description: 'Returns transaction statistics over a window ending at the given block.'
 ---
 ### Parameters
 
@@ -22,7 +23,7 @@ title: 'getchaintxstats'
   Positional parameters for <code>getchaintxstats</code>:
   <ul>
   <li><code>params[0]</code>: Number of blocks in the window.</li>
-  <li><code>params[1]</code>: 32 Bytes - hash of the transaction.</li>
+  <li><code>params[1]</code>: 32 Bytes - hash of the block where this transaction was included. Null when pending.</li>
   </ul>
 </ParamField>
 
