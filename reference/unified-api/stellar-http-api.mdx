@@ -1,0 +1,278 @@
+---
+title: 'Stellar HTTP API'
+api: 'GET https://api.uniblock.dev/uni/v1/stellar-http/*path'
+playground: 'interactive'
+---
+
+Access all Stellar Horizon API endpoints through Uniblock's unified interface. This playground allows you to test any Stellar Horizon endpoint interactively.
+
+For complete endpoint documentation, visit [Stellar Horizon API Docs](https://developers.stellar.org/docs/data/apis/horizon/api-reference).
+
+### Parameters
+
+<ParamField query='chainId' type='string' default='stellar' required>
+  Network identifier. Use `stellar` for mainnet or `stellar-testnet` for testnet.
+</ParamField>
+
+<ParamField path='*path' type='string' default='fee_stats' required>
+  Stellar Horizon API endpoint path. Examples:
+  - `fee_stats` - Get fee statistics
+  - `accounts/{account_id}` - Get account information
+  - `ledgers/{sequence}` - Get ledger information
+  - `transactions/{transaction_hash}` - Get transaction details
+  
+  See the [Stellar Overview](/reference/unified-api/overview-stellar) for all available endpoints.
+</ParamField>
+
+### Common Endpoints
+
+#### Account Endpoints
+- `accounts/{account_id}` - Get account information
+- `accounts/{account_id}/transactions` - Get account transactions
+- `accounts/{account_id}/operations` - Get account operations
+- `accounts/{account_id}/payments` - Get account payments
+- `accounts/{account_id}/effects` - Get account effects
+- `accounts/{account_id}/offers` - Get account offers
+- `accounts/{account_id}/trades` - Get account trades
+
+#### Ledger Endpoints
+- `ledgers` - Get all ledgers
+- `ledgers/{sequence}` - Get specific ledger
+- `ledgers/{sequence}/transactions` - Get ledger transactions
+- `ledgers/{sequence}/operations` - Get ledger operations
+- `ledgers/{sequence}/payments` - Get ledger payments
+- `ledgers/{sequence}/effects` - Get ledger effects
+
+#### Transaction Endpoints
+- `transactions` - Get all transactions
+- `transactions/{transaction_hash}` - Get specific transaction
+- `transactions/{transaction_hash}/operations` - Get transaction operations
+- `transactions/{transaction_hash}/effects` - Get transaction effects
+
+#### Operation Endpoints
+- `operations` - Get all operations
+- `operations/{id}` - Get specific operation
+- `operations/{id}/effects` - Get operation effects
+- `payments` - Get all payments
+
+#### Asset & Trading Endpoints
+- `assets` - Get all assets
+- `offers` - Get all offers
+- `offers/{offer_id}` - Get specific offer
+- `offers/{offer_id}/trades` - Get offer trades
+- `trades` - Get all trades
+- `order_book` - Get order book
+- `trade_aggregations` - Get trade aggregations
+
+#### Liquidity Pool Endpoints
+- `liquidity_pools` - Get all liquidity pools
+- `liquidity_pools/{liquidity_pool_id}` - Get specific pool
+- `liquidity_pools/{liquidity_pool_id}/effects` - Get pool effects
+- `liquidity_pools/{liquidity_pool_id}/transactions` - Get pool transactions
+- `liquidity_pools/{liquidity_pool_id}/operations` - Get pool operations
+
+#### Claimable Balance Endpoints
+- `claimable_balances` - Get all claimable balances
+- `claimable_balances/{claimable_balance_id}` - Get specific balance
+- `claimable_balances/{claimable_balance_id}/transactions` - Get balance transactions
+- `claimable_balances/{claimable_balance_id}/operations` - Get balance operations
+
+#### Path Finding Endpoints
+- `paths/strict-receive` - Find payment paths (strict receive)
+- `paths/strict-send` - Find payment paths (strict send)
+
+#### Other Endpoints
+- `fee_stats` - Get fee statistics
+- `effects` - Get all effects
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  Response varies by endpoint. See [Stellar Horizon API Docs](https://developers.stellar.org/docs/data/apis/horizon/api-reference) for specific endpoint responses.
+</ResponseField>
+
+<RequestExample>
+
+```bash Get Fee Stats
+curl --location \
+'https://api.uniblock.dev/uni/v1/stellar-http/fee_stats?chainId=stellar' \
+--header 'x-api-key: YOUR_API_KEY' \
+--header 'Content-Type: application/json'
+```
+
+```bash Get Account
+curl --location \
+'https://api.uniblock.dev/uni/v1/stellar-http/accounts/GDAYVCINVNUZ57EOCN4FK2VVWGQ3L3NW37L6UJLZCK3C7S7CNSS5EHHG?chainId=stellar' \
+--header 'x-api-key: YOUR_API_KEY' \
+--header 'Content-Type: application/json'
+```
+
+```bash Get Account Payments
+curl --location \
+'https://api.uniblock.dev/uni/v1/stellar-http/accounts/GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN/payments?chainId=stellar&limit=10' \
+--header 'x-api-key: YOUR_API_KEY' \
+--header 'accept: application/json'
+```
+
+```bash Get Ledger
+curl --location \
+'https://api.uniblock.dev/uni/v1/stellar-http/ledgers/12345?chainId=stellar' \
+--header 'x-api-key: YOUR_API_KEY' \
+--header 'Content-Type: application/json'
+```
+
+```bash Get Transaction
+curl --location \
+'https://api.uniblock.dev/uni/v1/stellar-http/transactions/abc123def456?chainId=stellar' \
+--header 'x-api-key: YOUR_API_KEY' \
+--header 'Content-Type: application/json'
+```
+
+```bash Get Assets
+curl --location \
+'https://api.uniblock.dev/uni/v1/stellar-http/assets?chainId=stellar&limit=20' \
+--header 'x-api-key: YOUR_API_KEY' \
+--header 'accept: application/json'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Fee Stats Response
+{
+  "last_ledger": "50000000",
+  "last_ledger_base_fee": "100",
+  "ledger_capacity_usage": "0.97",
+  "fee_charged": {
+    "max": "100",
+    "min": "100",
+    "mode": "100",
+    "p10": "100",
+    "p20": "100",
+    "p30": "100",
+    "p40": "100",
+    "p50": "100",
+    "p60": "100",
+    "p70": "100",
+    "p80": "100",
+    "p90": "100",
+    "p95": "100",
+    "p99": "100"
+  },
+  "max_fee": {
+    "max": "100000",
+    "min": "100",
+    "mode": "100",
+    "p10": "100",
+    "p20": "100",
+    "p30": "100",
+    "p40": "100",
+    "p50": "100",
+    "p60": "100",
+    "p70": "100",
+    "p80": "100",
+    "p90": "100",
+    "p95": "100",
+    "p99": "100"
+  }
+}
+```
+
+```json Account Response
+{
+  "id": "GDAYVCINVNUZ57EOCN4FK2VVWGQ3L3NW37L6UJLZCK3C7S7CNSS5EHHG",
+  "account_id": "GDAYVCINVNUZ57EOCN4FK2VVWGQ3L3NW37L6UJLZCK3C7S7CNSS5EHHG",
+  "sequence": "123456789",
+  "subentry_count": 3,
+  "balances": [
+    {
+      "balance": "10000.0000000",
+      "asset_type": "native"
+    }
+  ],
+  "signers": [
+    {
+      "weight": 1,
+      "key": "GDAYVCINVNUZ57EOCN4FK2VVWGQ3L3NW37L6UJLZCK3C7S7CNSS5EHHG",
+      "type": "ed25519_public_key"
+    }
+  ],
+  "thresholds": {
+    "low_threshold": 0,
+    "med_threshold": 0,
+    "high_threshold": 0
+  }
+}
+```
+
+```json Payments Response
+{
+  "_embedded": {
+    "records": [
+      {
+        "id": "12884905984",
+        "type": "payment",
+        "created_at": "2024-01-01T00:00:00Z",
+        "transaction_hash": "abc123",
+        "asset_type": "native",
+        "from": "GABC...",
+        "to": "GDEF...",
+        "amount": "100.0000000"
+      }
+    ]
+  },
+  "_links": {
+    "next": {
+      "href": "..."
+    },
+    "prev": {
+      "href": "..."
+    }
+  }
+}
+```
+
+```json Ledger Response
+{
+  "id": "12345",
+  "sequence": 12345,
+  "hash": "abc123def456",
+  "prev_hash": "def456abc123",
+  "transaction_count": 10,
+  "operation_count": 25,
+  "closed_at": "2024-01-01T00:00:00Z",
+  "total_coins": "105443902087.3472865",
+  "fee_pool": "1873.0000000",
+  "base_fee_in_stroops": 100,
+  "base_reserve_in_stroops": 5000000
+}
+```
+
+```json Assets Response
+{
+  "_embedded": {
+    "records": [
+      {
+        "asset_type": "credit_alphanum4",
+        "asset_code": "USD",
+        "asset_issuer": "GABC...",
+        "accounts": {
+          "authorized": 1000,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 10,
+        "balances": {
+          "authorized": "1000000.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "amount": "1000000.0000000"
+      }
+    ]
+  }
+}
+```
+
+</ResponseExample>
