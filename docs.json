@@ -14,6 +14,10 @@
   "navigation": {
     "tabs": [
       {
+        "tab": "Guides",
+        "groups": []
+      },
+      {
         "tab": "API Reference",
         "groups": [
           {
@@ -26,7 +30,7 @@
               "reference/resources/pricing-plans",
               "reference/resources/compute-units",
               {
-                "group": "Chains",
+                "group": "Supported Chains",
                 "pages": [
                   "reference/resources/chains/supported-chains",
                   "reference/resources/chains/supported-market-data-chains",
@@ -43,10 +47,29 @@
             "pages": [
               "reference/unified-api/overview-unified-apis",
               "reference/unified-api/uniblock-mcp-setup",
-              "reference/unified-api/overview-jsonrpc",
-              "reference/unified-api/overview-stellar",
+              {
+                "group": "Stellar",
+                "pages": [
+                  "reference/unified-api/overview-stellar",
+                  "POST /stellar-http/*path"
+                ]
+              },
+              {
+                "group": "TON",
+                "pages": [
+                  "reference/unified-api/overview-tonrpc",
+                  "reference/unified-api/ton-http-status",
+                  "POST /ton-http/*path"
+                ]
+              },
               "reference/unified-api/overview-ton",
-              "reference/unified-api/ton-http-status"
+              {
+                "group": "JSON-RPC",
+                "pages": [
+                  "reference/unified-api/overview-jsonrpc",
+                  "POST /json-rpc"
+                ]
+              }
             ]
           },
           {
