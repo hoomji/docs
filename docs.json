@@ -18129,7 +18129,7 @@
                 ]
               },
               "guides/uniblock/uniblock-analytics",
-              "guides/uniblock/uniblock-logs",
+              "guides/uniblock/uniblock-api-logs",
               "guides/uniblock/authentication",
               "reference/unified-api/uniblock-mcp-setup"
             ]
