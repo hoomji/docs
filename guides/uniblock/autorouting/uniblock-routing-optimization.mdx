@@ -3,6 +3,43 @@ title: 'Routing optimization'
 description: 'Automatically route requests to the most cost-effective and reliable provider.'
 ---
 
+{/* ### Routing optimization
+<Note>Available on Growth plans and above</Note>
+
+Routes requests to the provider offering the best combination of low cost and high reliability.
+
+**Key benefits:**
+- Automatic cost optimization across providers
+- Real-time performance monitoring
+- Dynamic routing based on current conditions
+
+**Example scenario:**
+For NFT metadata requests, Provider A costs $0.001/call with 99.9% uptime, while Provider B costs $0.002/call with 99.95% uptime. Routing optimization automatically selects Provider A, saving you 50% on costs while maintaining excellent reliability.
+
+[Learn more about routing optimization →](/guides/uniblock/autorouting/uniblock-routing-optimization)
+
+### Auto-retry
+<Note>Available on Pro plans and above</Note>
+
+Automatically retries failed requests before switching to backup providers.
+
+**Key benefits:**
+- Reduces false failovers from transient errors
+- Configurable retry count and intervals
+- Intelligent retry logic based on error type
+
+**How it works:**
+1. Request fails (timeout, 5xx error, etc.)
+2. System waits configured interval (default: 1 second)
+3. Retries up to configured limit (default: 3 attempts)
+4. If all retries fail, routes to next provider in priority list
+
+**Error handling:**
+- ✅ Retries: Timeouts, 5xx errors, rate limits (429), service unavailable (503)
+- ❌ No retry: Bad request (400), unauthorized (401), forbidden (403), not found (404)
+
+[Learn more about auto-retry →](/guides/uniblock/autorouting/uniblock-auto-retry) */}
+
 # What is routing optimization?
 
 Routing optimization intelligently selects the best blockchain data provider for each request based on real-time analysis of cost, reliability, and performance. Instead of using a fixed provider, Uniblock dynamically routes to the optimal provider for current conditions.

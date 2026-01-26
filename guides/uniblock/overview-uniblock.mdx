@@ -8,13 +8,16 @@ description: 'How Uniblock simplifies multi-chain development with unified APIs,
 Uniblock is a blockchain infrastructure layer that abstracts away the complexity of working with multiple data providers and chains. Instead of managing dozens of API keys, handling provider outages, and normalizing inconsistent data formats, you get one unified interface that works everywhere.
 
 **Core value proposition:**
+
 - **One API key** replaces 20+ provider integrations
 - **Auto-routing** ensures requests always succeed via intelligent failover
 - **Normalized data** provides consistent formats across all providers
 - **Multi-chain support** for 100+ blockchains with identical API patterns
 
 <Info>
-  New to Uniblock? Start with the [Quickstart Guide](/guides/getting-started/uniblock-quickstart-guide) to make your first API call in 5 minutes.
+  New to Uniblock? Start with the [Quickstart
+  Guide](/guides/getting-started/uniblock-quickstart-guide) to make your first
+  API call in 5 minutes.
 </Info>
 
 ---
@@ -61,12 +64,14 @@ curl --location \
 Uniblock automatically routes requests to the best available provider based on real-time performance metrics. If a provider is down or slow, requests instantly failover to backup providers.
 
 **Benefits:**
+
 - **99.9% uptime** - No single point of failure
 - **Optimized latency** - Routes to fastest provider for your region
 - **Cost efficiency** - Balances requests across providers to minimize costs
 - **Zero configuration** - Works automatically, no manual setup required
 
 **How it works:**
+
 - Monitors provider health in real-time
 - Tracks latency, error rates, and success rates
 - Maintains fallback chains for every endpoint
@@ -80,13 +85,14 @@ Different providers return data in different formats. Uniblock normalizes all re
 
 **Example: Token balance formats**
 
-| Provider | Balance format | Decimals |
-|----------|---------------|----------|
+| Provider | Balance format          | Decimals       |
+| -------- | ----------------------- | -------------- |
 | Alchemy  | `"1000000000"` (string) | Separate field |
-| Moralis  | `1000000000` (number) | Separate field |
-| Covalent | `"1000.00"` (formatted) | Included |
+| Moralis  | `1000000000` (number)   | Separate field |
+| Covalent | `"1000.00"` (formatted) | Included       |
 
 **Uniblock normalized:**
+
 ```json
 {
   "balance": "1000000000",
@@ -102,18 +108,21 @@ All three formats are unified, so your code works regardless of which provider i
 For critical queries, Uniblock can query multiple providers simultaneously and return consensus data. This ensures accuracy and catches provider-specific bugs or stale data.
 
 **When to use:**
+
 - High-value transactions requiring verification
 - Auditing and compliance scenarios
 - Critical balance checks before transfers
 
 **How it works:**
+
 - Queries 2-3 providers in parallel
 - Compares responses for consistency
 - Returns data only if providers agree
 - Flags discrepancies for investigation
 
 <Warning>
-  Data consensus increases latency and costs. Use it selectively for critical operations.
+  Data consensus increases latency and costs. Use it selectively for critical
+  operations.
 </Warning>
 
 ### Polyfilled data
@@ -121,6 +130,7 @@ For critical queries, Uniblock can query multiple providers simultaneously and r
 Some providers have incomplete data for certain chains or time periods. Uniblock automatically detects gaps and fills them using alternative providers.
 
 **Example scenarios:**
+
 - Provider A has Ethereum data but missing Polygon data → Uniblock uses Provider B for Polygon
 - Provider C has recent transactions but missing historical data → Uniblock backfills from Provider D
 - Provider E returns incomplete NFT metadata → Uniblock enriches from Provider F
@@ -132,10 +142,10 @@ Some providers have incomplete data for certain chains or time periods. Uniblock
 If your primary provider experiences an outage, Uniblock seamlessly switches to backup providers without returning errors to your application.
 
 **Failover chain example:**
+
 1. Primary: Alchemy (fastest, most reliable)
 2. Backup 1: QuickNode (high reliability)
-3. Backup 2: Infura (stable fallback)
-4. Backup 3: Public RPC (last resort)
+3. Backup 2: Ankr (stable fallback)
 
 **Typical failover time:** < 500ms
 
@@ -150,27 +160,52 @@ If your primary provider experiences an outage, Uniblock seamlessly switches to 
 Uniblock provides unified access to multiple API categories:
 
 <CardGroup cols={2}>
-  <Card title="Token API" icon="coins" href="/reference/unified-api/api-overview-token">
-    Balances, transfers, prices, allowances, and token metadata across all chains.
+  <Card
+    title='Token API'
+    icon='coins'
+    href='/reference/unified-api/api-overview-token'
+  >
+    Balances, transfers, prices, allowances, and token metadata across all
+    chains.
   </Card>
-  
-  <Card title="NFT API" icon="image" href="/reference/unified-api/api-overview-nft">
-    Collections, metadata, floor prices, ownership, and transfer history.
-  </Card>
-  
-  <Card title="Transaction API" icon="receipt" href="/reference/unified-api/api-overview-transaction">
-    Transaction history, receipts, gas estimation, and status tracking.
-  </Card>
-  
-  <Card title="Market Data API" icon="chart-line" href="/reference/unified-api/api-overview-market-data">
-    Real-time prices, historical charts, volume, and trending tokens.
-  </Card>
-  
-  <Card title="Scans API" icon="magnifying-glass" href="/reference/unified-api/api-overview-scan">
-    Block explorer data, contract verification, and source code access.
-  </Card>
-  
-  <Card title="JSON-RPC" icon="code" href="/reference/jsonrpc-docs/1/eth-rpc/eth-get-balance">
+
+<Card
+  title='NFT API'
+  icon='image'
+  href='/reference/unified-api/api-overview-nft'
+>
+  Collections, metadata, floor prices, ownership, and transfer history.
+</Card>
+
+<Card
+  title='Transaction API'
+  icon='receipt'
+  href='/reference/unified-api/api-overview-transaction'
+>
+  Transaction history, receipts, gas estimation, and status tracking.
+</Card>
+
+<Card
+  title='Market Data API'
+  icon='chart-line'
+  href='/reference/unified-api/api-overview-market-data'
+>
+  Real-time prices, historical charts, volume, and trending tokens.
+</Card>
+
+<Card
+  title='Scans API'
+  icon='magnifying-glass'
+  href='/reference/unified-api/api-overview-scan'
+>
+  Block explorer data, contract verification, and source code access.
+</Card>
+
+  <Card
+    title='JSON-RPC'
+    icon='code'
+    href='/reference/jsonrpc-docs/1/eth-rpc/eth-get-balance'
+  >
     Direct node access with auto-routing for all supported chains.
   </Card>
 </CardGroup>
@@ -181,24 +216,7 @@ Uniblock provides unified access to multiple API categories:
 
 ## Supported providers
 
-Uniblock integrates with 20+ blockchain data providers to ensure comprehensive coverage and reliability:
-
-**Infrastructure providers:**
-- Alchemy, QuickNode, Infura, Ankr, GetBlock
-
-**Data providers:**
-- Covalent, Moralis, Blockdaemon, Chainstack
-
-**Specialized providers:**
-- TonAPI (TON blockchain)
-- Helius (Solana)
-- Stellar Horizon (Stellar)
-
-**Chain-specific:**
-- Public RPCs for long-tail chains
-- Archive nodes for historical data
-
-[View all providers →](/reference/direct-api/overview-direct-api)
+Uniblock integrates with 20+ blockchain data providers to ensure comprehensive coverage and reliability, including: Alchemy, QuickNode, Infura, Ankr, Covalent, Moralis, Blockdaemon, Chainstack, TonAPI, Helius, and more.
 
 ---
 
@@ -222,6 +240,7 @@ Uniblock integrates with 20+ blockchain data providers to ensure comprehensive c
 ## Common use cases
 
 ### Wallet applications
+
 Display token balances, NFTs, and transaction history across multiple chains with a single integration.
 
 ```bash Get all token balances
@@ -231,6 +250,7 @@ curl --location \
 ```
 
 ### NFT marketplaces
+
 Query NFT metadata, floor prices, and ownership across all major chains.
 
 ```bash Get NFT collection floor price
@@ -240,6 +260,7 @@ curl --location \
 ```
 
 ### DeFi dashboards
+
 Track token prices, liquidity, and trading activity in real-time.
 
 ```bash Get token price
@@ -249,6 +270,7 @@ curl --location \
 ```
 
 ### Analytics platforms
+
 Aggregate transaction data and on-chain metrics across multiple chains.
 
 ```bash Get transaction history
@@ -262,19 +284,35 @@ curl --location \
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Quickstart guide" icon="rocket" href="/guides/getting-started/uniblock-quickstart-guide">
+  <Card
+    title='Quickstart guide'
+    icon='rocket'
+    href='/guides/getting-started/uniblock-quickstart-guide'
+  >
     Create your first project and make API calls in 5 minutes.
   </Card>
-  
-  <Card title="API reference" icon="book" href="/reference/unified-api-reference-overview">
-    Explore all available endpoints with interactive playgrounds.
-  </Card>
-  
-  <Card title="Auto-routing guide" icon="route" href="/guides/uniblock/autorouting/uniblock-auto-routing">
-    Learn how auto-routing works and how to configure it.
-  </Card>
-  
-  <Card title="Supported chains" icon="link" href="/reference/resources/chains/supported-chains">
+
+<Card
+  title='API reference'
+  icon='book'
+  href='/reference/unified-api-reference-overview'
+>
+  Explore all available endpoints with interactive playgrounds.
+</Card>
+
+<Card
+  title='Auto-routing guide'
+  icon='route'
+  href='/guides/uniblock/autorouting/uniblock-auto-routing'
+>
+  Learn how auto-routing works and how to configure it.
+</Card>
+
+  <Card
+    title='Supported chains'
+    icon='link'
+    href='/reference/resources/chains/supported-chains'
+  >
     View the complete list of supported blockchains.
   </Card>
 </CardGroup>
@@ -284,15 +322,22 @@ curl --location \
 ## Common pitfalls
 
 <Warning>
-  **Provider-specific features** - Some provider-specific endpoints or features may not be available through the unified API. Use [Direct API](/reference/direct-api/overview-direct-api) for provider-specific functionality.
+  **Provider-specific features** - Some provider-specific endpoints or features
+  may not be available through the unified API. Use [Direct
+  API](/reference/direct-api/overview-direct-api) for provider-specific
+  functionality.
 </Warning>
 
 <Warning>
-  **Rate limits** - Rate limits apply per API key, not per provider. Monitor your usage in the [dashboard](https://dashboard.uniblock.dev) to avoid throttling.
+  **Rate limits** - Rate limits apply per API key, not per provider. Monitor
+  your usage in the [dashboard](https://dashboard.uniblock.dev) to avoid
+  throttling.
 </Warning>
 
 <Warning>
-  **Chain ID consistency** - Always use numeric chain IDs (e.g., `1` for Ethereum) or official string identifiers (e.g., `solana`). Inconsistent chain IDs cause routing errors.
+  **Chain ID consistency** - Always use numeric chain IDs (e.g., `1` for
+  Ethereum) or official string identifiers (e.g., `solana`). Inconsistent chain
+  IDs cause routing errors.
 </Warning>
 
 ---
