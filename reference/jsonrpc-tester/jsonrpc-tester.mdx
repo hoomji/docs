@@ -1,38 +1,193 @@
 ---
 title: "JSON-RPC Tester"
-description: "Example usage of the JsonRpcTester component."
+description: "Interactive playground for testing JSON-RPC requests across all supported chains."
 ---
 
 import JsonRpcTester from '/snippets/jsonrpc-tester.mdx';
 
-This example mirrors the curl request below and lets you run it inline.
+# JSON-RPC Interactive Tester
+
+Test JSON-RPC methods directly in your browser. This interactive playground lets you modify requests, change parameters, and see real-time responses from Uniblock's JSON-RPC endpoints.
+
+## What is this for?
+
+Use this tester to:
+- **Experiment** with JSON-RPC methods before implementing them
+- **Debug** requests by modifying parameters and headers
+- **Learn** JSON-RPC structure and response formats
+- **Validate** your API key and endpoint configuration
+
+<Info>
+  For complete JSON-RPC documentation, see the [JSON-RPC Overview](/reference/unified-api/overview-jsonrpc) or browse [chain-specific methods](/reference/jsonrpc-docs/1/eth-rpc/eth-get-balance).
+</Info>
+
+---
+
+## Example: Get Ethereum Balance
+
+This example demonstrates the `eth_getBalance` method, which returns the balance of an Ethereum address at a specific block.
+
+### cURL equivalent
 
 ```bash
 curl --request POST \
   --url 'https://api.uniblock.dev/uni/v1/json-rpc?chainId=1' \
   --header 'Content-Type: application/json' \
-  --header 'X-API-KEY: <api-key>' \
-  --data '
-{
-  "id": "1",
-  "jsonrpc": "2.0",
-  "method": "eth_getBalance",
-  "params": [
-    "0xe5cB067E90D5Cd1F8052B83562Ae670bA4A211a8",
-    "latest"
-  ]
-}
-'
+  --header 'x-api-key: YOUR_API_KEY' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getBalance",
+    "params": [
+      "0xe5cB067E90D5Cd1F8052B83562Ae670bA4A211a8",
+      "latest"
+    ]
+  }'
 ```
+
+### Interactive playground
 
 export const endpoint =
   'https://api.uniblock.dev/uni/v1/json-rpc?chainId=1';
 
 export const request = {
-  id: '1',
+  id: 1,
   jsonrpc: '2.0',
   method: 'eth_getBalance',
   params: ['0xe5cB067E90D5Cd1F8052B83562Ae670bA4A211a8', 'latest'],
 };
 
 <JsonRpcTester endpoint={endpoint} request={request} />
+
+### Understanding the request
+
+<ParamField query="chainId" type="string" default="1" required>
+  Network identifier. Use `1` for Ethereum mainnet. See [supported chains](/reference/resources/chains/supported-chains) for all chain IDs.
+</ParamField>
+
+<ParamField body="id" type="number" default={1} required>
+  Request identifier used to match responses with requests. Can be any number or string.
+</ParamField>
+
+<ParamField body="jsonrpc" type="string" default="2.0" required>
+  JSON-RPC protocol version. Always use `"2.0"`.
+</ParamField>
+
+<ParamField body="method" type="string" default="eth_getBalance" required>
+  The JSON-RPC method to call. In this example, `eth_getBalance` returns an address balance.
+</ParamField>
+
+<ParamField body="params" type="array" required>
+  Method-specific parameters. For `eth_getBalance`:
+  - `params[0]` - Ethereum address (string)
+  - `params[1]` - Block identifier: block number (hex), `"latest"`, `"earliest"`, or `"pending"`
+</ParamField>
+
+### Expected response
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "0x1bc16d674ec80000"
+}
+```
+
+The `result` field contains the balance in wei (hexadecimal). Convert to decimal to get the actual value:
+- `0x1bc16d674ec80000` = 2,000,000,000,000,000,000 wei = 2 ETH
+
+---
+
+## How to use the tester
+
+1. **Modify the request body** - Edit the JSON in the "Body" textarea to test different methods or parameters
+2. **Update headers** - Add your API key: `{"x-api-key": "YOUR_API_KEY", "content-type": "application/json"}`
+3. **Change the chain** - Modify the `chainId` query parameter in the endpoint URL
+4. **Click "Run"** - Execute the request and see the response
+5. **Copy results** - Use "Copy body" or "Copy response" buttons to save your work
+
+<Warning>
+  **API key required** - You must add your API key to the headers to make successful requests. Get your key from the [Uniblock Dashboard](https://dashboard.uniblock.dev).
+</Warning>
+
+---
+
+## Common methods to try
+
+### Ethereum (chainId=1)
+
+- `eth_getBalance` - Get address balance
+- `eth_blockNumber` - Get latest block number
+- `eth_getBlockByNumber` - Get block details
+- `eth_getTransactionByHash` - Get transaction details
+- `eth_call` - Execute a contract call
+- `eth_estimateGas` - Estimate gas for a transaction
+
+### Polygon (chainId=137)
+
+Same methods as Ethereum. Just change `chainId=137` in the endpoint URL.
+
+### Solana (chainId=solana)
+
+- `getBalance` - Get SOL balance
+- `getAccountInfo` - Get account information
+- `getTransaction` - Get transaction details
+- `getBlock` - Get block information
+
+[View all JSON-RPC methods →](/reference/unified-api/overview-jsonrpc)
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="401 Unauthorized error">
+    Your API key is missing or invalid. Add it to the headers:
+    ```json
+    {
+      "x-api-key": "YOUR_API_KEY",
+      "content-type": "application/json"
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Invalid JSON error">
+    Check that your request body is valid JSON. Common issues:
+    - Missing quotes around strings
+    - Trailing commas
+    - Unescaped special characters
+  </Accordion>
+
+  <Accordion title="Method not found">
+    The method name may be incorrect or not supported on this chain. Check the [JSON-RPC documentation](/reference/unified-api/overview-jsonrpc) for available methods.
+  </Accordion>
+
+  <Accordion title="Invalid params">
+    Parameter format or count is incorrect. Each method expects specific parameters:
+    - Check parameter types (string, number, array)
+    - Verify parameter order
+    - Ensure required parameters are included
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="JSON-RPC Overview" icon="book" href="/reference/unified-api/overview-jsonrpc">
+    Learn about JSON-RPC structure and common patterns
+  </Card>
+  
+  <Card title="Ethereum Methods" icon="ethereum" href="/reference/jsonrpc-docs/1/eth-rpc/eth-get-balance">
+    Browse all Ethereum JSON-RPC methods
+  </Card>
+  
+  <Card title="Solana Methods" icon="link" href="/reference/jsonrpc-docs/solana/solana/get-balance">
+    Explore Solana-specific JSON-RPC methods
+  </Card>
+  
+  <Card title="Supported Chains" icon="network-wired" href="/reference/resources/chains/supported-chains">
+    View all chains and their chain IDs
+  </Card>
+</CardGroup>
