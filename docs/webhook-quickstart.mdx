@@ -1,0 +1,76 @@
+---
+title: 'Overview'
+description: 'Setting up a webhook is as simple as adding a new URL to your application.'
+---
+
+## Setup Steps With Uniblock Dashboard
+
+Navigate to the `Webhooks` section in Uniblock dashboard. You will notice a `Create Webhook` button which expands a section for creating a new webhook.
+
+![](/images/docs/4848239-image.png)
+
+Follow the four steps to deploy a webhook.
+
+1. Add webhook information.
+
+   ![](/images/docs/7310b49633cf281adf5f2c48f26097a7076ff22f1b845799bfd19e04e00566e7-image.png)
+   1. Give this webhook a name and a description that are only for labelling purposes in Uniblock Dashboard.
+   2. Fill the webhook URL. Send a test request to the URL by hitting the `Test` button.
+
+2. Select provider and network.
+
+   ![](/images/docs/9e5830653fd94c4fda9f302840e2fbabc8eaf90effed6782e7323ca7d2ab5acb-image.png)
+   1. Select a provider to deploy the webhook with. Each provider has its own list of supported network.
+   2. Select a network to deploy the webhook on.
+
+3. Select a webhook template.
+
+   ![](/images/docs/64a379f8956cca82347588ef4c4a98642440eb939d3619b6e70c3cce556a76a4-image.png)
+   1. Custom Webhook. It has great flexibility. You will need to fill out the whole set of required fields.
+   2. Webhook Templates, They are pre-defined templates to help quickly fill the webhook information, such as contract address of a popular token and ABI.
+
+4. Add events and filters. This step further defines what kind of specific blockchain state changes that you would like to listen.
+   1. For address activity webhook, you can setup transaction filters.
+
+      ![](/images/docs/4ecf04f4f5e223a11f2bd900633493fa1abf4d9ad798d70f22cbc0ee955c789b-image.png)
+
+   2. For contract event webhook, you can setup event filters. Selecting an event is required, but adding event filter is optional.
+
+      ![](/images/docs/6817346072eb96ba9a7de74a5cdffbadce8e750bddd51f881495f39abbdf049a-image.png)
+
+   3. For solana address activity webhook, you can setup solana transaction filters.
+
+      ![](/images/docs/b608570080ade8f4dd887ab46bd723572f6da536aa2cb2a74ec21974142d1c45-image.png)
+
+5. Deploy webhook. Once the webhook is deployed, you will be able to view the new webhook in the active webhook list.
+
+   ![](/images/docs/0cf74cdb50347db2e14383320e0d9b177c965e7558862b11a7cb76cd7c74ae7b-image.png)
+
+## Webhook Configuration Fields
+
+| Field             | Description                                                                                                                        | Example                                                                                                  |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Event Name        | A descriptive name to identify the webhook's purpose.                                                                              | "ERC20 Transfer Notification for My Wallet"                                                              |
+| Event Description | Brief explanation of the trigger and data included.                                                                                | "This webhook sends notifications for ERC20 token transfers associated with MyWallet."                   |
+| Webhook URL       | Publicly accessible URL for receiving notifications (must handle POST requests).                                                   | [https://461a-199-116-73-171.ngrok.io](https://461a-199-116-73-171.ngrok.io) (Test URL or your Prod URL) |
+| Select Provider   | Blockchain platform for notifications (e.g., Moralis, Tatum).                                                                      | Choose your desired platform.                                                                            |
+| Network           | Blockchain Network for notifications (e.g., Ethereum, Polygon).                                                                    | Choose your desired Network.                                                                             |
+| More Fields       | More fields required based on selected webhook type. For more information refer to [Event Trigger Types](ref:event-trigger-types). | Addresses, Contract Address, ABI, Transaction Filters, Event Filters                                     |
+
+**Additional Notes:**
+
+- Ensure your Webhook URL remains publicly accessible and can handle the expected data format and volume.
+- Consider implementing security measures to validate incoming webhook requests and protect your data.
+
+### Webhook Testing Environments
+
+Here are some webhook testing environments where you can get a webhook URL for a quick setup to post webhook events:
+
+- [https://typedwebhook.tools/](https://typedwebhook.tools/)
+- [https://webhook.site/](https://webhook.site/)
+
+---
+
+[Quickstart](/docs/json-rpc-quickstart)
+
+[Providers](/docs/event-trigger-providers)

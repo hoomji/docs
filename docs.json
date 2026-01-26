@@ -15,6 +15,7 @@
     "tabs": [
       {
         "tab": "API Reference",
+
         "groups": [
           {
             "group": "Introduction",
@@ -26,7 +27,7 @@
               "reference/resources/pricing-plans",
               "reference/resources/compute-units",
               {
-                "group": "Chains",
+                "group": "Supported Chains",
                 "pages": [
                   "reference/resources/chains/supported-chains",
                   "reference/resources/chains/supported-market-data-chains",
@@ -43,8 +44,135 @@
             "pages": [
               "reference/unified-api/overview-unified-apis",
               "reference/unified-api/uniblock-mcp-setup",
-              "reference/unified-api/overview-jsonrpc",
-              "reference/unified-api/overview-stellar"
+              {
+                "group": "Token",
+                "pages": [
+                  "reference/unified-api/api-overview-token",
+                  "GET /token/metadata",
+                  "GET /token/portfolio",
+                  "GET /token/balance",
+                  "GET /token/balance/historical",
+                  "GET /token/price",
+                  "GET /token/price/historical",
+                  "GET /token/transfers",
+                  "GET /token/allowances",
+                  "GET /token/activity"
+                ]
+              },
+              {
+                "group": "Market Data",
+                "pages": [
+                  "reference/unified-api/api-overview-market-data",
+                  "GET /market-data/price",
+                  "GET /market-data/market-cap",
+                  "GET /market-data/24-hour-volume",
+                  "GET /market-data/history",
+                  "GET /market-data/chart-range",
+                  "GET /market-data/chart-price-range",
+                  "GET /market-data/trending"
+                ]
+              },
+              {
+                "group": "NFT",
+                "pages": [
+                  "reference/unified-api/api-overview-nft",
+                  "GET /nft/balance",
+                  "GET /nft/nft-in-collection",
+                  "GET /nft/transfers",
+                  "GET /nft/transfers/nft",
+                  "GET /nft/collection-metadata",
+                  "GET /nft/collection/traits",
+                  "GET /nft/collection/rarity",
+                  "GET /nft/collection/trait/attributes",
+                  "GET /nft/metadata",
+                  "GET /nft/is-airdrop",
+                  "GET /nft/floor-price",
+                  "GET /nft/is-nft-holder",
+                  "GET /nft/sales",
+                  "GET /nft/owned-collections",
+                  "GET /nft/owners/nft",
+                  "GET /nft/owners/contract"
+                ]
+              },
+              {
+                "group": "Transaction",
+                "pages": [
+                  "reference/unified-api/api-overview-transaction",
+                  "GET /transactions",
+                  "GET /transaction",
+                  "GET /transactions/block"
+                ]
+              },
+              {
+                "group": "Scan",
+                "pages": [
+                  "reference/unified-api/api-overview-scan",
+                  "GET /scan/native-supply",
+                  "GET /scan/native-price",
+                  "GET /scan/native-node-size",
+                  "GET /scan/native-node-count",
+                  "GET /scan/estimation-confirmation-time",
+                  "GET /scan/current-gas-estimation",
+                  "GET /scan/token-supply",
+                  "GET /scan/token-balance",
+                  "GET /scan/transaction-execution-status",
+                  "GET /scan/transaction-receipt-status",
+                  "GET /scan/block-rewards",
+                  "GET /scan/block-get-countdown",
+                  "GET /scan/block-by-timestamp",
+                  "GET /scan/account-native-balance-single",
+                  "GET /scan/account-native-balance-multi",
+                  "GET /scan/account-normal-transactions",
+                  "GET /scan/account-internal-transactions-by-address",
+                  "GET /scan/account-internal-transactions-by-hash",
+                  "GET /scan/account-internal-transactions-by-block-range",
+                  "GET /scan/account-erc20-transactions",
+                  "GET /scan/account-erc721-transactions",
+                  "GET /scan/account-erc1155-transactions",
+                  "GET /scan/log-address",
+                  "GET /scan/log-by-topics",
+                  "GET /scan/log-by-address-filtered-topics",
+                  "GET /scan/contract-abi",
+                  "GET /scan/contract-source-code",
+                  "GET /scan/contract-creation",
+                  "POST /scan/contract-verify-source-code",
+                  "GET /scan/contract-verify-proxy"
+                ]
+              },
+              {
+                "group": "Stellar Http",
+                "pages": [
+                  "reference/unified-api/overview-stellar",
+                  "reference/unified-api/stellar-http-api"
+                ]
+              },
+              {
+                "group": "Ton Http",
+                "pages": [
+                  "reference/unified-api/overview-ton",
+                  "reference/unified-api/ton-http-status"
+                ]
+              },
+              {
+                "group": "Webhook",
+                "pages": [
+                  "reference/webhook/webhooks-overview",
+                  "GET /webhook/{id}",
+                  "PATCH /webhook/{id}",
+                  "DELETE /webhook/{id}",
+                  "GET /webhook",
+                  "POST /webhook/contract-event",
+                  "POST /webhook/address-activity",
+                  "POST /webhook/solana-address-activity"
+                ]
+              },
+              {
+                "group": "JSON-RPC",
+                "pages": [
+                  "reference/unified-api/overview-jsonrpc",
+                  "POST /json-rpc"
+                ]
+              }
             ]
           },
           {
@@ -17964,22 +18092,55 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "🏁 Welcome",
+            "pages": ["guides/welcome/welcome-to-uniblock"]
+          },
+          {
+            "group": "🚀 Getting Started",
+            "pages": ["guides/getting-started/uniblock-quickstart-guide"]
+          },
+          {
+            "group": "🌐 Uniblock",
+            "pages": [
+              "guides/uniblock/overview-uniblock",
+              "guides/uniblock/unified-api-quickstart",
+              {
+                "group": "Auto Routing",
+                "pages": [
+                  "guides/uniblock/autorouting/uniblock-auto-retry",
+                  "guides/uniblock/autorouting/uniblock-auto-routing",
+                  "guides/uniblock/autorouting/uniblock-backup",
+                  "guides/uniblock/autorouting/uniblock-data-consensus",
+                  "guides/uniblock/autorouting/uniblock-default-routing",
+                  "guides/uniblock/autorouting/uniblock-routing-optimization",
+                  {
+                    "group": "Api Key",
+                    "pages": [
+                      "guides/uniblock/autorouting/add-your-own-api-key",
+                      "guides/uniblock/autorouting/dashboard-integrations",
+                      "guides/uniblock/autorouting/uniblock-priority-list"
+                    ]
+                  }
+                ]
+              },
+              "guides/uniblock/uniblock-analytics",
+              "guides/uniblock/uniblock-api-logs",
+              "guides/uniblock/authentication",
+              "reference/unified-api/uniblock-mcp-setup"
+            ]
+          },
+          {
+            "group": "Recipes",
+            "pages": []
+          }
+        ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://docs.uniblock.dev",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://uniblock.dev/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
@@ -18013,8 +18174,13 @@
   "footer": {
     "socials": {
       "x": "https://x.com/Uniblock",
-      "linkedin": "https://linkedin.com/company/uniblock-dapp"
+      "linkedin": "https://linkedin.com/company/uniblock-dapp",
+      "discord": "https://discord.com/invite/cQmm6Bg6b7",
+      "reddit": "https://www.reddit.com/user/Uniblock_dev/"
     }
+  },
+  "interaction": {
+    "drilldown": false
   },
   "api": {
     "mdx": {

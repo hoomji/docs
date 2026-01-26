@@ -1,0 +1,67 @@
+---
+title: "Overview"
+description: "Welcome to the JSON-RPC Overview!"
+---
+
+JSON-RPC is a protocol used to communicate with Ethereum nodes, enabling both read and write operations. They have a JSON-RPC interface for read requests.
+
+JSON-RPC is a remote procedure call (RPC) protocol that uses JSON to encode messages, making it an API standard similar to REST. It exclusively deals with transporting data in JSON format and facilitates communication by executing remote procedure calls on a server.
+
+#### Key JSON-RPC Methods
+
+Some common JSON-RPC methods available on Ethereum nodes include:
+
+* `eth_blockNumber`
+* `eth_getBalance`
+* `eth_getBlockByNumber`
+* `eth_sendRawTransaction` (for write operations)
+
+### JSON-RPC Request Example
+
+A typical JSON-RPC request to get the balance of an address looks like this:
+
+<CodeGroup>
+  ```bash bash
+  {
+    "jsonrpc": "2.0",
+    "method": "eth_getBalance",
+    "params": ["0xAddress", "latest"],
+    "id": 1
+  }
+  ```
+</CodeGroup>
+
+* `jsonrpc`: Version (always 2.0)
+* `method`: The method to call
+* `params`: Relevant parameters
+* `id`: Request identifier
+
+### JSON-RPC Response Example
+
+A response to the above request might look like this:
+
+<CodeGroup>
+  ```bash bash
+  {
+    "jsonrpc": "2.0",
+    "result": "0x7cf7d42bb6a906",
+    "id": 1
+  }
+  ```
+</CodeGroup>
+
+* `jsonrpc`: Mirrored version (2.0)
+* `result`: The balance in wei
+* `id`: Request identifier
+
+### JSON-RPC Tools
+
+Use tools like the Uniblock's API Tester to quickly make your first JSON-RPC request, Uniblock's JSON-RPC URL Tool to get the URL with URL based authentication and also our pre-defined examples for [JSON-RPC methods](ref:json-rpc-api) .
+
+***
+
+What’s Next
+
+Learn how to setup your JSON-RPC request with your Uniblock Project.
+
+* [Quickstart](/docs/json-rpc-quickstart)

@@ -1,0 +1,49 @@
+---
+title: "Uniblock MCP server - Overview and Setup"
+---
+
+# Setup
+
+This section of the doc will walk through how to set up the MCP server in the AI agent of your choice that supports connecting to third-party MCP servers.
+
+1. Pre-requisite: Install Node.js on your machine.
+
+2. Identify the config file of the MCP client (eg. an AI agent).
+
+3. Add the following to the config file:
+
+   <CodeGroup>
+     ```bash bash
+     {
+       "mcpServers": {
+         "uniblock": {
+           "command": "npx",
+           "args": [
+             "mcp-remote",
+             "https://uniblock-api-mcp.floral-tooth-bcc0.workers.dev/mcp"
+           ]
+         }
+       }
+     }
+     ```
+   </CodeGroup>
+
+4. Restart your MCP client.
+
+The Uniblock MCP server and its tools should now be available through the MCP client.
+
+# Overview
+
+<Warning>
+  This is a public MCP server. No API key is required to use it, but resources are shared.
+</Warning>
+
+The Uniblock MCP server is a way for MCP clients, like Google Gemini (and other AI Agents), to connect to the web3 tools and API endpoints that are available through the Uniblock API. With this, AI agent can now query for information regarding the blockchain using the MCP server and, combined with the power of AI, provide accurate and reliable information to users prompting for web3 data in their MCP clients.
+
+All Endpoints listed under the Unified API are supported by the MCP server. Direct API support is coming soon.
+
+***
+
+[SimpleHash Migration Guide](/docs/simplehash-service-shutdown)
+
+[Overview](/docs/direct-api-overview)

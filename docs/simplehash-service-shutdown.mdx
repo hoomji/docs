@@ -1,0 +1,42 @@
+---
+title: "SimpleHash Migration Guide"
+---
+
+# Overview
+
+Congratulations to SimpleHash on Getting Acquired 🎉. This is a significant milestone for the industry and promises enhanced data capabilities for Phantom users.
+
+As a result of the acquisition and its standalone API service shutting down on March 27th, 2025, many developers and businesses in the Web3 space are updating their services to migrate to other platforms and remove their reliance on SimpleHash APIs before the shutdown. Fortunately, customers of Uniblock have very little to worry about, as we have many providers to provide the information regardless of the departure of SimpleHash.
+
+# SimpleHash -> Uniblock Mapping
+
+| SimpleHash Endpoint            | Uniblock Endpoint           | Notes                                                                                                                                            |
+| ------------------------------ | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Get Token & Prices             | GET /token/metadata         | Price data is available through the /token/price endpoint                                                                                        |
+| Token Balances by Wallet(s)    | GET /token/balance          |                                                                                                                                                  |
+| Historical Token Prices        | GET /token/price/historical | Uniblock endpoint offers historical data for a specific timestamp or block number. For a range, please use the /market-data/chart-range endpoint |
+| Swaps & Transfers by Wallet(s) | GET /token/transfers        |                                                                                                                                                  |
+| NFT by Token ID                | GET /nft/metadata           |                                                                                                                                                  |
+| NFTs by Wallet                 | GET /nft/balance            |                                                                                                                                                  |
+| Sales & Transfers by Wallet(s) | GET /nft/transfers          |                                                                                                                                                  |
+| Owners by NFT                  | GET /nft/owners/nft         |                                                                                                                                                  |
+| Owners by Contract             | GET /nft/owners/contract    |                                                                                                                                                  |
+
+# A Note on SimpleHash collection ID
+
+For a couple of endpoints provided by SimpleHash, a unique identifier is used to identify a collection inside the SimpleHash API. These identifiers are assigned and exclusively used by SimpleHash, and as a result will also be sunset. Users and developers are advised to switch over to using a combination of chain ID and contract address to continue querying for NFT collection information through our other endpoints. The affected Unified API endpoints include:
+
+* /nft/transfers/collection-id
+* /nft/nft-in-collection/collection-id
+* /nft/collection/top-collectors/collection-id
+* /nft/collection/pricing-history/collection-id
+* /nft/collection-metadata/collection-id
+* /nft/owners/collection-id
+
+If your application or service utilizes collection IDs and are looking to switch over to our other endpoints, unfortunately there are no direct replacement for collection IDs as there is no "standard" when it comes to collections. Often times the platform will create their own system to identify collections and is typically restricted to that platform only (eg. OpenSea's collection slug). If the collections in question are located in a contract where that contract only holds NFTs from said collection, then please use our endpoints that query by contract instead of collection ID. SimpleHash offers an excellent explanation on the differences between an NFT contract and collection, and the reasons why keeping track of the latter is much harder than the former: [https://docs.simplehash.com/reference/faq#what-is-the-difference-between-an-nft-contract-and-a-collection](https://docs.simplehash.com/reference/faq#what-is-the-difference-between-an-nft-contract-and-a-collection)
+
+***
+
+[Authenticate Your API Key](/docs/authentication)
+
+[Uniblock MCP server - Overview and Setup](/docs/uniblock-mcp-server-overview-and-setup)

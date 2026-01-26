@@ -1,0 +1,16 @@
+---
+title: "Auto Retry"
+description: "Automatically retries failed provider calls."
+---
+
+Auto Retry is a feature designed to enhance the reliability of your service by automatically retrying calls to a provider if they fail initially. This process involves verifying the failed call and making subsequent attempts based on a predefined number of retries (customizable) before considering the provider unavailable and moving on to the next one on your priority list. This mechanism is crucial for maintaining operational continuity and minimizing disruptions in service, especially in critical applications where every request counts.
+
+## Key Benefits
+
+* **Enhanced Reliability**: Increases the likelihood of successful call completions by automatically retrying failed attempts, ensuring higher reliability of service delivery.
+* **Seamless Operation**: Provides a smoother operational experience by handling provider failures gracefully, minimizing manual intervention, and maintaining service continuity.
+* **Optimized Resource Use**: Efficiently manages the interaction with providers by intelligently deciding when to retry or switch, optimizing for both performance and cost.
+
+## Example
+
+Let's say you're running a real-time data analytics service that relies on timely data retrieval from multiple sources. If a call to one of your data providers fails, Auto Retry kicks in by automatically retrying the call based on your configured settings (e.g., three retries with a one-minute interval). If all retries fail, the system then automatically switches to the next provider in your list, ensuring your service continues to operate without manual intervention. This approach not only saves valuable time but also ensures your analytics service can depend on a consistent data stream, even in the face of individual provider issues.

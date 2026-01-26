@@ -1,0 +1,157 @@
+---
+title: "Shyft"
+description: "Shyft offers a comprehensive suite of Solana development tools, including RPCs, APIs, and callbacks, to streamline your Web3 projects."
+---
+
+For more information regarding the endpoints, please visit [Shyft's website](https://docs.shyft.to/)
+
+# Prefix:
+
+No prefix is required for Shyft, an example URL will therefore look like:
+
+* Version 1 : `https://api.uniblock.dev/direct/v1/Shyft/sol/path/to/endpoint`.
+
+# Example:
+
+<CodeGroup>
+  ```bash bash
+  curl --request GET \
+    --url https://api.uniblock.dev/direct/v1/Shyft/sol/wallet/balance?network=mainnet-beta&wallet=YOUR_WALLET_ADDRESS \
+    --header 'accept: application/json' \
+    --header 'x-api-key: YOUR_UNIBLOCK_API_KEY'
+  ```
+</CodeGroup>
+
+# Endpoint Overview
+
+## Wallet APIs
+
+* **Get Wallet Balance**
+
+  * **URL:** `/sol/v1/wallet/balance`
+  * **Method:** `GET`
+  * **Description:** Retrieve the balance of your Solana wallet.
+
+* **Send SOL**
+
+  * **URL:** `/sol/v1/wallet/send_sol`
+  * **Method:** `POST`
+  * **Description:** Transfer SOL from your wallet to another address.
+
+* **Get Token Balance**
+
+  * **URL:** `/sol/v1/wallet/token_balance`
+  * **Method:** `GET`
+  * **Description:** Retrieve the balance of a specific token in your wallet.
+
+* **Get All Tokens Balance**
+
+  * **URL:** `/sol/v1/wallet/all_tokens`
+  * **Method:** `GET`
+  * **Description:** Retrieve the balances of all tokens in your wallet.
+
+* **Get Portfolio**
+
+  * **URL:** `/sol/v1/wallet/get_portfolio`
+  * **Method:** `GET`
+  * **Description:** Get a comprehensive overview of your wallet's holdings.
+
+* **Get Domains**
+
+  * **URL:** `/sol/v1/wallet/get_domains`
+  * **Method:** `GET`
+  * **Description:** Retrieve the domains associated with your wallet.
+
+* **Resolve Address**
+
+  * **URL:** `/sol/v1/wallet/resolve_address`
+  * **Method:** `GET`
+  * **Description:** Resolve a domain to its corresponding wallet address.\\
+
+## NFT APIs
+
+* **Create NFT**
+
+  * **URL:** `/sol/v1/nft/create`
+  * **Method:** `POST`
+  * **Description:** Create a new NFT.
+
+* **Mint NFT**
+
+  * **URL:** `/sol/v1/nft/mint_detach`
+  * **Method:** `POST`
+  * **Description:** Mint a new NFT.
+
+* **Burn NFT**
+
+  * **URL:** `/sol/v1/nft/burn_detach`
+  * **Method:** `DELETE`
+  * **Description:** Burn an existing NFT.
+
+* **Update NFT Metadata URI**
+
+  * **URL:** `/sol/v1/nft/update_metadata_uri`
+  * **Method:** `POST`
+  * **Description:** Update the metadata URI of an existing NFT.\\
+
+## Token APIs
+
+* **Get Token Info**
+
+  * **URL:** `/sol/v1/token/get_info`
+  * **Method:** `GET`
+  * **Description:** Retrieve information about a specific token.
+
+* **Create Token from Metadata**
+
+  * **URL:** `/sol/v1/token/create_from_metadata`
+  * **Method:** `POST`
+  * **Description:** Create a new token using existing metadata.\\
+
+## Marketplace APIs
+
+* **Create Marketplace**
+
+  * **URL:** `/sol/v1/marketplace/create`
+  * **Method:** `POST`
+  * **Description:** Create a new marketplace.
+
+* **Update Marketplace**
+
+  * **URL:** `/sol/v1/marketplace/update`
+  * **Method:** `POST`
+  * **Description:** Update an existing marketplace.\\
+
+## Candy Machine APIs
+
+* **Get NFT Addresses**
+
+  * **URL:** `/sol/v1/candy_machine/nft_addresses`
+  * **Method:** `GET`
+  * **Description:** Retrieve NFT addresses from a Candy Machine.
+
+* **Mint from Candy Machine**
+
+  * **URL:** `/sol/v1/candy_machine/mint`
+  * **Method:** `POST`
+  * **Description:** Mint an NFT from a Candy Machine.\\
+
+## Callback APIs
+
+* **Create Callback**
+
+  * **URL:** `/sol/v1/callback/create`
+  * **Method:** `POST`
+  * **Description:** Create a new callback.
+
+* **Remove Callback**
+
+  * **URL:** `/sol/v1/callback/remove`
+  * **Method:** `DELETE`
+  * **Description:** Remove an existing callback.
+
+***
+
+[Moralis](/docs/direct-api-moralis)
+
+[Birdeye](/docs/birdeye)

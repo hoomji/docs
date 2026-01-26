@@ -1,5 +1,6 @@
 ---
 title: 'getblock'
+description: 'Returns information about a block given its hash.'
 ---
 ### Parameters
 
@@ -21,7 +22,7 @@ title: 'getblock'
   
   Positional parameters for <code>getblock</code>:
   <ul>
-  <li><code>params[0]</code>: 32 Bytes - hash of the transaction.</li>
+  <li><code>params[0]</code>: 32 Bytes - hash of the block where this transaction was included. Null when pending.</li>
   <li><code>params[1]</code>: Verbosity level (0-3) controlling JSON detail.</li>
   </ul>
 </ParamField>

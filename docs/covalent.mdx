@@ -1,0 +1,133 @@
+---
+title: "Covalent"
+description: "For more information regarding the endpoints, please visit"
+---
+
+# Prefix
+
+No prefix is required for Covalent, an example URL will therefore look like: `https://api.uniblock.dev/direct/v1/Covalent/path/to/endpoint`.
+
+# Example
+
+<CodeGroup>
+  ```bash bash
+  curl --request GET \
+    --url https://api.uniblock.dev/direct/v1/Covalent/v1/eth-mainnet/address/0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97/balances_v2 \
+    --header 'Content-Type: application/json' \
+    --header 'x-api-key: YOUR_UNIBLOCK_API_KEY'
+  ```
+</CodeGroup>
+
+## Supported Endpoints
+
+### Cross Chain
+
+* v1/address/\{walletAddress}/activity
+* v1/allchains/address/\{walletAddress}/balances
+* v1/allchains/transactions
+
+### Balances
+
+* v1/\{chainName}/address/\{walletAddress}/balances\_v2
+* v1/\{chainName}/address/\{walletAddress}/historical\_balances
+* v1/\{chainName}/address/\{walletAddress}/balances\_native
+* v1/\{chainName}/address/\{walletAddress}/transfers\_v2
+* v1/\{chainName}/address/\{walletAddress}/portfolio\_v2
+* v1/\{chainName}/tokens/\{tokenAddress}/token\_holders\_v2
+
+### Transactions
+
+* v1/\{chainName}/transaction\_v2/\{txHash}
+* v1/\{chainName}/address/\{walletAddress}/transactions\_summary
+* v1/\{chainName}/bulk/transactions/\{walletAddress}
+* v1/\{chainName}/address/\{walletAddress}/transactions\_v3
+* v1/\{chainName}/address/\{walletAddress}/transactions\_v3/page/\{page}
+* v1/\{chainName}/bulk/transactions/\{walletAddress}/\{timeBucket}
+* v1/\{chainName}/block/\{blockHeight}/transactions\_v3/page/\{page}
+* v1/\{chainName}/block\_hash/\{blockHash}/transactions\_v3
+
+### NFT
+
+* v1/\{chainName}/address/\{walletAddress}/balances\_nft
+* v1/\{chainName}/nft/\{contractAddress}/metadata
+* v1/\{chainName}/nft/\{contractAddress}/metadata/\{tokenId}
+* v1/\{chainName}/tokens/\{contractAddress}/nft\_transactions/\{tokenId}
+* v1/\{chainName}/nft/\{collectionContract}/traits\_summary
+* v1/\{chainName}/nft/\{collectionContract}/traits
+* v1/\{chainName}/nft/\{collectionContract}/traits/\{trait}/attributes
+* v1/\{chainName}/nft/collections
+
+### Market Data
+
+* v1/\{chainName}/nft\_market/\{contractAddress}/floor\_price
+* v1/\{chainName}/nft\_market/\{contractAddress}/volume
+* v1/\{chainName}/nft\_market/\{contractAddress}/sale\_count
+
+### Ownership & Token Gating
+
+* v1/\{chainName}/address/\{walletAddress}/collection/\{collectionContract}
+* v1/\{chainName}/address/\{walletAddress}/collection/\{collectionContract}/token/\{tokenId}
+
+### Security
+
+* v1/\{chainName}/approvals/\{walletAddress}
+* v1/\{chainName}/nft/approvals/\{walletAddress}
+
+### Bitcoin
+
+* v1/btc-mainnet/address/\{walletAddress}/hd\_wallets
+* v1/btc-mainnet/address/\{walletAddress}/balances\_v2
+* v1/cq/covalent/app/bitcoin/transactions
+
+### Prices
+
+* v1/pricing/historical\_by\_addresses\_v2/\{chainName}/\{quoteCurrency}/\{contractAddress}
+* v1/pricing/spot\_prices/\{chainName}/pools/\{contractAddress}
+* v1/\{chainName}/event/\{eventType}/gas\_prices
+
+### Utility
+
+* v1/\{chainName}/events
+* v1/\{chainName}/events/topics/\{topicHash}
+* v1/\{chainName}/events/address/\{contractAddress}
+* v1/\{chainName}/block\_v2/\{blockHeight}
+* v1/\{chainName}/block\_v2/\{startDate}/\{endDate}
+* v1/chains
+* v1/chains/status
+* v1/\{chainName}/address/\{walletAddress}/resolve\_address
+
+## Supported Chains
+
+Covalent supports multiple blockchain networks including:
+
+* eth-mainnet
+* eth-sepolia
+* eth-holesky
+* matic-mainnet
+* avalanche-mainnet
+* avalanche-testnet
+* bsc-mainnet
+* bsc-testnet
+* arbitrum-mainnet
+* arbitrum-nova-mainnet
+* arbitrum-sepolia
+* fantom-mainnet
+* fantom-testnet
+* optimism-mainnet
+* optimism-sepolia
+* polygon-zkevm-mainnet
+* base-mainnet
+* base-sepolia-testnet
+* zksync-mainnet
+* zksync-sepolia-testnet
+* gnosis-mainnet
+* solana-mainnet
+* btc-mainnet
+
+And many more. For a complete list of supported chains, use the `/v1/chains` endpoint.
+
+***
+
+[Alchemy](/docs/alchemy)
+
+[GeniiData](/docs/geniidata)

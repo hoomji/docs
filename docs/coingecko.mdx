@@ -1,0 +1,102 @@
+---
+title: "CoinGecko"
+description: "For more information regarding the endpoints, please visit ."
+---
+
+# Prefix:
+
+No prefix is required for CoinGecko, an example URL will therefore look like: `https://api.uniblock.dev/direct/v1/CoinGecko/path/to/endpoint`.
+
+# Example:
+
+<CodeGroup>
+  ```bash bash
+  curl --request GET \
+    --url https://api.uniblock.dev/direct/v1/CoinGecko/onchain/simple/networks/eth/token_price/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2 \
+    --header 'accept: application/json' \
+    --header 'x-api-key: YOUR_UNIBLOCK_API_KEY'
+  ```
+</CodeGroup>
+
+# Supported Endpoints:
+
+* `ping`
+* `key`
+* `simple/price`
+* `simple/token_price/{id}`
+* `simple/supported_vs_currencies`
+* `coins/list`
+* `coins/top_gainers_losers`
+* `coins/list/new`
+* `coins/markets`
+* `coins/{id}`
+* `coins/{id}/tickers`
+* `coins/{id}/history`
+* `coins/{id}/market_chart`
+* `coins/{id}/market_chart/range`
+* `coins/{id}/ohlc`
+* `coins/{id}/ohlc/range`
+* `coins/{id}/contract/{contract_address}`
+* `coins/{id}/contract/{contract_address}/market_chart`
+* `coins/{id}/contract/{contract_address}/market_chart/range`
+* `coins/{id}/circulating_supply_chart`
+* `coins/{id}/circulating_supply_chart/range`
+* `coins/{id}/total_supply_chart`
+* `coins/{id}/total_supply_chart/range`
+* `asset_platforms`
+* `token_lists/{asset_platform_id}/all.json`
+* `coins/categories/list`
+* `coins/categories`
+* `exchanges`
+* `exchanges/list`
+* `exchanges/{id}`
+* `exchanges/{id}/tickers`
+* `exchanges/{id}/volume_chart`
+* `exchanges/{id}/volume_chart/range`
+* `derivatives`
+* `derivatives/exchanges`
+* `derivatives/exchanges/{id}`
+* `derivatives/exchanges/list`
+* `nfts/list`
+* `nfts/{id}`
+* `nfts/{asset_platform_id}/contract/{contract_address}`
+* `nfts/markets`
+* `nfts/{id}/market_chart`
+* `nfts/{asset_platform_id}/contract/{contract_address}/market_chart`
+* `nfts/{id}/tickers`
+* `exchange_rates`
+* `search`
+* `search/trending`
+* `global`
+* `global/decentralized_finance_defi`
+* `global/market_cap_chart`
+* `companies/public_treasury/{coin_id}`
+
+## on-chain DEX API:
+
+* `onchain/simple/networks/{network}/token_price/{addresses}`
+* `onchain/networks`
+* `onchain/networks/{network}/dexes`
+* `onchain/networks/trending_pools`
+* `onchain/networks/{network}/trending_pools`
+* `onchain/networks/{network}/pools/{address}`
+* `onchain/networks/{network}/pools/multi/{addresses}`
+* `onchain/networks/{network}/pools`
+* `onchain/networks/{network}/dexes/{dex}/pools`
+* `onchain/networks/{network}/new_pools`
+* `onchain/networks/new_pools`
+* `onchain/search/pools`
+* `onchain/networks/{network}/tokens/{token_address}/pools`
+* `onchain/networks/{network}/tokens/{address}`
+* `onchain/networks/{network}/tokens/multi/{addresses}`
+* `onchain/networks/{network}/tokens/{address}/info`
+* `onchain/networks/{network}/pools/{pool_address}/info`
+* `onchain/tokens/info_recently_updated`
+* `onchain/networks/{network}/pools/{pool_address}/ohlcv/{timeframe}`
+* `onchain/networks/{network}/pools/{pool_address}/trades`
+
+***
+
+[LunarCrush](/docs/tonapi-copy-2)
+
+[CoinMarketCap](/docs/direct-api-coinmarketcap)

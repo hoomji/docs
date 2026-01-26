@@ -1,0 +1,93 @@
+---
+title: "Defined"
+description: "For more information regarding the endpoints, please visit  ."
+---
+
+# Prefix:
+
+No prefix is required for Defined, an example URL will therefore look like: `https://api.uniblock.dev/direct/v1/Defined/`. There is no `path/to/endpoint` due to Defined being a GraphQL API provider.
+
+# Example:
+
+<CodeGroup>
+  ```bash bash
+  curl --request POST \
+    --url https://api.uniblock.dev/direct/v1/Defined/ \
+    --header 'Content-Type: application/json' \
+    --header 'x-api-key: YOUR_UNIBLOCK_API_KEY' \
+    --data '{
+  	"query": "{ token(input: { address: \"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2\", networkId: 1 }) { id address cmcId decimals name symbol totalSupply info { circulatingSupply imageThumbUrl } explorerData { blueCheckmark description tokenType } } }"
+  }'
+  ```
+</CodeGroup>
+
+# Supported Queries:
+
+* `balances`
+* `chartUrls`
+* `filterExchanges`
+* `filterNftCollections`
+* `filterNftParallelAssets`
+* `filterNftPoolCollections`
+* `filterNftPools`
+* `filterPairs`
+* `filterTokens`
+* `getBars`
+* `getCommunityNotes`
+* `getDetailedNftStats`
+* `getDetailedPairStats`
+* `getDetailedPairsStats`
+* `getDetailedStats`
+* `getEventLabels`
+* `getExchanges`
+* `getLatestPairs`
+* `getLatestTokens`
+* `getNetworkStatus`
+* `getNetworks`
+* `getNftAssets`
+* `getNftCollectionMetadata`
+* `getNftContracts`
+* `getNftEvents`
+* `getNftPool`
+* `getNftPoolCollection`
+* `getNftPoolCollectionsByExchange`
+* `getNftPoolEvents`
+* `getNftPoolStats`
+* `getNftPoolsByCollectionAndExchange`
+* `getNftPoolsByOwner`
+* `getParallelAssets`
+* `getParallelCardChanges`
+* `getPrimePoolAssets`
+* `getPrimePoolEvents`
+* `getPrimePools`
+* `getSimulateTokenContractResults`
+* `getSymbol`
+* `getTokenCount`
+* `getTokenEvents`
+* `getTokenInfo`
+* `getTokenPrices`
+* `getTokensInfo`
+* `getUniV3Ticks`
+* `getWebhooks`
+* `holders`
+* `listFavoriteTokens`
+* `listPairsForToken`
+* `listPairsWithMetadataForToken`
+* `listTopTokens`
+* `nftHolders`
+* `pairMetadata`
+* `primeBalance`
+* `primeHolders`
+* `searchNfts`
+* `searchTokens`
+* `token`
+* `tokenSparklines`
+* `tokens`
+* `walletNftCollectionAssets`
+* `walletNftCollections`
+
+***
+
+[TonAPI](/docs/direct-api-tonapi)
+
+[LunarCrush](/docs/tonapi-copy-2)

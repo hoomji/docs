@@ -1,0 +1,72 @@
+---
+title: "MagicEden"
+description: "For more information regarding the endpoints, please visit MagicEden's website: ."
+---
+
+# Prefix:
+
+Depending on the network type, the prefix can contain different values:
+
+* Mainnet: a prefix of `mainnet` is required. An example call through Direct API would be: `https://api.uniblock.dev/direct/v1/MagicEden/mainnet/path/to/endpoint`.
+* Devnet: a prefix of `devnet` is required. An example call through Direct API would be: `https://api.uniblock.dev/direct/v1/MagicEden/devnet/path/to/endpoint`.
+
+# Example:
+
+<CodeGroup>
+  ```bash bash
+  curl --request GET \
+    --url https://api.uniblock.dev/direct/v1/MagicEden/mainnet/v2/collections \
+    --header 'accept: application/json' \
+    --header 'x-api-key: YOUR_UNIBLOCK_API_KEY'
+  ```
+</CodeGroup>
+
+# Supported Endpoints:
+
+* `v2/collections/{symbol}/activities`
+* `v2/collections/{symbol}/stats`
+* `v2/collections/{collectionSymbol}/attributes`
+* `v2/collections`
+* `v2/collections/{symbol}/listings`
+* `v2/collections/batch/listings`
+* `v2/collections/{symbol}/holder_stats`
+* `v2/collections/{symbol}/leaderboard`
+* `v2/launchpad/collections`
+* `v2/marketplace/popular_collections`
+* `v2/mmm/pools`
+* `v2/mmm/pools/buy-walls`
+* `v2/mmm/token/{mint_address}/pools`
+* `v2/instructions/mmm/create-pool`
+* `v2/instructions/mmm/update-pool`
+* `v2/instructions/mmm/sol-deposit-buy`
+* `v2/instructions/mmm/sol-withdraw-buy`
+* `v2/instructions/mmm/sol-close-pool`
+* `v2/instructions/mmm/sol-fulfill-buy`
+* `v2/instructions/mmm/sol-fulfill-sell`
+* `v2/tokens/{token_mint}/listings`
+* `v2/tokens/{token_mint}/offers_received`
+* `v2/tokens/{token_mint}/activities`
+* `v2/tokens/{token_mint}`
+* `v2/wallets/{wallet_address}/tokens`
+* `v2/wallets/{wallet_address}`
+* `v2/wallets/{wallet_address}/activities`
+* `v2/wallets/{wallet_address}/offers_made`
+* `v2/wallets/{wallet_address}/offers_received`
+* `v2/wallets/{wallet_address}/escrow_balance`
+* `v2/instructions/buy`
+* `v2/instructions/buy_now_transfer_nft`
+* `v2/instructions/buy_now`
+* `v2/instructions/buy_cancel`
+* `v2/instructions/buy_change_price`
+* `v2/instructions/sell`
+* `v2/instructions/sell_change_price`
+* `v2/instructions/sell_now`
+* `v2/instructions/sell_cancel`
+* `v2/instructions/deposit`
+* `v2/instructions/withdraw`
+
+***
+
+[Mempool](/docs/mempool)
+
+[HelloMoon](/docs/hellomoon-1)

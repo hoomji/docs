@@ -1,0 +1,40 @@
+---
+title: 'Backup'
+description: 'Backup auto-routing, automatically switching to a backup provider if the primary is unavailable.'
+---
+
+Backup Providers is a critical feature designed to ensure that services remain uninterrupted. As part of our autoroute functionality, if a service fails, we automatically reroute traffic to another provider as backup. This capability is essential for maintaining high availability and reliability of services where uptime is critical.
+
+<Frame caption='Endpoint Fallback List'>
+  <img src='/images/docs/02e9899b1fcdef57d0ae34358af7606375f05c3f0790d4a72b9ba39d1b4df651-image.png' />
+</Frame>
+
+> **Here are some insights into this fallback list**
+>
+> Alchemy, Covalent and Moralis in the image are user's own API keys that brought to Uniblock for management, arranged in order as so for backup.
+>
+> When user calls this endpoint with Uniblock API key, user consumes his/her own provider's compute units. The request is routed to provider one by one according to this fallback list in order in case of failure. It could be invalidity of the key, rate-limited key and unavailability of the provider service.
+>
+> With AutoRoute enabled and placed at last in the fallback list, Uniblock AutoRoute serves as the last backup.
+>
+> AutoRoute has a full set of Uniblock-supported providers ready, of which the priority list is optimized by reliability and cost efficiency based on unified data.
+>
+> This is the most robust fail safe measure you can ever have for your service. When you're ready, switch to using just one Uniblock API key, and AutoRoute will seamlessly guide you through the Web3 world at half of the cost on one bill.
+
+## Key Benefits
+
+- High Availability: Enhances service reliability by ensuring that there is always an active connection, even in the face of primary provider(s) failures.
+- Seamless Failover: Automates the failover process to a backup provider, making the switch transparent to users and minimizing disruption.
+
+## Priority List (Fallback List)
+
+Provider backup is realized by having a fallback list for different categories of endpoints.
+
+#### AutoRoute Internal Fallback
+
+There is no setup required from user. AutoRoute is set and enabled by default, that comes with Uniblock's full set of provider accesses and a priority list to fallback with optimized with consideration of both reliability and cost efficiency based on unified data.
+
+#### External Keys Fallback List
+
+This is available when users bring in their own provider keys to Uniblock. User can setup a custom fallback list for different categories of endpoints. To learn more about how to setup a custom fallback list of external providers, refer to [Priority List](doc:unified-api-priority-list).
+

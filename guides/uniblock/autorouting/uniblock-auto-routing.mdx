@@ -1,0 +1,32 @@
+---
+title: 'Auto Routing'
+description: 'Manage one key and one bill from Uniblock, providing access to a number of blockchain service providers, starting for free.'
+---
+
+Our Auto Routing product has features that automatically routes your API calls to the most suitable providers based on various criteria, ensuring reliability, cost-efficiency, and ease of testing.
+
+This product is available to all users, regardless of their subscription plan with additional customizations and optimizations. It offers a way to manage API calls without the need for extensive configuration.
+
+This table is a quick overview of the Auto Routing Features available for our plans,
+
+|                | Default Routing | Backup | Primary Provider | Manual Config | Routing Opt | Auto Retry | Data Consensus |
+| -------------- | --------------- | ------ | ---------------- | ------------- | ----------- | ---------- | -------------- |
+| Startup (Free) | ✅              | ✅     | ✅               | ✅            |             |            |                |
+| Growth         | ✅              | ✅     | ✅               | ✅            | ✅          |            |                |
+| Pro            | ✅              | ✅     | ✅               | ✅            | ✅          | ✅         | ✅             |
+| Business       | ✅              | ✅     | ✅               | ✅            | ✅          | ✅         | ✅             |
+| Enterprise     | ✅              | ✅     | ✅               | ✅            | ✅          | ✅         | ✅             |
+
+Here we go over some of the key benefits of auto routing. This should be enough to help you get a general understanding of what we offer. If you'd like you can read more into each feature or move onto the [Providers](doc:providers) page to learn about our Providers.
+
+# Key Benefits
+
+- [Default Routing](/guides/uniblock//autorouting/uniblock-default-routing): By default, your Uniblock key can access data from all Uniblock-integrated providers, along with a backup provider list, without any setup or subscription.
+- [Backup providers](/guides/uniblock/autorouting/uniblock-backup): Ensures uninterrupted service by having backup auto routing to automatically switch to our backup providers through our backup API keys if your primary provider(s) is unavailable.
+- [Auto Retry](/guides/uniblock/autorouting/uniblock-auto-retry): In case your calls to a provider fail, we'll verify your call with that provider and attempt to call the provider a set number of times before moving on to the next provider in your priority list.
+- [Data Consensus](/guides/uniblock/autorouting/uniblock-data-consensus): Upon receiving response data from providers, we'll verify that information with other providers to ensure its accuracy. Your data will be curated to include exactly the information you want.
+- [Routing Optimization](/guides/uniblock/autorouting/uniblock-routing-optimization): We'll route your initial call to the provider offering the cheapest cost and most reliable data.
+
+<Frame caption='Auto Routing Feature for All Providers'>
+  <img src='/images/docs/2b3f324-image_4_1.png' />
+</Frame>

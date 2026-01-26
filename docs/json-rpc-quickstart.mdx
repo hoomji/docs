@@ -1,0 +1,123 @@
+---
+title: 'Quickstart'
+description: 'Estimated time to complete this guide: < 10 minutes'
+---
+
+## 📋 Steps to get started with JSON-RPC
+
+This guide assumes you already have an Uniblock account and access to our Dashboard.
+
+1. ✍️ Make a request
+
+2. 🔑 Get your Project API Key
+
+3. Set up Authentication
+   1. URL Based
+   2. Header X-API-KEY
+
+4. Choose your JSON-RPC method
+
+5. Setup your body parameters
+
+6. Start Building!
+
+### 1. ✍️ Make a request
+
+To start making JSON-RPC requests with Uniblock, we will be using ethers and a TypeScript project as an example. If you haven't already installed ethers, you can add it to your project by running:
+
+<CodeGroup>```bash bash npm install ethers ```</CodeGroup>
+
+### 2. 🔑 Get your Project API Key
+
+<Frame caption="Uniblock's Project Overview Page">
+  <img src='/images/docs/81b59a5585e582dbb3f4b9094322518568bb80950ed6faee9c69e7de4a4e14ee-image.png' />
+</Frame>
+
+Log in to the Uniblock Dashboard. Navigate to your project settings to find your API key. You can skip this step if you are using URL Based authentication. Keep this key secure as it will be used to authenticate your API requests.
+
+### 3. Set up Authentication
+
+#### I. URL Based
+
+For easy access, you can choose to include the API key directly in the URL. Typically, this method is less secure and should be used cautiously.
+
+You can do this easily by getting your JSON-RPC URL through Uniblock.
+
+1. In the Navbar under Unified APIs, click on the JSON-RPC tab.
+
+   ![](/images/docs/56e8fd7e37fe9d2f1f60163ff266e7ebf15a1b1c59f73da9c95d64aa9606783b-image.png)
+
+2. Scroll through the list of our supported JSON-RPC chains or search for your desired chain and expand the tab for more details.
+
+   ![](/images/docs/e95753f18adc85c8da46849d6b6226e8f3a3d6ef9d50ca6b5b5f337d87f81ffb-image.png)
+
+3. Copy the `HTTPS Endpoint` and setup your ethers JsonRpcProvider with the url in your client.
+
+```
+import { ethers} from 'ethers';
+
+// URL Based
+const provider = new ethers.JsonRpcProvider(
+  'https://api.uniblock.dev/uni/v1/json-rpc?chainId=1&apiKey=2Az-LuOoXfLVujI8hHAEnXoP8byQA47d-17jZbY267Q',
+);
+```
+
+#### I. Header Based
+
+It's recommended to use the header method for including your API key. Here’s how you can modify the Ethers instance to include your API key in the headers:
+
+<CodeGroup>
+  ```bash bash
+  import { ethers, FetchRequest } from 'ethers';
+
+// Header Based
+const jsonRpcInfo = new FetchRequest(
+'https://api.uniblock.dev/uni/v1/json-rpc?chainId=1',
+);
+
+jsonRpcInfo.setHeader('accept', 'application/json');
+jsonRpcInfo.setHeader(
+'x-api-key',
+'2Az-LuOoXfLVujI8hHAEnXoP8byQA47d-17jZbY267Q',
+);
+
+const provider = new ethers.JsonRpcProvider(jsonRpcInfo);
+
+````
+</CodeGroup>
+
+### 4. Choose your JSON-RPC method
+
+Identify the JSON-RPC method you wish to use from the Uniblock documentation. Examples include `eth_getBlockByNumber`, `sendTransaction`, or `eth_getBalance`.
+
+### 5. Setup your body parameters
+
+Define the JSON-RPC version, method, and any parameters required by your chosen method. Here’s an example of a JSON-RPC request body to use `eth_getBalance` with a function:
+
+<CodeGroup>
+```bash bash
+async function getBalance(address: string) {
+  try {
+    const balance = await provider.getBalance(address);
+    console.log('Balance:', ethers.formatEther(balance));
+  } catch (error) {
+    console.error('Error fetching balance:', error);
+  }
+}
+
+getBalance('0x1234567890123456789012345678901234567890');
+````
+
+</CodeGroup>
+
+### 6. Start Building!
+
+Now you’re ready to send requests. Here's how you can make a call to the `getBalance` method using Ethers by running your client.
+
+This setup will allow you to interact with the Uniblock API using JSON-RPC methods. Customize the functions based on the method you need, and use the Ethers client to handle requests and responses efficiently.
+
+---
+
+[Overview](/docs/json-rpc-overview)
+
+[Quickstart](/docs/webhook-quickstart)

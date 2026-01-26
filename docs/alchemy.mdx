@@ -1,0 +1,83 @@
+---
+title: "Alchemy"
+description: "For more information regarding the endpoints, please visit Alchemy's website:"
+---
+
+# Prefix
+
+Depending on the network type, the prefix can contain different values. Replace `chainId` with the id of your respective chain. Chain ids can be found in Alchemy docs.
+
+`https://api.uniblock.dev/direct/v1/Alchemy/{chainId}/path/to/endpoint`.
+
+# Example
+
+<CodeGroup>
+  ```bash bash
+  curl --request GET \
+    --url https://api.uniblock.dev/direct/v1/Alchemy/eth-mainnet/nft/v3/getNFTsForOwner?owner=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 \
+    --header 'Content-Type: application/json' \
+    --header 'accept: application/json' \
+    --header 'x-api-key: YOUR_UNIBLOCK_API_KEY'
+  ```
+</CodeGroup>
+
+# No Prefix
+
+Some endpoints do not require `chainId` to be included in the url.
+
+`https://api.uniblock.dev/direct/v1/Alchemy/path/to/endpoint`.
+
+<CodeGroup>
+  ```bash bash
+  curl --request POST \
+    --url https://api.uniblock.dev/direct/v1/Alchemy/prices/v1/tokens/by-address \
+    --header 'Content-Type: application/json' \
+    --header 'accept: application/json' \
+    --header 'x-api-key: YOUR_UNIBLOCK_API_KEY'
+    --data '{
+      "addresses": [
+        {
+          "network": "eth-mainnet",
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+        }
+      ]
+    }'
+  ```
+</CodeGroup>
+
+# Supported Endpoints:
+
+* `{chain}/nft/v3/getNFTsForOwner`
+* `{chain}/nft/v3/getOwnersForNFT`
+* `{chain}/nft/v3/getOwnersForContract`
+* `{chain}/nft/v3/isHolderOfContract`
+* `{chain}/nft/v3/getContractsForOwner`
+* `{chain}/nft/v3/getCollectionsForOwner`
+* `{chain}/nft/v3/getNFTsForContract`
+* `{chain}/nft/v3/getNFTsForCollection`
+* `{chain}/nft/v3/getNFTMetadata`
+* `{chain}/nft/v3/getNFTMetadataBatch`
+* `{chain}/nft/v3/getContractMetadata`
+* `{chain}/nft/v3/getCollectionMetadata`
+* `{chain}/nft/v3/invalidateContract`
+* `{chain}/nft/v3/getContractMetadataBatch`
+* `{chain}/nft/v3/summarizeNFTAttributes`
+* `{chain}/nft/v3/searchContractMetadata`
+* `{chain}/nft/v3/computeRarity`
+* `{chain}/nft/v3/refreshNftMetadata`
+* `{chain}/nft/v3/getSpamContracts`
+* `{chain}/nft/v3/isSpamContract`
+* `{chain}/nft/v3/isAirdropNFT`
+* `{chain}/nft/v3/reportSpam`
+* `{chain}/nft/v3/getFloorPrice`
+* `{chain}/nft/v3/getNFTSales`
+* `{chain}/v2`
+* `prices/v1/tokens/by-symbol`
+* `prices/v1/tokens/by-address`
+* `prices/v1/tokens/historical`
+
+***
+
+[Birdeye](/docs/birdeye)
+
+[Covalent](/docs/covalent)
