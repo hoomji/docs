@@ -19,6 +19,26 @@ Auto-routing automatically directs your API calls to the best available blockcha
 
 ---
 
+## Quick example
+
+See auto-routing in action with a simple API call:
+
+```bash Standard API call with auto-routing
+curl --location \
+'https://api.uniblock.dev/uni/v1/token/balances?chainId=1&address=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb' \
+--header 'x-api-key: YOUR_API_KEY'
+```
+
+**Behind the scenes, Uniblock:**
+1. Routes to the optimal provider (e.g., Alchemy)
+2. If Alchemy fails, retries 3 times
+3. If still failing, switches to backup (e.g., Infura)
+4. Returns the response seamlessly
+
+**You don't need to change anything in your code.** Auto-routing handles all provider management automatically.
+
+---
+
 ## How it works
 
 When you make an API call with your Uniblock key:
@@ -35,29 +55,13 @@ When you make an API call with your Uniblock key:
 
 ---
 
-## Features by plan
-
-Different plans unlock advanced auto-routing capabilities:
-
-| Feature | Startup (Free) | Growth | Pro | Business | Enterprise |
-| ------- | -------------- | ------ | --- | -------- | ---------- |
-| **Default routing** | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Backup providers** | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Primary provider** | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Manual config** | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Routing optimization** | - | ✅ | ✅ | ✅ | ✅ |
-| **Auto-retry** | - | - | ✅ | ✅ | ✅ |
-| **Data consensus** | - | - | ✅ | ✅ | ✅ |
-
-[View pricing plans →](/reference/resources/pricing-plans)
-
----
-
 ## Core features
 
 ### Default routing
 
 Access all Uniblock-integrated providers with a single API key. No provider selection or configuration required.
+
+**Available on:** All plans (including free)
 
 **Key benefits:**
 - Instant access to 20+ blockchain data providers
@@ -69,6 +73,8 @@ Access all Uniblock-integrated providers with a single API key. No provider sele
 ### Backup providers
 
 Automatic failover to backup providers when the primary provider is unavailable or rate-limited.
+
+**Available on:** All plans (including free)
 
 **Key benefits:**
 - Zero downtime during provider outages
@@ -111,6 +117,10 @@ Automatically retries failed requests before switching to backup providers.
 3. Retries up to configured limit (default: 3 attempts)
 4. If all retries fail, routes to next provider in priority list
 
+**Error handling:**
+- ✅ Retries: Timeouts, 5xx errors, rate limits (429), service unavailable (503)
+- ❌ No retry: Bad request (400), unauthorized (401), forbidden (403), not found (404)
+
 [Learn more about auto-retry →](/guides/uniblock/autorouting/uniblock-auto-retry)
 
 ### Data consensus
@@ -139,23 +149,21 @@ The system detects Provider C's outlier and returns the consensus value of ~$2,5
 
 ---
 
-## Quick example
+## Features by plan
 
-Auto-routing works transparently with all Uniblock API calls:
+Different plans unlock advanced auto-routing capabilities:
 
-```bash Standard API call with auto-routing
-curl --location \
-'https://api.uniblock.dev/uni/v1/token/balances?chainId=1&address=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb' \
---header 'x-api-key: YOUR_API_KEY'
-```
+| Feature | Startup (Free) | Growth | Pro | Business | Enterprise |
+| ------- | -------------- | ------ | --- | -------- | ---------- |
+| **Default routing** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Backup providers** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Primary provider** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Manual config** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Routing optimization** | - | ✅ | ✅ | ✅ | ✅ |
+| **Auto-retry** | - | - | ✅ | ✅ | ✅ |
+| **Data consensus** | - | - | ✅ | ✅ | ✅ |
 
-Behind the scenes, Uniblock:
-1. Routes to the optimal provider (e.g., Alchemy)
-2. If Alchemy fails, retries 3 times
-3. If still failing, switches to backup (e.g., Infura)
-4. Returns the response seamlessly
-
-**You don't need to change anything in your code.** Auto-routing handles all provider management automatically.
+[View pricing plans →](/reference/resources/pricing-plans)
 
 ---
 
@@ -246,4 +254,8 @@ Configure which providers are tried first for different endpoint categories:
 
 <Warning>
   **Data consensus latency** - Data consensus adds ~100-200ms latency as it queries multiple providers. Only enable for critical data where accuracy is paramount.
+</Warning>
+
+<Warning>
+  **Retry latency** - Auto-retry adds latency to failed requests (1-7 seconds depending on configuration). Factor this into timeout settings.
 </Warning>
