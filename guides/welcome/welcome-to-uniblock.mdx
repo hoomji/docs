@@ -1,68 +1,199 @@
 ---
-title: 'Welcome to Uniblock!'
-description: 'This page will help you get started with what is Uniblock.'
+title: 'Welcome to Uniblock'
+description: 'Unified blockchain infrastructure for developers building multi-chain applications.'
 ---
 
+# What is Uniblock?
+
+Uniblock is a unified blockchain API platform that provides consistent access to 100+ blockchains through a single interface. Instead of managing multiple provider integrations, you get one API key for all your blockchain data needs.
+
+**Use Uniblock when you need to:**
+- Query token balances, NFTs, or transactions across multiple chains
+- Access real-time market data and price feeds
+- Monitor blockchain events with webhooks
+- Make JSON-RPC calls to any supported network
+- Build cross-chain applications without managing multiple SDKs
+
+## Who uses Uniblock?
+
+- **DApp developers** building wallets, DEXs, or NFT platforms
+- **Backend engineers** integrating blockchain data into existing apps
+- **Analytics teams** tracking on-chain metrics and user behavior
+- **Trading platforms** requiring real-time price and market data
+
 <Info>
-  Looking for our endpoints? Go to our [API Reference Overview
-  Page](/reference/unified-api-reference-overview).
+  Ready to start? Jump to the [Quickstart Guide](/guides/getting-started/uniblock-quickstart-guide) or explore the [API Reference](/reference/unified-api-reference-overview).
 </Info>
 
-# 🦉Introduction
+---
 
-Uniblock provides a gateway to the world of Web3 technologies. We have developed a unified Web3 API that streamlines the interaction with multiple protocols and blockchain networks. This simplification allows both seasoned and novice developers to integrate decentralized applications (dApps) and blockchain data with ease.
+## Core features
 
-We have created a single structure for endpoints. Regardless of what and where your blockchain data comes from no additional boilerplate code or data parsing is required.
+### Unified API
 
-We cover a wide range of API endpoints including,
+Access blockchain data with consistent endpoints across all chains. No need to learn different API patterns for each network.
 
-- Blockchain Data - Tokens, NFTs, Historical Data, Transfers, Collections, Metadata, etc.
-- Market Data - Market Cap, Volume, History, Charting Data, Trending, Price, etc.
-- Scans Data - Transactions, Transfers. Price, etc.
-- JSON/RPC Data - Gas, Block, Transaction, Global, etc.
+```bash Example: Get token balance on any chain
+curl --location \
+'https://api.uniblock.dev/uni/v1/token/balances?chainId=1&address=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb' \
+--header 'x-api-key: YOUR_API_KEY'
+```
 
-Additionally, we provide a Launcher to simplify smart contract deployments. It breaks down smart contracts between Uniblock and other providers, offering a seamless user experience. Start creating your first smart contracts with Uniblock!
+**Available APIs:**
+- **Token API** - Balances, transfers, prices, allowances
+- **NFT API** - Collections, metadata, floor prices, ownership
+- **Transaction API** - History, receipts, gas estimation
+- **Market Data API** - Prices, volume, trending tokens
+- **Scans API** - Block explorers, contract verification
+- **JSON-RPC** - Direct node access for all supported chains
 
-# 📝 Quick Start
+[Explore Unified API →](/reference/unified-api/overview-unified-apis)
 
-Throughout our Guides, you'll see through the process of getting used to the diverse toolset that Uniblock has to offer. You'll learn about our Unified API, Unified Contracts and more. Start by creating an account and getting setup on our [Dashboard](https://dashboard.uniblock.dev/) and try out our tools on side navbar.
+### Auto-routing
 
-# ⚙️ [Project Setup](/guides/getting-started/uniblock-quickstart-guide)
+Uniblock automatically routes requests to the best available provider based on reliability, latency, and cost. If one provider fails, requests automatically retry with backup providers.
 
-Once you feel like you're ready to get started with Uniblock, it's time to jump into setting up a Uniblock project. In this guide, you will find how to create your project. If you're ready head over to [Uniblock Quickstart Guide](doc:uniblock-quickstart-guide)!
+**Benefits:**
+- No manual provider management
+- Built-in failover and redundancy
+- Optimized for cost and performance
+- Single API key replaces dozens of provider keys
 
-<Frame caption="A Uniblock's Project's Dashboard">
-  <img src='/images/docs/09c7a924f7fa101a357d58780f6c26e001fe4b2b84ef43a723509ce40fb664cb-image.png' />
-</Frame>
+[Learn about auto-routing →](/guides/uniblock/autorouting/uniblock-auto-routing)
 
-## 🛣️ Auto Routing
+### Webhooks
 
-One of the key features of our API is our Auto Routing product. It has features that automatically routes your API calls to the most suitable providers based on various criteria, ensuring reliability, cost-efficiency, and ease of testing. AutoRoute can save you from needing to obtain multiple API keys from various providers. Just with a Uniblock API key, you are set to access everything in the web3 world that Uniblock integrated providers can reach. Learn more about our [Auto Routing](doc:auto-routing) features here.
+Monitor blockchain events in real-time without polling. Get instant notifications for address activity, contract events, and NFT transfers.
 
-# 🌐 Unified API
+```json Example: Address activity webhook payload
+{
+  "webhookId": "wh_abc123",
+  "eventType": "address.activity",
+  "chainId": "1",
+  "data": {
+    "address": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
+    "transactionHash": "0x123...",
+    "blockNumber": 18500000,
+    "value": "1000000000000000000"
+  }
+}
+```
 
-Understand how to interact with various blockchain networks and services through our interface. Our endpoints include a variety of functionalities related to tokens, transactions, market data, json-rpc and more across multiple blockchains. Jump to our [Unified API Overview](doc:unified-api-overview) section for the details on our current endpoints and RPC providers.
+[Set up webhooks →](/reference/webhook/webhook-quickstart)
 
-<Frame caption='Uniblock Dashboard Endpoints with Token, NFT, MarketData categories and endpoints.'>
-  <img src='/images/docs/8fc336d15a3c6c722770fbc88ada9a13f81f2fb69b9af1366c1ff76ba18ddfd2-image.png' />
-</Frame>
+### Multi-chain support
 
-# 📲 Our Providers
+Access 100+ blockchains including:
+- **EVM chains** - Ethereum, Polygon, BSC, Arbitrum, Base, Optimism
+- **Solana** - Mainnet, devnet, testnet
+- **Bitcoin** - Mainnet, testnet
+- **Stellar** - Horizon API and Soroban
+- **TON** - Mainnet and testnet
+- **Starknet, Sui, Polkadot** and more
 
-Our providers aim to offer developers a point of access to a variety of popular and well-known blockchain-related services. By standardizing the way you interact with these services, Unifed API can speed up the deployment of your project. You can see all of our providers by going to your project dashboard under `Settings` ->`Integrations`.
+[View all supported chains →](/reference/resources/chains/supported-chains)
 
-<Frame caption='Project Provider Configuration with Alchemy, Moralis, and more.'>
-  <img src='/images/docs/1ddebc4cac16a90ac413e2b4712e9462d1b1104244a7056adda649f23c02f742-image.png' />
-</Frame>
+---
 
-# 🚀Unified Contracts
+## Common use cases
 
-Our no-code Launcher of Unified Contracts helps to deploy, manage, and interact with a variety of smart contracts. We include token, NFT and other smart contracts for your developers to add extra functionality. To experiment with creating comprehensive smart contracts check out our [Launcher Overview section](doc:launcher-overview)!
+<CardGroup cols={2}>
+  <Card title="Wallet integration" icon="wallet">
+    Display token balances, NFTs, and transaction history for user wallets across multiple chains.
+  </Card>
+  
+  <Card title="NFT marketplace" icon="image">
+    Query NFT metadata, floor prices, collections, and track transfers in real-time.
+  </Card>
+  
+  <Card title="DeFi dashboard" icon="chart-line">
+    Monitor token prices, liquidity pools, and trading volumes across DEXs.
+  </Card>
+  
+  <Card title="Portfolio tracker" icon="briefcase">
+    Aggregate user holdings across chains with real-time valuations and P&L.
+  </Card>
+</CardGroup>
 
-<Frame caption='Dashboard Unified Launcher with Openzeppelin Contracts and more...'>
-  <img src='/images/docs/a6b2cfa-dashboard-test.uniblock.dev_dashboard_projects_contracts_ebf30a7d-030d-4953-ab9b-17143b7f3e2a_contract-library.png' />
-</Frame>
+---
 
-# 💬 Need More Support?
+## Quick example
 
-Looking for additional support or want to request a feature? Head to our [contact us page](https://www.uniblock.dev/contact)
+Here's how to get started with a simple token balance query:
+
+<Steps>
+  <Step title="Get your API key">
+    Sign up at [dashboard.uniblock.dev](https://dashboard.uniblock.dev) and create a project to get your API key.
+  </Step>
+  
+  <Step title="Make your first request">
+    ```bash
+    curl --location \
+    'https://api.uniblock.dev/uni/v1/token/balances?chainId=1&address=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb' \
+    --header 'x-api-key: YOUR_API_KEY'
+    ```
+  </Step>
+  
+  <Step title="Get the response">
+    ```json
+    {
+      "data": [
+        {
+          "tokenAddress": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+          "symbol": "USDC",
+          "balance": "1000000000",
+          "decimals": 6,
+          "balanceFormatted": "1000.00",
+          "valueUsd": "1000.00"
+        }
+      ]
+    }
+    ```
+  </Step>
+</Steps>
+
+---
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Quickstart guide" icon="rocket" href="/guides/getting-started/uniblock-quickstart-guide">
+    Create your first project and make API calls in 5 minutes.
+  </Card>
+  
+  <Card title="API reference" icon="book" href="/reference/unified-api-reference-overview">
+    Explore all available endpoints and interactive playgrounds.
+  </Card>
+  
+  <Card title="Webhooks" icon="bell" href="/reference/webhook/webhook-quickstart">
+    Set up real-time notifications for blockchain events.
+  </Card>
+  
+  <Card title="Supported chains" icon="link" href="/reference/resources/chains/supported-chains">
+    View the complete list of supported blockchains.
+  </Card>
+</CardGroup>
+
+---
+
+## Common pitfalls
+
+<Warning>
+  **Rate limits** - Free tier has rate limits. Monitor your usage in the dashboard and upgrade if needed. See [pricing plans](/reference/resources/pricing-plans).
+</Warning>
+
+<Warning>
+  **Chain IDs** - Always use numeric chain IDs (e.g., `1` for Ethereum) or string identifiers (e.g., `solana`). Incorrect chain IDs return errors.
+</Warning>
+
+<Warning>
+  **Address formats** - Ensure addresses match the chain format (0x-prefixed for EVM, base58 for Solana). Invalid formats cause validation errors.
+</Warning>
+
+---
+
+## Need help?
+
+- **Documentation** - Search these docs for detailed guides and API references
+- **Support** - Contact us at [uniblock.dev/contact](https://www.uniblock.dev/contact)
+- **Dashboard** - Monitor usage and manage projects at [dashboard.uniblock.dev](https://dashboard.uniblock.dev)
