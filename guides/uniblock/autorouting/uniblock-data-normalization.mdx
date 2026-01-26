@@ -1,0 +1,504 @@
+---
+title: 'Data normalization'
+description: 'Unified response formats across all blockchain data providers.'
+---
+
+# What is data normalization?
+
+Data normalization automatically converts provider-specific response formats into a consistent, unified schema. This eliminates the need to write provider-specific parsing logic or handle format variations across different data sources.
+
+**Use data normalization when you need:**
+- Consistent data formats regardless of provider
+- Zero provider-specific parsing logic
+- Seamless provider switching without code changes
+- Predictable data structures across all endpoints
+
+<Info>
+  Data normalization is enabled by default for all Uniblock users. All responses follow the same schema regardless of underlying provider.
+</Info>
+
+---
+
+## How it works
+
+Different providers return blockchain data in different formats. Uniblock normalizes all responses into a consistent schema:
+
+1. **Provider response** - Raw data received from blockchain provider
+2. **Schema mapping** - Uniblock maps provider fields to unified schema
+3. **Type conversion** - Converts data types (string/number/formatted)
+4. **Field enrichment** - Adds missing fields with computed values
+5. **Unified response** - Returns consistent format to your application
+
+**Result:** Your code works with any provider without format-specific logic.
+
+---
+
+## Normalization examples
+
+### Token balances
+
+Different providers return token balances in incompatible formats:
+
+| Provider | Balance format | Decimals | Formatted value |
+| -------- | -------------- | -------- | --------------- |
+| **Alchemy** | `"1000000000"` (string) | Separate field | Not included |
+| **Moralis** | `1000000000` (number) | Separate field | Not included |
+| **Covalent** | `"1000.00"` (formatted) | Included in value | Already formatted |
+
+**Uniblock normalized response:**
+
+```json
+{
+  "balance": "1000000000",
+  "decimals": 6,
+  "balanceFormatted": "1000.00"
+}
+```
+
+**Result:** All three formats unified into single, predictable structure.
+
+### Transaction timestamps
+
+Providers use different timestamp formats:
+
+| Provider | Timestamp format | Example |
+| -------- | ---------------- | ------- |
+| **Alchemy** | Unix timestamp (seconds) | `1640995200` |
+| **Moralis** | ISO 8601 string | `"2022-01-01T00:00:00Z"` |
+| **Covalent** | Unix timestamp (milliseconds) | `1640995200000` |
+
+**Uniblock normalized response:**
+
+```json
+{
+  "timestamp": 1640995200,
+  "timestampISO": "2022-01-01T00:00:00Z",
+  "blockNumber": 13916166
+}
+```
+
+**Result:** Both Unix and ISO formats provided for flexibility.
+
+### NFT metadata
+
+NFT metadata structures vary significantly across providers:
+
+**Alchemy format:**
+```json
+{
+  "contract": {"address": "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"},
+  "id": {"tokenId": "1"},
+  "title": "Bored Ape #1",
+  "metadata": {
+    "image": "ipfs://QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ",
+    "attributes": [{"trait_type": "Background", "value": "Orange"}]
+  }
+}
+```
+
+**Moralis format:**
+```json
+{
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "token_id": "1",
+  "name": "Bored Ape #1",
+  "image": "ipfs://QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ",
+  "metadata": "{\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"Orange\"}]}"
+}
+```
+
+**Uniblock normalized response:**
+```json
+{
+  "contractAddress": "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D",
+  "tokenId": "1",
+  "name": "Bored Ape #1",
+  "description": "The Bored Ape Yacht Club is a collection of 10,000 unique Bored Ape NFTs",
+  "image": "ipfs://QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ",
+  "imageUrl": "https://ipfs.io/ipfs/QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ",
+  "attributes": [
+    {
+      "traitType": "Background",
+      "value": "Orange"
+    }
+  ]
+}
+```
+
+**Result:** Consistent structure with both IPFS and HTTP URLs, parsed attributes, and camelCase fields.
+
+---
+
+## Real-world scenarios
+
+### Scenario 1: Multi-provider portfolio tracker
+
+**Challenge:** Building a portfolio tracker that aggregates data from multiple providers, each with different response formats.
+
+**Without normalization:**
+```javascript
+// Provider-specific parsing logic required
+function parseBalance(provider, response) {
+  if (provider === 'alchemy') {
+    return {
+      balance: response.tokenBalance,
+      decimals: response.decimals,
+      formatted: formatBalance(response.tokenBalance, response.decimals)
+    };
+  } else if (provider === 'moralis') {
+    return {
+      balance: response.balance.toString(),
+      decimals: response.decimals,
+      formatted: formatBalance(response.balance, response.decimals)
+    };
+  } else if (provider === 'covalent') {
+    return {
+      balance: parseFormattedBalance(response.balance),
+      decimals: extractDecimals(response.balance),
+      formatted: response.balance
+    };
+  }
+}
+```
+
+**With Uniblock normalization:**
+```javascript
+// Single parsing logic works for all providers
+const response = await fetch('https://api.uniblock.dev/uni/v1/token/balances', {
+  headers: { 'x-api-key': 'YOUR_API_KEY' }
+});
+
+const data = await response.json();
+// Always has: balance, decimals, balanceFormatted
+console.log(data.balanceFormatted); // Works regardless of provider
+```
+
+**Result:** 90% less code, zero provider-specific logic.
+
+### Scenario 2: Transaction history display
+
+**Challenge:** Displaying transaction timestamps consistently across different providers.
+
+**Request:**
+```bash
+curl --location \
+'https://api.uniblock.dev/uni/v1/transactions?chainId=1&address=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&limit=10' \
+--header 'x-api-key: YOUR_API_KEY'
+```
+
+**Normalized response:**
+```json
+{
+  "transactions": [
+    {
+      "hash": "0x123...",
+      "from": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
+      "to": "0x456...",
+      "value": "1000000000000000000",
+      "valueFormatted": "1.0",
+      "timestamp": 1640995200,
+      "timestampISO": "2022-01-01T00:00:00Z",
+      "blockNumber": 13916166,
+      "gasUsed": "21000",
+      "gasPrice": "50000000000",
+      "gasPriceGwei": "50"
+    }
+  ]
+}
+```
+
+**Result:** Consistent timestamp formats, formatted values, and gas prices in both wei and gwei.
+
+### Scenario 3: NFT marketplace integration
+
+**Challenge:** Displaying NFT collections from multiple providers with consistent metadata.
+
+**Request:**
+```bash
+curl --location \
+'https://api.uniblock.dev/uni/v1/nft/collection?chainId=1&contractAddress=0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D&limit=20' \
+--header 'x-api-key: YOUR_API_KEY'
+```
+
+**Normalized response:**
+```json
+{
+  "nfts": [
+    {
+      "contractAddress": "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D",
+      "tokenId": "1",
+      "name": "Bored Ape #1",
+      "description": "The Bored Ape Yacht Club...",
+      "image": "ipfs://QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ",
+      "imageUrl": "https://ipfs.io/ipfs/QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ",
+      "owner": "0x789...",
+      "attributes": [
+        {"traitType": "Background", "value": "Orange"},
+        {"traitType": "Eyes", "value": "Bored"}
+      ]
+    }
+  ]
+}
+```
+
+**Result:** Consistent NFT structure with resolved IPFS URLs and parsed attributes.
+
+---
+
+## Normalized field types
+
+Uniblock ensures consistent data types across all providers:
+
+### Address fields
+
+**Always returned as:**
+- Checksummed Ethereum addresses
+- Lowercase for consistency in comparisons
+- Validated format
+
+```json
+{
+  "address": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
+  "contractAddress": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+}
+```
+
+### Numeric values
+
+**Always returned as:**
+- String for large numbers (prevents precision loss)
+- Formatted decimal version included
+- Original decimals preserved
+
+```json
+{
+  "balance": "1000000000000000000",
+  "balanceFormatted": "1.0",
+  "decimals": 18
+}
+```
+
+### Timestamps
+
+**Always returned as:**
+- Unix timestamp (seconds)
+- ISO 8601 string
+- Block number for reference
+
+```json
+{
+  "timestamp": 1640995200,
+  "timestampISO": "2022-01-01T00:00:00Z",
+  "blockNumber": 13916166
+}
+```
+
+### Boolean values
+
+**Always returned as:**
+- Native boolean type (not strings)
+- Consistent naming (isActive, hasMetadata)
+
+```json
+{
+  "isVerified": true,
+  "hasMetadata": false
+}
+```
+
+---
+
+## Key benefits
+
+<CardGroup cols={2}>
+  <Card title="Zero parsing logic" icon="code">
+    No provider-specific code needed. Single schema works everywhere.
+  </Card>
+  
+  <Card title="Seamless provider switching" icon="arrows-rotate">
+    Switch providers without changing your application code.
+  </Card>
+  
+  <Card title="Type safety" icon="shield-check">
+    Consistent data types prevent runtime errors and type mismatches.
+  </Card>
+  
+  <Card title="Reduced development time" icon="clock">
+    Build faster without handling format variations across providers.
+  </Card>
+</CardGroup>
+
+---
+
+## Field mapping reference
+
+Common provider field variations and their normalized equivalents:
+
+| Data type | Provider variations | Uniblock normalized |
+| --------- | ------------------- | ------------------- |
+| **Token balance** | `tokenBalance`, `balance`, `value` | `balance` |
+| **Decimals** | `decimals`, `decimal`, `token_decimal` | `decimals` |
+| **Contract address** | `contract`, `token_address`, `contractAddress` | `contractAddress` |
+| **Token ID** | `tokenId`, `token_id`, `id.tokenId` | `tokenId` |
+| **Transaction hash** | `hash`, `tx_hash`, `transactionHash` | `hash` |
+| **Block number** | `blockNumber`, `block_number`, `block` | `blockNumber` |
+| **Timestamp** | `timestamp`, `block_timestamp`, `timeStamp` | `timestamp` |
+| **Gas used** | `gasUsed`, `gas_used`, `gas` | `gasUsed` |
+| **NFT image** | `image`, `image_url`, `metadata.image` | `image`, `imageUrl` |
+| **NFT attributes** | `attributes`, `traits`, `metadata.attributes` | `attributes` |
+
+---
+
+## Handling edge cases
+
+Uniblock normalization handles common edge cases automatically:
+
+### Null and missing values
+
+**Provider behavior:**
+- Some providers return `null`
+- Others omit the field entirely
+- Some return empty strings
+
+**Uniblock normalization:**
+```json
+{
+  "balance": "0",
+  "balanceFormatted": "0.0",
+  "metadata": null
+}
+```
+
+**Result:** Consistent null handling and default values.
+
+### IPFS URLs
+
+**Provider behavior:**
+- Some return `ipfs://` URIs
+- Others return gateway URLs
+- Some return raw CIDs
+
+**Uniblock normalization:**
+```json
+{
+  "image": "ipfs://QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ",
+  "imageUrl": "https://ipfs.io/ipfs/QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ"
+}
+```
+
+**Result:** Both IPFS URI and HTTP gateway URL provided.
+
+### Large numbers
+
+**Provider behavior:**
+- Some return numbers (lose precision for large values)
+- Others return strings
+- Some return scientific notation
+
+**Uniblock normalization:**
+```json
+{
+  "balance": "1000000000000000000",
+  "balanceFormatted": "1.0",
+  "decimals": 18
+}
+```
+
+**Result:** String format preserves precision, formatted version for display.
+
+### Case sensitivity
+
+**Provider behavior:**
+- Some use camelCase
+- Others use snake_case
+- Some use PascalCase
+
+**Uniblock normalization:**
+```json
+{
+  "contractAddress": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+  "tokenId": "1",
+  "blockNumber": 13916166
+}
+```
+
+**Result:** Consistent camelCase across all fields.
+
+---
+
+## Best practices
+
+<Check>
+  **Use normalized fields directly** - Don't re-parse or transform normalized responses. They're already in optimal format.
+</Check>
+
+<Check>
+  **Rely on formatted values** - Use `balanceFormatted`, `valueFormatted` for display instead of manual formatting.
+</Check>
+
+<Check>
+  **Trust type consistency** - Normalized responses have consistent types. No need for type guards or conversions.
+</Check>
+
+<Check>
+  **Use both timestamp formats** - `timestamp` for calculations, `timestampISO` for display and logging.
+</Check>
+
+---
+
+## Monitoring normalization
+
+Track normalization metrics in the [Uniblock dashboard](https://dashboard.uniblock.dev):
+
+- **Normalization success rate** - Percentage of responses successfully normalized
+- **Field mapping coverage** - Which provider fields are being mapped
+- **Type conversion errors** - Rare cases where normalization fails
+- **Provider format changes** - Alerts when providers change response formats
+
+**Use these metrics to:**
+- Ensure consistent data quality
+- Identify provider format changes early
+- Understand which providers require most normalization
+- Validate data integrity across providers
+
+---
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Data polyfill" icon="puzzle-piece" href="/guides/uniblock/autorouting/uniblock-polyfill">
+    Learn how Uniblock fills data gaps across providers.
+  </Card>
+  
+  <Card title="Data consensus" icon="check-double" href="/guides/uniblock/autorouting/uniblock-data-consensus">
+    Verify data accuracy by comparing multiple providers.
+  </Card>
+  
+  <Card title="API reference" icon="book-open" href="/api-reference">
+    Explore normalized response schemas for all endpoints.
+  </Card>
+  
+  <Card title="Dashboard" icon="chart-line" href="https://dashboard.uniblock.dev">
+    Monitor normalization metrics and data quality.
+  </Card>
+</CardGroup>
+
+---
+
+## Common pitfalls
+
+<Warning>
+  **Don't re-parse normalized data** - Normalized responses are already in optimal format. Additional parsing adds complexity and potential errors.
+</Warning>
+
+<Warning>
+  **Avoid provider-specific assumptions** - Don't assume data comes from specific provider. Normalization abstracts provider details.
+</Warning>
+
+<Warning>
+  **Use string types for large numbers** - JavaScript numbers lose precision for values > 2^53. Always use string `balance` field, not numeric conversions.
+</Warning>
+
+<Warning>
+  **Don't mix normalized and raw data** - If using Uniblock, use normalized responses exclusively. Mixing with raw provider data creates inconsistencies.
+</Warning>
