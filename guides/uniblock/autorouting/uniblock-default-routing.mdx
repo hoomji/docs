@@ -1,32 +1,296 @@
 ---
-title: 'Default Routing'
-description: 'Experiment Unified API and AutoRoute features without needing an API key.'
+title: 'Default routing'
+description: 'Try Uniblock APIs instantly without signup or configuration.'
 ---
 
-It is supported to call the Unified API endpoints without an API key, so that user can try out the Unified API and its AutoRoute features. No initial setup is required, such as signing up, creating a project or selecting a provider.
+# What is default routing?
 
-Default Routing offers a path to explore and integrate our APIs without the upfront commitment of selecting a plan or provider. This feature is designed to facilitate quick testing and development, allowing users to get a feel for the API's capabilities and how they can fit into various projects. It's an ideal starting point for developers looking to understand the potential and functionality of our services with minimal initial setup.
+Default routing lets you test Uniblock's Unified API and auto-routing features without creating an account or providing an API key. It's designed for quick experimentation and prototyping before committing to a plan.
 
-Note that default routing is not for production. It subjects to rate limits that can be hit easily.
+**Use default routing when you:**
+- Want to test API endpoints before signing up
+- Need to prototype quickly without setup
+- Are evaluating Uniblock for your project
+- Want to demonstrate API capabilities to your team
 
-## Key Benefits
+<Warning>
+  Default routing is for testing only. It has strict rate limits and is not suitable for production use.
+</Warning>
 
-- By default, your Uniblock key can access data from all Uniblock-integrated providers, along with a backup provider list, without any setup or subscription.
-- Ease of Access: Instantly access our APIs without the need to navigate through the setup of plans or providers, making the initial exploration phase as simple as possible.
-- Risk-Free Testing: Experiment with the APIs in a sandbox environment, enabling you to test functionalities and integration capabilities without incurring costs or commitments.
-- Rapid Prototyping: Accelerate the development process by allowing developers to quickly prototype and iterate on their ideas, demonstrating the practical applications of our APIs in real-world scenarios.
+---
 
-## Example
+## How it works
 
-To utilize Default Routing, use any method to access our endpoints. Uniblock also provides the following platforms for user to try out:
+Simply make API calls to Uniblock endpoints without an API key:
 
-- [Unified API Reference](/reference/unified-api/overview-unified-apis)
-- [Uniblock Explorer](https://explorer.uniblock.dev/)
+```bash No API key required
+curl --location \
+'https://api.uniblock.dev/uni/v1/token/balances?chainId=1&address=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb'
+```
 
-For instance you can use our Unified API Reference to start calling [/token/balance](/reference//unified-api/api-overview-token) by clicking the big blue `Try it!` button.
+**What happens behind the scenes:**
+1. Uniblock detects the request has no API key
+2. Routes the request through default routing pool
+3. Applies rate limits for anonymous usage
+4. Returns the response
 
-You can also select your preferred programming language and directly integrate the endpoint into your application.
+---
 
-<Frame caption='/token/balance API reference on docs.uniblock.dev'>
+## Key benefits
+
+<CardGroup cols={2}>
+  <Card title="Zero setup" icon="bolt">
+    No signup, no API key, no configuration. Start testing immediately.
+  </Card>
+  
+  <Card title="Risk-free testing" icon="flask">
+    Experiment with APIs without costs or commitments.
+  </Card>
+  
+  <Card title="Rapid prototyping" icon="rocket">
+    Build proof-of-concepts quickly without infrastructure setup.
+  </Card>
+  
+  <Card title="Full feature access" icon="unlock">
+    Test all Unified API endpoints and auto-routing features.
+  </Card>
+</CardGroup>
+
+---
+
+## Rate limits
+
+Default routing has strict limits to prevent abuse:
+
+| Limit type | Value |
+| ---------- | ----- |
+| **Requests per minute** | 10 |
+| **Requests per hour** | 100 |
+| **Requests per day** | 500 |
+| **Concurrent requests** | 2 |
+
+<Info>
+  These limits are shared across all anonymous users. For production use, [sign up for a free account](https://dashboard.uniblock.dev) to get dedicated rate limits.
+</Info>
+
+---
+
+## Testing methods
+
+### Interactive API reference
+
+Use the built-in playground in the documentation:
+
+<Steps>
+  <Step title="Navigate to any API endpoint">
+    Go to the [Unified API Reference](/reference/unified-api/overview-unified-apis) and select an endpoint.
+  </Step>
+  
+  <Step title="Click 'Try it!'">
+    The blue "Try it!" button lets you test the endpoint directly in your browser.
+  </Step>
+  
+  <Step title="Enter parameters">
+    Fill in required parameters like `chainId` and `address`.
+  </Step>
+  
+  <Step title="Execute request">
+    Click execute to see the live response without any API key.
+  </Step>
+</Steps>
+
+<Frame caption='Token balance API reference with interactive playground'>
   <img src='/images/docs/257ab21-image.png' />
 </Frame>
+
+### Uniblock Explorer
+
+Test APIs visually with the [Uniblock Explorer](https://explorer.uniblock.dev/):
+
+- Search addresses across any supported chain
+- View token balances, NFTs, and transaction history
+- Explore API responses in real-time
+- Copy API calls for your own code
+
+### Command line
+
+Test with curl or any HTTP client:
+
+```bash Get token balances
+curl --location \
+'https://api.uniblock.dev/uni/v1/token/balances?chainId=1&address=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb'
+```
+
+```bash Get NFTs
+curl --location \
+'https://api.uniblock.dev/uni/v1/nft/nfts?chainId=1&address=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb'
+```
+
+```bash Get transaction history
+curl --location \
+'https://api.uniblock.dev/uni/v1/transaction/history?chainId=1&address=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb'
+```
+
+### Code examples
+
+The API reference provides code examples in multiple languages:
+
+```javascript JavaScript/Node.js
+const response = await fetch(
+  'https://api.uniblock.dev/uni/v1/token/balances?chainId=1&address=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb'
+);
+const data = await response.json();
+console.log(data);
+```
+
+```python Python
+import requests
+
+response = requests.get(
+    'https://api.uniblock.dev/uni/v1/token/balances',
+    params={
+        'chainId': '1',
+        'address': '0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb'
+    }
+)
+print(response.json())
+```
+
+```go Go
+resp, err := http.Get(
+    "https://api.uniblock.dev/uni/v1/token/balances?chainId=1&address=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb"
+)
+if err != nil {
+    log.Fatal(err)
+}
+defer resp.Body.Close()
+body, _ := ioutil.ReadAll(resp.Body)
+fmt.Println(string(body))
+```
+
+---
+
+## What you can test
+
+Default routing gives you access to all Unified API endpoints:
+
+### Token API
+- Token balances
+- Token transfers
+- Token prices
+- Token allowances
+
+### NFT API
+- NFT collections
+- NFT metadata
+- NFT transfers
+- Floor prices
+
+### Transaction API
+- Transaction history
+- Transaction receipts
+- Gas estimation
+
+### Market Data API
+- Token prices
+- Trading volume
+- Trending tokens
+
+### Scans API
+- Block explorer data
+- Contract verification
+- Address analytics
+
+[Explore all endpoints →](/reference/unified-api/overview-unified-apis)
+
+---
+
+## Upgrading from default routing
+
+When you're ready for production:
+
+<Steps>
+  <Step title="Create a free account">
+    Sign up at [dashboard.uniblock.dev](https://dashboard.uniblock.dev) - no credit card required.
+  </Step>
+  
+  <Step title="Create a project">
+    Generate your API key in the dashboard.
+  </Step>
+  
+  <Step title="Add API key to requests">
+    ```bash
+    curl --location \
+    'https://api.uniblock.dev/uni/v1/token/balances?chainId=1&address=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb' \
+    --header 'x-api-key: YOUR_API_KEY'
+    ```
+  </Step>
+  
+  <Step title="Enjoy higher limits">
+    Free tier includes:
+    - 100,000 requests/month
+    - Higher rate limits
+    - Dashboard analytics
+    - Email support
+  </Step>
+</Steps>
+
+[View all pricing plans →](/reference/resources/pricing-plans)
+
+---
+
+## Comparison: Default vs. Free tier
+
+| Feature | Default routing | Free tier (Startup) |
+| ------- | --------------- | ------------------- |
+| **Setup required** | None | Sign up + API key |
+| **Requests/month** | ~15,000 | 100,000 |
+| **Rate limit** | 10/min | 100/min |
+| **Auto-routing** | ✅ | ✅ |
+| **Backup providers** | ✅ | ✅ |
+| **Dashboard** | ❌ | ✅ |
+| **Analytics** | ❌ | ✅ |
+| **Support** | Community | Email |
+| **Production use** | ❌ | ✅ |
+
+---
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Sign up for free" icon="user-plus" href="https://dashboard.uniblock.dev">
+    Create an account to get higher limits and production access.
+  </Card>
+  
+  <Card title="Quickstart guide" icon="rocket" href="/guides/getting-started/uniblock-quickstart-guide">
+    Follow the quickstart to build your first integration.
+  </Card>
+  
+  <Card title="API reference" icon="book" href="/reference/unified-api/overview-unified-apis">
+    Explore all available endpoints and features.
+  </Card>
+  
+  <Card title="Uniblock Explorer" icon="compass" href="https://explorer.uniblock.dev">
+    Test APIs visually with the interactive explorer.
+  </Card>
+</CardGroup>
+
+---
+
+## Common pitfalls
+
+<Warning>
+  **Rate limit errors** - Default routing has very low rate limits. If you hit limits frequently, sign up for a free account.
+</Warning>
+
+<Warning>
+  **Not for production** - Default routing can be disabled or rate-limited at any time. Never use it in production applications.
+</Warning>
+
+<Warning>
+  **Shared limits** - Rate limits are shared across all anonymous users. During high traffic, you may experience throttling.
+</Warning>
+
+<Warning>
+  **No SLA** - Default routing has no uptime guarantees. For reliable service, use an authenticated API key.
+</Warning>
