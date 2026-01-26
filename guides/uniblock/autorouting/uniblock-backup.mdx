@@ -3,6 +3,8 @@ title: 'Backup providers'
 description: 'Automatic failover to backup providers when primary providers are unavailable.'
 ---
 
+import UniblockCTA from '/snippets/uniblock-cta.mdx';
+
 # What are backup providers?
 
 Backup providers ensure your API calls never fail due to a single provider outage. When your primary provider is unavailable, rate-limited, or returns errors, Uniblock automatically routes requests to backup providers in your configured priority list.
@@ -271,3 +273,5 @@ Track failover events in the Uniblock dashboard:
 <Warning>
   **Cost implications** - Backup providers may have different pricing. Monitor which providers are being used to manage costs effectively.
 </Warning>
+
+<UniblockCTA />
