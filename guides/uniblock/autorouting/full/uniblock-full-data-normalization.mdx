@@ -176,13 +176,13 @@ const response = await fetch('https://api.uniblock.dev/uni/v1/token/balances', {
 });
 
 const data = await response.json();
-// Always has: balance, decimals, formattedBalance
-console.log(data.formattedBalance); // Works regardless of provider
+// Always has: balance, decimals, balanceFormatted
+console.log(data.balanceFormatted); // Works regardless of provider
 ```
 
 **Result:** 90% less code, zero provider-specific logic.
 
-{/* ### Scenario 2: Transaction history display
+### Scenario 2: Transaction history display
 
 **Challenge:** Displaying transaction timestamps consistently across different providers.
 
@@ -216,7 +216,7 @@ curl --location \
 }
 ```
 
-**Result:** Consistent timestamp formats, formatted values, and gas prices in both wei and gwei. */}
+**Result:** Consistent timestamp formats, formatted values, and gas prices in both wei and gwei.
 
 ### Scenario 3: NFT marketplace integration
 
@@ -286,7 +286,7 @@ Uniblock ensures consistent data types across all providers:
 ```json
 {
   "balance": "1000000000000000000",
-  "formattedBalance": "1.0",
+  "balanceFormatted": "1.0",
   "decimals": 18
 }
 ```

@@ -16,7 +16,10 @@ Data consensus verifies API response data by querying multiple blockchain provid
 - Verification of financial data (prices, balances)
 - Confidence in high-stakes transactions
 
-<Note>Data consensus is automatically enabled for all Uniblock users.</Note>
+<Note>
+  Data consensus is available on Pro plans and above. [View pricing
+  →](/reference/resources/pricing-plans)
+</Note>
 
 ---
 
@@ -76,7 +79,7 @@ Consensus result: $1.00
 - Confidence in critical operations
 - Protection against provider bugs
 
-{/* ---
+---
 
 ## Real-world examples
 
@@ -212,7 +215,7 @@ How to calculate the final value.
 | -------------------- | -------------------- | ----------------- |
 | **Median** (default) | Middle value         | Most balanced     |
 | **Average**          | Mean of valid values | Smooth variations |
-| **Majority**         | Most common value    | Discrete values   | */}
+| **Majority**         | Most common value    | Discrete values   |
 
 ---
 
@@ -279,20 +282,20 @@ Data consensus adds latency as it queries multiple providers:
     Cross-verify data across multiple sources for guaranteed accuracy.
   </Card>
 
-<Card title='Error detection' icon='triangle-exclamation'>
-  Automatically detect and filter provider errors and anomalies.
-</Card>
+  <Card title='Error detection' icon='triangle-exclamation'>
+    Automatically detect and filter provider errors and anomalies.
+  </Card>
 
-<Card title='Reduced risk' icon='shield-check'>
-  Minimize impact of incorrect data on critical operations.
-</Card>
+  <Card title='Reduced risk' icon='shield-check'>
+    Minimize impact of incorrect data on critical operations.
+  </Card>
 
   <Card title='Confidence' icon='check-double'>
     Make decisions based on verified, consensus-based data.
   </Card>
 </CardGroup>
 
-{/* ---
+---
 
 ## Monitoring
 
@@ -308,9 +311,9 @@ Track data consensus metrics in the [Uniblock dashboard](https://dashboard.unibl
 - Identify unreliable providers
 - Optimize consensus configuration
 - Understand data quality patterns
-- Tune outlier detection sensitivity */}
+- Tune outlier detection sensitivity
 
-{/* ---
+---
 
 ## Best practices
 
@@ -332,7 +335,7 @@ Track data consensus metrics in the [Uniblock dashboard](https://dashboard.unibl
 <Check>
   **Cache consensus results** - Cache verified data to avoid repeated consensus
   queries for the same data.
-</Check> */}
+</Check>
 
 ---
 
@@ -346,13 +349,13 @@ Track data consensus metrics in the [Uniblock dashboard](https://dashboard.unibl
 - **Gas prices** - Affects transaction cost calculations
 - **Financial calculations** - Any data affecting money
 
-{/* ### ❌ Skip data consensus for:
+### ❌ Skip data consensus for:
 
 - **NFT metadata** - Images, descriptions (low risk)
 - **Transaction history** - Historical data (less critical)
 - **Block explorers** - Informational data
 - **Analytics** - Aggregate data where precision is less critical
-- **High-frequency requests** - Latency-sensitive operations */}
+- **High-frequency requests** - Latency-sensitive operations
 
 ---
 
@@ -367,21 +370,21 @@ Track data consensus metrics in the [Uniblock dashboard](https://dashboard.unibl
     Learn how auto-retry works with data consensus.
   </Card>
 
-<Card
-  title='Backup providers'
-  icon='life-ring'
-  href='/guides/uniblock/autorouting/uniblock-backup'
->
-  Configure provider fallback lists for consensus queries.
-</Card>
+  <Card
+    title='Backup providers'
+    icon='life-ring'
+    href='/guides/uniblock/autorouting/uniblock-backup'
+  >
+    Configure provider fallback lists for consensus queries.
+  </Card>
 
-<Card
-  title='Routing optimization'
-  icon='gauge-high'
-  href='/guides/uniblock/autorouting/uniblock-routing-optimization'
->
-  Optimize provider selection for consensus queries.
-</Card>
+  <Card
+    title='Routing optimization'
+    icon='gauge-high'
+    href='/guides/uniblock/autorouting/uniblock-routing-optimization'
+  >
+    Optimize provider selection for consensus queries.
+  </Card>
 
   <Card
     title='Dashboard'
