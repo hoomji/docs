@@ -8,6 +8,8 @@ export const ApiTester = ({
   defaultHeaders = { 'content-type': 'application/json' },
   showEndpoint = true,
   height = 220,
+  useProxy = true,
+  proxyPath = '/_mintlify/api/request',
 }) => {
   const initialBodyString = useMemo(() => {
     if (typeof defaultBody === 'string') return defaultBody;
@@ -76,21 +78,57 @@ export const ApiTester = ({
     }
 
     try {
-      const res = await fetch(endpoint, {
-        method,
-        headers: headersObj,
-        body: method.toUpperCase() === 'GET' ? undefined : bodyToSend,
-      });
+      const isGet = method.toUpperCase() === 'GET';
+      const requestBody = isGet ? undefined : bodyToSend;
 
-      setStatus(res.status);
+      const res = await fetch(
+        useProxy ? proxyPath : endpoint,
+        useProxy
+          ? {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({
+                url: endpoint,
+                method,
+                headers: headersObj,
+                body: requestBody,
+              }),
+            }
+          : {
+              method,
+              headers: headersObj,
+              body: requestBody,
+            },
+      );
 
       const text = await res.text();
-      // Pretty print JSON responses if possible
       const maybeJson = parseJson(text, null);
-      if (maybeJson != null) {
-        setResponseText(JSON.stringify(maybeJson, null, 2));
+
+      if (useProxy && maybeJson && typeof maybeJson === 'object') {
+        const proxyStatus =
+          maybeJson.status ?? maybeJson.statusCode ?? maybeJson.code ?? null;
+        setStatus(proxyStatus ?? res.status);
+
+        const proxyBody =
+          maybeJson.body ?? maybeJson.data ?? maybeJson.response ?? maybeJson;
+        const proxyBodyText =
+          typeof proxyBody === 'string'
+            ? proxyBody
+            : JSON.stringify(proxyBody, null, 2);
+        const proxyJson = parseJson(proxyBodyText, null);
+        setResponseText(
+          proxyJson != null
+            ? JSON.stringify(proxyJson, null, 2)
+            : proxyBodyText,
+        );
       } else {
-        setResponseText(text);
+        setStatus(res.status);
+        // Pretty print JSON responses if possible
+        if (maybeJson != null) {
+          setResponseText(JSON.stringify(maybeJson, null, 2));
+        } else {
+          setResponseText(text);
+        }
       }
     } catch (err) {
       setErrorText(err?.message || 'Request failed.');
