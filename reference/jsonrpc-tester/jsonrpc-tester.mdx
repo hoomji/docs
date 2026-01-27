@@ -59,17 +59,19 @@ curl --request POST \
 
 ### Interactive playground
 
-<ApiTester
-  title='Interactive JSON-RPC Tester'
-  endpoint={endpoint}
-  method='POST'
-  defaultHeaders={{
-    'content-type': 'application/json',
-  }}
-  defaultBody={request}
-  showEndpoint={true}
-  height={220}
-/>
+<Panel>
+  <ApiTester
+    title='Interactive JSON-RPC Tester'
+    endpoint={endpoint}
+    method='POST'
+    defaultHeaders={{
+      'content-type': 'application/json',
+    }}
+    defaultBody={request}
+    showEndpoint={true}
+    height={220}
+  />
+</Panel>
 
 ### Understanding the request
 

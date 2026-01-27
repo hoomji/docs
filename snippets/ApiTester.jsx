@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+const { useMemo, useState } = React;
 
 export const ApiTester = ({
   title = 'Try it',
