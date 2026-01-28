@@ -8213,6 +8213,8 @@
                       "reference/jsonrpc-docs/8217/eth-rpc/eth-syncing",
                       "reference/jsonrpc-docs/8217/eth-rpc/eth-uninstall-filter",
                       "reference/jsonrpc-docs/8217/eth-rpc/eth-unsubscribe",
+                      "reference/jsonrpc-docs/8217/eth-rpc/kaia-get-logs",
+                      "reference/jsonrpc-docs/8217/eth-rpc/klay-get-logs",
                       "reference/jsonrpc-docs/8217/eth-rpc/net-listening",
                       "reference/jsonrpc-docs/8217/eth-rpc/net-peer-count",
                       "reference/jsonrpc-docs/8217/eth-rpc/net-version",
@@ -8293,6 +8295,7 @@
                     "group": "Klay",
                     "expanded": false,
                     "pages": [
+                      "reference/jsonrpc-docs/8217/klay/kaia-get-block-receipts",
                       "reference/jsonrpc-docs/8217/klay/klay-account-created",
                       "reference/jsonrpc-docs/8217/klay/klay-accounts",
                       "reference/jsonrpc-docs/8217/klay/klay-block-number",
@@ -9588,6 +9591,116 @@
                     "expanded": false,
                     "pages": [
                       "reference/jsonrpc-docs/698/pathfinder/pathfinder-unsubscribe"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "item": "MegaETH",
+            "groups": [
+              {
+                "group": "Getting started",
+                "pages": ["reference/jsonrpc-docs/4326/mega-eth-overview"]
+              },
+              {
+                "group": "API Reference",
+                "expanded": false,
+                "pages": [
+                  {
+                    "group": "ETH rpc",
+                    "expanded": false,
+                    "pages": [
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-block-number",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-call",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-call-many",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-chain-id",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-estimate-gas",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-gas-price",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-account",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-balance",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-block-by-hash",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-block-by-number",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-block-transaction-count-by-hash",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-block-transaction-count-by-number",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-code",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-filter-changes",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-filter-logs",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-logs",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-raw-transaction-by-hash",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-storage-at",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-transaction-by-block-hash-and-index",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-transaction-by-block-number-and-index",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-transaction-by-hash",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-transaction-count",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-get-transaction-receipt",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-new-block-filter",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-new-filter",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-send-raw-transaction",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-submit-work",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-subscribe",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-uninstall-filter",
+                      "reference/jsonrpc-docs/4326/eth-rpc/eth-unsubscribe",
+                      "reference/jsonrpc-docs/4326/eth-rpc/net-version",
+                      "reference/jsonrpc-docs/4326/eth-rpc/web3-client-version",
+                      "reference/jsonrpc-docs/4326/eth-rpc/web3-sha3"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "item": "MegaETH Testnet",
+            "groups": [
+              {
+                "group": "Getting started",
+                "pages": [
+                  "reference/jsonrpc-docs/6343/mega-eth-testnet-overview"
+                ]
+              },
+              {
+                "group": "API Reference",
+                "expanded": false,
+                "pages": [
+                  {
+                    "group": "ETH rpc",
+                    "expanded": false,
+                    "pages": [
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-block-number",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-call",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-call-many",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-chain-id",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-estimate-gas",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-gas-price",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-account",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-balance",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-block-by-hash",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-block-by-number",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-block-transaction-count-by-hash",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-block-transaction-count-by-number",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-code",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-filter-changes",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-filter-logs",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-logs",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-raw-transaction-by-hash",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-storage-at",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-transaction-by-block-hash-and-index",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-transaction-by-block-number-and-index",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-transaction-by-hash",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-transaction-count",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-get-transaction-receipt",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-new-block-filter",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-new-filter",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-send-raw-transaction",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-submit-work",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-subscribe",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-uninstall-filter",
+                      "reference/jsonrpc-docs/6343/eth-rpc/eth-unsubscribe",
+                      "reference/jsonrpc-docs/6343/eth-rpc/net-version",
+                      "reference/jsonrpc-docs/6343/eth-rpc/web3-client-version",
+                      "reference/jsonrpc-docs/6343/eth-rpc/web3-sha3"
                     ]
                   }
                 ]
