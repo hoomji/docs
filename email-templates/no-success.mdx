@@ -1,0 +1,61 @@
+---
+title: No success email
+description: Debug email sent 24-48h after project creation when user has 0 successful requests
+---
+
+# No Success After 24h Email
+
+**Trigger:** 24–48h after project creation  
+**Criteria:** 0 successful requests  
+**Audience:** Project owners/admins  
+**Goal:** Debug + unblock first success
+
+## Email Template
+
+**Subject:** Let's get your first successful request
+
+---
+
+Hi {{first_name}},
+
+You've created a project, but we haven't seen a successful request yet. Let's fix that.
+
+### Common issues
+
+Most setup issues come down to one of these:
+
+- **Authentication errors** — API key not included or formatted incorrectly
+- **Wrong endpoint or chain** — Double-check you're using the right network
+- **Missing headers** — Make sure `Content-Type: application/json` is set
+
+### Quick checklist
+
+Before making your next request, verify:
+
+- ✓ API key is added to the request header
+- ✓ You're targeting the correct blockchain network
+- ✓ Request format matches our examples
+
+### Try this example
+
+Here's a working request you can copy and paste:
+
+```bash
+curl --request GET \
+  --url https://api.unblock.com/v1/chains \
+  --header 'Authorization: Bearer YOUR_API_KEY'
+```
+
+Replace `YOUR_API_KEY` with your actual key from the [dashboard](https://dashboard.unblock.com).
+
+### Still stuck?
+
+Reply to this email with details about what you're trying to do, and we'll help you debug it.
+
+You can also check our [common fixes guide](https://docs.unblock.com/guides/uniblock/unified-api-quickstart) or explore the [API reference](https://docs.unblock.com/reference/unified-api-reference-overview).
+
+[Send your first request →](https://dashboard.unblock.com)
+
+---
+
+The Unblock team
