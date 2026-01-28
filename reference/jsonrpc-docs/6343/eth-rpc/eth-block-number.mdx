@@ -1,12 +1,10 @@
 ---
 title: 'eth_blockNumber'
 description: 'Returns the number of most recent block.'
-api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
-playground: 'interactive' 
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' default='1' required>
+  <ParamField query='chainId' type='string' default='6343' required>
     Unique identifier for a blockchain network.
   </ParamField>
   <ParamField body='id' type='number' default={1} required>
@@ -31,7 +29,7 @@ This method does not require any parameters.
 
 ```bash Curl
 curl --request POST \
-  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1 \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=6343 \
   --header 'content-type: application/json' \
   --data '{
     "id": 1,

@@ -1,12 +1,10 @@
 ---
-title: 'eth_blockNumber'
-description: 'Returns the number of most recent block.'
-api: 'POST https://api.uniblock.dev/uni/v1/json-rpc'
-playground: 'interactive' 
+title: 'eth_callMany'
+description: ''
 ---
 ### Parameters
 
-  <ParamField query='chainId' type='string' default='1' required>
+  <ParamField query='chainId' type='string' default='6343' required>
     Unique identifier for a blockchain network.
   </ParamField>
   <ParamField body='id' type='number' default={1} required>
@@ -15,7 +13,7 @@ playground: 'interactive'
   <ParamField body='jsonrpc' type='string' default='2.0' required>
     JSON-RPC version.
   </ParamField>
-  <ParamField body='method' type='string' default='eth_blockNumber' required>
+  <ParamField body='method' type='string' default='eth_callMany' required>
     JSON-RPC method name.
   </ParamField>
 
@@ -23,20 +21,20 @@ This method does not require any parameters.
 
 ### Returns
 
-<ResponseField name='result' type='string'>
-  The block number as a hex string. Example: <code>"0x4b7"</code>.
+<ResponseField name='result' type='object'>
+  The JSON-RPC result.
 </ResponseField>
 
 <RequestExample>
 
 ```bash Curl
 curl --request POST \
-  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=1 \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=6343 \
   --header 'content-type: application/json' \
   --data '{
     "id": 1,
     "jsonrpc": "2.0",
-    "method": "eth_blockNumber",
+    "method": "eth_callMany",
     "params": []
   }'
 ```
@@ -48,7 +46,7 @@ curl --request POST \
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": "0x4b7"
+  "result": null
 }
 ```
 
