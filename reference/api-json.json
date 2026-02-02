@@ -2317,8 +2317,8 @@
             "in": "query",
             "description": "UNIX Timestamp (eg 1700000000)",
             "schema": {
-              "default": 1768846613,
-              "example": 1769624213,
+              "default": 1768848548,
+              "example": 1769626148,
               "type": "number"
             }
           },
@@ -2328,8 +2328,8 @@
             "in": "query",
             "description": "UNIX Timestamp (eg 1706000000)",
             "schema": {
-              "default": 1769883413,
-              "example": 1769883413,
+              "default": 1769885348,
+              "example": 1769885348,
               "type": "number"
             }
           },
@@ -20120,12 +20120,6 @@
       }
     }
   },
-  "security": [
-    {},
-    {
-      "ApiKeyAuth": []
-    }
-  ],
   "x-readme": {
     "samples-languages": [
       "javascript",
