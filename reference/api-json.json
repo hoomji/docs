@@ -4,7 +4,7 @@
     "/token/metadata": {
       "get": {
         "operationId": "TokenMetadata",
-        "summary": "",
+        "summary": "Get Token Metadata",
         "description": "Get the metadata of an ERC20 Token.",
         "parameters": [
           {
@@ -276,7 +276,7 @@
     "/token/portfolio": {
       "get": {
         "operationId": "TokenPortfolio",
-        "summary": "",
+        "summary": "Get Address Portfolio",
         "description": "Get the portfolio of an address.",
         "parameters": [
           {
@@ -493,7 +493,7 @@
     "/token/balance": {
       "get": {
         "operationId": "WalletTokenBalance",
-        "summary": "",
+        "summary": "Get Address Token Balances",
         "description": "Get the native and fungible token balances of an address.",
         "parameters": [
           {
@@ -747,7 +747,7 @@
     "/token/balance/historical": {
       "get": {
         "operationId": "WalletTokenHistoricalBalance",
-        "summary": "",
+        "summary": "Get Address Token Balance History",
         "description": "Get the historical token balances of an address.",
         "parameters": [
           {
@@ -902,7 +902,7 @@
     "/token/price": {
       "get": {
         "operationId": "TokenPrice",
-        "summary": "",
+        "summary": "Get Token USD Price",
         "description": "Get the USD price of a token.",
         "parameters": [
           {
@@ -1132,7 +1132,7 @@
     "/token/price/historical": {
       "get": {
         "operationId": "TokenHistoricalPrice",
-        "summary": "",
+        "summary": "Get Token USD Price History",
         "description": "Get the historical USD price of a token.",
         "parameters": [
           {
@@ -1382,7 +1382,7 @@
     "/token/transfers": {
       "get": {
         "operationId": "WalletTokenTransfers",
-        "summary": "",
+        "summary": "Get Address Token Transfers",
         "description": "Get the token transfers of an address.",
         "parameters": [
           {
@@ -1625,7 +1625,7 @@
     "/token/allowances": {
       "get": {
         "operationId": "WalletTokenAllowances",
-        "summary": "",
+        "summary": "Get Address Allowances",
         "description": "Get the allowances of an address.",
         "parameters": [
           {
@@ -1754,7 +1754,7 @@
     "/token/activity": {
       "get": {
         "operationId": "WalletTokenActivity",
-        "summary": "",
+        "summary": "Get Wallet Last Active",
         "description": "Retrieve the last active timestamp for a wallet across each of 100+ chains.",
         "parameters": [
           {
@@ -1822,7 +1822,7 @@
     "/market-data/price": {
       "get": {
         "operationId": "MarketDataPrice",
-        "summary": "",
+        "summary": "Get Token Price",
         "description": "Gets the price of a token.",
         "parameters": [
           {
@@ -1930,7 +1930,7 @@
     "/market-data/market-cap": {
       "get": {
         "operationId": "MarketDataMarketCap",
-        "summary": "",
+        "summary": "Get Token Market Cap",
         "description": "Gets the market cap of a token.",
         "parameters": [
           {
@@ -2039,7 +2039,7 @@
     "/market-data/24-hour-volume": {
       "get": {
         "operationId": "MarketData24HourVolume",
-        "summary": "",
+        "summary": "Get Token 24 Hour Volume",
         "description": "Gets the 24 hour volume of a token.",
         "parameters": [
           {
@@ -2148,7 +2148,7 @@
     "/market-data/history": {
       "get": {
         "operationId": "MarketDataTokenHistorySnapshot",
-        "summary": "",
+        "summary": "Get Token History Snapshot",
         "description": "Gets the price, volume, market cap of a token at a given date.",
         "parameters": [
           {
@@ -2178,8 +2178,8 @@
             "in": "query",
             "description": "Date in dd-mm-yyyy. Information will be from 12am UTC of that date",
             "schema": {
-              "default": "30-1-2026",
-              "example": "30-1-2026",
+              "default": "2-2-2026",
+              "example": "2-2-2026",
               "type": "string"
             }
           },
@@ -2276,7 +2276,7 @@
     "/market-data/chart-range": {
       "get": {
         "operationId": "MarketDataMarketChartRange",
-        "summary": "",
+        "summary": "Get Token Market Chart",
         "description": "Gets the price, volume, market cap of a token at a given range on a predefined granularity.",
         "parameters": [
           {
@@ -2317,8 +2317,8 @@
             "in": "query",
             "description": "UNIX Timestamp (eg 1700000000)",
             "schema": {
-              "default": 1768848548,
-              "example": 1769626148,
+              "default": 1769106766,
+              "example": 1769884366,
               "type": "number"
             }
           },
@@ -2328,8 +2328,8 @@
             "in": "query",
             "description": "UNIX Timestamp (eg 1706000000)",
             "schema": {
-              "default": 1769885348,
-              "example": 1769885348,
+              "default": 1770143566,
+              "example": 1770143566,
               "type": "number"
             }
           },
@@ -2397,7 +2397,7 @@
     "/market-data/chart-price-range": {
       "get": {
         "operationId": "MarketDataMarketChartPriceRange",
-        "summary": "",
+        "summary": "Get Token Price Range",
         "description": "Gets the price of a token at a given range in a period.",
         "parameters": [
           {
@@ -2526,7 +2526,7 @@
     "/market-data/trending": {
       "get": {
         "operationId": "MarketDataTrendingTokens",
-        "summary": "",
+        "summary": "Get Trending Tokens",
         "description": "Gets the trending tokens.",
         "parameters": [
           {
@@ -2593,7 +2593,7 @@
     "/nft/balance": {
       "get": {
         "operationId": "WalletNFTBalance",
-        "summary": "",
+        "summary": "Get Wallet NFT Balances",
         "description": "Get the NFT balances of an address.",
         "parameters": [
           {
@@ -2835,7 +2835,7 @@
     "/nft/nft-in-collection": {
       "get": {
         "operationId": "NFTInCollection",
-        "summary": "",
+        "summary": "Get Collection NFTs",
         "description": "Get the NFTs of a collection by contract address.",
         "parameters": [
           {
@@ -3078,7 +3078,7 @@
     "/nft/transfers": {
       "get": {
         "operationId": "NFTTransfersByWallet",
-        "summary": "",
+        "summary": "Get Wallet NFT Transfers",
         "description": "Get the NFT transfers of a wallet.",
         "parameters": [
           {
@@ -3304,7 +3304,7 @@
     "/nft/transfers/nft": {
       "get": {
         "operationId": "NFTTransfersByNft",
-        "summary": "",
+        "summary": "Get NFT Transfers",
         "description": "Get the transfers of a nft.",
         "parameters": [
           {
@@ -3452,7 +3452,7 @@
     "/nft/collection-metadata": {
       "get": {
         "operationId": "NFTCollectionMetadata",
-        "summary": "",
+        "summary": "Get NFT Collection Metadata",
         "description": "Get the metadata of an NFT collection.",
         "parameters": [
           {
@@ -3684,7 +3684,7 @@
     "/nft/collection/traits": {
       "get": {
         "operationId": "NFTCollectionTraits",
-        "summary": "",
+        "summary": "Get Collection Traits",
         "description": "Get the traits of a collection.",
         "parameters": [
           {
@@ -3772,7 +3772,7 @@
     "/nft/collection/rarity": {
       "get": {
         "operationId": "NFTCollectionRarity",
-        "summary": "",
+        "summary": "Get Collection Rarity Summary",
         "description": "Get summary of attribute prevalence for an NFT collection. Commonly used to calculate rarity scores for a collection based on its traits.",
         "parameters": [
           {
@@ -3963,7 +3963,7 @@
     "/nft/collection/trait/attributes": {
       "get": {
         "operationId": "NFTTraitAttributes",
-        "summary": "",
+        "summary": "Get Collection Trait Attributes",
         "description": "Get the attributes of a trait in a collection.",
         "parameters": [
           {
@@ -4062,7 +4062,7 @@
     "/nft/metadata": {
       "get": {
         "operationId": "NFTMetadata",
-        "summary": "",
+        "summary": "Get NFT Metadata",
         "description": "Get the metadata of a specific NFT.",
         "parameters": [
           {
@@ -4303,7 +4303,7 @@
     "/nft/is-airdrop": {
       "get": {
         "operationId": "NFTIsAirdrop",
-        "summary": "",
+        "summary": "Get Token Airdrop Flag",
         "description": "Returns whether a token is marked as an airdrop or not.",
         "parameters": [
           {
@@ -4498,7 +4498,7 @@
     "/nft/floor-price": {
       "get": {
         "operationId": "NFTGetFloorPrice",
-        "summary": "",
+        "summary": "Get Collection Floor Prices",
         "description": "Returns the floor prices of a NFT collection by marketplace.",
         "parameters": [
           {
@@ -4684,7 +4684,7 @@
     "/nft/is-nft-holder": {
       "get": {
         "operationId": "WalletNFTHolder",
-        "summary": "",
+        "summary": "Get Wallet NFT Holder Status",
         "description": "This endpoint checks whether a wallet address holds a specific NFT or if a wallet address holds any NFT from a given collection. \n \n If tokenId is entered, the endpoint will check if the wallet address holds that exact NFT. While if tokenId is omitted, the endpoint will check if the wallet address holds any NFT from the entered collection.",
         "parameters": [
           {
@@ -4920,7 +4920,7 @@
     "/nft/sales": {
       "get": {
         "operationId": "NFTGetSales",
-        "summary": "",
+        "summary": "Get NFT Sales",
         "description": "Gets NFT sales that have happened through on-chain marketplaces.",
         "parameters": [
           {
@@ -5124,7 +5124,7 @@
     "/nft/owned-collections": {
       "get": {
         "operationId": "WalletNFTContracts",
-        "summary": "",
+        "summary": "Get Wallet NFT Collections",
         "description": "Gets all NFT contracts held by an owner address.",
         "parameters": [
           {
@@ -5321,7 +5321,7 @@
     "/nft/owners/nft": {
       "get": {
         "operationId": "NFTOwnersByNft",
-        "summary": "",
+        "summary": "Get NFT Owners",
         "description": "Get owner's wallet address or all owners' wallet addresses of a specific nft. Number of owners can be greater than 1 for ERC-1155 tokens, or 0 if the token is burned.",
         "parameters": [
           {
@@ -5525,7 +5525,7 @@
     "/nft/owners/contract": {
       "get": {
         "operationId": "NFTOwnersByContract",
-        "summary": "",
+        "summary": "Get Contract NFT Owners",
         "description": "Get list of wallet addresses owning one or more of the contract's nfts.",
         "parameters": [],
         "responses": {
@@ -5548,7 +5548,7 @@
     "/transactions": {
       "get": {
         "operationId": "WalletTransactions",
-        "summary": "",
+        "summary": "Get Address Transactions",
         "description": "Get the transactions of an address.",
         "parameters": [
           {
@@ -5687,7 +5687,7 @@
     "/transaction": {
       "get": {
         "operationId": "TransactionByHash",
-        "summary": "",
+        "summary": "Get Transaction by Hash",
         "description": "Get a specific transaction from its hash.",
         "parameters": [
           {
@@ -5896,7 +5896,7 @@
     "/transactions/block": {
       "get": {
         "operationId": "TransactionsBlock",
-        "summary": "",
+        "summary": "Get Block Transactions",
         "description": "Get all transactions from in a block.",
         "parameters": [
           {
@@ -6016,7 +6016,7 @@
     "/transactions/advanced": {
       "get": {
         "operationId": "WalletTransactionsAdvanced",
-        "summary": "",
+        "summary": "Get Address Transaction Details",
         "description": "Get the transactions of an address, including sends, receives, token and NFT transfers, and contract interactions.",
         "parameters": [
           {
@@ -6155,7 +6155,7 @@
     "/scan/native-supply": {
       "get": {
         "operationId": "ScanStatsNativeSupply",
-        "summary": "",
+        "summary": "Get Ether Supply Summary",
         "description": "Current amount of Ether in circulation, ETH2 Staking rewards, EIP1559 burnt fees, and total withdrawn ETH from the beacon chain",
         "parameters": [
           {
@@ -6281,7 +6281,7 @@
     "/scan/native-price": {
       "get": {
         "operationId": "ScanStatsNativePrice",
-        "summary": "",
+        "summary": "Get Native Token Price",
         "description": "Returns the latest price of 1 Native Token.",
         "parameters": [
           {
@@ -6407,7 +6407,7 @@
     "/scan/native-node-size": {
       "get": {
         "operationId": "ScanStatsNativeNodeSize",
-        "summary": "",
+        "summary": "Get Blockchain Size History",
         "description": "Returns the size of the native blockchain, in bytes, over a date range.",
         "parameters": [
           {
@@ -6571,7 +6571,7 @@
     "/scan/native-node-count": {
       "get": {
         "operationId": "ScanStatsNativeNodeCount",
-        "summary": "",
+        "summary": "Get Node Count",
         "description": "Returns the total number of discoverable chain nodes.",
         "parameters": [
           {
@@ -6697,7 +6697,7 @@
     "/scan/estimation-confirmation-time": {
       "get": {
         "operationId": "ScanGasConfirmationTime",
-        "summary": "",
+        "summary": "Get Transaction Confirmation Time",
         "description": "Returns the estimated time, in seconds, for a transaction to be confirmed on the blockchain.",
         "parameters": [
           {
@@ -6834,7 +6834,7 @@
     "/scan/current-gas-estimation": {
       "get": {
         "operationId": "ScanGasPrices",
-        "summary": "",
+        "summary": "Get Gas Price Tiers",
         "description": "Returns the current Safe, Proposed and Fast gas prices.",
         "parameters": [
           {
@@ -6960,7 +6960,7 @@
     "/scan/token-supply": {
       "get": {
         "operationId": "ScanTokensErc20TotalSupply",
-        "summary": "",
+        "summary": "Get ERC-20 Supply",
         "description": "Returns the current amount of ERC-20 token in circulation",
         "parameters": [
           {
@@ -7097,7 +7097,7 @@
     "/scan/token-balance": {
       "get": {
         "operationId": "ScanTokensErc20AddressBalance",
-        "summary": "",
+        "summary": "Get Address ERC-20 Balance",
         "description": "Returns the current balance of ERC-20 token of an address",
         "parameters": [
           {
@@ -7245,7 +7245,7 @@
     "/scan/transaction-execution-status": {
       "get": {
         "operationId": "ScanTransactionExecutionStatus",
-        "summary": "",
+        "summary": "Get Contract Execution Status",
         "description": "Returns the status code of a contract execution.",
         "parameters": [
           {
@@ -7382,7 +7382,7 @@
     "/scan/transaction-receipt-status": {
       "get": {
         "operationId": "ScanTransactionStatusCode",
-        "summary": "",
+        "summary": "Get Transaction Execution Status",
         "description": "Returns the status code of a transaction execution.",
         "parameters": [
           {
@@ -7519,7 +7519,7 @@
     "/scan/block-rewards": {
       "get": {
         "operationId": "ScanBlockRewards",
-        "summary": "",
+        "summary": "Get Block Rewards",
         "description": "Returns the block reward and \"Uncle\" block rewards.",
         "parameters": [
           {
@@ -7656,7 +7656,7 @@
     "/scan/block-get-countdown": {
       "get": {
         "operationId": "ScanBlockCountdown",
-        "summary": "",
+        "summary": "Get Block Mining ETA",
         "description": "Returns the estimated time remaining, in seconds, until a certain block is mined.",
         "parameters": [
           {
@@ -7793,7 +7793,7 @@
     "/scan/block-by-timestamp": {
       "get": {
         "operationId": "ScanBlockByTimestamp",
-        "summary": "",
+        "summary": "Get Block Number by Time",
         "description": "Returns the block number that was mined at a certain timestamp.",
         "parameters": [
           {
@@ -7930,7 +7930,7 @@
     "/scan/account-native-balance-single": {
       "get": {
         "operationId": "ScanAccountNativeBalanceSingle",
-        "summary": "",
+        "summary": "Get Address Ether Balance",
         "description": "Returns the Ether balance of a given address.",
         "parameters": [
           {
@@ -8083,7 +8083,7 @@
     "/scan/account-native-balance-multi": {
       "get": {
         "operationId": "ScanAccountNativeBalanceMulti",
-        "summary": "",
+        "summary": "Get Address Ether Balances",
         "description": "Returns the balance of the accounts from a list of addresses.",
         "parameters": [
           {
@@ -8236,7 +8236,7 @@
     "/scan/account-normal-transactions": {
       "get": {
         "operationId": "ScanAccountNormalTransactions",
-        "summary": "",
+        "summary": "Get Address Transactions",
         "description": "Returns the list of transactions performed by an address, with optional pagination.",
         "parameters": [
           {
@@ -8415,7 +8415,7 @@
     "/scan/account-internal-transactions-by-address": {
       "get": {
         "operationId": "ScanAccountInternalTransactionsAddress",
-        "summary": "",
+        "summary": "Get Address Internal Transactions",
         "description": "Returns the list of internal transactions performed by an address, with optional pagination.",
         "parameters": [
           {
@@ -8602,7 +8602,7 @@
     "/scan/account-internal-transactions-by-hash": {
       "get": {
         "operationId": "ScanAccountInternalTransactionsHash",
-        "summary": "",
+        "summary": "Get Transaction Internal Transactions",
         "description": "Returns the list of internal transactions performed within a transaction.",
         "parameters": [
           {
@@ -8739,7 +8739,7 @@
     "/scan/account-internal-transactions-by-block-range": {
       "get": {
         "operationId": "ScanAccountInternalTransactionBlockRange",
-        "summary": "",
+        "summary": "Get Internal Transactions by Block",
         "description": "Returns the list of internal transactions performed within a block range, with optional pagination.",
         "parameters": [
           {
@@ -8917,7 +8917,7 @@
     "/scan/account-erc20-transactions": {
       "get": {
         "operationId": "ScanAccountErc20TokenTransfer",
-        "summary": "",
+        "summary": "Get Address ERC-20 Transfers",
         "description": "Returns the list of ERC-20 tokens transferred by an address, with optional filtering by token contract.",
         "parameters": [
           {
@@ -9117,7 +9117,7 @@
     "/scan/account-erc721-transactions": {
       "get": {
         "operationId": "ScanAccountErc721TokenTransfer",
-        "summary": "",
+        "summary": "Get Address ERC-721 Transfers",
         "description": "Returns the list of ERC-721 ( NFT ) tokens transferred by an address, with optional filtering by token contract.",
         "parameters": [
           {
@@ -9315,7 +9315,7 @@
     "/scan/account-erc1155-transactions": {
       "get": {
         "operationId": "ScanAccountErc1155TokenTransfer",
-        "summary": "",
+        "summary": "Get Address ERC-1155 Transfers",
         "description": "Returns the list of ERC-1155 ( Multi Token Standard ) tokens transferred by an address, with optional filtering by token contract.",
         "parameters": [
           {
@@ -9513,7 +9513,7 @@
     "/scan/account-erc20-token-holding": {
       "get": {
         "operationId": "ScanAccountErc20TokenHolding",
-        "summary": "",
+        "summary": "Get Address ERC-20 Balance",
         "description": "Retrieves the current ERC-20 token balance for a specified address.",
         "parameters": [
           {
@@ -9668,7 +9668,7 @@
     "/scan/log-address": {
       "get": {
         "operationId": "ScanLogAddress",
-        "summary": "",
+        "summary": "Get Address Event Logs",
         "description": "Returns the event logs from an address, with optional filtering by block range.",
         "parameters": [
           {
@@ -9843,7 +9843,7 @@
     "/scan/log-by-topics": {
       "get": {
         "operationId": "ScanLogTopics",
-        "summary": "",
+        "summary": "Get Event Logs by Block",
         "description": "Returns the events log in a block range, filtered by topics.",
         "parameters": [
           {
@@ -10128,7 +10128,7 @@
     "/scan/log-by-address-filtered-topics": {
       "get": {
         "operationId": "ScanLogAddressByTopic",
-        "summary": "",
+        "summary": "Get Address Event Logs by Topic",
         "description": "Returns the event logs from an address, filtered by topics and block range.",
         "parameters": [
           {
@@ -10375,7 +10375,7 @@
     "/scan/contract-abi": {
       "get": {
         "operationId": "ScanContractAbi",
-        "summary": "",
+        "summary": "Get Contract ABI",
         "description": "Returns the Contract Application Binary Interface ( ABI ) of a verified smart contract.",
         "parameters": [
           {
@@ -10512,7 +10512,7 @@
     "/scan/contract-source-code": {
       "get": {
         "operationId": "ScanContractSourceCode",
-        "summary": "",
+        "summary": "Get Contract Source Code",
         "description": "Returns the Solidity source code of a verified smart contract.",
         "parameters": [
           {
@@ -10649,7 +10649,7 @@
     "/scan/contract-creation": {
       "get": {
         "operationId": "ScanContractCreation",
-        "summary": "",
+        "summary": "Get Contract Creator Info",
         "description": "Returns a contract's deployer address and transaction hash it was created, up to 5 at a time.",
         "parameters": [
           {
@@ -10787,7 +10787,7 @@
     "/scan/contract-verify-source-code": {
       "post": {
         "operationId": "ScanContractVerifyStatus",
-        "summary": "",
+        "summary": "Verify Contract Source",
         "description": "Submits a contract source code to Etherscan for verification.",
         "parameters": [
           {
@@ -10923,7 +10923,7 @@
     "/scan/contract-verify-proxy": {
       "get": {
         "operationId": "ScanContractVerifyProxyContract",
-        "summary": "",
+        "summary": "Verify Proxy Contract Source",
         "description": "Submits a proxy contract source code to Etherscan for verification.",
         "parameters": [
           {
@@ -11060,7 +11060,7 @@
     "/json-rpc": {
       "post": {
         "operationId": "JsonRpc",
-        "summary": "",
+        "summary": "Send JSON-RPC Requests",
         "description": "Stateless, lightweight, remote procedure call (RPC) protocol that is commonly used when interacting with chain.",
         "parameters": [
           {
@@ -11325,7 +11325,7 @@
     "/stellar-http/*path": {
       "get": {
         "operationId": "StellarHttp",
-        "summary": "",
+        "summary": "Get Stellar Info",
         "description": "Get stellar information.",
         "parameters": [],
         "responses": {
@@ -11341,7 +11341,7 @@
     "/ton-http/*path": {
       "get": {
         "operationId": "TonHttpGET",
-        "summary": "",
+        "summary": "Get TON Info",
         "description": "Get ton information.",
         "parameters": [],
         "responses": {
@@ -11355,7 +11355,7 @@
       },
       "post": {
         "operationId": "TonHttpPOST",
-        "summary": "",
+        "summary": "Get TON Info",
         "description": "Get ton information.",
         "parameters": [],
         "responses": {
@@ -11371,7 +11371,7 @@
     "/webhook/{id}": {
       "get": {
         "operationId": "GetWebhook",
-        "summary": "",
+        "summary": "Get Webhook Details",
         "description": "Get a webhook.",
         "parameters": [
           {
@@ -11394,7 +11394,7 @@
       },
       "patch": {
         "operationId": "EditWebhook",
-        "summary": "",
+        "summary": "Update Webhook Details",
         "description": "Edit an existing webhook.",
         "parameters": [
           {
@@ -11429,7 +11429,7 @@
       },
       "delete": {
         "operationId": "DeleteWebhook",
-        "summary": "",
+        "summary": "Delete Webhook by ID",
         "description": "Delete a webhook.",
         "parameters": [
           {
@@ -11454,7 +11454,7 @@
     "/webhook": {
       "get": {
         "operationId": "GetAllWebhooks",
-        "summary": "",
+        "summary": "Get All Webhooks",
         "description": "Get all webhooks.",
         "parameters": [
           {
@@ -11488,7 +11488,7 @@
     "/webhook/contract-event": {
       "post": {
         "operationId": "CreateContractEventWebhook",
-        "summary": "",
+        "summary": "Create Contract Webhook",
         "description": "Create a contract event driven webhook.",
         "parameters": [],
         "requestBody": {
@@ -11514,7 +11514,7 @@
     "/webhook/address-activity": {
       "post": {
         "operationId": "CreateAddressActivityWebhook",
-        "summary": "",
+        "summary": "Create Address Webhook",
         "description": "Create an address activity driven webhook.",
         "parameters": [],
         "requestBody": {
@@ -11540,7 +11540,7 @@
     "/webhook/solana-address-activity": {
       "post": {
         "operationId": "CreateSolanaAddressActivityWebhook",
-        "summary": "",
+        "summary": "Create Solana Address Webhook",
         "description": "Create an address activity driven webhook.",
         "parameters": [],
         "requestBody": {
@@ -11566,7 +11566,7 @@
     "/webhook/simplehash": {
       "post": {
         "operationId": "CreateSimpleHashWebhook",
-        "summary": "",
+        "summary": "Create SimpleHash Webhook",
         "description": "Create SimpleHash webhook.",
         "parameters": [],
         "requestBody": {
@@ -11592,7 +11592,7 @@
     "/docs/llm-guide": {
       "get": {
         "operationId": "DocumentationController_getLlmGuide",
-        "summary": "Get LLM documentation guide",
+        "summary": "Get LLM Documentation Guide",
         "description": "Returns the compact LLM documentation guide as plain text for AI assistants and developers",
         "parameters": [],
         "responses": {
@@ -11635,7 +11635,7 @@
         "type": "apiKey",
         "in": "header",
         "name": "X-API-KEY",
-        "description": "API key to access the API (Optional)"
+        "description": "API key to access the API (optional)"
       }
     },
     "schemas": {
@@ -20120,6 +20120,12 @@
       }
     }
   },
+  "security": [
+    {},
+    {
+      "ApiKeyAuth": []
+    }
+  ],
   "x-readme": {
     "samples-languages": [
       "javascript",
