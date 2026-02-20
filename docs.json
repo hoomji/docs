@@ -15,11 +15,12 @@
     "tabs": [
       {
         "tab": "API Reference",
-
         "groups": [
           {
             "group": "Introduction",
-            "pages": ["reference/unified-api-reference-overview"]
+            "pages": [
+              "reference/unified-api-reference-overview"
+            ]
           },
           {
             "group": "Resources",
@@ -32,6 +33,12 @@
                   "reference/resources/chains/supported-chains",
                   "reference/resources/chains/supported-market-data-chains",
                   "reference/resources/chains/supported-json-rpc-chains"
+                ]
+              },
+              {
+                "group": "Trust & Brand",
+                "pages": [
+                  "official-domains"
                 ]
               }
             ]
@@ -235,7 +242,9 @@
           },
           {
             "group": "JSON-RPC Tester",
-            "pages": ["reference/jsonrpc-tester/jsonrpc-tester"]
+            "pages": [
+              "reference/jsonrpc-tester/jsonrpc-tester"
+            ]
           }
         ]
       },
@@ -247,7 +256,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/2741/abstract-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/2741/abstract-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -436,7 +447,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/36900/adi-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/36900/adi-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -495,7 +508,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/69000/anime-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/69000/anime-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -575,7 +590,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/6900/anime-sepolia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/6900/anime-sepolia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -655,7 +672,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/33139/ape-chain-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/33139/ape-chain-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -815,7 +834,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/42161/arbitrum-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/42161/arbitrum-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -961,7 +982,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/42170/arbitrum-nova-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/42170/arbitrum-nova-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -1219,7 +1242,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1313161554/aurora-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1313161554/aurora-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -1686,7 +1711,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/223/b2-network-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/223/b2-network-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -1804,7 +1831,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/5165/bahamut-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/5165/bahamut-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -1930,7 +1959,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/8453/base-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/8453/base-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -2115,7 +2146,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/84532/base-sepolia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/84532/base-sepolia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -2279,7 +2312,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/80094/berachain-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/80094/berachain-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -2409,7 +2444,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/bitcoin/bitcoin-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/bitcoin/bitcoin-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -2687,7 +2724,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/200901/bitlayer-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/200901/bitlayer-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -2805,7 +2844,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/81457/blast-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/81457/blast-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -3033,7 +3074,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/23888/blast-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/23888/blast-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -3150,7 +3193,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/56/bnb-smart-chain-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/56/bnb-smart-chain-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -3441,12 +3486,16 @@
                   {
                     "group": "Kaia",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/97/kaia/kaia-unsubscribe"]
+                    "pages": [
+                      "reference/jsonrpc-docs/97/kaia/kaia-unsubscribe"
+                    ]
                   },
                   {
                     "group": "Klay",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/97/klay/klay-unsubscribe"]
+                    "pages": [
+                      "reference/jsonrpc-docs/97/klay/klay-unsubscribe"
+                    ]
                   },
                   {
                     "group": "Pathfinder",
@@ -3479,7 +3528,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/60808/bob-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/60808/bob-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -3562,7 +3613,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/808813/bob-sepolia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/808813/bob-sepolia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -3646,7 +3699,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/288/boba-network-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/288/boba-network-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -3728,7 +3783,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/28882/boba-sepolia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/28882/boba-sepolia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -3810,7 +3867,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/3637/botanix-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/3637/botanix-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -4044,7 +4103,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/42220/celo-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/42220/celo-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -4451,7 +4512,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/5115/citrea-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/5115/citrea-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -4516,7 +4579,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1116/core-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1116/core-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -4577,7 +4642,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/21000000/corn-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/21000000/corn-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -4696,7 +4763,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/25/cronos-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/25/cronos-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -4794,7 +4863,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/4158/cross-fi-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/4158/cross-fi-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -4939,7 +5010,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/666666666/degen-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/666666666/degen-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -5022,7 +5095,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/52014/electroneum-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/52014/electroneum-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -5135,7 +5210,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1/ethereum-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1/ethereum-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -5334,7 +5411,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/61/ethereum-classic-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/61/ethereum-classic-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -5696,7 +5775,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/42793/etherlink-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/42793/etherlink-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -5746,7 +5827,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/250/fantom-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/250/fantom-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -5891,7 +5974,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/314/filecoin-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/314/filecoin-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -5921,7 +6006,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/14/flare-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/14/flare-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -6014,12 +6101,16 @@
                   {
                     "group": "Kaia",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/14/kaia/kaia-unsubscribe"]
+                    "pages": [
+                      "reference/jsonrpc-docs/14/kaia/kaia-unsubscribe"
+                    ]
                   },
                   {
                     "group": "Klay",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/14/klay/klay-unsubscribe"]
+                    "pages": [
+                      "reference/jsonrpc-docs/14/klay/klay-unsubscribe"
+                    ]
                   },
                   {
                     "group": "Pathfinder",
@@ -6037,7 +6128,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/747/flow-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/747/flow-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -6110,7 +6203,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/545/flow-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/545/flow-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -6183,7 +6278,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/252/fraxtal-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/252/fraxtal-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -6253,7 +6350,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/122/fuse-mainnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/122/fuse-mainnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -6438,7 +6537,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/100/gnosis-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/100/gnosis-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -6739,7 +6840,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/2345/goat-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/2345/goat-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -6859,7 +6962,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1625/gravity-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1625/gravity-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -6978,7 +7083,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/11235/haqq-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/11235/haqq-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -7041,7 +7148,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/54211/haqq-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/54211/haqq-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -7104,7 +7213,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1666600000/harmony-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1666600000/harmony-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -7174,7 +7285,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/7332/horizen-eon-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/7332/horizen-eon-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -7248,7 +7361,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/6985385/humanity-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/6985385/humanity-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -7331,7 +7446,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/999/hyperliquid-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/999/hyperliquid-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -7446,7 +7563,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/57073/ink-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/57073/ink-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -7528,7 +7647,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/763373/ink-sepolia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/763373/ink-sepolia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -7610,7 +7731,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/8822/iota-evm-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/8822/iota-evm-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -7692,7 +7815,9 @@
                   {
                     "group": "Trace",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/8822/trace/trace-block"]
+                    "pages": [
+                      "reference/jsonrpc-docs/8822/trace/trace-block"
+                    ]
                   }
                 ]
               }
@@ -7703,7 +7828,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/4689/io-te-x-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/4689/io-te-x-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -7748,7 +7875,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1001/kaia-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1001/kaia-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -7989,7 +8118,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/2222/kava-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/2222/kava-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -8130,7 +8261,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/8217/klatyn-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/8217/klatyn-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -8376,7 +8509,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/321/ku-coin-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/321/ku-coin-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -8439,7 +8574,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/322/ku-coin-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/322/ku-coin-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -8502,7 +8639,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/232/lens-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/232/lens-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -8593,7 +8732,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/37111/lens-sepolia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/37111/lens-sepolia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -8684,7 +8825,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/59144/linea-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/59144/linea-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -8812,7 +8955,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/59141/linea-sepolia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/59141/linea-sepolia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -8892,7 +9037,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1135/lisk-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1135/lisk-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -8956,7 +9103,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/4202/lisk-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/4202/lisk-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -9019,7 +9168,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/994873017/lumia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/994873017/lumia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -9260,7 +9411,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/5000/mantle-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/5000/mantle-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -9399,7 +9552,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/5003/mantle-sepolia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/5003/mantle-sepolia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -9527,7 +9682,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/698/matchain-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/698/matchain-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -9603,7 +9760,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/4326/mega-eth-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/4326/mega-eth-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -9713,7 +9872,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1088/metis-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1088/metis-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -9832,7 +9993,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/34443/mode-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/34443/mode-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -9915,7 +10078,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/919/mode-sepolia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/919/mode-sepolia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -9999,7 +10164,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/143/monad-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/143/monad-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -10064,7 +10231,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/10143/monad-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/10143/monad-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -10143,7 +10312,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1284/moonbeam-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1284/moonbeam-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -10254,7 +10425,9 @@
                   {
                     "group": "Trace",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/1284/trace/trace-filter"]
+                    "pages": [
+                      "reference/jsonrpc-docs/1284/trace/trace-filter"
+                    ]
                   }
                 ]
               }
@@ -10265,7 +10438,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/2818/morph-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/2818/morph-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -10491,7 +10666,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/397/near-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/397/near-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -10500,7 +10677,9 @@
                   {
                     "group": "ETH rpc",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/397/eth-rpc/eth-accounts"]
+                    "pages": [
+                      "reference/jsonrpc-docs/397/eth-rpc/eth-accounts"
+                    ]
                   },
                   {
                     "group": "Near",
@@ -10541,7 +10720,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/398/near-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/398/near-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -10550,7 +10731,9 @@
                   {
                     "group": "ETH rpc",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/398/eth-rpc/eth-accounts"]
+                    "pages": [
+                      "reference/jsonrpc-docs/398/eth-rpc/eth-accounts"
+                    ]
                   },
                   {
                     "group": "Near",
@@ -10590,7 +10773,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/42262/oasis-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/42262/oasis-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -10681,7 +10866,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/42261/oasis-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/42261/oasis-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -10772,7 +10959,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/10/optimism-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/10/optimism-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -11285,7 +11474,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/11297108109/palm-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/11297108109/palm-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -11413,7 +11604,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/7070/planq-mainnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/7070/planq-mainnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -11501,7 +11694,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/9745/plasma-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/9745/plasma-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -11589,7 +11784,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/9746/plasma-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/9746/plasma-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -11677,7 +11874,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/98866/plume-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/98866/plume-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -11785,7 +11984,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/polkadot/polkadot-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/polkadot/polkadot-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -11867,7 +12068,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/137/polygon-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/137/polygon-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -12079,7 +12282,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/80002/polygon-amoy-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/80002/polygon-amoy-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -12243,7 +12448,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1101/polygon-zk-evm-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1101/polygon-zk-evm-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -12494,7 +12701,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/369/pulse-chain-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/369/pulse-chain-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -12752,7 +12961,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/570/rollux-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/570/rollux-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -12864,7 +13075,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/2020/ronin-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/2020/ronin-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -12951,7 +13164,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/2021/ronin-saigon-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/2021/ronin-saigon-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -13028,7 +13243,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/30/rootstock-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/30/rootstock-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -13112,7 +13329,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/31/rootstock-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/31/rootstock-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -13184,7 +13403,9 @@
                   {
                     "group": "Trace",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/31/trace/trace-get"]
+                    "pages": [
+                      "reference/jsonrpc-docs/31/trace/trace-get"
+                    ]
                   }
                 ]
               }
@@ -13195,7 +13416,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/534352/scroll-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/534352/scroll-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -13539,7 +13762,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1328/sei-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1328/sei-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -13606,7 +13831,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/5371/settlus-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/5371/settlus-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -13776,7 +14003,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/360/shape-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/360/shape-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -13858,7 +14087,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/11011/shape-sepolia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/11011/shape-sepolia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -13940,7 +14171,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/solana/solana-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/solana/solana-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -13949,7 +14182,9 @@
                   {
                     "group": "Bitcoin",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/solana/bitcoin/ping"]
+                    "pages": [
+                      "reference/jsonrpc-docs/solana/bitcoin/ping"
+                    ]
                   },
                   {
                     "group": "Dags",
@@ -14191,7 +14426,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/5031/somnia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/5031/somnia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -14253,7 +14490,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1868/soneium-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1868/soneium-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -14335,7 +14574,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1946/soneium-minato-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1946/soneium-minato-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -14554,7 +14795,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/146/sonic-mainnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/146/sonic-mainnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -14696,7 +14939,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/14601/sonic-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/14601/sonic-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -14824,7 +15069,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/starknet/stark-net-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/starknet/stark-net-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -15021,7 +15268,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1514/story-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1514/story-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -15150,7 +15399,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1315/story-aeneid-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1315/story-aeneid-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -15278,7 +15529,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/sui/sui-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/sui/sui-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -15369,7 +15622,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/5330/superseed-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/5330/superseed-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -15535,7 +15790,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1923/swellchain-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1923/swellchain-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -15777,7 +16034,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/510/syndicate-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/510/syndicate-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -15860,7 +16119,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/57/syscoin-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/57/syscoin-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -15953,12 +16214,16 @@
                   {
                     "group": "Kaia",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/57/kaia/kaia-unsubscribe"]
+                    "pages": [
+                      "reference/jsonrpc-docs/57/kaia/kaia-unsubscribe"
+                    ]
                   },
                   {
                     "group": "Klay",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/57/klay/klay-unsubscribe"]
+                    "pages": [
+                      "reference/jsonrpc-docs/57/klay/klay-unsubscribe"
+                    ]
                   },
                   {
                     "group": "Pathfinder",
@@ -15976,7 +16241,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/239/tac-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/239/tac-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -16184,7 +16451,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/10218/tea-sepolia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/10218/tea-sepolia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -16268,7 +16537,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/40/telos-evm-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/40/telos-evm-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -16405,7 +16676,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/1559/tenet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/1559/tenet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -16498,7 +16771,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/tron/tron-protocol-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/tron/tron-protocol-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -16579,7 +16854,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/130/unichain-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/130/unichain-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -16754,7 +17031,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/480/world-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/480/world-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -16920,7 +17199,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/4801/world-sepolia-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/4801/world-sepolia-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -17001,7 +17282,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/196/x-layer-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/196/x-layer-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -17126,7 +17409,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/660279/xai-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/660279/xai-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -17245,7 +17530,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/50/xinfin-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/50/xinfin-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -17308,7 +17595,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/51/xinfin-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/51/xinfin-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -17378,7 +17667,9 @@
                   {
                     "group": "Kaia",
                     "expanded": false,
-                    "pages": ["reference/jsonrpc-docs/51/kaia/kaia-unsubscribe"]
+                    "pages": [
+                      "reference/jsonrpc-docs/51/kaia/kaia-unsubscribe"
+                    ]
                   }
                 ]
               }
@@ -17474,7 +17765,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/16661/zero-gravity-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/16661/zero-gravity-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -17559,7 +17852,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/7000/zeta-chain-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/7000/zeta-chain-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -17705,7 +18000,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/32769/zilliqa-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/32769/zilliqa-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -17833,7 +18130,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/324/z-ksync-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/324/z-ksync-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -17935,7 +18234,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/300/zk-sync-testnet-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/300/zk-sync-testnet-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -18030,7 +18331,9 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["reference/jsonrpc-docs/7777777/zora-overview"]
+                "pages": [
+                  "reference/jsonrpc-docs/7777777/zora-overview"
+                ]
               },
               {
                 "group": "API Reference",
@@ -18212,11 +18515,15 @@
         "groups": [
           {
             "group": "🏁 Welcome",
-            "pages": ["guides/welcome/welcome-to-uniblock"]
+            "pages": [
+              "guides/welcome/welcome-to-uniblock"
+            ]
           },
           {
             "group": "🚀 Getting Started",
-            "pages": ["guides/getting-started/uniblock-quickstart-guide"]
+            "pages": [
+              "guides/getting-started/uniblock-quickstart-guide"
+            ]
           },
           {
             "group": "🌐 Uniblock",
