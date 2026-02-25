@@ -1,0 +1,27 @@
+---
+title: 'Ripple Overview'
+---
+
+Ripple RPC
+
+Use Uniblock's JSON-RPC endpoint to access Ripple with low-latency routing and a single API surface across providers.
+
+## What is Ripple?
+Ripple is a non-EVM mainnet.
+
+## What is the Ripple JSON-RPC API?
+The JSON-RPC API is the standard interface for reading chain state, sending transactions, and interacting with smart contracts where supported.
+
+## Making API requests
+Send a POST request to `https://api.uniblock.dev/uni/v1/json-rpc?chainId=ripple`. Include the JSON-RPC method and params in the request body.
+
+## Supported networks
+| Network | Type | Chain ID |
+| --- | --- | --- |
+| Ripple | Mainnet | `ripple` |
+
+## API reference
+Browse the available method groups for this chain:
+- [Bitcoin](/reference/jsonrpc-docs/ripple/bitcoin/ping)
+- [Ripple](/reference/jsonrpc-docs/ripple/ripple/account-channels)
+- [Tendermint](/reference/jsonrpc-docs/ripple/tendermint/subscribe)

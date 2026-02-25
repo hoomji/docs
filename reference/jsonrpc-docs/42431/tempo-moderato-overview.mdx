@@ -1,0 +1,28 @@
+---
+title: 'Tempo Moderato Overview'
+---
+
+Tempo Moderato RPC
+
+Use Uniblock's JSON-RPC endpoint to access Tempo Moderato with low-latency routing and a single API surface across providers.
+
+## What is Tempo Moderato?
+Tempo Moderato is an EVM-compatible testnet.
+
+## What is the Tempo Moderato JSON-RPC API?
+The JSON-RPC API is the standard interface for reading chain state, sending transactions, and interacting with smart contracts where supported.
+
+## Making API requests
+Send a POST request to `https://api.uniblock.dev/uni/v1/json-rpc?chainId=42431`. Include the JSON-RPC method and params in the request body.
+
+## Supported networks
+| Network | Type | Chain ID |
+| --- | --- | --- |
+| Tempo Moderato | Testnet | `42431` |
+
+## API reference
+Browse the available method groups for this chain:
+- [Debug](/reference/jsonrpc-docs/42431/debug/debug-account-range)
+- [Erigon](/reference/jsonrpc-docs/42431/erigon/erigon-get-header-by-number)
+- [ETH rpc](/reference/jsonrpc-docs/42431/eth-rpc/eth-accounts)
+- [Trace](/reference/jsonrpc-docs/42431/trace/trace-block)

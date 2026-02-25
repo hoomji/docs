@@ -1,0 +1,79 @@
+---
+title: 'tx'
+description: 'Get transactions by hash.'
+---
+### Parameters
+
+  <ParamField query='chainId' type='string' default='ripple' required>
+    Unique identifier for a blockchain network.
+  </ParamField>
+  <ParamField body='id' type='number' default={1} required>
+    Request identifier used to match responses.
+  </ParamField>
+  <ParamField body='jsonrpc' type='string' default='2.0' required>
+    JSON-RPC version.
+  </ParamField>
+  <ParamField body='method' type='string' default='tx' required>
+    JSON-RPC method name.
+  </ParamField>
+
+<ParamField body='params' type='object' default={["0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED",true]} placeholder='["0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED",true]' required>
+  The parameters for method tx: [transactionHash, prove].
+  
+  Positional parameters for <code>tx</code>:
+  <ul>
+  <li><code>params[0]</code>: 32 Bytes - Hash of the transaction.</li>
+  <li><code>params[1]</code>: To include proofs into the response.</li>
+  </ul>
+</ParamField>
+
+### Returns
+
+<ResponseField name='result' type='object'>
+  The transactions with or without proof information.
+</ResponseField>
+
+<RequestExample>
+
+```bash Curl
+curl --request POST \
+  --url https://api.uniblock.dev/uni/v1/json-rpc?chainId=ripple \
+  --header 'content-type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "tx",
+    "params": [
+      "0xD70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED",
+      true
+    ]
+  }'
+```
+
+</RequestExample>
+<ResponseExample>
+
+```json Success
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "hash": "D70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED",
+    "height": "1000",
+    "index": 0,
+    "tx_result": {
+      "log": "[{\"msg_index\":\"0\",\"success\":true,\"log\":\"\"}]",
+      "gas_wanted": "200000",
+      "gas_used": "28596",
+      "tags": [
+        {
+          "__truncated": true
+        }
+      ]
+    },
+    "tx": "5wHwYl3uCkaoo2GaChQmSIu8hxpJxLcCuIi8fiHN4TMwrRIU/Af1cEG7Rcs/6LjTl7YjRSymJfYaFAoFdWF0b20SCzE0OTk5OTk1MDAwEhMKDQoFdWF0b20S..."
+  }
+}
+```
+
+</ResponseExample>
