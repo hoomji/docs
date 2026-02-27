@@ -175,7 +175,8 @@
                   "reference/unified-api/overview-jsonrpc",
                   "POST /json-rpc"
                 ]
-              }
+              },
+              "reference/unified-api/websockets"
             ]
           },
           {

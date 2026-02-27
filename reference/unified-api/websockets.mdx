@@ -1,0 +1,68 @@
+---
+title: 'Websockets (Beta)'
+description: 'Stream live blockchain data with minimal latency using Helius and Alchemy providers.'
+---
+
+Welcome to the real-time side of Uniblock! Our Websocket integration is currently in Beta, allowing you to stream live blockchain data with minimal latency. We currently support Helius and Alchemy as providers.
+
+## The workflow
+
+To ensure a stable and secure connection, we use a two-step handshake process. This allows our workers to pre-validate your credentials and parameters before maintaining a long-lived stateful connection.
+
+<Tip>
+  Try it out on Postman first.
+</Tip>
+
+1. **Validate**: Call the HTTPS `/validate` endpoint. This acts as a "pre-flight" check to ensure your request isn't missing any required headers or parameters.
+2. **Connect**: Once validated, open a connection to the WSS endpoint. Note: You must use the exact same headers and `chainId` query parameter used in the validation step.
+3. **Message**: Send your JSON-RPC subscription message to start receiving data.
+
+## Provider details
+
+### Helius
+
+Focused on Solana ecosystem performance.
+
+**Chains**: `solana`, `solana-devnet`
+
+#### Enhanced (Parsed Data)
+
+- **Validate Endpoint**: `https://lively-dust-7404.lively-fog-f2d9.workers.dev/helius-enhanced/validate?chainId=${chainId}`
+- **WSS Endpoint**: `wss://lively-dust-7404.lively-fog-f2d9.workers.dev/helius-enhanced?chainId=${chainId}`
+
+#### Standard (RPC)
+
+- **Validate Endpoint**: `https://lively-dust-7404.lively-fog-f2d9.workers.dev/helius-standard/validate?chainId=${chainId}`
+- **WSS Endpoint**: `wss://lively-dust-7404.lively-fog-f2d9.workers.dev/helius-standard?chainId=${chainId}`
+
+**Resources**: [Enhanced Docs](https://docs.helius.dev/webhooks-and-websockets/websockets) | [Retry Policy](https://docs.helius.dev/webhooks-and-websockets/websockets/retry-policy)
+
+### Alchemy
+
+Broad multi-chain support (100+ networks including ETH, Base, Polygon).
+
+**Chains**: `1`, `10`, `137`, `8453`, `42161`, etc.
+
+- **Validate Endpoint**: `https://lively-dust-7404.lively-fog-f2d9.workers.dev/alchemy/validate?chainId=${chainId}`
+- **WSS Endpoint**: `wss://lively-dust-7404.lively-fog-f2d9.workers.dev/alchemy?chainId=${chainId}`
+
+**Resources**: [Subscription API](https://docs.alchemy.com/reference/subscription-api) | [Best Practices](https://docs.alchemy.com/docs/websocket-best-practices)
+
+## Usage & limits
+
+### Compute Unit (CU) costs
+
+| Provider | Activity           | CU Cost              |
+| -------- | ------------------ | -------------------- |
+| Alchemy  | Data Transfer      | 8,000 CUs per 0.1 MB |
+| Helius   | Connection Setup   | 50 CUs               |
+| Helius   | Data (Enhanced)    | 150 CUs per 0.1 MB   |
+
+### Connection limits
+
+Concurrent connection limits are based on your subscription tier:
+
+- **Startup**: 1
+- **Growth**: 10
+- **Pro**: 20
+- **Business**: 30
