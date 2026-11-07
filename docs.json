@@ -1,0 +1,17 @@
+{
+  "theme": "mint",
+  "name": "Uniblock",
+  "colors": {
+    "primary": "#0D9373"
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Home",
+        "pages": [
+          "index"
+        ]
+      }
+    ]
+  }
+}

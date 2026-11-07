@@ -1,0 +1,90 @@
+---
+title: "Getting started"
+---
+
+## Create together
+
+Your team, and the agent, can work on the same page at the same time.
+
+Highlight a sentence to comment on it or suggest changes. Your teammates can respond to comments, and accept or reject changes to collaborate on pages. You can also @mintlify in a comment to have the agent take a pass at editing. Every change is saved to your base's history, so you can always restore a previous version.
+
+## Ways to edit
+
+<Tabs>
+  <Tab title="MCP">
+    Connect Claude, ChatGPT, Cursor, Codex or another AI tool to the Mintlify MCP server, and it can read and edit these pages from wherever you already work. Every tool connects to `https://mcp.mintlify.com` and signs in with your Mintlify account.
+
+    <AccordionGroup>
+      <Accordion title="Claude">
+        1. Open the [Connectors](https://claude.ai/settings/connectors) page in your Claude settings.
+        2. Click **Add custom connector**.
+        3. Name it `Mintlify` and set the URL to `https://mcp.mintlify.com`.
+        4. Click **Add** and sign in.
+
+        In a chat, click the plus icon and select the Mintlify connector.
+      </Accordion>
+
+      <Accordion title="ChatGPT">
+        Install the [Mintlify connector](https://chatgpt.com/apps/mintlify-mcp/asdk_app_6a4d5a687f0881918be3cb8b4b93773d) from the ChatGPT app directory and sign in when prompted.
+      </Accordion>
+
+      <Accordion title="Claude Code">
+        ```bash
+        claude mcp add --transport http mintlify https://mcp.mintlify.com
+        ```
+
+        Then run `/mcp` in Claude Code, select `mintlify`, and sign in.
+      </Accordion>
+
+      <Accordion title="Codex">
+        Add the server to `~/.codex/config.toml`:
+
+        ```toml
+        [mcp_servers.mintlify]
+        url = "https://mcp.mintlify.com"
+        ```
+
+        Then run `codex mcp login mintlify` to sign in.
+      </Accordion>
+
+      <Accordion title="Cursor">
+        1. Open the command palette with <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Windows).
+        2. Search for **Open MCP settings** and click **Add custom MCP**.
+        3. In `mcp.json`, add:
+
+        ```json
+        {
+          "mcpServers": {
+            "mintlify": {
+              "url": "https://mcp.mintlify.com"
+            }
+          }
+        }
+        ```
+
+        4. Reload Cursor and sign in when prompted.
+      </Accordion>
+    </AccordionGroup>
+
+    To set up Claude Code, Codex and Cursor at once from your terminal, run `mint agent setup`. You still sign in separately in each tool.
+  </Tab>
+  <Tab title="CLI">
+    Your Base is stored in Git, so you need to connect your repository in [settings](https://app.mintlify.com/settings/project/git-settings), and then you can clone the repository, edit pages in your own editor, then commit and push to sync your changes back to your Base:
+
+    ```bash
+    git clone <your-repository-url>
+    cd <repository>
+    git status
+    git add . && git commit -m "Update knowledge base"
+    git push
+    ```
+  </Tab>
+  <Tab title="Desktop app">
+    The Mintlify desktop app runs the editor on your computer, with tabs and multiple windows. You can also open Markdown files from your computer to edit them or copy them into your base.
+
+    [Download Mintlify Desktop App](https://www.mintlify.com/blog/mintlify-desktop)
+  </Tab>
+  <Tab title="Web editor">
+    Edit any page right in your browser. Open the agent from the top of any page and ask it to draft a page, tidy one up, or answer a question from what is already here.
+  </Tab>
+</Tabs>
